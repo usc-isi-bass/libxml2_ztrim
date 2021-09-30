@@ -2662,8 +2662,13 @@ htmlParseName(htmlParserCtxtPtr ctxt) {
 	       (*in == ':') || (*in == '.'))
 	    in++;
 
+#ifdef MAGMA_ENABLE_FIXES
 	if (in == ctxt->input->end)
 	    return(NULL);
+#endif
+#ifdef MAGMA_ENABLE_CANARIES
+	MAGMA_LOG("XML014", in >= ctxt->input->end);
+#endif
 
 	if ((*in > 0) && (*in < 0x80)) {
 	    count = in - ctxt->input->cur;
@@ -2707,6 +2712,7 @@ htmlParseNameComplex(xmlParserCtxtPtr ctxt) {
 	len += l;
 	NEXTL(l);
 	c = CUR_CHAR(l);
+#ifdef MAGMA_ENABLE_FIXES
 	if (ctxt->input->base != base) {
 	    /*
 	     * We changed encoding from an unknown encoding
@@ -2714,6 +2720,10 @@ htmlParseNameComplex(xmlParserCtxtPtr ctxt) {
 	     */
 	    return(htmlParseNameComplex(ctxt));
 	}
+#endif
+#ifdef MAGMA_ENABLE_CANARIES
+	MAGMA_LOG("XML015", ctxt->input->base != base);
+#endif
     }
 
     if (ctxt->input->cur - ctxt->input->base < len) {
@@ -2975,6 +2985,7 @@ htmlParseAttValue(htmlParserCtxtPtr ctxt) {
 static xmlChar *
 htmlParseSystemLiteral(htmlParserCtxtPtr ctxt) {
     size_t len = 0, startPosition = 0;
+    const xmlChar *q;
     int err = 0;
     int quote;
     xmlChar *ret = NULL;
@@ -2987,9 +2998,12 @@ htmlParseSystemLiteral(htmlParserCtxtPtr ctxt) {
     quote = CUR;
     NEXT;
 
+#ifdef MAGMA_ENABLE_FIXES
     if (CUR_PTR < BASE_PTR)
         return(ret);
+#endif
     startPosition = CUR_PTR - BASE_PTR;
+    q = CUR_PTR;
 
     while ((CUR != 0) && (CUR != quote)) {
         /* TODO: Handle UTF-8 */
@@ -3005,9 +3019,17 @@ htmlParseSystemLiteral(htmlParserCtxtPtr ctxt) {
         htmlParseErr(ctxt, XML_ERR_LITERAL_NOT_FINISHED,
                      "Unfinished SystemLiteral\n", NULL, NULL);
     } else {
+#ifdef MAGMA_ENABLE_FIXES
         NEXT;
         if (err == 0)
             ret = xmlStrndup((BASE_PTR+startPosition), len);
+#else
+#ifdef MAGMA_ENABLE_CANARIES
+        MAGMA_LOG("XML013", q != (BASE_PTR+startPosition));
+#endif
+        ret = xmlStrndup(q, CUR_PTR - q);
+        NEXT;
+#endif
     }
 
     return(ret);
@@ -3027,6 +3049,7 @@ htmlParseSystemLiteral(htmlParserCtxtPtr ctxt) {
 static xmlChar *
 htmlParsePubidLiteral(htmlParserCtxtPtr ctxt) {
     size_t len = 0, startPosition = 0;
+    const xmlChar *q;
     int err = 0;
     int quote;
     xmlChar *ret = NULL;
@@ -3042,9 +3065,12 @@ htmlParsePubidLiteral(htmlParserCtxtPtr ctxt) {
     /*
      * Name ::= (Letter | '_') (NameChar)*
      */
+#ifdef MAGMA_ENABLE_FIXES
     if (CUR_PTR < BASE_PTR)
         return(ret);
+#endif
     startPosition = CUR_PTR - BASE_PTR;
+    q = CUR_PTR;
 
     while ((CUR != 0) && (CUR != quote)) {
         if (!IS_PUBIDCHAR_CH(CUR)) {
@@ -3060,9 +3086,17 @@ htmlParsePubidLiteral(htmlParserCtxtPtr ctxt) {
         htmlParseErr(ctxt, XML_ERR_LITERAL_NOT_FINISHED,
                      "Unfinished PubidLiteral\n", NULL, NULL);
     } else {
+#ifdef MAGMA_ENABLE_FIXES
         NEXT;
         if (err == 0)
             ret = xmlStrndup((BASE_PTR + startPosition), len);
+#else
+#ifdef MAGMA_ENABLE_CANARIES
+        MAGMA_LOG("XML013", q != (BASE_PTR+startPosition));
+#endif
+        ret = xmlStrndup(q, CUR_PTR - q);
+        NEXT;
+#endif
     }
 
     return(ret);
@@ -5507,6 +5541,9 @@ htmlParseTryOrFinish(htmlParserCtxtPtr ctxt, int terminate) {
 	else
 	    avail = (ptrdiff_t)xmlBufUse(in->buf->buffer) -
                     (in->cur - in->base);
+#ifdef MAGMA_ENABLE_CANARIES
+    MAGMA_LOG("XML007", avail != (in->end - in->cur));
+#endif
 	if ((avail == 0) && (terminate)) {
 	    htmlAutoCloseOnEnd(ctxt);
 	    if ((ctxt->nameNr == 0) && (ctxt->instate != XML_PARSER_EOF)) {

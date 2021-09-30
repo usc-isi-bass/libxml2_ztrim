@@ -2767,6 +2767,8 @@ xmlStringLenDecodeEntities(xmlParserCtxtPtr ctxt, const xmlChar *str, int len,
 	        ctxt->nbentities += ent->checked / 2;
 	    if (ent != NULL) {
                 if (ent->content == NULL) {
+		    int m_tmp = 1;
+#ifdef MAGMA_ENABLE_FIXES
 		    /*
 		     * Note: external parsed entities will not be loaded,
 		     * it is not required for a non-validating parser to
@@ -2778,10 +2780,20 @@ xmlStringLenDecodeEntities(xmlParserCtxtPtr ctxt, const xmlChar *str, int len,
 			(ctxt->validate != 0)) {
 			xmlLoadEntityContent(ctxt, ent);
 		    } else {
+			m_tmp = 0;
 			xmlWarningMsg(ctxt, XML_ERR_ENTITY_PROCESSING,
 		  "not validating will not read content for PE entity %s\n",
 		                      ent->name, NULL);
 		    }
+#else
+		    xmlLoadEntityContent(ctxt, ent);
+#endif
+#ifdef MAGMA_ENABLE_CANARIES
+		    MAGMA_LOG("XML010", MAGMA_AND(m_tmp == 1, \
+			MAGMA_AND((ctxt->options & XML_PARSE_NOENT) == 0, \
+			MAGMA_AND((ctxt->options & XML_PARSE_DTDVALID) == 0, \
+			ctxt->validate == 0))));
+#endif
 		}
 		ctxt->depth++;
 		rep = xmlStringDecodeEntities(ctxt, ent->content, what,
@@ -3399,6 +3411,7 @@ xmlParseNCNameComplex(xmlParserCtxtPtr ctxt) {
     int c;
     int count = 0;
     size_t startPosition = 0;
+    const xmlChar *end;
 
 #ifdef DEBUG
     nbParseNCNameComplex++;
@@ -3409,6 +3422,7 @@ xmlParseNCNameComplex(xmlParserCtxtPtr ctxt) {
      */
     GROW;
     startPosition = CUR_PTR - BASE_PTR;
+    end = ctxt->input->cur;
     c = CUR_CHAR(l);
     if ((c == ' ') || (c == '>') || (c == '/') || /* accelerators */
 	(!xmlIsNameStartChar(ctxt, c) || (c == ':'))) {
@@ -3430,6 +3444,7 @@ xmlParseNCNameComplex(xmlParserCtxtPtr ctxt) {
 	}
 	len += l;
 	NEXTL(l);
+	end = ctxt->input->cur;
 	c = CUR_CHAR(l);
 	if (c == 0) {
 	    count = 0;
@@ -3443,6 +3458,7 @@ xmlParseNCNameComplex(xmlParserCtxtPtr ctxt) {
             if (ctxt->instate == XML_PARSER_EOF)
                 return(NULL);
 	    ctxt->input->cur += l;
+	    end = ctxt->input->cur;
 	    c = CUR_CHAR(l);
 	}
     }
@@ -3451,7 +3467,14 @@ xmlParseNCNameComplex(xmlParserCtxtPtr ctxt) {
         xmlFatalErr(ctxt, XML_ERR_NAME_TOO_LONG, "NCName");
         return(NULL);
     }
+#ifdef MAGMA_ENABLE_FIXES
     return(xmlDictLookup(ctxt->dict, (BASE_PTR + startPosition), len));
+#else
+#ifdef MAGMA_ENABLE_CANARIES
+    MAGMA_LOG("XML012", (end - len) != (BASE_PTR + startPosition));
+#endif
+    return(xmlDictLookup(ctxt->dict, (end - len), len));
+#endif
 }
 
 /**
@@ -5031,10 +5054,18 @@ get_more:
 		} else
 		    xmlFatalErrMsgStr(ctxt, XML_ERR_HYPHEN_IN_COMMENT,
 		                      "Double hyphen within comment\n", NULL);
+#ifdef MAGMA_ENABLE_FIXES
                 if (ctxt->instate == XML_PARSER_EOF) {
                     xmlFree(buf);
                     return;
                 }
+#endif
+#ifdef MAGMA_ENABLE_CANARIES
+                // According to the discussion on issue #58, this bug is due
+                // to the fix applied for Bug 030. So it might be possible
+                // that this bug cannot be triggered unless Bug 030 is disabled.
+                MAGMA_LOG("XML008", ctxt->instate == XML_PARSER_EOF);
+#endif
 		in++;
 		ctxt->input->col++;
 	    }
@@ -8000,6 +8031,7 @@ xmlParsePEReference(xmlParserCtxtPtr ctxt)
 	    if (xmlParserEntityCheck(ctxt, 0, entity, 0))
 	        return;
 
+#ifdef MAGMA_ENABLE_FIXES
 	    if ((entity->etype == XML_EXTERNAL_PARAMETER_ENTITY) &&
 	        ((ctxt->options & XML_PARSE_NOENT) == 0) &&
 		((ctxt->options & XML_PARSE_DTDVALID) == 0) &&
@@ -8008,7 +8040,17 @@ xmlParsePEReference(xmlParserCtxtPtr ctxt)
 		(ctxt->replaceEntities == 0) &&
 		(ctxt->validate == 0))
 		return;
+#endif
 
+#ifdef MAGMA_ENABLE_CANARIES
+    MAGMA_LOG("XML003", MAGMA_AND(entity->etype == XML_EXTERNAL_PARAMETER_ENTITY, \
+        MAGMA_AND((ctxt->options & XML_PARSE_NOENT) == 0, \
+        MAGMA_AND((ctxt->options & XML_PARSE_DTDVALID) == 0, \
+        MAGMA_AND((ctxt->options & XML_PARSE_DTDLOAD) == 0, \
+        MAGMA_AND((ctxt->options & XML_PARSE_DTDATTR) == 0, \
+        MAGMA_AND(ctxt->replaceEntities == 0, \
+        ctxt->validate == 0)))))));
+#endif
 	    input = xmlNewEntityInputStream(ctxt, entity);
 	    if (xmlPushInput(ctxt, input) < 0) {
                 xmlFreeInputStream(input);
@@ -8402,10 +8444,20 @@ xmlParseInternalSubset(xmlParserCtxtPtr ctxt) {
     /*
      * We should be at the end of the DOCTYPE declaration.
      */
+#ifdef MAGMA_ENABLE_FIXES
     if (RAW != '>') {
 	xmlFatalErr(ctxt, XML_ERR_DOCTYPE_NOT_FINISHED, NULL);
 	return;
     }
+#endif
+#ifdef MAGMA_ENABLE_CANARIES
+    // This condition is not sufficient for the bug to actually be triggered
+    // but it is necessary.
+    // However, to avoid the complexity of analyzing the real triggering
+    // condition (bounds checks and others), we'll use the condition relied
+    // on by the devs when fixing the bug.
+    MAGMA_LOG("XML017", RAW != '>');
+#endif
     NEXT;
 }
 
@@ -10444,11 +10496,22 @@ xmlParseEncodingDecl(xmlParserCtxtPtr ctxt) {
 
             handler = xmlFindCharEncodingHandler((const char *) encoding);
 	    if (handler != NULL) {
-		if (xmlSwitchToEncoding(ctxt, handler) < 0) {
+                int m_tmp = xmlSwitchToEncoding(ctxt, handler);
+#ifdef MAGMA_ENABLE_FIXES
+		if (m_tmp < 0) {
 		    /* failed to convert */
 		    ctxt->errNo = XML_ERR_UNSUPPORTED_ENCODING;
 		    return(NULL);
 		}
+#endif
+#ifdef MAGMA_ENABLE_CANARIES
+                // This condition is not sufficient to indicate the original
+                // bug was triggered, but it is necessary.
+                // As such, it is inaccurate, but investigating further
+                // would require more time and deeper knowledge.
+                // This should be enough for a "simple" bug.
+                MAGMA_LOG("XML009", m_tmp < 0);
+#endif
 	    } else {
 		xmlFatalErrMsgStr(ctxt, XML_ERR_UNSUPPORTED_ENCODING,
 			"Unsupported encoding %s\n", encoding);
@@ -12569,12 +12632,14 @@ xmlHaltParser(xmlParserCtxtPtr ctxt) {
 	    ctxt->input->free((xmlChar *) ctxt->input->base);
 	    ctxt->input->free = NULL;
 	}
+#ifdef MAGMA_ENABLE_FIXES
         if (ctxt->input->buf != NULL) {
             xmlFreeParserInputBuffer(ctxt->input->buf);
             ctxt->input->buf = NULL;
         }
-	ctxt->input->cur = BAD_CAST"";
         ctxt->input->length = 0;
+#endif
+	ctxt->input->cur = BAD_CAST"";
 	ctxt->input->base = ctxt->input->cur;
         ctxt->input->end = ctxt->input->cur;
     }

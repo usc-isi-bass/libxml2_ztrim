@@ -8,7 +8,7 @@ DIST_SUBDIRS = include . doc example fuzz python xstc
 
 AM_CPPFLAGS = -I$(top_builddir)/include -I$(srcdir)/include
 
-AM_CFLAGS = $(EXTRA_CFLAGS) $(THREAD_CFLAGS) $(Z_CFLAGS) $(LZMA_CFLAGS)
+AM_CFLAGS := $(EXTRA_CFLAGS) $(THREAD_CFLAGS) $(Z_CFLAGS) $(LZMA_CFLAGS) $(XML_COPTS)
 
 check_PROGRAMS=testSchemas testRelax testSAX testHTML testXPath testURI \
                testThreads testC14N testAutomata testRegexp \

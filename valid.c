@@ -1321,6 +1321,7 @@ xmlSnprintfElementContent(char *buf, int size, xmlElementContentPtr content, int
             strcat(buf, "#PCDATA");
 	    break;
 	case XML_ELEMENT_CONTENT_ELEMENT: {
+#ifdef MAGMA_ENABLE_FIXES
             int qnameLen = xmlStrlen(content->name);
 
 	    if (content->prefix != NULL)
@@ -1329,10 +1330,28 @@ xmlSnprintfElementContent(char *buf, int size, xmlElementContentPtr content, int
 		strcat(buf, " ...");
 		return;
 	    }
+#endif
 	    if (content->prefix != NULL) {
+#ifdef MAGMA_ENABLE_FIXES
+#else
+            if (size - len < xmlStrlen(content->prefix) + 10) {
+                strcat(buf, " ...");
+                return;
+            }
+#endif
 		strcat(buf, (char *) content->prefix);
 		strcat(buf, ":");
 	    }
+#ifdef MAGMA_ENABLE_FIXES
+#else
+        if (size - len < xmlStrlen(content->name) + 10) {
+            strcat(buf, " ...");
+            return;
+        }
+#endif
+#ifdef MAGMA_ENABLE_CANARIES
+        MAGMA_LOG("XML001", (size - len - xmlStrlen(content->prefix)) < (xmlStrlen(content->name) + 10));
+#endif
 	    if (content->name != NULL)
 		strcat(buf, (char *) content->name);
 	    break;
@@ -1378,7 +1397,12 @@ xmlSnprintfElementContent(char *buf, int size, xmlElementContentPtr content, int
 		xmlSnprintfElementContent(buf, size, content->c2, 0);
 	    break;
     }
+#ifdef MAGMA_ENABLE_FIXES
     if (size - strlen(buf) <= 2) return;
+#endif
+#ifdef MAGMA_ENABLE_CANARIES
+    MAGMA_LOG("XML006", size - strlen(buf) <= 2);
+#endif
     if (englob)
         strcat(buf, ")");
     switch (content->ocur) {
@@ -4736,15 +4760,22 @@ xmlNodePtr elem, const xmlChar *prefix, xmlNsPtr ns, const xmlChar *value) {
      * xmlAddID and xmlAddRef for namespace declarations, but it makes
      * no practical sense to use ID types anyway.
      */
-#if 0
+#ifdef MAGMA_ENABLE_FIXES
+#else
     /* Validity Constraint: ID uniqueness */
     if (attrDecl->atype == XML_ATTRIBUTE_ID) {
+#ifdef MAGMA_ENABLE_CANARIES
+        MAGMA_LOG("XML002", 1); // type confusion on the next line
+#endif
         if (xmlAddID(ctxt, doc, value, (xmlAttrPtr) ns) == NULL)
 	    ret = 0;
     }
 
     if ((attrDecl->atype == XML_ATTRIBUTE_IDREF) ||
 	(attrDecl->atype == XML_ATTRIBUTE_IDREFS)) {
+#ifdef MAGMA_ENABLE_CANARIES
+        MAGMA_LOG("XML002", 1); // type confusion on the next line
+#endif
         if (xmlAddRef(ctxt, doc, value, (xmlAttrPtr) ns) == NULL)
 	    ret = 0;
     }

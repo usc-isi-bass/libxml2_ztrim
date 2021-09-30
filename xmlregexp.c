@@ -5142,11 +5142,20 @@ xmlFAParseCharRange(xmlRegParserCtxtPtr ctxt) {
 	return;
     }
 
+#ifdef MAGMA_ENABLE_FIXES
+#else
+#ifdef MAGMA_ENABLE_CANARIES
+    MAGMA_LOG("XML016", end < start);
+#endif
+    NEXTL(len);
+#endif
     /* TODO check that the values are acceptable character ranges for XML */
     if (end < start) {
 	ERROR("End of range is before start of range");
     } else {
+#ifdef MAGMA_ENABLE_FIXES
         NEXTL(len);
+#endif
         xmlRegAtomAddRange(ctxt, ctxt->atom, ctxt->neg,
 		           XML_REGEXP_CHARVAL, start, end, NULL);
     }
