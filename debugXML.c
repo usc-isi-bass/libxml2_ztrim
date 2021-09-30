@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * debugXML.c : This is a set of routines used for debugging the tree
  *              produced by the XML parser.
@@ -1232,6 +1237,7 @@ static void
 xmlCtxtDumpEntityCallback(void *payload, void *data,
                           const xmlChar *name ATTRIBUTE_UNUSED)
 {
+ztrim_fInstrument(691);
     xmlEntityPtr cur = (xmlEntityPtr) payload;
     xmlDebugCtxtPtr ctxt = (xmlDebugCtxtPtr) data;
     if (cur == NULL) {
@@ -1398,6 +1404,7 @@ xmlDebugDumpAttr(FILE *output, xmlAttrPtr attr, int depth) {
 void
 xmlDebugDumpEntities(FILE * output, xmlDocPtr doc)
 {
+ztrim_fInstrument(680);
     xmlDebugCtxt ctxt;
 
     if (output == NULL) return;
@@ -1460,6 +1467,7 @@ xmlDebugDumpOneNode(FILE * output, xmlNodePtr node, int depth)
 void
 xmlDebugDumpNode(FILE * output, xmlNodePtr node, int depth)
 {
+ztrim_fInstrument(681);
     xmlDebugCtxt ctxt;
 
     if (output == NULL)
@@ -1482,6 +1490,7 @@ xmlDebugDumpNode(FILE * output, xmlNodePtr node, int depth)
 void
 xmlDebugDumpNodeList(FILE * output, xmlNodePtr node, int depth)
 {
+ztrim_fInstrument(682);
     xmlDebugCtxt ctxt;
 
     if (output == NULL)
@@ -1524,6 +1533,7 @@ xmlDebugDumpDocumentHead(FILE * output, xmlDocPtr doc)
 void
 xmlDebugDumpDocument(FILE * output, xmlDocPtr doc)
 {
+ztrim_fInstrument(683);
     xmlDebugCtxt ctxt;
 
     if (output == NULL)
@@ -1545,6 +1555,7 @@ xmlDebugDumpDocument(FILE * output, xmlDocPtr doc)
 void
 xmlDebugDumpDTD(FILE * output, xmlDtdPtr dtd)
 {
+ztrim_fInstrument(684);
     xmlDebugCtxt ctxt;
 
     if (output == NULL)
@@ -1575,6 +1586,7 @@ xmlDebugDumpDTD(FILE * output, xmlDtdPtr dtd)
 int
 xmlDebugCheckDocument(FILE * output, xmlDocPtr doc)
 {
+ztrim_fInstrument(685);
     xmlDebugCtxt ctxt;
 
     if (output == NULL)
@@ -1795,6 +1807,7 @@ xmlLsOneNode(FILE *output, xmlNodePtr node) {
 const char *
 xmlBoolToText(int boolval)
 {
+ztrim_fInstrument(686);
     if (boolval)
         return("True");
     else
@@ -1827,6 +1840,7 @@ xmlBoolToText(int boolval)
 void
 xmlShellPrintXPathError(int errorType, const char *arg)
 {
+ztrim_fInstrument(687);
     const char *default_arg = "Result";
 
     if (!arg)
@@ -1918,6 +1932,7 @@ xmlShellPrintNodeCtxt(xmlShellCtxtPtr ctxt,xmlNodePtr node)
 void
 xmlShellPrintNode(xmlNodePtr node)
 {
+ztrim_fInstrument(688);
     xmlShellPrintNodeCtxt(NULL, node);
 }
 #endif /* LIBXML_OUTPUT_ENABLED */
@@ -1986,6 +2001,7 @@ xmlShellPrintXPathResultCtxt(xmlShellCtxtPtr ctxt,xmlXPathObjectPtr list)
 void
 xmlShellPrintXPathResult(xmlXPathObjectPtr list)
 {
+ztrim_fInstrument(689);
     xmlShellPrintXPathResultCtxt(NULL, list);
 }
 
@@ -2802,6 +2818,7 @@ void
 xmlShell(xmlDocPtr doc, char *filename, xmlShellReadlineFunc input,
          FILE * output)
 {
+ztrim_fInstrument(690);
     char prompt[500] = "/ > ";
     char *cmdline = NULL, *cur;
     char command[100];

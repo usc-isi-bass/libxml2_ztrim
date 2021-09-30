@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * xpointer.c : Code to handle XML Pointer
  *
@@ -408,6 +413,7 @@ xmlXPtrNewRange(xmlNodePtr start, int startindex,
  */
 xmlXPathObjectPtr
 xmlXPtrNewRangePoints(xmlXPathObjectPtr start, xmlXPathObjectPtr end) {
+ztrim_fInstrument(298);
     xmlXPathObjectPtr ret;
 
     if (start == NULL)
@@ -436,6 +442,7 @@ xmlXPtrNewRangePoints(xmlXPathObjectPtr start, xmlXPathObjectPtr end) {
  */
 xmlXPathObjectPtr
 xmlXPtrNewRangePointNode(xmlXPathObjectPtr start, xmlNodePtr end) {
+ztrim_fInstrument(299);
     xmlXPathObjectPtr ret;
 
     if (start == NULL)
@@ -461,6 +468,7 @@ xmlXPtrNewRangePointNode(xmlXPathObjectPtr start, xmlNodePtr end) {
  */
 xmlXPathObjectPtr
 xmlXPtrNewRangeNodePoint(xmlNodePtr start, xmlXPathObjectPtr end) {
+ztrim_fInstrument(300);
     xmlXPathObjectPtr ret;
 
     if (start == NULL)
@@ -486,6 +494,7 @@ xmlXPtrNewRangeNodePoint(xmlNodePtr start, xmlXPathObjectPtr end) {
  */
 xmlXPathObjectPtr
 xmlXPtrNewRangeNodes(xmlNodePtr start, xmlNodePtr end) {
+ztrim_fInstrument(301);
     xmlXPathObjectPtr ret;
 
     if (start == NULL)
@@ -508,6 +517,7 @@ xmlXPtrNewRangeNodes(xmlNodePtr start, xmlNodePtr end) {
  */
 xmlXPathObjectPtr
 xmlXPtrNewCollapsedRange(xmlNodePtr start) {
+ztrim_fInstrument(302);
     xmlXPathObjectPtr ret;
 
     if (start == NULL)
@@ -688,6 +698,7 @@ xmlXPtrLocationSetMerge(xmlLocationSetPtr val1, xmlLocationSetPtr val2) {
  */
 void
 xmlXPtrLocationSetDel(xmlLocationSetPtr cur, xmlXPathObjectPtr val) {
+ztrim_fInstrument(303);
     int i;
 
     if (cur == NULL) return;
@@ -721,6 +732,7 @@ xmlXPtrLocationSetDel(xmlLocationSetPtr cur, xmlXPathObjectPtr val) {
  */
 void
 xmlXPtrLocationSetRemove(xmlLocationSetPtr cur, int val) {
+ztrim_fInstrument(304);
     if (cur == NULL) return;
     if (val >= cur->locNr) return;
     cur->locNr--;
@@ -1724,6 +1736,7 @@ xmlXPtrNbLocChildren(xmlNodePtr node) {
  */
 static void
 xmlXPtrHereFunction(xmlXPathParserContextPtr ctxt, int nargs) {
+ztrim_fInstrument(310);
     CHECK_ARITY(0);
 
     if (ctxt->context->here == NULL)
@@ -1742,6 +1755,7 @@ xmlXPtrHereFunction(xmlXPathParserContextPtr ctxt, int nargs) {
  */
 static void
 xmlXPtrOriginFunction(xmlXPathParserContextPtr ctxt, int nargs) {
+ztrim_fInstrument(311);
     CHECK_ARITY(0);
 
     if (ctxt->context->origin == NULL)
@@ -1775,6 +1789,7 @@ xmlXPtrOriginFunction(xmlXPathParserContextPtr ctxt, int nargs) {
  */
 static void
 xmlXPtrStartPointFunction(xmlXPathParserContextPtr ctxt, int nargs) {
+ztrim_fInstrument(308);
     xmlXPathObjectPtr tmp, obj, point;
     xmlLocationSetPtr newset = NULL;
     xmlLocationSetPtr oldset = NULL;
@@ -1871,6 +1886,7 @@ xmlXPtrStartPointFunction(xmlXPathParserContextPtr ctxt, int nargs) {
  */
 static void
 xmlXPtrEndPointFunction(xmlXPathParserContextPtr ctxt, int nargs) {
+ztrim_fInstrument(309);
     xmlXPathObjectPtr tmp, obj, point;
     xmlLocationSetPtr newset = NULL;
     xmlLocationSetPtr oldset = NULL;
@@ -2022,6 +2038,7 @@ xmlXPtrCoveringRange(xmlXPathParserContextPtr ctxt, xmlXPathObjectPtr loc) {
  */
 static void
 xmlXPtrRangeFunction(xmlXPathParserContextPtr ctxt, int nargs) {
+ztrim_fInstrument(305);
     int i;
     xmlXPathObjectPtr set;
     xmlLocationSetPtr oldset;
@@ -2176,6 +2193,7 @@ xmlXPtrInsideRange(xmlXPathParserContextPtr ctxt, xmlXPathObjectPtr loc) {
  */
 static void
 xmlXPtrRangeInsideFunction(xmlXPathParserContextPtr ctxt, int nargs) {
+ztrim_fInstrument(306);
     int i;
     xmlXPathObjectPtr set;
     xmlLocationSetPtr oldset;
@@ -2237,6 +2255,7 @@ xmlXPtrRangeInsideFunction(xmlXPathParserContextPtr ctxt, int nargs) {
 void
 xmlXPtrRangeToFunction(xmlXPathParserContextPtr ctxt,
                        int nargs ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(312);
     XP_ERROR(XPATH_EXPR_ERROR);
 }
 
@@ -2706,6 +2725,7 @@ xmlXPtrGetEndPoint(xmlXPathObjectPtr obj, xmlNodePtr *node, int *indx) {
  */
 static void
 xmlXPtrStringRangeFunction(xmlXPathParserContextPtr ctxt, int nargs) {
+ztrim_fInstrument(307);
     int i, startindex, endindex = 0, fendindex;
     xmlNodePtr start, end = 0, fend;
     xmlXPathObjectPtr set = NULL;
@@ -2864,6 +2884,7 @@ error:
  */
 void
 xmlXPtrEvalRangePredicate(xmlXPathParserContextPtr ctxt) {
+ztrim_fInstrument(313);
     const xmlChar *cur;
     xmlXPathObjectPtr res;
     xmlXPathObjectPtr obj, tmp;

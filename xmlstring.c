@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * string.c : an XML string utilities module
  *
@@ -398,6 +403,7 @@ xmlStrcasestr(const xmlChar *str, const xmlChar *val) {
 
 xmlChar *
 xmlStrsub(const xmlChar *str, int start, int len) {
+ztrim_fInstrument(396);
     int i;
 
     if (str == NULL) return(NULL);
@@ -578,6 +584,7 @@ xmlStrPrintf(xmlChar *buf, int len, const char *msg, ...) {
  */
 int
 xmlStrVPrintf(xmlChar *buf, int len, const char *msg, va_list ap) {
+ztrim_fInstrument(397);
     int ret;
 
     if((buf == NULL) || (msg == NULL)) {
@@ -647,6 +654,7 @@ xmlUTF8Size(const xmlChar *utf) {
  */
 int
 xmlUTF8Charcmp(const xmlChar *utf1, const xmlChar *utf2) {
+ztrim_fInstrument(398);
 
     if (utf1 == NULL ) {
         if (utf2 == NULL)

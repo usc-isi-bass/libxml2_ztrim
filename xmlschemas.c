@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * schemas.c : implementation of the XML Schema handling and
  *             schema validity checking
@@ -3607,6 +3612,7 @@ xmlSchemaBucketFree(xmlSchemaBucketPtr bucket)
 static void
 xmlSchemaBucketFreeEntry(void *bucket, const xmlChar *name ATTRIBUTE_UNUSED)
 {
+ztrim_fInstrument(692);
     xmlSchemaBucketFree((xmlSchemaBucketPtr) bucket);
 }
 
@@ -4245,6 +4251,7 @@ xmlSchemaElementDump(void *payload, void *data,
 		     const xmlChar * namespace ATTRIBUTE_UNUSED,
                      const xmlChar * context ATTRIBUTE_UNUSED)
 {
+ztrim_fInstrument(695);
     xmlSchemaElementPtr elem = (xmlSchemaElementPtr) payload;
     FILE *output = (FILE *) data;
     if (elem == NULL)
@@ -4565,6 +4572,7 @@ static void
 xmlSchemaTypeDumpEntry(void *type, void *output,
                        const xmlChar *name ATTRIBUTE_UNUSED)
 {
+ztrim_fInstrument(694);
     xmlSchemaTypeDump((xmlSchemaTypePtr) type, (FILE *) output);
 }
 
@@ -4578,6 +4586,7 @@ xmlSchemaTypeDumpEntry(void *type, void *output,
 void
 xmlSchemaDump(FILE * output, xmlSchemaPtr schema)
 {
+ztrim_fInstrument(693);
     if (output == NULL)
         return;
     if (schema == NULL) {
@@ -5760,6 +5769,7 @@ xmlSchemaSubstGroupFree(xmlSchemaSubstGroupPtr group)
 static void
 xmlSchemaSubstGroupFreeEntry(void *group, const xmlChar *name ATTRIBUTE_UNUSED)
 {
+ztrim_fInstrument(736);
     xmlSchemaSubstGroupFree((xmlSchemaSubstGroupPtr) group);
 }
 
@@ -12557,6 +12567,7 @@ xmlSchemaNewParserCtxt(const char *URL)
 xmlSchemaParserCtxtPtr
 xmlSchemaNewMemParserCtxt(const char *buffer, int size)
 {
+ztrim_fInstrument(696);
     xmlSchemaParserCtxtPtr ret;
 
     if ((buffer == NULL) || (size <= 0))
@@ -12582,6 +12593,7 @@ xmlSchemaNewMemParserCtxt(const char *buffer, int size)
 xmlSchemaParserCtxtPtr
 xmlSchemaNewDocParserCtxt(xmlDocPtr doc)
 {
+ztrim_fInstrument(697);
     xmlSchemaParserCtxtPtr ret;
 
     if (doc == NULL)
@@ -21588,6 +21600,7 @@ xmlSchemaGetParserErrors(xmlSchemaParserCtxtPtr ctxt,
 			 xmlSchemaValidityErrorFunc * err,
 			 xmlSchemaValidityWarningFunc * warn, void **ctx)
 {
+ztrim_fInstrument(698);
 	if (ctxt == NULL)
 		return(-1);
 	if (err != NULL)
@@ -22106,6 +22119,7 @@ static void
 xmlSchemaAugmentIDC(void *payload, void *data,
                     const xmlChar *name ATTRIBUTE_UNUSED)
 {
+ztrim_fInstrument(739);
     xmlSchemaIDCPtr idcDef = (xmlSchemaIDCPtr) payload;
     xmlSchemaValidCtxtPtr vctxt = (xmlSchemaValidCtxtPtr) data;
     xmlSchemaIDCAugPtr aidc;
@@ -22143,6 +22157,7 @@ xmlSchemaAugmentIDC(void *payload, void *data,
 static void
 xmlSchemaAugmentImportedIDC(void *payload, void *data,
                             const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(738);
     xmlSchemaImportPtr imported = (xmlSchemaImportPtr) payload;
     xmlSchemaValidCtxtPtr vctxt = (xmlSchemaValidCtxtPtr) data;
     if (imported->schema->idcDef != NULL) {
@@ -22399,6 +22414,7 @@ xmlSchemaIDCFreeIDCTable(xmlSchemaPSVIIDCBindingPtr bind)
 static void
 xmlFreeIDCHashEntry (void *payload, const xmlChar *name ATTRIBUTE_UNUSED)
 {
+ztrim_fInstrument(737);
     xmlIDCHashEntryPtr e = payload, n;
     while (e) {
 	n = e->next;
@@ -26172,6 +26188,7 @@ xmlSchemaVContentModelCallback(xmlRegExecCtxtPtr exec ATTRIBUTE_UNUSED,
 			       const xmlChar * name ATTRIBUTE_UNUSED,
 			       void *transdata, void *inputdata)
 {
+ztrim_fInstrument(740);
     xmlSchemaElementPtr item = (xmlSchemaElementPtr) transdata;
     xmlSchemaNodeInfoPtr inode = (xmlSchemaNodeInfoPtr) inputdata;
     inode->decl = item;
@@ -27495,6 +27512,7 @@ static void
 xmlSchemaSAXHandleReference(void *ctx ATTRIBUTE_UNUSED,
 			    const xmlChar * name ATTRIBUTE_UNUSED)
 {
+ztrim_fInstrument(705);
     xmlSchemaValidCtxtPtr vctxt = (xmlSchemaValidCtxtPtr) ctx;
 
     if (vctxt->depth < 0)
@@ -27757,6 +27775,7 @@ xmlSchemaNewValidCtxt(xmlSchemaPtr schema)
  */
 void
 xmlSchemaValidateSetFilename(xmlSchemaValidCtxtPtr vctxt, const char *filename) {
+ztrim_fInstrument(699);
     if (vctxt == NULL)
         return;
     if (vctxt->filename != NULL)
@@ -28054,6 +28073,7 @@ xmlSchemaGetValidErrors(xmlSchemaValidCtxtPtr ctxt,
 			xmlSchemaValidityErrorFunc * err,
 			xmlSchemaValidityWarningFunc * warn, void **ctx)
 {
+ztrim_fInstrument(700);
 	if (ctxt == NULL)
 		return (-1);
 	if (err != NULL)
@@ -28081,6 +28101,7 @@ xmlSchemaSetValidOptions(xmlSchemaValidCtxtPtr ctxt,
 			 int options)
 
 {
+ztrim_fInstrument(701);
     int i;
 
     if (ctxt == NULL)
@@ -28111,6 +28132,7 @@ int
 xmlSchemaValidCtxtGetOptions(xmlSchemaValidCtxtPtr ctxt)
 
 {
+ztrim_fInstrument(702);
     if (ctxt == NULL)
 	return (-1);
     else
@@ -28412,6 +28434,7 @@ xmlSchemaVStart(xmlSchemaValidCtxtPtr vctxt)
 int
 xmlSchemaValidateOneElement(xmlSchemaValidCtxtPtr ctxt, xmlNodePtr elem)
 {
+ztrim_fInstrument(703);
     if ((ctxt == NULL) || (elem == NULL) || (elem->type != XML_ELEMENT_NODE))
 	return (-1);
 
@@ -28437,6 +28460,7 @@ xmlSchemaValidateOneElement(xmlSchemaValidCtxtPtr ctxt, xmlNodePtr elem)
 int
 xmlSchemaValidateDoc(xmlSchemaValidCtxtPtr ctxt, xmlDocPtr doc)
 {
+ztrim_fInstrument(704);
     if ((ctxt == NULL) || (doc == NULL))
         return (-1);
 
@@ -28490,6 +28514,7 @@ static void
 internalSubsetSplit(void *ctx, const xmlChar *name,
 	       const xmlChar *ExternalID, const xmlChar *SystemID)
 {
+ztrim_fInstrument(706);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->internalSubset != NULL))
@@ -28500,6 +28525,7 @@ internalSubsetSplit(void *ctx, const xmlChar *name,
 static int
 isStandaloneSplit(void *ctx)
 {
+ztrim_fInstrument(707);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->isStandalone != NULL))
@@ -28510,6 +28536,7 @@ isStandaloneSplit(void *ctx)
 static int
 hasInternalSubsetSplit(void *ctx)
 {
+ztrim_fInstrument(708);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->hasInternalSubset != NULL))
@@ -28520,6 +28547,7 @@ hasInternalSubsetSplit(void *ctx)
 static int
 hasExternalSubsetSplit(void *ctx)
 {
+ztrim_fInstrument(709);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->hasExternalSubset != NULL))
@@ -28531,6 +28559,7 @@ static void
 externalSubsetSplit(void *ctx, const xmlChar *name,
 	       const xmlChar *ExternalID, const xmlChar *SystemID)
 {
+ztrim_fInstrument(726);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->externalSubset != NULL))
@@ -28541,6 +28570,7 @@ externalSubsetSplit(void *ctx, const xmlChar *name,
 static xmlParserInputPtr
 resolveEntitySplit(void *ctx, const xmlChar *publicId, const xmlChar *systemId)
 {
+ztrim_fInstrument(710);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->resolveEntity != NULL))
@@ -28552,6 +28582,7 @@ resolveEntitySplit(void *ctx, const xmlChar *publicId, const xmlChar *systemId)
 static xmlEntityPtr
 getEntitySplit(void *ctx, const xmlChar *name)
 {
+ztrim_fInstrument(711);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->getEntity != NULL))
@@ -28562,6 +28593,7 @@ getEntitySplit(void *ctx, const xmlChar *name)
 static xmlEntityPtr
 getParameterEntitySplit(void *ctx, const xmlChar *name)
 {
+ztrim_fInstrument(725);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->getParameterEntity != NULL))
@@ -28574,6 +28606,7 @@ static void
 entityDeclSplit(void *ctx, const xmlChar *name, int type,
           const xmlChar *publicId, const xmlChar *systemId, xmlChar *content)
 {
+ztrim_fInstrument(712);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->entityDecl != NULL))
@@ -28586,6 +28619,7 @@ attributeDeclSplit(void *ctx, const xmlChar * elem,
                    const xmlChar * name, int type, int def,
                    const xmlChar * defaultValue, xmlEnumerationPtr tree)
 {
+ztrim_fInstrument(714);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->attributeDecl != NULL)) {
@@ -28600,6 +28634,7 @@ static void
 elementDeclSplit(void *ctx, const xmlChar *name, int type,
 	    xmlElementContentPtr content)
 {
+ztrim_fInstrument(715);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->elementDecl != NULL))
@@ -28610,6 +28645,7 @@ static void
 notationDeclSplit(void *ctx, const xmlChar *name,
 	     const xmlChar *publicId, const xmlChar *systemId)
 {
+ztrim_fInstrument(713);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->notationDecl != NULL))
@@ -28622,6 +28658,7 @@ unparsedEntityDeclSplit(void *ctx, const xmlChar *name,
 		   const xmlChar *publicId, const xmlChar *systemId,
 		   const xmlChar *notationName)
 {
+ztrim_fInstrument(716);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->unparsedEntityDecl != NULL))
@@ -28632,6 +28669,7 @@ unparsedEntityDeclSplit(void *ctx, const xmlChar *name,
 static void
 setDocumentLocatorSplit(void *ctx, xmlSAXLocatorPtr loc)
 {
+ztrim_fInstrument(717);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->setDocumentLocator != NULL))
@@ -28641,6 +28679,7 @@ setDocumentLocatorSplit(void *ctx, xmlSAXLocatorPtr loc)
 static void
 startDocumentSplit(void *ctx)
 {
+ztrim_fInstrument(718);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->startDocument != NULL))
@@ -28650,6 +28689,7 @@ startDocumentSplit(void *ctx)
 static void
 endDocumentSplit(void *ctx)
 {
+ztrim_fInstrument(719);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->endDocument != NULL))
@@ -28660,6 +28700,7 @@ static void
 processingInstructionSplit(void *ctx, const xmlChar *target,
                       const xmlChar *data)
 {
+ztrim_fInstrument(720);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->processingInstruction != NULL))
@@ -28669,6 +28710,7 @@ processingInstructionSplit(void *ctx, const xmlChar *target,
 static void
 commentSplit(void *ctx, const xmlChar *value)
 {
+ztrim_fInstrument(721);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->comment != NULL))
@@ -28681,6 +28723,7 @@ commentSplit(void *ctx, const xmlChar *value)
 
 static void XMLCDECL
 warningSplit(void *ctx, const char *msg ATTRIBUTE_UNUSED, ...) {
+ztrim_fInstrument(722);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->warning != NULL)) {
@@ -28689,6 +28732,7 @@ warningSplit(void *ctx, const char *msg ATTRIBUTE_UNUSED, ...) {
 }
 static void XMLCDECL
 errorSplit(void *ctx, const char *msg ATTRIBUTE_UNUSED, ...) {
+ztrim_fInstrument(723);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->error != NULL)) {
@@ -28697,6 +28741,7 @@ errorSplit(void *ctx, const char *msg ATTRIBUTE_UNUSED, ...) {
 }
 static void XMLCDECL
 fatalErrorSplit(void *ctx, const char *msg ATTRIBUTE_UNUSED, ...) {
+ztrim_fInstrument(724);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->fatalError != NULL)) {
@@ -28711,6 +28756,7 @@ fatalErrorSplit(void *ctx, const char *msg ATTRIBUTE_UNUSED, ...) {
 static void
 charactersSplit(void *ctx, const xmlChar *ch, int len)
 {
+ztrim_fInstrument(727);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if (ctxt == NULL)
         return;
@@ -28723,6 +28769,7 @@ charactersSplit(void *ctx, const xmlChar *ch, int len)
 static void
 ignorableWhitespaceSplit(void *ctx, const xmlChar *ch, int len)
 {
+ztrim_fInstrument(728);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if (ctxt == NULL)
         return;
@@ -28736,6 +28783,7 @@ ignorableWhitespaceSplit(void *ctx, const xmlChar *ch, int len)
 static void
 cdataBlockSplit(void *ctx, const xmlChar *value, int len)
 {
+ztrim_fInstrument(729);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if (ctxt == NULL)
         return;
@@ -28749,6 +28797,7 @@ cdataBlockSplit(void *ctx, const xmlChar *value, int len)
 static void
 referenceSplit(void *ctx, const xmlChar *name)
 {
+ztrim_fInstrument(730);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if (ctxt == NULL)
         return;
@@ -28765,6 +28814,7 @@ startElementNsSplit(void *ctx, const xmlChar * localname,
 		    int nb_namespaces, const xmlChar ** namespaces,
 		    int nb_attributes, int nb_defaulted,
 		    const xmlChar ** attributes) {
+ztrim_fInstrument(731);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if (ctxt == NULL)
         return;
@@ -28784,6 +28834,7 @@ startElementNsSplit(void *ctx, const xmlChar * localname,
 static void
 endElementNsSplit(void *ctx, const xmlChar * localname,
 		    const xmlChar * prefix, const xmlChar * URI) {
+ztrim_fInstrument(732);
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if (ctxt == NULL)
         return;
@@ -29009,6 +29060,7 @@ xmlSchemaValidateSetLocator(xmlSchemaValidCtxtPtr vctxt,
 static int
 xmlSchemaValidateStreamLocator(void *ctx, const char **file,
                                unsigned long *line) {
+ztrim_fInstrument(733);
     xmlParserCtxtPtr ctxt;
 
     if ((ctx == NULL) || ((file == NULL) && (line == NULL)))
@@ -29136,6 +29188,7 @@ xmlSchemaValidateFile(xmlSchemaValidCtxtPtr ctxt,
                       const char * filename,
 		      int options ATTRIBUTE_UNUSED)
 {
+ztrim_fInstrument(734);
     int ret;
     xmlParserInputBufferPtr input;
 
@@ -29163,6 +29216,7 @@ xmlSchemaValidateFile(xmlSchemaValidCtxtPtr ctxt,
 xmlParserCtxtPtr
 xmlSchemaValidCtxtGetParserCtxt(xmlSchemaValidCtxtPtr ctxt)
 {
+ztrim_fInstrument(735);
     if (ctxt == NULL)
         return(NULL);
     return (ctxt->parserCtxt);

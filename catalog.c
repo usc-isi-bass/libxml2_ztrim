@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /**
  * catalog.c: set of generic Catalog related routines
  *
@@ -383,6 +388,7 @@ xmlFreeCatalogEntryList(xmlCatalogEntryPtr ret) {
 static void
 xmlFreeCatalogHashEntryList(void *payload,
                             const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(328);
     xmlCatalogEntryPtr catal = (xmlCatalogEntryPtr) payload;
     xmlCatalogEntryPtr children, next;
 
@@ -464,6 +470,7 @@ xmlFreeCatalog(xmlCatalogPtr catal) {
 static void
 xmlCatalogDumpEntry(void *payload, void *data,
                     const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(324);
     xmlCatalogEntryPtr entry = (xmlCatalogEntryPtr) payload;
     FILE *out = (FILE *) data;
     if ((entry == NULL) || (out == NULL))
@@ -730,6 +737,7 @@ BAD_CAST "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd");
 static void
 xmlCatalogConvertEntry(void *payload, void *data,
                        const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(322);
     xmlCatalogEntryPtr entry = (xmlCatalogEntryPtr) payload;
     xmlCatalogPtr catal = (xmlCatalogPtr) data;
     if ((entry == NULL) || (catal == NULL) || (catal->sgml == NULL) ||
@@ -2646,6 +2654,7 @@ xmlCatalogSGMLResolve(xmlCatalogPtr catal, const xmlChar *pubID,
 xmlCatalogPtr
 xmlLoadSGMLSuperCatalog(const char *filename)
 {
+ztrim_fInstrument(323);
     xmlChar *content;
     xmlCatalogPtr catal;
     int ret;
@@ -3022,6 +3031,7 @@ xmlACatalogRemove(xmlCatalogPtr catal, const xmlChar *value) {
  */
 xmlCatalogPtr
 xmlNewCatalog(int sgml) {
+ztrim_fInstrument(325);
     xmlCatalogPtr catal = NULL;
 
     if (sgml) {
@@ -3045,6 +3055,7 @@ xmlNewCatalog(int sgml) {
  */
 int
 xmlCatalogIsEmpty(xmlCatalogPtr catal) {
+ztrim_fInstrument(326);
     if (catal == NULL)
 	return(-1);
 
@@ -3235,6 +3246,7 @@ xmlLoadCatalog(const char *filename)
  */
 void
 xmlLoadCatalogs(const char *pathss) {
+ztrim_fInstrument(327);
     const char *cur;
     const char *paths;
     xmlChar *path;
@@ -3308,6 +3320,7 @@ xmlCatalogCleanup(void) {
  */
 xmlChar *
 xmlCatalogResolveSystem(const xmlChar *sysID) {
+ztrim_fInstrument(329);
     xmlChar *ret;
 
     if (!xmlCatalogInitialized)
@@ -3328,6 +3341,7 @@ xmlCatalogResolveSystem(const xmlChar *sysID) {
  */
 xmlChar *
 xmlCatalogResolvePublic(const xmlChar *pubID) {
+ztrim_fInstrument(330);
     xmlChar *ret;
 
     if (!xmlCatalogInitialized)
@@ -3387,6 +3401,7 @@ xmlCatalogResolveURI(const xmlChar *URI) {
  */
 void
 xmlCatalogDump(FILE *out) {
+ztrim_fInstrument(331);
     if (out == NULL)
 	return;
 
@@ -3412,6 +3427,7 @@ xmlCatalogDump(FILE *out) {
  */
 int
 xmlCatalogAdd(const xmlChar *type, const xmlChar *orig, const xmlChar *replace) {
+ztrim_fInstrument(332);
     int res = -1;
 
     if (!xmlCatalogInitialized)
@@ -3449,6 +3465,7 @@ xmlCatalogAdd(const xmlChar *type, const xmlChar *orig, const xmlChar *replace) 
  */
 int
 xmlCatalogRemove(const xmlChar *value) {
+ztrim_fInstrument(333);
     int res;
 
     if (!xmlCatalogInitialized)
@@ -3469,6 +3486,7 @@ xmlCatalogRemove(const xmlChar *value) {
  */
 int
 xmlCatalogConvert(void) {
+ztrim_fInstrument(334);
     int res = -1;
 
     if (!xmlCatalogInitialized)
@@ -3508,6 +3526,7 @@ xmlCatalogGetDefaults(void) {
  */
 void
 xmlCatalogSetDefaults(xmlCatalogAllow allow) {
+ztrim_fInstrument(335);
     if (xmlDebugCatalogs) {
 	switch (allow) {
 	    case XML_CATA_ALLOW_NONE:
@@ -3543,6 +3562,7 @@ xmlCatalogSetDefaults(xmlCatalogAllow allow) {
  */
 xmlCatalogPrefer
 xmlCatalogSetDefaultPrefer(xmlCatalogPrefer prefer) {
+ztrim_fInstrument(336);
     xmlCatalogPrefer ret = xmlCatalogDefaultPrefer;
 
     if (prefer == XML_CATA_PREFER_NONE)
@@ -3577,6 +3597,7 @@ xmlCatalogSetDefaultPrefer(xmlCatalogPrefer prefer) {
  */
 int
 xmlCatalogSetDebug(int level) {
+ztrim_fInstrument(337);
     int ret = xmlDebugCatalogs;
 
     if (level <= 0)
@@ -3746,6 +3767,7 @@ xmlCatalogLocalResolveURI(void *catalogs, const xmlChar *URI) {
  */
 const xmlChar *
 xmlCatalogGetSystem(const xmlChar *sysID) {
+ztrim_fInstrument(338);
     xmlChar *ret;
     static xmlChar result[1000];
     static int msg = 0;
@@ -3790,6 +3812,7 @@ xmlCatalogGetSystem(const xmlChar *sysID) {
  */
 const xmlChar *
 xmlCatalogGetPublic(const xmlChar *pubID) {
+ztrim_fInstrument(339);
     xmlChar *ret;
     static xmlChar result[1000];
     static int msg = 0;

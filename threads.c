@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /**
  * threads.c: set of generic threading related routines
  *
@@ -426,6 +431,7 @@ xmlRMutexUnlock(xmlRMutexPtr tok ATTRIBUTE_UNUSED)
 void
 __xmlGlobalInitMutexLock(void)
 {
+ztrim_fInstrument(390);
     /* Make sure the global init lock is initialized and then lock it. */
 #ifdef HAVE_PTHREAD_H
     /* The mutex is statically initialized, so we just lock it. */
@@ -501,6 +507,7 @@ __xmlGlobalInitMutexLock(void)
 void
 __xmlGlobalInitMutexUnlock(void)
 {
+ztrim_fInstrument(391);
 #ifdef HAVE_PTHREAD_H
 #ifdef XML_PTHREAD_WEAK
     if (pthread_mutex_unlock == NULL)
@@ -653,6 +660,7 @@ xmlGlobalStateCleanup(void *data)
 xmlGlobalStatePtr
 xmlGetGlobalState(void)
 {
+ztrim_fInstrument(392);
 #ifdef HAVE_PTHREAD_H
     xmlGlobalState *globalval;
 
@@ -792,6 +800,7 @@ xmlGetThreadId(void)
 int
 xmlIsMainThread(void)
 {
+ztrim_fInstrument(393);
 #ifdef HAVE_PTHREAD_H
     if (libxml_is_threaded == -1)
         xmlInitThreads();
@@ -827,6 +836,7 @@ xmlIsMainThread(void)
 void
 xmlLockLibrary(void)
 {
+ztrim_fInstrument(394);
 #ifdef DEBUG_THREADS
     xmlGenericError(xmlGenericErrorContext, "xmlLockLibrary()\n");
 #endif
@@ -842,6 +852,7 @@ xmlLockLibrary(void)
 void
 xmlUnlockLibrary(void)
 {
+ztrim_fInstrument(395);
 #ifdef DEBUG_THREADS
     xmlGenericError(xmlGenericErrorContext, "xmlUnlockLibrary()\n");
 #endif

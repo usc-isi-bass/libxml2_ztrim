@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * HTMLtree.c : implementation of access function for an HTML tree.
  *
@@ -450,6 +455,7 @@ htmlBufNodeDumpFormat(xmlBufPtr buf, xmlDocPtr doc, xmlNodePtr cur,
  */
 int
 htmlNodeDump(xmlBufferPtr buf, xmlDocPtr doc, xmlNodePtr cur) {
+ztrim_fInstrument(676);
     xmlBufPtr buffer;
     size_t ret;
 
@@ -617,6 +623,7 @@ htmlDocDumpMemoryFormat(xmlDocPtr cur, xmlChar**mem, int *size, int format) {
  */
 void
 htmlDocDumpMemory(xmlDocPtr cur, xmlChar**mem, int *size) {
+ztrim_fInstrument(677);
 	htmlDocDumpMemoryFormat(cur, mem, size, 1);
 }
 
@@ -1006,6 +1013,7 @@ htmlDocContentDumpFormatOutput(xmlOutputBufferPtr buf, xmlDocPtr cur,
 void
 htmlDocContentDumpOutput(xmlOutputBufferPtr buf, xmlDocPtr cur,
 	                 const char *encoding ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(678);
     htmlNodeDumpFormatOutput(buf, cur, (xmlNodePtr) cur, NULL, 1);
 }
 
@@ -1190,6 +1198,7 @@ htmlSaveFileFormat(const char *filename, xmlDocPtr cur,
  */
 int
 htmlSaveFileEnc(const char *filename, xmlDocPtr cur, const char *encoding) {
+ztrim_fInstrument(679);
     return(htmlSaveFileFormat(filename, cur, encoding, 1));
 }
 

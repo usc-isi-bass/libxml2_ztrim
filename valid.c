@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * valid.c : part of the code use to do the DTD handling and the validity
  *           checking
@@ -878,6 +883,7 @@ xmlValidBuildContentModel(xmlValidCtxtPtr ctxt, xmlElementPtr elem) {
  * Returns NULL if not, otherwise the new validation context structure
  */
 xmlValidCtxtPtr xmlNewValidCtxt(void) {
+ztrim_fInstrument(147);
     xmlValidCtxtPtr ret;
 
     if ((ret = xmlMalloc(sizeof (xmlValidCtxt))) == NULL) {
@@ -898,6 +904,7 @@ xmlValidCtxtPtr xmlNewValidCtxt(void) {
  */
 void
 xmlFreeValidCtxt(xmlValidCtxtPtr cur) {
+ztrim_fInstrument(148);
     if (cur->vstateTab != NULL)
         xmlFree(cur->vstateTab);
     if (cur->nodeTab != NULL)
@@ -992,6 +999,7 @@ xmlNewDocElementContent(xmlDocPtr doc, const xmlChar *name,
  */
 xmlElementContentPtr
 xmlNewElementContent(const xmlChar *name, xmlElementContentType type) {
+ztrim_fInstrument(149);
     return(xmlNewDocElementContent(NULL, name, type));
 }
 
@@ -1087,6 +1095,7 @@ xmlCopyDocElementContent(xmlDocPtr doc, xmlElementContentPtr cur) {
  */
 xmlElementContentPtr
 xmlCopyElementContent(xmlElementContentPtr cur) {
+ztrim_fInstrument(150);
     return(xmlCopyDocElementContent(NULL, cur));
 }
 
@@ -1165,6 +1174,7 @@ xmlFreeDocElementContent(xmlDocPtr doc, xmlElementContentPtr cur) {
  */
 void
 xmlFreeElementContent(xmlElementContentPtr cur) {
+ztrim_fInstrument(151);
     xmlFreeDocElementContent(NULL, cur);
 }
 
@@ -1280,6 +1290,7 @@ void
 xmlSprintfElementContent(char *buf ATTRIBUTE_UNUSED,
 	                 xmlElementContentPtr content ATTRIBUTE_UNUSED,
 			 int englob ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(152);
 }
 #endif /* LIBXML_OUTPUT_ENABLED */
 
@@ -1642,6 +1653,7 @@ xmlAddElementDecl(xmlValidCtxtPtr ctxt,
 
 static void
 xmlFreeElementTableEntry(void *elem, const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(153);
     xmlFreeElement((xmlElementPtr) elem);
 }
 
@@ -1667,6 +1679,7 @@ xmlFreeElementTable(xmlElementTablePtr table) {
  */
 static void *
 xmlCopyElement(void *payload, const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(154);
     xmlElementPtr elem = (xmlElementPtr) payload;
     xmlElementPtr cur;
 
@@ -1778,6 +1791,7 @@ xmlDumpElementDecl(xmlBufferPtr buf, xmlElementPtr elem) {
 static void
 xmlDumpElementDeclScan(void *elem, void *buf,
                        const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(156);
     xmlDumpElementDecl((xmlBufferPtr) buf, (xmlElementPtr) elem);
 }
 
@@ -1790,6 +1804,7 @@ xmlDumpElementDeclScan(void *elem, void *buf,
  */
 void
 xmlDumpElementTable(xmlBufferPtr buf, xmlElementTablePtr table) {
+ztrim_fInstrument(155);
     if ((buf == NULL) || (table == NULL))
         return;
     xmlHashScan(table, xmlDumpElementDeclScan, buf);
@@ -2194,6 +2209,7 @@ xmlAddAttributeDecl(xmlValidCtxtPtr ctxt,
 
 static void
 xmlFreeAttributeTableEntry(void *attr, const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(157);
     xmlFreeAttribute((xmlAttributePtr) attr);
 }
 
@@ -2219,6 +2235,7 @@ xmlFreeAttributeTable(xmlAttributeTablePtr table) {
  */
 static void *
 xmlCopyAttribute(void *payload, const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(158);
     xmlAttributePtr attr = (xmlAttributePtr) payload;
     xmlAttributePtr cur;
 
@@ -2350,6 +2367,7 @@ xmlDumpAttributeDecl(xmlBufferPtr buf, xmlAttributePtr attr) {
 static void
 xmlDumpAttributeDeclScan(void *attr, void *buf,
                          const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(160);
     xmlDumpAttributeDecl((xmlBufferPtr) buf, (xmlAttributePtr) attr);
 }
 
@@ -2362,6 +2380,7 @@ xmlDumpAttributeDeclScan(void *attr, void *buf,
  */
 void
 xmlDumpAttributeTable(xmlBufferPtr buf, xmlAttributeTablePtr table) {
+ztrim_fInstrument(159);
     if ((buf == NULL) || (table == NULL))
         return;
     xmlHashScan(table, xmlDumpAttributeDeclScan, buf);
@@ -2472,6 +2491,7 @@ xmlAddNotationDecl(xmlValidCtxtPtr ctxt, xmlDtdPtr dtd,
 
 static void
 xmlFreeNotationTableEntry(void *nota, const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(161);
     xmlFreeNotation((xmlNotationPtr) nota);
 }
 
@@ -2497,6 +2517,7 @@ xmlFreeNotationTable(xmlNotationTablePtr table) {
  */
 static void *
 xmlCopyNotation(void *payload, const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(162);
     xmlNotationPtr nota = (xmlNotationPtr) payload;
     xmlNotationPtr cur;
 
@@ -2572,6 +2593,7 @@ xmlDumpNotationDecl(xmlBufferPtr buf, xmlNotationPtr nota) {
 static void
 xmlDumpNotationDeclScan(void *nota, void *buf,
                         const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(163);
     xmlDumpNotationDecl((xmlBufferPtr) buf, (xmlNotationPtr) nota);
 }
 
@@ -2716,6 +2738,7 @@ xmlAddID(xmlValidCtxtPtr ctxt, xmlDocPtr doc, const xmlChar *value,
 
 static void
 xmlFreeIDTableEntry(void *id, const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(164);
     xmlFreeID((xmlIDPtr) id);
 }
 
@@ -2901,6 +2924,7 @@ typedef xmlValidateMemo *xmlValidateMemoPtr;
  */
 static void
 xmlFreeRef(xmlLinkPtr lk) {
+ztrim_fInstrument(165);
     xmlRefPtr ref = (xmlRefPtr)xmlLinkGetData(lk);
     if (ref == NULL) return;
     if (ref->value != NULL)
@@ -2918,6 +2942,7 @@ xmlFreeRef(xmlLinkPtr lk) {
  */
 static void
 xmlFreeRefTableEntry(void *payload, const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(167);
     xmlListPtr list_ref = (xmlListPtr) payload;
     if (list_ref == NULL) return;
     xmlListDelete(list_ref);
@@ -2933,6 +2958,7 @@ xmlFreeRefTableEntry(void *payload, const xmlChar *name ATTRIBUTE_UNUSED) {
 static int
 xmlWalkRemoveRef(const void *data, void *user)
 {
+ztrim_fInstrument(169);
     xmlAttrPtr attr0 = ((xmlRefPtr)data)->attr;
     xmlAttrPtr attr1 = ((xmlRemoveMemoPtr)user)->ap;
     xmlListPtr ref_list = ((xmlRemoveMemoPtr)user)->l;
@@ -2955,6 +2981,7 @@ static int
 xmlDummyCompare(const void *data0 ATTRIBUTE_UNUSED,
                 const void *data1 ATTRIBUTE_UNUSED)
 {
+ztrim_fInstrument(166);
     return (0);
 }
 
@@ -3126,6 +3153,7 @@ xmlIsRef(xmlDocPtr doc, xmlNodePtr elem, xmlAttrPtr attr) {
  */
 int
 xmlRemoveRef(xmlDocPtr doc, xmlAttrPtr attr) {
+ztrim_fInstrument(168);
     xmlListPtr ref_list;
     xmlRefTablePtr table;
     xmlChar *ID;
@@ -3182,6 +3210,7 @@ xmlRemoveRef(xmlDocPtr doc, xmlAttrPtr attr) {
  */
 xmlListPtr
 xmlGetRefs(xmlDocPtr doc, const xmlChar *ID) {
+ztrim_fInstrument(170);
     xmlRefTablePtr table;
 
     if (doc == NULL) {
@@ -3398,6 +3427,7 @@ xmlGetDtdQAttrDesc(xmlDtdPtr dtd, const xmlChar *elem, const xmlChar *name,
 
 xmlNotationPtr
 xmlGetDtdNotationDesc(xmlDtdPtr dtd, const xmlChar *name) {
+ztrim_fInstrument(171);
     xmlNotationTablePtr table;
 
     if (dtd == NULL) return(NULL);
@@ -3594,6 +3624,7 @@ xmlValidateNameValueInternal(xmlDocPtr doc, const xmlChar *value) {
 
 int
 xmlValidateNameValue(const xmlChar *value) {
+ztrim_fInstrument(172);
     return(xmlValidateNameValueInternal(NULL, value));
 }
 
@@ -3662,6 +3693,7 @@ xmlValidateNamesValueInternal(xmlDocPtr doc, const xmlChar *value) {
 
 int
 xmlValidateNamesValue(const xmlChar *value) {
+ztrim_fInstrument(173);
     return(xmlValidateNamesValueInternal(NULL, value));
 }
 
@@ -3715,6 +3747,7 @@ xmlValidateNmtokenValueInternal(xmlDocPtr doc, const xmlChar *value) {
 
 int
 xmlValidateNmtokenValue(const xmlChar *value) {
+ztrim_fInstrument(174);
     return(xmlValidateNmtokenValueInternal(NULL, value));
 }
 
@@ -3791,6 +3824,7 @@ xmlValidateNmtokensValueInternal(xmlDocPtr doc, const xmlChar *value) {
 
 int
 xmlValidateNmtokensValue(const xmlChar *value) {
+ztrim_fInstrument(175);
     return(xmlValidateNmtokensValueInternal(NULL, value));
 }
 
@@ -3877,6 +3911,7 @@ xmlValidateAttributeValueInternal(xmlDocPtr doc, xmlAttributeType type,
  */
 int
 xmlValidateAttributeValue(xmlAttributeType type, const xmlChar *value) {
+ztrim_fInstrument(176);
     return(xmlValidateAttributeValueInternal(NULL, type, value));
 }
 
@@ -4164,6 +4199,7 @@ xmlValidNormalizeAttributeValue(xmlDocPtr doc, xmlNodePtr elem,
 static void
 xmlValidateAttributeIdCallback(void *payload, void *data,
 	                       const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(177);
     xmlAttributePtr attr = (xmlAttributePtr) payload;
     int *count = (int *) data;
     if (attr->atype == XML_ATTRIBUTE_ID) (*count)++;
@@ -6599,6 +6635,7 @@ xmlValidateRef(xmlRefPtr ref, xmlValidCtxtPtr ctxt,
 static int
 xmlWalkValidateList(const void *data, void *user)
 {
+ztrim_fInstrument(183);
 	xmlValidateMemoPtr memo = (xmlValidateMemoPtr)user;
 	xmlValidateRef((xmlRefPtr)data, memo->ctxt, memo->name);
 	return 1;
@@ -6613,6 +6650,7 @@ xmlWalkValidateList(const void *data, void *user)
  */
 static void
 xmlValidateCheckRefCallback(void *payload, void *data, const xmlChar *name) {
+ztrim_fInstrument(178);
     xmlListPtr ref_list = (xmlListPtr) payload;
     xmlValidCtxtPtr ctxt = (xmlValidCtxtPtr) data;
     xmlValidateMemo memo;
@@ -6729,6 +6767,7 @@ xmlValidateDtd(xmlValidCtxtPtr ctxt, xmlDocPtr doc, xmlDtdPtr dtd) {
 static void
 xmlValidateNotationCallback(void *payload, void *data,
 	                    const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(180);
     xmlEntityPtr cur = (xmlEntityPtr) payload;
     xmlValidCtxtPtr ctxt = (xmlValidCtxtPtr) data;
     if (cur == NULL)
@@ -6750,6 +6789,7 @@ xmlValidateNotationCallback(void *payload, void *data,
 static void
 xmlValidateAttributeCallback(void *payload, void *data,
 	                     const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(179);
     xmlAttributePtr cur = (xmlAttributePtr) payload;
     xmlValidCtxtPtr ctxt = (xmlValidCtxtPtr) data;
     int ret;
@@ -7000,6 +7040,7 @@ xmlValidGetPotentialChildren(xmlElementContent *ctree,
  */
 static void XMLCDECL xmlNoValidityErr(void *ctx ATTRIBUTE_UNUSED,
                                 const char *msg ATTRIBUTE_UNUSED, ...) {
+ztrim_fInstrument(182);
     return;
 }
 
@@ -7031,6 +7072,7 @@ static void XMLCDECL xmlNoValidityErr(void *ctx ATTRIBUTE_UNUSED,
 int
 xmlValidGetValidElements(xmlNode *prev, xmlNode *next, const xmlChar **names,
                          int max) {
+ztrim_fInstrument(181);
     xmlValidCtxt vctxt;
     int nb_valid_elements = 0;
     const xmlChar *elements[256]={0};

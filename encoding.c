@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * encoding.c : implements the encoding conversion functions needed for XML
  *
@@ -175,6 +180,7 @@ closeIcuConverter(uconv_t *conv)
 static int
 asciiToUTF8(unsigned char* out, int *outlen,
               const unsigned char* in, int *inlen) {
+ztrim_fInstrument(645);
     unsigned char* outstart = out;
     const unsigned char* base = in;
     const unsigned char* processed = in;
@@ -222,6 +228,7 @@ asciiToUTF8(unsigned char* out, int *outlen,
 static int
 UTF8Toascii(unsigned char* out, int *outlen,
               const unsigned char* in, int *inlen) {
+ztrim_fInstrument(646);
     const unsigned char* processed = in;
     const unsigned char* outend;
     const unsigned char* outstart = out;
@@ -306,6 +313,7 @@ UTF8Toascii(unsigned char* out, int *outlen,
 int
 isolat1ToUTF8(unsigned char* out, int *outlen,
               const unsigned char* in, int *inlen) {
+ztrim_fInstrument(636);
     unsigned char* outstart = out;
     const unsigned char* base = in;
     unsigned char* outend;
@@ -355,6 +363,7 @@ static int
 UTF8ToUTF8(unsigned char* out, int *outlen,
            const unsigned char* inb, int *inlenb)
 {
+ztrim_fInstrument(640);
     int len;
 
     if ((out == NULL) || (outlen == NULL) || (inlenb == NULL))
@@ -406,6 +415,7 @@ UTF8ToUTF8(unsigned char* out, int *outlen,
 int
 UTF8Toisolat1(unsigned char* out, int *outlen,
               const unsigned char* in, int *inlen) {
+ztrim_fInstrument(637);
     const unsigned char* processed = in;
     const unsigned char* outend;
     const unsigned char* outstart = out;
@@ -499,6 +509,7 @@ static int
 UTF16LEToUTF8(unsigned char* out, int *outlen,
             const unsigned char* inb, int *inlenb)
 {
+ztrim_fInstrument(641);
     unsigned char* outstart = out;
     const unsigned char* processed = inb;
     unsigned char* outend;
@@ -698,6 +709,7 @@ static int
 UTF8ToUTF16(unsigned char* outb, int *outlen,
             const unsigned char* in, int *inlen)
 {
+ztrim_fInstrument(644);
     if (in == NULL) {
 	/*
 	 * initialization, add the Byte Order Mark for UTF-16LE
@@ -742,6 +754,7 @@ static int
 UTF16BEToUTF8(unsigned char* out, int *outlen,
             const unsigned char* inb, int *inlenb)
 {
+ztrim_fInstrument(642);
     unsigned char* outstart = out;
     const unsigned char* processed = inb;
     unsigned char* outend = out + *outlen;
@@ -831,6 +844,7 @@ static int
 UTF8ToUTF16BE(unsigned char* outb, int *outlen,
             const unsigned char* in, int *inlen)
 {
+ztrim_fInstrument(643);
     unsigned short* out = (unsigned short*) outb;
     const unsigned char* processed = in;
     const unsigned char *const instart = in;
@@ -1065,6 +1079,7 @@ xmlGetEncodingAlias(const char *alias) {
  */
 int
 xmlAddEncodingAlias(const char *name, const char *alias) {
+ztrim_fInstrument(638);
     int i;
     char upper[100];
 
@@ -1122,6 +1137,7 @@ xmlAddEncodingAlias(const char *name, const char *alias) {
  */
 int
 xmlDelEncodingAlias(const char *alias) {
+ztrim_fInstrument(639);
     int i;
 
     if (alias == NULL)
@@ -2134,6 +2150,7 @@ xmlCharEncFirstLineInt(xmlCharEncodingHandler *handler, xmlBufferPtr out,
 int
 xmlCharEncFirstLine(xmlCharEncodingHandler *handler, xmlBufferPtr out,
                  xmlBufferPtr in) {
+ztrim_fInstrument(647);
     return(xmlCharEncFirstLineInt(handler, out, in, -1));
 }
 
@@ -2362,6 +2379,7 @@ int
 xmlCharEncInFunc(xmlCharEncodingHandler * handler, xmlBufferPtr out,
                  xmlBufferPtr in)
 {
+ztrim_fInstrument(648);
     int ret;
     int written;
     int toconv;
@@ -2625,6 +2643,7 @@ retry:
 int
 xmlCharEncOutFunc(xmlCharEncodingHandler *handler, xmlBufferPtr out,
                   xmlBufferPtr in) {
+ztrim_fInstrument(649);
     int ret;
     int written;
     int writtentot = 0;

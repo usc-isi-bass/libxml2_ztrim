@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * dict.c: dictionary of reusable strings, just used to avoid allocation
  *         and freeing operations.
@@ -620,6 +625,7 @@ xmlDictCreate(void) {
  */
 xmlDictPtr
 xmlDictCreateSub(xmlDictPtr sub) {
+ztrim_fInstrument(566);
     xmlDictPtr dict = xmlDictCreate();
 
     if ((dict != NULL) && (sub != NULL)) {
@@ -1003,6 +1009,7 @@ xmlDictLookup(xmlDictPtr dict, const xmlChar *name, int len) {
  */
 const xmlChar *
 xmlDictExists(xmlDictPtr dict, const xmlChar *name, int len) {
+ztrim_fInstrument(567);
     unsigned long key, okey, nbi = 0;
     xmlDictEntryPtr insert;
     unsigned int l;
@@ -1242,6 +1249,7 @@ xmlDictOwns(xmlDictPtr dict, const xmlChar *str) {
  */
 int
 xmlDictSize(xmlDictPtr dict) {
+ztrim_fInstrument(568);
     if (dict == NULL)
 	return(-1);
     if (dict->subdict)
@@ -1281,6 +1289,7 @@ xmlDictSetLimit(xmlDictPtr dict, size_t limit) {
  */
 size_t
 xmlDictGetUsage(xmlDictPtr dict) {
+ztrim_fInstrument(569);
     xmlDictStringsPtr pool;
     size_t limit = 0;
 

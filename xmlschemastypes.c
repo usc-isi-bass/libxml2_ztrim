@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * schemastypes.c : implementation of the XML Schema Datatypes
  *             definition and validity checking
@@ -621,6 +626,7 @@ xmlSchemaInitTypes(void)
 
 static void
 xmlSchemaFreeTypeEntry(void *type, const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(408);
     xmlSchemaFreeType((xmlSchemaTypePtr) type);
 }
 
@@ -950,6 +956,7 @@ xmlSchemaValPtr
 xmlSchemaNewStringValue(xmlSchemaValType type,
 			const xmlChar *value)
 {
+ztrim_fInstrument(409);
     xmlSchemaValPtr val;
 
     if (type != XML_SCHEMAS_STRING)
@@ -1099,6 +1106,7 @@ xmlSchemaGetPredefinedType(const xmlChar *name, const xmlChar *ns) {
 xmlSchemaTypePtr
 xmlSchemaGetBuiltInListSimpleTypeItemType(xmlSchemaTypePtr type)
 {
+ztrim_fInstrument(410);
     if ((type == NULL) || (type->type != XML_SCHEMA_TYPE_BASIC))
 	return (NULL);
     switch (type->builtInType) {
@@ -5374,6 +5382,7 @@ xmlSchemaValidateLengthFacet(xmlSchemaTypePtr type,
 			     xmlSchemaValPtr val,
 			     unsigned long *length)
 {
+ztrim_fInstrument(411);
     if (type == NULL)
         return(-1);
     return (xmlSchemaValidateLengthFacetInternal(facet,
@@ -6219,6 +6228,7 @@ xmlSchemaGetCanonValueWhtsp(xmlSchemaValPtr val,
 			    const xmlChar **retValue,
 			    xmlSchemaWhitespaceValueType ws)
 {
+ztrim_fInstrument(412);
     if ((retValue == NULL) || (val == NULL))
 	return (-1);
     if ((ws == XML_SCHEMA_WHITESPACE_UNKNOWN) ||

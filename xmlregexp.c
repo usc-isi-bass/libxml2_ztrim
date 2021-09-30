@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * regexp.c: generic and extensible Regular Expression engine
  *
@@ -5513,6 +5518,7 @@ xmlFAParseRegExp(xmlRegParserCtxtPtr ctxt, int top) {
  */
 void
 xmlRegexpPrint(FILE *output, xmlRegexpPtr regexp) {
+ztrim_fInstrument(405);
     int i;
 
     if (output == NULL)
@@ -6057,6 +6063,7 @@ xmlAutomataStatePtr
 xmlAutomataNewCountTrans(xmlAutomataPtr am, xmlAutomataStatePtr from,
 			 xmlAutomataStatePtr to, const xmlChar *token,
 			 int min, int max, void *data) {
+ztrim_fInstrument(406);
     xmlRegAtomPtr atom;
     int counter;
 
@@ -6205,6 +6212,7 @@ xmlAutomataStatePtr
 xmlAutomataNewOnceTrans(xmlAutomataPtr am, xmlAutomataStatePtr from,
 			 xmlAutomataStatePtr to, const xmlChar *token,
 			 int min, int max, void *data) {
+ztrim_fInstrument(407);
     xmlRegAtomPtr atom;
     int counter;
 

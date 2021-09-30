@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * parserInternals.c : Internal routines (and obsolete ones) needed for the
  *                     XML and HTML parsers.
@@ -75,6 +80,7 @@
  */
 void
 xmlCheckVersion(int version) {
+ztrim_fInstrument(650);
     int myversion = (int) LIBXML_VERSION;
 
     xmlInitParser();
@@ -227,6 +233,7 @@ xmlErrEncodingInt(xmlParserCtxtPtr ctxt, xmlParserErrors error,
  */
 int
 xmlIsLetter(int c) {
+ztrim_fInstrument(651);
     return(IS_BASECHAR(c) || IS_IDEOGRAPHIC(c));
 }
 
@@ -282,6 +289,7 @@ void check_buffer(xmlParserInputPtr in) {
  */
 int
 xmlParserInputRead(xmlParserInputPtr in ATTRIBUTE_UNUSED, int len ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(652);
     return(-1);
 }
 
@@ -1269,6 +1277,7 @@ xmlSwitchInputEncodingInt(xmlParserCtxtPtr ctxt, xmlParserInputPtr input,
 int
 xmlSwitchInputEncoding(xmlParserCtxtPtr ctxt, xmlParserInputPtr input,
                           xmlCharEncodingHandlerPtr handler) {
+ztrim_fInstrument(653);
     return(xmlSwitchInputEncodingInt(ctxt, input, handler, -1));
 }
 
@@ -1909,6 +1918,7 @@ xmlClearParserCtxt(xmlParserCtxtPtr ctxt)
 const xmlParserNodeInfo *
 xmlParserFindNodeInfo(const xmlParserCtxtPtr ctx, const xmlNodePtr node)
 {
+ztrim_fInstrument(655);
     unsigned long pos;
 
     if ((ctx == NULL) || (node == NULL))
@@ -1949,6 +1959,7 @@ xmlInitNodeInfoSeq(xmlParserNodeInfoSeqPtr seq)
 void
 xmlClearNodeInfoSeq(xmlParserNodeInfoSeqPtr seq)
 {
+ztrim_fInstrument(654);
     if (seq == NULL)
         return;
     if (seq->buffer != NULL)
@@ -2081,6 +2092,7 @@ xmlParserAddNodeInfo(xmlParserCtxtPtr ctxt,
 
 int
 xmlPedanticParserDefault(int val) {
+ztrim_fInstrument(656);
     int old = xmlPedanticParserDefaultValue;
 
     xmlPedanticParserDefaultValue = val;
@@ -2099,6 +2111,7 @@ xmlPedanticParserDefault(int val) {
 
 int
 xmlLineNumbersDefault(int val) {
+ztrim_fInstrument(657);
     int old = xmlLineNumbersDefaultValue;
 
     xmlLineNumbersDefaultValue = val;
@@ -2121,6 +2134,7 @@ xmlLineNumbersDefault(int val) {
 
 int
 xmlSubstituteEntitiesDefault(int val) {
+ztrim_fInstrument(658);
     int old = xmlSubstituteEntitiesDefaultValue;
 
     xmlSubstituteEntitiesDefaultValue = val;
@@ -2153,6 +2167,7 @@ xmlSubstituteEntitiesDefault(int val) {
 
 int
 xmlKeepBlanksDefault(int val) {
+ztrim_fInstrument(659);
     int old = xmlKeepBlanksDefaultValue;
 
     xmlKeepBlanksDefaultValue = val;

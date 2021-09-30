@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * chvalid.c:	this module implements the character range
  *		validation APIs
@@ -224,6 +229,7 @@ xmlCharInRange (unsigned int val, const xmlChRangeGroup *rptr) {
  */
 int
 xmlIsBaseChar(unsigned int ch) {
+ztrim_fInstrument(602);
     return(xmlIsBaseCharQ(ch));
 }
 
@@ -239,6 +245,7 @@ xmlIsBaseChar(unsigned int ch) {
  */
 int
 xmlIsBlank(unsigned int ch) {
+ztrim_fInstrument(603);
     return(xmlIsBlankQ(ch));
 }
 
@@ -254,6 +261,7 @@ xmlIsBlank(unsigned int ch) {
  */
 int
 xmlIsChar(unsigned int ch) {
+ztrim_fInstrument(604);
     return(xmlIsCharQ(ch));
 }
 
@@ -269,6 +277,7 @@ xmlIsChar(unsigned int ch) {
  */
 int
 xmlIsCombining(unsigned int ch) {
+ztrim_fInstrument(605);
     return(xmlIsCombiningQ(ch));
 }
 
@@ -284,6 +293,7 @@ xmlIsCombining(unsigned int ch) {
  */
 int
 xmlIsDigit(unsigned int ch) {
+ztrim_fInstrument(606);
     return(xmlIsDigitQ(ch));
 }
 
@@ -299,6 +309,7 @@ xmlIsDigit(unsigned int ch) {
  */
 int
 xmlIsExtender(unsigned int ch) {
+ztrim_fInstrument(607);
     return(xmlIsExtenderQ(ch));
 }
 
@@ -314,6 +325,7 @@ xmlIsExtender(unsigned int ch) {
  */
 int
 xmlIsIdeographic(unsigned int ch) {
+ztrim_fInstrument(608);
     return(xmlIsIdeographicQ(ch));
 }
 
@@ -329,6 +341,7 @@ xmlIsIdeographic(unsigned int ch) {
  */
 int
 xmlIsPubidChar(unsigned int ch) {
+ztrim_fInstrument(609);
     return(xmlIsPubidCharQ(ch));
 }
 

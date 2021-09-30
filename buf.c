@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * buf.c: memory buffers for libxml2
  *
@@ -529,6 +534,7 @@ xmlBufGrow(xmlBufPtr buf, int len) {
  */
 int
 xmlBufInflate(xmlBufPtr buf, size_t len) {
+ztrim_fInstrument(399);
     if (buf == NULL) return(-1);
     xmlBufGrowInternal(buf, len + buf->size);
     if (buf->error)
@@ -546,6 +552,7 @@ xmlBufInflate(xmlBufPtr buf, size_t len) {
  */
 size_t
 xmlBufDump(FILE *file, xmlBufPtr buf) {
+ztrim_fInstrument(400);
     size_t ret;
 
     if ((buf == NULL) || (buf->error != 0)) {
@@ -644,6 +651,7 @@ xmlBufAddLen(xmlBufPtr buf, size_t len) {
  */
 int
 xmlBufErase(xmlBufPtr buf, size_t len) {
+ztrim_fInstrument(401);
     if ((buf == NULL) || (buf->error))
         return(-1);
     CHECK_COMPAT(buf)
@@ -926,6 +934,7 @@ xmlBufAdd(xmlBufPtr buf, const xmlChar *str, int len) {
  */
 int
 xmlBufAddHead(xmlBufPtr buf, const xmlChar *str, int len) {
+ztrim_fInstrument(402);
     unsigned int needSize;
 
     if ((buf == NULL) || (buf->error))
@@ -1065,6 +1074,7 @@ xmlBufCCat(xmlBufPtr buf, const char *str) {
  */
 int
 xmlBufWriteCHAR(xmlBufPtr buf, const xmlChar *string) {
+ztrim_fInstrument(403);
     if ((buf == NULL) || (buf->error))
         return(-1);
     CHECK_COMPAT(buf)
@@ -1086,6 +1096,7 @@ xmlBufWriteCHAR(xmlBufPtr buf, const xmlChar *string) {
  */
 int
 xmlBufWriteChar(xmlBufPtr buf, const char *string) {
+ztrim_fInstrument(404);
     if ((buf == NULL) || (buf->error))
         return(-1);
     CHECK_COMPAT(buf)

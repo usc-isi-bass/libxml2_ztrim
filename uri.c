@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /**
  * uri.c: set of generic URI related routines
  *
@@ -968,6 +973,7 @@ xmlParseURI(const char *str) {
  */
 int
 xmlParseURIReference(xmlURIPtr uri, const char *str) {
+ztrim_fInstrument(145);
     return(xmlParse3986URIReference(uri, str));
 }
 
@@ -1338,6 +1344,7 @@ mem_error:
  */
 void
 xmlPrintURI(FILE *stream, xmlURIPtr uri) {
+ztrim_fInstrument(146);
     xmlChar *out;
 
     out = xmlSaveUri(uri);

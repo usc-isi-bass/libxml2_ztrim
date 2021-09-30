@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * xmlmemory.c:  libxml memory allocator wrapper.
  *
@@ -143,6 +148,7 @@ static void debugmem_list_delete(MEMHDR *);
 
 void
 xmlMallocBreakpoint(void) {
+ztrim_fInstrument(130);
     xmlGenericError(xmlGenericErrorContext,
 	    "xmlMallocBreakpoint reached on block %d\n", xmlMemStopAtBlock);
 }
@@ -237,6 +243,7 @@ xmlMallocLoc(size_t size, const char * file, int line)
 void *
 xmlMallocAtomicLoc(size_t size, const char * file, int line)
 {
+ztrim_fInstrument(132);
     MEMHDR *p;
     void *ret;
 
@@ -310,6 +317,7 @@ xmlMallocAtomicLoc(size_t size, const char * file, int line)
 void *
 xmlMemMalloc(size_t size)
 {
+ztrim_fInstrument(133);
     return(xmlMallocLoc(size, "none", 0));
 }
 
@@ -418,6 +426,7 @@ error:
 
 void *
 xmlMemRealloc(void *ptr,size_t size) {
+ztrim_fInstrument(134);
     return(xmlReallocLoc(ptr, size, "none", 0));
 }
 
@@ -430,6 +439,7 @@ xmlMemRealloc(void *ptr,size_t size) {
 void
 xmlMemFree(void *ptr)
 {
+ztrim_fInstrument(135);
     MEMHDR *p;
     char *target;
 #ifdef DEBUG_MEMORY
@@ -570,6 +580,7 @@ error:
 
 char *
 xmlMemoryStrdup(const char *str) {
+ztrim_fInstrument(136);
     return(xmlMemStrdupLoc(str, "none", 0));
 }
 
@@ -583,6 +594,7 @@ xmlMemoryStrdup(const char *str) {
 
 int
 xmlMemUsed(void) {
+ztrim_fInstrument(137);
     int res;
 
     xmlMutexLock(xmlMemMutex);
@@ -601,6 +613,7 @@ xmlMemUsed(void) {
 
 int
 xmlMemBlocks(void) {
+ztrim_fInstrument(138);
     int res;
 
     xmlMutexLock(xmlMemMutex);
@@ -684,6 +697,7 @@ xmlMemContentShow(FILE *fp, MEMHDR *p)
 void
 xmlMemDisplayLast(FILE *fp, long nbBytes)
 {
+ztrim_fInstrument(139);
 #ifdef MEM_LIST
     MEMHDR *p;
     unsigned idx;
@@ -755,6 +769,7 @@ xmlMemDisplayLast(FILE *fp, long nbBytes)
 void
 xmlMemDisplay(FILE *fp)
 {
+ztrim_fInstrument(140);
 #ifdef MEM_LIST
     MEMHDR *p;
     unsigned idx;
@@ -930,6 +945,7 @@ xmlMemShow(FILE *fp, int nr ATTRIBUTE_UNUSED)
 void
 xmlMemoryDump(void)
 {
+ztrim_fInstrument(131);
 #ifdef MEM_LIST
     FILE *dump;
 
@@ -1040,6 +1056,7 @@ xmlCleanupMemory(void) {
 int
 xmlMemSetup(xmlFreeFunc freeFunc, xmlMallocFunc mallocFunc,
             xmlReallocFunc reallocFunc, xmlStrdupFunc strdupFunc) {
+ztrim_fInstrument(141);
 #ifdef DEBUG_MEMORY
      xmlGenericError(xmlGenericErrorContext,
 	     "xmlMemSetup()\n");
@@ -1078,6 +1095,7 @@ xmlMemSetup(xmlFreeFunc freeFunc, xmlMallocFunc mallocFunc,
 int
 xmlMemGet(xmlFreeFunc *freeFunc, xmlMallocFunc *mallocFunc,
 	  xmlReallocFunc *reallocFunc, xmlStrdupFunc *strdupFunc) {
+ztrim_fInstrument(142);
     if (freeFunc != NULL) *freeFunc = xmlFree;
     if (mallocFunc != NULL) *mallocFunc = xmlMalloc;
     if (reallocFunc != NULL) *reallocFunc = xmlRealloc;
@@ -1107,6 +1125,7 @@ int
 xmlGcMemSetup(xmlFreeFunc freeFunc, xmlMallocFunc mallocFunc,
               xmlMallocFunc mallocAtomicFunc, xmlReallocFunc reallocFunc,
 	      xmlStrdupFunc strdupFunc) {
+ztrim_fInstrument(143);
 #ifdef DEBUG_MEMORY
      xmlGenericError(xmlGenericErrorContext,
 	     "xmlGcMemSetup()\n");
@@ -1151,6 +1170,7 @@ int
 xmlGcMemGet(xmlFreeFunc *freeFunc, xmlMallocFunc *mallocFunc,
             xmlMallocFunc *mallocAtomicFunc, xmlReallocFunc *reallocFunc,
 	    xmlStrdupFunc *strdupFunc) {
+ztrim_fInstrument(144);
     if (freeFunc != NULL) *freeFunc = xmlFree;
     if (mallocFunc != NULL) *mallocFunc = xmlMalloc;
     if (mallocAtomicFunc != NULL) *mallocAtomicFunc = xmlMallocAtomic;

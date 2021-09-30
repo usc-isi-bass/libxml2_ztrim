@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * nanoftp.c: basic FTP client support
  *
@@ -223,6 +228,7 @@ xmlNanoFTPInit(void) {
 
 void
 xmlNanoFTPCleanup(void) {
+ztrim_fInstrument(314);
     if (proxy != NULL) {
 	xmlFree(proxy);
 	proxy = NULL;
@@ -258,6 +264,7 @@ xmlNanoFTPCleanup(void) {
 void
 xmlNanoFTPProxy(const char *host, int port, const char *user,
 	        const char *passwd, int type) {
+ztrim_fInstrument(315);
     if (proxy != NULL) {
 	xmlFree(proxy);
 	proxy = NULL;
@@ -360,6 +367,7 @@ xmlNanoFTPScanURL(void *ctx, const char *URL) {
 
 int
 xmlNanoFTPUpdateURL(void *ctx, const char *URL) {
+ztrim_fInstrument(316);
     xmlNanoFTPCtxtPtr ctxt = (xmlNanoFTPCtxtPtr) ctx;
     xmlURIPtr uri;
 
@@ -711,6 +719,7 @@ get_more:
 
 int
 xmlNanoFTPGetResponse(void *ctx) {
+ztrim_fInstrument(317);
     int res;
 
     res = xmlNanoFTPReadResponse(ctx);
@@ -1235,6 +1244,7 @@ xmlNanoFTPConnect(void *ctx) {
 
 void*
 xmlNanoFTPConnectTo(const char *server, int port) {
+ztrim_fInstrument(318);
     xmlNanoFTPCtxtPtr ctxt;
     int res;
 
@@ -1321,6 +1331,7 @@ xmlNanoFTPCwd(void *ctx, const char *directory) {
 
 int
 xmlNanoFTPDele(void *ctx, const char *file) {
+ztrim_fInstrument(319);
     xmlNanoFTPCtxtPtr ctxt = (xmlNanoFTPCtxtPtr) ctx;
     char buf[400];
     int len;
@@ -1724,6 +1735,7 @@ xmlNanoFTPParseList(const char *list, ftpListCallback callback, void *userData) 
 int
 xmlNanoFTPList(void *ctx, ftpListCallback callback, void *userData,
 	       const char *filename) {
+ztrim_fInstrument(320);
     xmlNanoFTPCtxtPtr ctxt = (xmlNanoFTPCtxtPtr) ctx;
     char buf[4096 + 1];
     int len, res;
@@ -1899,6 +1911,7 @@ xmlNanoFTPGetSocket(void *ctx, const char *filename) {
 int
 xmlNanoFTPGet(void *ctx, ftpDataCallback callback, void *userData,
 	      const char *filename) {
+ztrim_fInstrument(321);
     xmlNanoFTPCtxtPtr ctxt = (xmlNanoFTPCtxtPtr) ctx;
     char buf[4096];
     int len = 0, res;

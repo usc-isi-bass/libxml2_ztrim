@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * hash.c: chained hash tables
  *
@@ -376,6 +381,7 @@ xmlHashFree(xmlHashTablePtr table, xmlHashDeallocator f) {
  */
 void
 xmlHashDefaultDeallocator(void *entry, const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(88);
     xmlFree(entry);
 }
 
@@ -496,6 +502,7 @@ xmlHashLookup2(xmlHashTablePtr table, const xmlChar *name,
 void *
 xmlHashQLookup(xmlHashTablePtr table, const xmlChar *prefix,
                const xmlChar *name) {
+ztrim_fInstrument(89);
     return(xmlHashQLookup3(table, prefix, name, NULL, NULL, NULL, NULL));
 }
 
@@ -848,6 +855,7 @@ static void
 stubHashScannerFull (void *payload, void *data, const xmlChar *name,
                      const xmlChar *name2 ATTRIBUTE_UNUSED,
 		     const xmlChar *name3 ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(90);
     stubData *stubdata = (stubData *) data;
     stubdata->hashscanner (payload, stubdata->data, (xmlChar *) name);
 }

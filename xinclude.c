@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * xinclude.c : Code to implement XInclude processing
  *
@@ -1277,6 +1282,7 @@ struct _xmlXIncludeMergeData {
 static void
 xmlXIncludeMergeEntity(void *payload, void *vdata,
 	               const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(833);
     xmlEntityPtr ent = (xmlEntityPtr) payload;
     xmlXIncludeMergeDataPtr data = (xmlXIncludeMergeDataPtr) vdata;
     xmlEntityPtr ret, prev;
@@ -2565,6 +2571,7 @@ xmlXIncludeProcessFlagsData(xmlDocPtr doc, int flags, void *data) {
  */
 int
 xmlXIncludeProcessFlags(xmlDocPtr doc, int flags) {
+ztrim_fInstrument(830);
     return xmlXIncludeProcessFlagsData(doc, flags, NULL);
 }
 
@@ -2579,6 +2586,7 @@ xmlXIncludeProcessFlags(xmlDocPtr doc, int flags) {
  */
 int
 xmlXIncludeProcess(xmlDocPtr doc) {
+ztrim_fInstrument(831);
     return(xmlXIncludeProcessFlags(doc, 0));
 }
 
@@ -2624,6 +2632,7 @@ xmlXIncludeProcessTreeFlags(xmlNodePtr tree, int flags) {
  */
 int
 xmlXIncludeProcessTree(xmlNodePtr tree) {
+ztrim_fInstrument(832);
     return(xmlXIncludeProcessTreeFlags(tree, 0));
 }
 

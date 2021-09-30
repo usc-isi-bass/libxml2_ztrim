@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * xmlunicode.c: this module implements the Unicode character APIs
  *
@@ -974,6 +979,7 @@ static xmlIntFunc
  */
 int
 xmlUCSIsAegeanNumbers(int code) {
+ztrim_fInstrument(413);
     return(((code >= 0x10100) && (code <= 0x1013F)));
 }
 
@@ -987,6 +993,7 @@ xmlUCSIsAegeanNumbers(int code) {
  */
 int
 xmlUCSIsAlphabeticPresentationForms(int code) {
+ztrim_fInstrument(414);
     return(((code >= 0xFB00) && (code <= 0xFB4F)));
 }
 
@@ -1000,6 +1007,7 @@ xmlUCSIsAlphabeticPresentationForms(int code) {
  */
 int
 xmlUCSIsArabic(int code) {
+ztrim_fInstrument(415);
     return(((code >= 0x0600) && (code <= 0x06FF)));
 }
 
@@ -1013,6 +1021,7 @@ xmlUCSIsArabic(int code) {
  */
 int
 xmlUCSIsArabicPresentationFormsA(int code) {
+ztrim_fInstrument(416);
     return(((code >= 0xFB50) && (code <= 0xFDFF)));
 }
 
@@ -1026,6 +1035,7 @@ xmlUCSIsArabicPresentationFormsA(int code) {
  */
 int
 xmlUCSIsArabicPresentationFormsB(int code) {
+ztrim_fInstrument(417);
     return(((code >= 0xFE70) && (code <= 0xFEFF)));
 }
 
@@ -1039,6 +1049,7 @@ xmlUCSIsArabicPresentationFormsB(int code) {
  */
 int
 xmlUCSIsArmenian(int code) {
+ztrim_fInstrument(418);
     return(((code >= 0x0530) && (code <= 0x058F)));
 }
 
@@ -1052,6 +1063,7 @@ xmlUCSIsArmenian(int code) {
  */
 int
 xmlUCSIsArrows(int code) {
+ztrim_fInstrument(419);
     return(((code >= 0x2190) && (code <= 0x21FF)));
 }
 
@@ -1065,6 +1077,7 @@ xmlUCSIsArrows(int code) {
  */
 int
 xmlUCSIsBasicLatin(int code) {
+ztrim_fInstrument(420);
     return(((code >= 0x0000) && (code <= 0x007F)));
 }
 
@@ -1078,6 +1091,7 @@ xmlUCSIsBasicLatin(int code) {
  */
 int
 xmlUCSIsBengali(int code) {
+ztrim_fInstrument(421);
     return(((code >= 0x0980) && (code <= 0x09FF)));
 }
 
@@ -1091,6 +1105,7 @@ xmlUCSIsBengali(int code) {
  */
 int
 xmlUCSIsBlockElements(int code) {
+ztrim_fInstrument(422);
     return(((code >= 0x2580) && (code <= 0x259F)));
 }
 
@@ -1104,6 +1119,7 @@ xmlUCSIsBlockElements(int code) {
  */
 int
 xmlUCSIsBopomofo(int code) {
+ztrim_fInstrument(423);
     return(((code >= 0x3100) && (code <= 0x312F)));
 }
 
@@ -1117,6 +1133,7 @@ xmlUCSIsBopomofo(int code) {
  */
 int
 xmlUCSIsBopomofoExtended(int code) {
+ztrim_fInstrument(424);
     return(((code >= 0x31A0) && (code <= 0x31BF)));
 }
 
@@ -1130,6 +1147,7 @@ xmlUCSIsBopomofoExtended(int code) {
  */
 int
 xmlUCSIsBoxDrawing(int code) {
+ztrim_fInstrument(425);
     return(((code >= 0x2500) && (code <= 0x257F)));
 }
 
@@ -1143,6 +1161,7 @@ xmlUCSIsBoxDrawing(int code) {
  */
 int
 xmlUCSIsBraillePatterns(int code) {
+ztrim_fInstrument(426);
     return(((code >= 0x2800) && (code <= 0x28FF)));
 }
 
@@ -1156,6 +1175,7 @@ xmlUCSIsBraillePatterns(int code) {
  */
 int
 xmlUCSIsBuhid(int code) {
+ztrim_fInstrument(427);
     return(((code >= 0x1740) && (code <= 0x175F)));
 }
 
@@ -1169,6 +1189,7 @@ xmlUCSIsBuhid(int code) {
  */
 int
 xmlUCSIsByzantineMusicalSymbols(int code) {
+ztrim_fInstrument(428);
     return(((code >= 0x1D000) && (code <= 0x1D0FF)));
 }
 
@@ -1182,6 +1203,7 @@ xmlUCSIsByzantineMusicalSymbols(int code) {
  */
 int
 xmlUCSIsCJKCompatibility(int code) {
+ztrim_fInstrument(429);
     return(((code >= 0x3300) && (code <= 0x33FF)));
 }
 
@@ -1195,6 +1217,7 @@ xmlUCSIsCJKCompatibility(int code) {
  */
 int
 xmlUCSIsCJKCompatibilityForms(int code) {
+ztrim_fInstrument(430);
     return(((code >= 0xFE30) && (code <= 0xFE4F)));
 }
 
@@ -1208,6 +1231,7 @@ xmlUCSIsCJKCompatibilityForms(int code) {
  */
 int
 xmlUCSIsCJKCompatibilityIdeographs(int code) {
+ztrim_fInstrument(431);
     return(((code >= 0xF900) && (code <= 0xFAFF)));
 }
 
@@ -1221,6 +1245,7 @@ xmlUCSIsCJKCompatibilityIdeographs(int code) {
  */
 int
 xmlUCSIsCJKCompatibilityIdeographsSupplement(int code) {
+ztrim_fInstrument(432);
     return(((code >= 0x2F800) && (code <= 0x2FA1F)));
 }
 
@@ -1234,6 +1259,7 @@ xmlUCSIsCJKCompatibilityIdeographsSupplement(int code) {
  */
 int
 xmlUCSIsCJKRadicalsSupplement(int code) {
+ztrim_fInstrument(433);
     return(((code >= 0x2E80) && (code <= 0x2EFF)));
 }
 
@@ -1247,6 +1273,7 @@ xmlUCSIsCJKRadicalsSupplement(int code) {
  */
 int
 xmlUCSIsCJKSymbolsandPunctuation(int code) {
+ztrim_fInstrument(434);
     return(((code >= 0x3000) && (code <= 0x303F)));
 }
 
@@ -1260,6 +1287,7 @@ xmlUCSIsCJKSymbolsandPunctuation(int code) {
  */
 int
 xmlUCSIsCJKUnifiedIdeographs(int code) {
+ztrim_fInstrument(435);
     return(((code >= 0x4E00) && (code <= 0x9FFF)));
 }
 
@@ -1273,6 +1301,7 @@ xmlUCSIsCJKUnifiedIdeographs(int code) {
  */
 int
 xmlUCSIsCJKUnifiedIdeographsExtensionA(int code) {
+ztrim_fInstrument(436);
     return(((code >= 0x3400) && (code <= 0x4DBF)));
 }
 
@@ -1286,6 +1315,7 @@ xmlUCSIsCJKUnifiedIdeographsExtensionA(int code) {
  */
 int
 xmlUCSIsCJKUnifiedIdeographsExtensionB(int code) {
+ztrim_fInstrument(437);
     return(((code >= 0x20000) && (code <= 0x2A6DF)));
 }
 
@@ -1299,6 +1329,7 @@ xmlUCSIsCJKUnifiedIdeographsExtensionB(int code) {
  */
 int
 xmlUCSIsCherokee(int code) {
+ztrim_fInstrument(438);
     return(((code >= 0x13A0) && (code <= 0x13FF)));
 }
 
@@ -1312,6 +1343,7 @@ xmlUCSIsCherokee(int code) {
  */
 int
 xmlUCSIsCombiningDiacriticalMarks(int code) {
+ztrim_fInstrument(439);
     return(((code >= 0x0300) && (code <= 0x036F)));
 }
 
@@ -1325,6 +1357,7 @@ xmlUCSIsCombiningDiacriticalMarks(int code) {
  */
 int
 xmlUCSIsCombiningDiacriticalMarksforSymbols(int code) {
+ztrim_fInstrument(440);
     return(((code >= 0x20D0) && (code <= 0x20FF)));
 }
 
@@ -1338,6 +1371,7 @@ xmlUCSIsCombiningDiacriticalMarksforSymbols(int code) {
  */
 int
 xmlUCSIsCombiningHalfMarks(int code) {
+ztrim_fInstrument(441);
     return(((code >= 0xFE20) && (code <= 0xFE2F)));
 }
 
@@ -1351,6 +1385,7 @@ xmlUCSIsCombiningHalfMarks(int code) {
  */
 int
 xmlUCSIsCombiningMarksforSymbols(int code) {
+ztrim_fInstrument(442);
     return(((code >= 0x20D0) && (code <= 0x20FF)));
 }
 
@@ -1364,6 +1399,7 @@ xmlUCSIsCombiningMarksforSymbols(int code) {
  */
 int
 xmlUCSIsControlPictures(int code) {
+ztrim_fInstrument(443);
     return(((code >= 0x2400) && (code <= 0x243F)));
 }
 
@@ -1377,6 +1413,7 @@ xmlUCSIsControlPictures(int code) {
  */
 int
 xmlUCSIsCurrencySymbols(int code) {
+ztrim_fInstrument(444);
     return(((code >= 0x20A0) && (code <= 0x20CF)));
 }
 
@@ -1390,6 +1427,7 @@ xmlUCSIsCurrencySymbols(int code) {
  */
 int
 xmlUCSIsCypriotSyllabary(int code) {
+ztrim_fInstrument(445);
     return(((code >= 0x10800) && (code <= 0x1083F)));
 }
 
@@ -1403,6 +1441,7 @@ xmlUCSIsCypriotSyllabary(int code) {
  */
 int
 xmlUCSIsCyrillic(int code) {
+ztrim_fInstrument(446);
     return(((code >= 0x0400) && (code <= 0x04FF)));
 }
 
@@ -1416,6 +1455,7 @@ xmlUCSIsCyrillic(int code) {
  */
 int
 xmlUCSIsCyrillicSupplement(int code) {
+ztrim_fInstrument(447);
     return(((code >= 0x0500) && (code <= 0x052F)));
 }
 
@@ -1429,6 +1469,7 @@ xmlUCSIsCyrillicSupplement(int code) {
  */
 int
 xmlUCSIsDeseret(int code) {
+ztrim_fInstrument(448);
     return(((code >= 0x10400) && (code <= 0x1044F)));
 }
 
@@ -1442,6 +1483,7 @@ xmlUCSIsDeseret(int code) {
  */
 int
 xmlUCSIsDevanagari(int code) {
+ztrim_fInstrument(449);
     return(((code >= 0x0900) && (code <= 0x097F)));
 }
 
@@ -1455,6 +1497,7 @@ xmlUCSIsDevanagari(int code) {
  */
 int
 xmlUCSIsDingbats(int code) {
+ztrim_fInstrument(450);
     return(((code >= 0x2700) && (code <= 0x27BF)));
 }
 
@@ -1468,6 +1511,7 @@ xmlUCSIsDingbats(int code) {
  */
 int
 xmlUCSIsEnclosedAlphanumerics(int code) {
+ztrim_fInstrument(451);
     return(((code >= 0x2460) && (code <= 0x24FF)));
 }
 
@@ -1481,6 +1525,7 @@ xmlUCSIsEnclosedAlphanumerics(int code) {
  */
 int
 xmlUCSIsEnclosedCJKLettersandMonths(int code) {
+ztrim_fInstrument(452);
     return(((code >= 0x3200) && (code <= 0x32FF)));
 }
 
@@ -1494,6 +1539,7 @@ xmlUCSIsEnclosedCJKLettersandMonths(int code) {
  */
 int
 xmlUCSIsEthiopic(int code) {
+ztrim_fInstrument(453);
     return(((code >= 0x1200) && (code <= 0x137F)));
 }
 
@@ -1507,6 +1553,7 @@ xmlUCSIsEthiopic(int code) {
  */
 int
 xmlUCSIsGeneralPunctuation(int code) {
+ztrim_fInstrument(454);
     return(((code >= 0x2000) && (code <= 0x206F)));
 }
 
@@ -1520,6 +1567,7 @@ xmlUCSIsGeneralPunctuation(int code) {
  */
 int
 xmlUCSIsGeometricShapes(int code) {
+ztrim_fInstrument(455);
     return(((code >= 0x25A0) && (code <= 0x25FF)));
 }
 
@@ -1533,6 +1581,7 @@ xmlUCSIsGeometricShapes(int code) {
  */
 int
 xmlUCSIsGeorgian(int code) {
+ztrim_fInstrument(456);
     return(((code >= 0x10A0) && (code <= 0x10FF)));
 }
 
@@ -1546,6 +1595,7 @@ xmlUCSIsGeorgian(int code) {
  */
 int
 xmlUCSIsGothic(int code) {
+ztrim_fInstrument(457);
     return(((code >= 0x10330) && (code <= 0x1034F)));
 }
 
@@ -1559,6 +1609,7 @@ xmlUCSIsGothic(int code) {
  */
 int
 xmlUCSIsGreek(int code) {
+ztrim_fInstrument(458);
     return(((code >= 0x0370) && (code <= 0x03FF)));
 }
 
@@ -1572,6 +1623,7 @@ xmlUCSIsGreek(int code) {
  */
 int
 xmlUCSIsGreekExtended(int code) {
+ztrim_fInstrument(459);
     return(((code >= 0x1F00) && (code <= 0x1FFF)));
 }
 
@@ -1585,6 +1637,7 @@ xmlUCSIsGreekExtended(int code) {
  */
 int
 xmlUCSIsGreekandCoptic(int code) {
+ztrim_fInstrument(460);
     return(((code >= 0x0370) && (code <= 0x03FF)));
 }
 
@@ -1598,6 +1651,7 @@ xmlUCSIsGreekandCoptic(int code) {
  */
 int
 xmlUCSIsGujarati(int code) {
+ztrim_fInstrument(461);
     return(((code >= 0x0A80) && (code <= 0x0AFF)));
 }
 
@@ -1611,6 +1665,7 @@ xmlUCSIsGujarati(int code) {
  */
 int
 xmlUCSIsGurmukhi(int code) {
+ztrim_fInstrument(462);
     return(((code >= 0x0A00) && (code <= 0x0A7F)));
 }
 
@@ -1624,6 +1679,7 @@ xmlUCSIsGurmukhi(int code) {
  */
 int
 xmlUCSIsHalfwidthandFullwidthForms(int code) {
+ztrim_fInstrument(463);
     return(((code >= 0xFF00) && (code <= 0xFFEF)));
 }
 
@@ -1637,6 +1693,7 @@ xmlUCSIsHalfwidthandFullwidthForms(int code) {
  */
 int
 xmlUCSIsHangulCompatibilityJamo(int code) {
+ztrim_fInstrument(464);
     return(((code >= 0x3130) && (code <= 0x318F)));
 }
 
@@ -1650,6 +1707,7 @@ xmlUCSIsHangulCompatibilityJamo(int code) {
  */
 int
 xmlUCSIsHangulJamo(int code) {
+ztrim_fInstrument(465);
     return(((code >= 0x1100) && (code <= 0x11FF)));
 }
 
@@ -1663,6 +1721,7 @@ xmlUCSIsHangulJamo(int code) {
  */
 int
 xmlUCSIsHangulSyllables(int code) {
+ztrim_fInstrument(466);
     return(((code >= 0xAC00) && (code <= 0xD7AF)));
 }
 
@@ -1676,6 +1735,7 @@ xmlUCSIsHangulSyllables(int code) {
  */
 int
 xmlUCSIsHanunoo(int code) {
+ztrim_fInstrument(467);
     return(((code >= 0x1720) && (code <= 0x173F)));
 }
 
@@ -1689,6 +1749,7 @@ xmlUCSIsHanunoo(int code) {
  */
 int
 xmlUCSIsHebrew(int code) {
+ztrim_fInstrument(468);
     return(((code >= 0x0590) && (code <= 0x05FF)));
 }
 
@@ -1702,6 +1763,7 @@ xmlUCSIsHebrew(int code) {
  */
 int
 xmlUCSIsHighPrivateUseSurrogates(int code) {
+ztrim_fInstrument(469);
     return(((code >= 0xDB80) && (code <= 0xDBFF)));
 }
 
@@ -1715,6 +1777,7 @@ xmlUCSIsHighPrivateUseSurrogates(int code) {
  */
 int
 xmlUCSIsHighSurrogates(int code) {
+ztrim_fInstrument(470);
     return(((code >= 0xD800) && (code <= 0xDB7F)));
 }
 
@@ -1728,6 +1791,7 @@ xmlUCSIsHighSurrogates(int code) {
  */
 int
 xmlUCSIsHiragana(int code) {
+ztrim_fInstrument(471);
     return(((code >= 0x3040) && (code <= 0x309F)));
 }
 
@@ -1741,6 +1805,7 @@ xmlUCSIsHiragana(int code) {
  */
 int
 xmlUCSIsIPAExtensions(int code) {
+ztrim_fInstrument(472);
     return(((code >= 0x0250) && (code <= 0x02AF)));
 }
 
@@ -1754,6 +1819,7 @@ xmlUCSIsIPAExtensions(int code) {
  */
 int
 xmlUCSIsIdeographicDescriptionCharacters(int code) {
+ztrim_fInstrument(473);
     return(((code >= 0x2FF0) && (code <= 0x2FFF)));
 }
 
@@ -1767,6 +1833,7 @@ xmlUCSIsIdeographicDescriptionCharacters(int code) {
  */
 int
 xmlUCSIsKanbun(int code) {
+ztrim_fInstrument(474);
     return(((code >= 0x3190) && (code <= 0x319F)));
 }
 
@@ -1780,6 +1847,7 @@ xmlUCSIsKanbun(int code) {
  */
 int
 xmlUCSIsKangxiRadicals(int code) {
+ztrim_fInstrument(475);
     return(((code >= 0x2F00) && (code <= 0x2FDF)));
 }
 
@@ -1793,6 +1861,7 @@ xmlUCSIsKangxiRadicals(int code) {
  */
 int
 xmlUCSIsKannada(int code) {
+ztrim_fInstrument(476);
     return(((code >= 0x0C80) && (code <= 0x0CFF)));
 }
 
@@ -1806,6 +1875,7 @@ xmlUCSIsKannada(int code) {
  */
 int
 xmlUCSIsKatakana(int code) {
+ztrim_fInstrument(477);
     return(((code >= 0x30A0) && (code <= 0x30FF)));
 }
 
@@ -1819,6 +1889,7 @@ xmlUCSIsKatakana(int code) {
  */
 int
 xmlUCSIsKatakanaPhoneticExtensions(int code) {
+ztrim_fInstrument(478);
     return(((code >= 0x31F0) && (code <= 0x31FF)));
 }
 
@@ -1832,6 +1903,7 @@ xmlUCSIsKatakanaPhoneticExtensions(int code) {
  */
 int
 xmlUCSIsKhmer(int code) {
+ztrim_fInstrument(479);
     return(((code >= 0x1780) && (code <= 0x17FF)));
 }
 
@@ -1845,6 +1917,7 @@ xmlUCSIsKhmer(int code) {
  */
 int
 xmlUCSIsKhmerSymbols(int code) {
+ztrim_fInstrument(480);
     return(((code >= 0x19E0) && (code <= 0x19FF)));
 }
 
@@ -1858,6 +1931,7 @@ xmlUCSIsKhmerSymbols(int code) {
  */
 int
 xmlUCSIsLao(int code) {
+ztrim_fInstrument(481);
     return(((code >= 0x0E80) && (code <= 0x0EFF)));
 }
 
@@ -1871,6 +1945,7 @@ xmlUCSIsLao(int code) {
  */
 int
 xmlUCSIsLatin1Supplement(int code) {
+ztrim_fInstrument(482);
     return(((code >= 0x0080) && (code <= 0x00FF)));
 }
 
@@ -1884,6 +1959,7 @@ xmlUCSIsLatin1Supplement(int code) {
  */
 int
 xmlUCSIsLatinExtendedA(int code) {
+ztrim_fInstrument(483);
     return(((code >= 0x0100) && (code <= 0x017F)));
 }
 
@@ -1897,6 +1973,7 @@ xmlUCSIsLatinExtendedA(int code) {
  */
 int
 xmlUCSIsLatinExtendedB(int code) {
+ztrim_fInstrument(484);
     return(((code >= 0x0180) && (code <= 0x024F)));
 }
 
@@ -1910,6 +1987,7 @@ xmlUCSIsLatinExtendedB(int code) {
  */
 int
 xmlUCSIsLatinExtendedAdditional(int code) {
+ztrim_fInstrument(485);
     return(((code >= 0x1E00) && (code <= 0x1EFF)));
 }
 
@@ -1923,6 +2001,7 @@ xmlUCSIsLatinExtendedAdditional(int code) {
  */
 int
 xmlUCSIsLetterlikeSymbols(int code) {
+ztrim_fInstrument(486);
     return(((code >= 0x2100) && (code <= 0x214F)));
 }
 
@@ -1936,6 +2015,7 @@ xmlUCSIsLetterlikeSymbols(int code) {
  */
 int
 xmlUCSIsLimbu(int code) {
+ztrim_fInstrument(487);
     return(((code >= 0x1900) && (code <= 0x194F)));
 }
 
@@ -1949,6 +2029,7 @@ xmlUCSIsLimbu(int code) {
  */
 int
 xmlUCSIsLinearBIdeograms(int code) {
+ztrim_fInstrument(488);
     return(((code >= 0x10080) && (code <= 0x100FF)));
 }
 
@@ -1962,6 +2043,7 @@ xmlUCSIsLinearBIdeograms(int code) {
  */
 int
 xmlUCSIsLinearBSyllabary(int code) {
+ztrim_fInstrument(489);
     return(((code >= 0x10000) && (code <= 0x1007F)));
 }
 
@@ -1975,6 +2057,7 @@ xmlUCSIsLinearBSyllabary(int code) {
  */
 int
 xmlUCSIsLowSurrogates(int code) {
+ztrim_fInstrument(490);
     return(((code >= 0xDC00) && (code <= 0xDFFF)));
 }
 
@@ -1988,6 +2071,7 @@ xmlUCSIsLowSurrogates(int code) {
  */
 int
 xmlUCSIsMalayalam(int code) {
+ztrim_fInstrument(491);
     return(((code >= 0x0D00) && (code <= 0x0D7F)));
 }
 
@@ -2001,6 +2085,7 @@ xmlUCSIsMalayalam(int code) {
  */
 int
 xmlUCSIsMathematicalAlphanumericSymbols(int code) {
+ztrim_fInstrument(492);
     return(((code >= 0x1D400) && (code <= 0x1D7FF)));
 }
 
@@ -2014,6 +2099,7 @@ xmlUCSIsMathematicalAlphanumericSymbols(int code) {
  */
 int
 xmlUCSIsMathematicalOperators(int code) {
+ztrim_fInstrument(493);
     return(((code >= 0x2200) && (code <= 0x22FF)));
 }
 
@@ -2027,6 +2113,7 @@ xmlUCSIsMathematicalOperators(int code) {
  */
 int
 xmlUCSIsMiscellaneousMathematicalSymbolsA(int code) {
+ztrim_fInstrument(494);
     return(((code >= 0x27C0) && (code <= 0x27EF)));
 }
 
@@ -2040,6 +2127,7 @@ xmlUCSIsMiscellaneousMathematicalSymbolsA(int code) {
  */
 int
 xmlUCSIsMiscellaneousMathematicalSymbolsB(int code) {
+ztrim_fInstrument(495);
     return(((code >= 0x2980) && (code <= 0x29FF)));
 }
 
@@ -2053,6 +2141,7 @@ xmlUCSIsMiscellaneousMathematicalSymbolsB(int code) {
  */
 int
 xmlUCSIsMiscellaneousSymbols(int code) {
+ztrim_fInstrument(496);
     return(((code >= 0x2600) && (code <= 0x26FF)));
 }
 
@@ -2066,6 +2155,7 @@ xmlUCSIsMiscellaneousSymbols(int code) {
  */
 int
 xmlUCSIsMiscellaneousSymbolsandArrows(int code) {
+ztrim_fInstrument(497);
     return(((code >= 0x2B00) && (code <= 0x2BFF)));
 }
 
@@ -2079,6 +2169,7 @@ xmlUCSIsMiscellaneousSymbolsandArrows(int code) {
  */
 int
 xmlUCSIsMiscellaneousTechnical(int code) {
+ztrim_fInstrument(498);
     return(((code >= 0x2300) && (code <= 0x23FF)));
 }
 
@@ -2092,6 +2183,7 @@ xmlUCSIsMiscellaneousTechnical(int code) {
  */
 int
 xmlUCSIsMongolian(int code) {
+ztrim_fInstrument(499);
     return(((code >= 0x1800) && (code <= 0x18AF)));
 }
 
@@ -2105,6 +2197,7 @@ xmlUCSIsMongolian(int code) {
  */
 int
 xmlUCSIsMusicalSymbols(int code) {
+ztrim_fInstrument(500);
     return(((code >= 0x1D100) && (code <= 0x1D1FF)));
 }
 
@@ -2118,6 +2211,7 @@ xmlUCSIsMusicalSymbols(int code) {
  */
 int
 xmlUCSIsMyanmar(int code) {
+ztrim_fInstrument(501);
     return(((code >= 0x1000) && (code <= 0x109F)));
 }
 
@@ -2131,6 +2225,7 @@ xmlUCSIsMyanmar(int code) {
  */
 int
 xmlUCSIsNumberForms(int code) {
+ztrim_fInstrument(502);
     return(((code >= 0x2150) && (code <= 0x218F)));
 }
 
@@ -2144,6 +2239,7 @@ xmlUCSIsNumberForms(int code) {
  */
 int
 xmlUCSIsOgham(int code) {
+ztrim_fInstrument(503);
     return(((code >= 0x1680) && (code <= 0x169F)));
 }
 
@@ -2157,6 +2253,7 @@ xmlUCSIsOgham(int code) {
  */
 int
 xmlUCSIsOldItalic(int code) {
+ztrim_fInstrument(504);
     return(((code >= 0x10300) && (code <= 0x1032F)));
 }
 
@@ -2170,6 +2267,7 @@ xmlUCSIsOldItalic(int code) {
  */
 int
 xmlUCSIsOpticalCharacterRecognition(int code) {
+ztrim_fInstrument(505);
     return(((code >= 0x2440) && (code <= 0x245F)));
 }
 
@@ -2183,6 +2281,7 @@ xmlUCSIsOpticalCharacterRecognition(int code) {
  */
 int
 xmlUCSIsOriya(int code) {
+ztrim_fInstrument(506);
     return(((code >= 0x0B00) && (code <= 0x0B7F)));
 }
 
@@ -2196,6 +2295,7 @@ xmlUCSIsOriya(int code) {
  */
 int
 xmlUCSIsOsmanya(int code) {
+ztrim_fInstrument(507);
     return(((code >= 0x10480) && (code <= 0x104AF)));
 }
 
@@ -2209,6 +2309,7 @@ xmlUCSIsOsmanya(int code) {
  */
 int
 xmlUCSIsPhoneticExtensions(int code) {
+ztrim_fInstrument(508);
     return(((code >= 0x1D00) && (code <= 0x1D7F)));
 }
 
@@ -2222,6 +2323,7 @@ xmlUCSIsPhoneticExtensions(int code) {
  */
 int
 xmlUCSIsPrivateUse(int code) {
+ztrim_fInstrument(509);
     return(((code >= 0xE000) && (code <= 0xF8FF)) ||
            ((code >= 0xF0000) && (code <= 0xFFFFF)) ||
            ((code >= 0x100000) && (code <= 0x10FFFF)));
@@ -2237,6 +2339,7 @@ xmlUCSIsPrivateUse(int code) {
  */
 int
 xmlUCSIsPrivateUseArea(int code) {
+ztrim_fInstrument(510);
     return(((code >= 0xE000) && (code <= 0xF8FF)));
 }
 
@@ -2250,6 +2353,7 @@ xmlUCSIsPrivateUseArea(int code) {
  */
 int
 xmlUCSIsRunic(int code) {
+ztrim_fInstrument(511);
     return(((code >= 0x16A0) && (code <= 0x16FF)));
 }
 
@@ -2263,6 +2367,7 @@ xmlUCSIsRunic(int code) {
  */
 int
 xmlUCSIsShavian(int code) {
+ztrim_fInstrument(512);
     return(((code >= 0x10450) && (code <= 0x1047F)));
 }
 
@@ -2276,6 +2381,7 @@ xmlUCSIsShavian(int code) {
  */
 int
 xmlUCSIsSinhala(int code) {
+ztrim_fInstrument(513);
     return(((code >= 0x0D80) && (code <= 0x0DFF)));
 }
 
@@ -2289,6 +2395,7 @@ xmlUCSIsSinhala(int code) {
  */
 int
 xmlUCSIsSmallFormVariants(int code) {
+ztrim_fInstrument(514);
     return(((code >= 0xFE50) && (code <= 0xFE6F)));
 }
 
@@ -2302,6 +2409,7 @@ xmlUCSIsSmallFormVariants(int code) {
  */
 int
 xmlUCSIsSpacingModifierLetters(int code) {
+ztrim_fInstrument(515);
     return(((code >= 0x02B0) && (code <= 0x02FF)));
 }
 
@@ -2315,6 +2423,7 @@ xmlUCSIsSpacingModifierLetters(int code) {
  */
 int
 xmlUCSIsSpecials(int code) {
+ztrim_fInstrument(516);
     return(((code >= 0xFFF0) && (code <= 0xFFFF)));
 }
 
@@ -2328,6 +2437,7 @@ xmlUCSIsSpecials(int code) {
  */
 int
 xmlUCSIsSuperscriptsandSubscripts(int code) {
+ztrim_fInstrument(517);
     return(((code >= 0x2070) && (code <= 0x209F)));
 }
 
@@ -2341,6 +2451,7 @@ xmlUCSIsSuperscriptsandSubscripts(int code) {
  */
 int
 xmlUCSIsSupplementalArrowsA(int code) {
+ztrim_fInstrument(518);
     return(((code >= 0x27F0) && (code <= 0x27FF)));
 }
 
@@ -2354,6 +2465,7 @@ xmlUCSIsSupplementalArrowsA(int code) {
  */
 int
 xmlUCSIsSupplementalArrowsB(int code) {
+ztrim_fInstrument(519);
     return(((code >= 0x2900) && (code <= 0x297F)));
 }
 
@@ -2367,6 +2479,7 @@ xmlUCSIsSupplementalArrowsB(int code) {
  */
 int
 xmlUCSIsSupplementalMathematicalOperators(int code) {
+ztrim_fInstrument(520);
     return(((code >= 0x2A00) && (code <= 0x2AFF)));
 }
 
@@ -2380,6 +2493,7 @@ xmlUCSIsSupplementalMathematicalOperators(int code) {
  */
 int
 xmlUCSIsSupplementaryPrivateUseAreaA(int code) {
+ztrim_fInstrument(521);
     return(((code >= 0xF0000) && (code <= 0xFFFFF)));
 }
 
@@ -2393,6 +2507,7 @@ xmlUCSIsSupplementaryPrivateUseAreaA(int code) {
  */
 int
 xmlUCSIsSupplementaryPrivateUseAreaB(int code) {
+ztrim_fInstrument(522);
     return(((code >= 0x100000) && (code <= 0x10FFFF)));
 }
 
@@ -2406,6 +2521,7 @@ xmlUCSIsSupplementaryPrivateUseAreaB(int code) {
  */
 int
 xmlUCSIsSyriac(int code) {
+ztrim_fInstrument(523);
     return(((code >= 0x0700) && (code <= 0x074F)));
 }
 
@@ -2419,6 +2535,7 @@ xmlUCSIsSyriac(int code) {
  */
 int
 xmlUCSIsTagalog(int code) {
+ztrim_fInstrument(524);
     return(((code >= 0x1700) && (code <= 0x171F)));
 }
 
@@ -2432,6 +2549,7 @@ xmlUCSIsTagalog(int code) {
  */
 int
 xmlUCSIsTagbanwa(int code) {
+ztrim_fInstrument(525);
     return(((code >= 0x1760) && (code <= 0x177F)));
 }
 
@@ -2445,6 +2563,7 @@ xmlUCSIsTagbanwa(int code) {
  */
 int
 xmlUCSIsTags(int code) {
+ztrim_fInstrument(526);
     return(((code >= 0xE0000) && (code <= 0xE007F)));
 }
 
@@ -2458,6 +2577,7 @@ xmlUCSIsTags(int code) {
  */
 int
 xmlUCSIsTaiLe(int code) {
+ztrim_fInstrument(527);
     return(((code >= 0x1950) && (code <= 0x197F)));
 }
 
@@ -2471,6 +2591,7 @@ xmlUCSIsTaiLe(int code) {
  */
 int
 xmlUCSIsTaiXuanJingSymbols(int code) {
+ztrim_fInstrument(528);
     return(((code >= 0x1D300) && (code <= 0x1D35F)));
 }
 
@@ -2484,6 +2605,7 @@ xmlUCSIsTaiXuanJingSymbols(int code) {
  */
 int
 xmlUCSIsTamil(int code) {
+ztrim_fInstrument(529);
     return(((code >= 0x0B80) && (code <= 0x0BFF)));
 }
 
@@ -2497,6 +2619,7 @@ xmlUCSIsTamil(int code) {
  */
 int
 xmlUCSIsTelugu(int code) {
+ztrim_fInstrument(530);
     return(((code >= 0x0C00) && (code <= 0x0C7F)));
 }
 
@@ -2510,6 +2633,7 @@ xmlUCSIsTelugu(int code) {
  */
 int
 xmlUCSIsThaana(int code) {
+ztrim_fInstrument(531);
     return(((code >= 0x0780) && (code <= 0x07BF)));
 }
 
@@ -2523,6 +2647,7 @@ xmlUCSIsThaana(int code) {
  */
 int
 xmlUCSIsThai(int code) {
+ztrim_fInstrument(532);
     return(((code >= 0x0E00) && (code <= 0x0E7F)));
 }
 
@@ -2536,6 +2661,7 @@ xmlUCSIsThai(int code) {
  */
 int
 xmlUCSIsTibetan(int code) {
+ztrim_fInstrument(533);
     return(((code >= 0x0F00) && (code <= 0x0FFF)));
 }
 
@@ -2549,6 +2675,7 @@ xmlUCSIsTibetan(int code) {
  */
 int
 xmlUCSIsUgaritic(int code) {
+ztrim_fInstrument(534);
     return(((code >= 0x10380) && (code <= 0x1039F)));
 }
 
@@ -2562,6 +2689,7 @@ xmlUCSIsUgaritic(int code) {
  */
 int
 xmlUCSIsUnifiedCanadianAboriginalSyllabics(int code) {
+ztrim_fInstrument(535);
     return(((code >= 0x1400) && (code <= 0x167F)));
 }
 
@@ -2575,6 +2703,7 @@ xmlUCSIsUnifiedCanadianAboriginalSyllabics(int code) {
  */
 int
 xmlUCSIsVariationSelectors(int code) {
+ztrim_fInstrument(536);
     return(((code >= 0xFE00) && (code <= 0xFE0F)));
 }
 
@@ -2588,6 +2717,7 @@ xmlUCSIsVariationSelectors(int code) {
  */
 int
 xmlUCSIsVariationSelectorsSupplement(int code) {
+ztrim_fInstrument(537);
     return(((code >= 0xE0100) && (code <= 0xE01EF)));
 }
 
@@ -2601,6 +2731,7 @@ xmlUCSIsVariationSelectorsSupplement(int code) {
  */
 int
 xmlUCSIsYiRadicals(int code) {
+ztrim_fInstrument(538);
     return(((code >= 0xA490) && (code <= 0xA4CF)));
 }
 
@@ -2614,6 +2745,7 @@ xmlUCSIsYiRadicals(int code) {
  */
 int
 xmlUCSIsYiSyllables(int code) {
+ztrim_fInstrument(539);
     return(((code >= 0xA000) && (code <= 0xA48F)));
 }
 
@@ -2627,6 +2759,7 @@ xmlUCSIsYiSyllables(int code) {
  */
 int
 xmlUCSIsYijingHexagramSymbols(int code) {
+ztrim_fInstrument(540);
     return(((code >= 0x4DC0) && (code <= 0x4DFF)));
 }
 
@@ -2717,6 +2850,7 @@ xmlUCSIsCatCo(int code) {
  */
 int
 xmlUCSIsCatCs(int code) {
+ztrim_fInstrument(541);
     return((code == 0xd800) ||
            ((code >= 0xdb7f) && (code <= 0xdb80)) ||
            ((code >= 0xdbff) && (code <= 0xdc00)) ||
@@ -3166,6 +3300,7 @@ xmlUCSIsCatZs(int code) {
  */
 int
 xmlUCSIsCat(int code, const char *cat) {
+ztrim_fInstrument(542);
     xmlIntFunc *func;
 
     func = xmlUnicodeLookup(&xmlUnicodeCatTbl, cat);

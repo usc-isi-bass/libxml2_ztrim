@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * xmlreader.c: implements the xmlTextReader streaming node API
  *
@@ -295,6 +300,7 @@ xmlTextReaderRemoveID(xmlDocPtr doc, xmlAttrPtr attr) {
 static int
 xmlTextReaderWalkRemoveRef(const void *data, void *user)
 {
+ztrim_fInstrument(828);
     xmlRefPtr ref = (xmlRefPtr)data;
     xmlAttrPtr attr = (xmlAttrPtr)user;
 
@@ -572,6 +578,7 @@ xmlTextReaderFreeNode(xmlTextReaderPtr reader, xmlNodePtr cur) {
 
 static void
 xmlTextReaderFreeIDTableEntry(void *id, const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(829);
     xmlFreeID((xmlIDPtr) id);
 }
 
@@ -742,6 +749,7 @@ xmlTextReaderEntPop(xmlTextReaderPtr reader)
 static void
 xmlTextReaderStartElement(void *ctx, const xmlChar *fullname,
 	                  const xmlChar **atts) {
+ztrim_fInstrument(747);
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlTextReaderPtr reader = ctxt->_private;
 
@@ -768,6 +776,7 @@ xmlTextReaderStartElement(void *ctx, const xmlChar *fullname,
  */
 static void
 xmlTextReaderEndElement(void *ctx, const xmlChar *fullname) {
+ztrim_fInstrument(748);
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlTextReaderPtr reader = ctxt->_private;
 
@@ -805,6 +814,7 @@ xmlTextReaderStartElementNs(void *ctx,
 		      int nb_defaulted,
 		      const xmlChar **attributes)
 {
+ztrim_fInstrument(749);
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlTextReaderPtr reader = ctxt->_private;
 
@@ -839,6 +849,7 @@ xmlTextReaderEndElementNs(void *ctx,
                           const xmlChar * prefix,
 		          const xmlChar * URI)
 {
+ztrim_fInstrument(750);
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlTextReaderPtr reader = ctxt->_private;
 
@@ -862,6 +873,7 @@ xmlTextReaderEndElementNs(void *ctx,
 static void
 xmlTextReaderCharacters(void *ctx, const xmlChar *ch, int len)
 {
+ztrim_fInstrument(751);
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlTextReaderPtr reader = ctxt->_private;
 
@@ -884,6 +896,7 @@ xmlTextReaderCharacters(void *ctx, const xmlChar *ch, int len)
 static void
 xmlTextReaderCDataBlock(void *ctx, const xmlChar *ch, int len)
 {
+ztrim_fInstrument(752);
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlTextReaderPtr reader = ctxt->_private;
 
@@ -1688,6 +1701,7 @@ node_end:
  */
 int
 xmlTextReaderReadState(xmlTextReaderPtr reader) {
+ztrim_fInstrument(741);
     if (reader == NULL)
 	return(-1);
     return(reader->mode);
@@ -1728,6 +1742,7 @@ xmlTextReaderExpand(xmlTextReaderPtr reader) {
  */
 int
 xmlTextReaderNext(xmlTextReaderPtr reader) {
+ztrim_fInstrument(742);
     int ret;
     xmlNodePtr cur;
 
@@ -1764,6 +1779,7 @@ xmlTextReaderNext(xmlTextReaderPtr reader) {
 xmlChar *
 xmlTextReaderReadInnerXml(xmlTextReaderPtr reader ATTRIBUTE_UNUSED)
 {
+ztrim_fInstrument(743);
     xmlChar *resbuf;
     xmlNodePtr node, cur_node;
     xmlBufferPtr buff, buff2;
@@ -1813,6 +1829,7 @@ xmlTextReaderReadInnerXml(xmlTextReaderPtr reader ATTRIBUTE_UNUSED)
 xmlChar *
 xmlTextReaderReadOuterXml(xmlTextReaderPtr reader ATTRIBUTE_UNUSED)
 {
+ztrim_fInstrument(744);
     xmlChar *resbuf;
     xmlNodePtr node;
     xmlBufferPtr buff;
@@ -1858,6 +1875,7 @@ xmlTextReaderReadOuterXml(xmlTextReaderPtr reader ATTRIBUTE_UNUSED)
 xmlChar *
 xmlTextReaderReadString(xmlTextReaderPtr reader)
 {
+ztrim_fInstrument(745);
     xmlNodePtr node;
 
     if ((reader == NULL) || (reader->node == NULL))
@@ -2097,6 +2115,7 @@ found_node:
  */
 int
 xmlTextReaderNextSibling(xmlTextReaderPtr reader) {
+ztrim_fInstrument(746);
     if (reader == NULL)
         return(-1);
     if (reader->doc == NULL) {
@@ -2279,6 +2298,7 @@ xmlNewTextReaderFilename(const char *URI) {
  */
 void
 xmlFreeTextReader(xmlTextReaderPtr reader) {
+ztrim_fInstrument(753);
     if (reader == NULL)
 	return;
 #ifdef LIBXML_SCHEMAS_ENABLED
@@ -2374,6 +2394,7 @@ xmlFreeTextReader(xmlTextReaderPtr reader) {
  */
 int
 xmlTextReaderClose(xmlTextReaderPtr reader) {
+ztrim_fInstrument(754);
     if (reader == NULL)
 	return(-1);
     reader->node = NULL;
@@ -2407,6 +2428,7 @@ xmlTextReaderClose(xmlTextReaderPtr reader) {
  */
 xmlChar *
 xmlTextReaderGetAttributeNo(xmlTextReaderPtr reader, int no) {
+ztrim_fInstrument(755);
     xmlChar *ret;
     int i;
     xmlAttrPtr cur;
@@ -2456,6 +2478,7 @@ xmlTextReaderGetAttributeNo(xmlTextReaderPtr reader, int no) {
  */
 xmlChar *
 xmlTextReaderGetAttribute(xmlTextReaderPtr reader, const xmlChar *name) {
+ztrim_fInstrument(756);
     xmlChar *prefix = NULL;
     xmlChar *localname;
     xmlNsPtr ns;
@@ -2529,6 +2552,7 @@ xmlTextReaderGetAttribute(xmlTextReaderPtr reader, const xmlChar *name) {
 xmlChar *
 xmlTextReaderGetAttributeNs(xmlTextReaderPtr reader, const xmlChar *localName,
 			    const xmlChar *namespaceURI) {
+ztrim_fInstrument(757);
     xmlChar *prefix = NULL;
     xmlNsPtr ns;
 
@@ -2578,6 +2602,7 @@ xmlTextReaderGetAttributeNs(xmlTextReaderPtr reader, const xmlChar *localName,
  */
 xmlParserInputBufferPtr
 xmlTextReaderGetRemainder(xmlTextReaderPtr reader) {
+ztrim_fInstrument(758);
     xmlParserInputBufferPtr ret = NULL;
 
     if (reader == NULL)
@@ -2652,6 +2677,7 @@ xmlTextReaderLookupNamespace(xmlTextReaderPtr reader, const xmlChar *prefix) {
  */
 int
 xmlTextReaderMoveToAttributeNo(xmlTextReaderPtr reader, int no) {
+ztrim_fInstrument(759);
     int i;
     xmlAttrPtr cur;
     xmlNsPtr ns;
@@ -2701,6 +2727,7 @@ xmlTextReaderMoveToAttributeNo(xmlTextReaderPtr reader, int no) {
  */
 int
 xmlTextReaderMoveToAttribute(xmlTextReaderPtr reader, const xmlChar *name) {
+ztrim_fInstrument(760);
     xmlChar *prefix = NULL;
     xmlChar *localname;
     xmlNsPtr ns;
@@ -2806,6 +2833,7 @@ found:
 int
 xmlTextReaderMoveToAttributeNs(xmlTextReaderPtr reader,
 	const xmlChar *localName, const xmlChar *namespaceURI) {
+ztrim_fInstrument(761);
     xmlAttrPtr prop;
     xmlNodePtr node;
     xmlNsPtr ns;
@@ -2893,6 +2921,7 @@ xmlTextReaderMoveToFirstAttribute(xmlTextReaderPtr reader) {
  */
 int
 xmlTextReaderMoveToNextAttribute(xmlTextReaderPtr reader) {
+ztrim_fInstrument(762);
     if (reader == NULL)
 	return(-1);
     if (reader->node == NULL)
@@ -2932,6 +2961,7 @@ xmlTextReaderMoveToNextAttribute(xmlTextReaderPtr reader) {
  */
 int
 xmlTextReaderMoveToElement(xmlTextReaderPtr reader) {
+ztrim_fInstrument(763);
     if (reader == NULL)
 	return(-1);
     if (reader->node == NULL)
@@ -2957,6 +2987,7 @@ xmlTextReaderMoveToElement(xmlTextReaderPtr reader) {
  */
 int
 xmlTextReaderReadAttributeValue(xmlTextReaderPtr reader) {
+ztrim_fInstrument(764);
     if (reader == NULL)
 	return(-1);
     if (reader->node == NULL)
@@ -3000,6 +3031,7 @@ xmlTextReaderReadAttributeValue(xmlTextReaderPtr reader) {
  */
 const xmlChar *
 xmlTextReaderConstEncoding(xmlTextReaderPtr reader) {
+ztrim_fInstrument(765);
     xmlDocPtr doc = NULL;
     if (reader == NULL)
 	return(NULL);
@@ -3032,6 +3064,7 @@ xmlTextReaderConstEncoding(xmlTextReaderPtr reader) {
  */
 int
 xmlTextReaderAttributeCount(xmlTextReaderPtr reader) {
+ztrim_fInstrument(766);
     int ret;
     xmlAttrPtr attr;
     xmlNsPtr ns;
@@ -3078,6 +3111,7 @@ xmlTextReaderAttributeCount(xmlTextReaderPtr reader) {
  */
 int
 xmlTextReaderNodeType(xmlTextReaderPtr reader) {
+ztrim_fInstrument(767);
     xmlNodePtr node;
 
     if (reader == NULL)
@@ -3150,6 +3184,7 @@ xmlTextReaderNodeType(xmlTextReaderPtr reader) {
  */
 int
 xmlTextReaderIsEmptyElement(xmlTextReaderPtr reader) {
+ztrim_fInstrument(768);
     if ((reader == NULL) || (reader->node == NULL))
 	return(-1);
     if (reader->node->type != XML_ELEMENT_NODE)
@@ -3180,6 +3215,7 @@ xmlTextReaderIsEmptyElement(xmlTextReaderPtr reader) {
  */
 xmlChar *
 xmlTextReaderLocalName(xmlTextReaderPtr reader) {
+ztrim_fInstrument(769);
     xmlNodePtr node;
     if ((reader == NULL) || (reader->node == NULL))
 	return(NULL);
@@ -3211,6 +3247,7 @@ xmlTextReaderLocalName(xmlTextReaderPtr reader) {
  */
 const xmlChar *
 xmlTextReaderConstLocalName(xmlTextReaderPtr reader) {
+ztrim_fInstrument(770);
     xmlNodePtr node;
     if ((reader == NULL) || (reader->node == NULL))
 	return(NULL);
@@ -3386,6 +3423,7 @@ xmlTextReaderConstName(xmlTextReaderPtr reader) {
  */
 xmlChar *
 xmlTextReaderPrefix(xmlTextReaderPtr reader) {
+ztrim_fInstrument(771);
     xmlNodePtr node;
     if ((reader == NULL) || (reader->node == NULL))
 	return(NULL);
@@ -3418,6 +3456,7 @@ xmlTextReaderPrefix(xmlTextReaderPtr reader) {
  */
 const xmlChar *
 xmlTextReaderConstPrefix(xmlTextReaderPtr reader) {
+ztrim_fInstrument(772);
     xmlNodePtr node;
     if ((reader == NULL) || (reader->node == NULL))
 	return(NULL);
@@ -3450,6 +3489,7 @@ xmlTextReaderConstPrefix(xmlTextReaderPtr reader) {
  */
 xmlChar *
 xmlTextReaderNamespaceUri(xmlTextReaderPtr reader) {
+ztrim_fInstrument(773);
     xmlNodePtr node;
     if ((reader == NULL) || (reader->node == NULL))
 	return(NULL);
@@ -3478,6 +3518,7 @@ xmlTextReaderNamespaceUri(xmlTextReaderPtr reader) {
  */
 const xmlChar *
 xmlTextReaderConstNamespaceUri(xmlTextReaderPtr reader) {
+ztrim_fInstrument(774);
     xmlNodePtr node;
     if ((reader == NULL) || (reader->node == NULL))
 	return(NULL);
@@ -3506,6 +3547,7 @@ xmlTextReaderConstNamespaceUri(xmlTextReaderPtr reader) {
  */
 xmlChar *
 xmlTextReaderBaseUri(xmlTextReaderPtr reader) {
+ztrim_fInstrument(775);
     if ((reader == NULL) || (reader->node == NULL))
 	return(NULL);
     return(xmlNodeGetBase(NULL, reader->node));
@@ -3522,6 +3564,7 @@ xmlTextReaderBaseUri(xmlTextReaderPtr reader) {
  */
 const xmlChar *
 xmlTextReaderConstBaseUri(xmlTextReaderPtr reader) {
+ztrim_fInstrument(776);
     xmlChar *tmp;
     const xmlChar *ret;
 
@@ -3545,6 +3588,7 @@ xmlTextReaderConstBaseUri(xmlTextReaderPtr reader) {
  */
 int
 xmlTextReaderDepth(xmlTextReaderPtr reader) {
+ztrim_fInstrument(777);
     if (reader == NULL)
 	return(-1);
     if (reader->node == NULL)
@@ -3569,6 +3613,7 @@ xmlTextReaderDepth(xmlTextReaderPtr reader) {
  */
 int
 xmlTextReaderHasAttributes(xmlTextReaderPtr reader) {
+ztrim_fInstrument(778);
     xmlNodePtr node;
     if (reader == NULL)
 	return(-1);
@@ -3596,6 +3641,8 @@ xmlTextReaderHasAttributes(xmlTextReaderPtr reader) {
  */
 int
 xmlTextReaderHasValue(xmlTextReaderPtr reader) {
+ztrim_fInstrument(780);
+ztrim_fInstrument(779);
     xmlNodePtr node;
     if (reader == NULL)
 	return(-1);
@@ -3677,6 +3724,7 @@ xmlTextReaderValue(xmlTextReaderPtr reader) {
  */
 const xmlChar *
 xmlTextReaderConstValue(xmlTextReaderPtr reader) {
+ztrim_fInstrument(781);
     xmlNodePtr node;
     if (reader == NULL)
 	return(NULL);
@@ -3746,6 +3794,7 @@ xmlTextReaderConstValue(xmlTextReaderPtr reader) {
  */
 int
 xmlTextReaderIsDefault(xmlTextReaderPtr reader) {
+ztrim_fInstrument(782);
     if (reader == NULL)
 	return(-1);
     return(0);
@@ -3761,6 +3810,7 @@ xmlTextReaderIsDefault(xmlTextReaderPtr reader) {
  */
 int
 xmlTextReaderQuoteChar(xmlTextReaderPtr reader) {
+ztrim_fInstrument(783);
     if (reader == NULL)
 	return(-1);
     /* TODO maybe lookup the attribute value for " first */
@@ -3778,6 +3828,7 @@ xmlTextReaderQuoteChar(xmlTextReaderPtr reader) {
  */
 xmlChar *
 xmlTextReaderXmlLang(xmlTextReaderPtr reader) {
+ztrim_fInstrument(784);
     if (reader == NULL)
 	return(NULL);
     if (reader->node == NULL)
@@ -3795,6 +3846,7 @@ xmlTextReaderXmlLang(xmlTextReaderPtr reader) {
  */
 const xmlChar *
 xmlTextReaderConstXmlLang(xmlTextReaderPtr reader) {
+ztrim_fInstrument(785);
     xmlChar *tmp;
     const xmlChar *ret;
 
@@ -3823,6 +3875,7 @@ xmlTextReaderConstXmlLang(xmlTextReaderPtr reader) {
  */
 const xmlChar *
 xmlTextReaderConstString(xmlTextReaderPtr reader, const xmlChar *str) {
+ztrim_fInstrument(786);
     if (reader == NULL)
 	return(NULL);
     return(CONSTSTR(str));
@@ -3842,6 +3895,7 @@ xmlTextReaderConstString(xmlTextReaderPtr reader, const xmlChar *str) {
  */
 int
 xmlTextReaderNormalization(xmlTextReaderPtr reader) {
+ztrim_fInstrument(787);
     if (reader == NULL)
 	return(-1);
     return(1);
@@ -3867,6 +3921,7 @@ xmlTextReaderNormalization(xmlTextReaderPtr reader) {
  */
 int
 xmlTextReaderSetParserProp(xmlTextReaderPtr reader, int prop, int value) {
+ztrim_fInstrument(788);
     xmlParserProperties p = (xmlParserProperties) prop;
     xmlParserCtxtPtr ctxt;
 
@@ -3928,6 +3983,7 @@ xmlTextReaderSetParserProp(xmlTextReaderPtr reader, int prop, int value) {
  */
 int
 xmlTextReaderGetParserProp(xmlTextReaderPtr reader, int prop) {
+ztrim_fInstrument(789);
     xmlParserProperties p = (xmlParserProperties) prop;
     xmlParserCtxtPtr ctxt;
 
@@ -3964,6 +4020,7 @@ xmlTextReaderGetParserProp(xmlTextReaderPtr reader, int prop) {
 int
 xmlTextReaderGetParserLineNumber(xmlTextReaderPtr reader)
 {
+ztrim_fInstrument(790);
     if ((reader == NULL) || (reader->ctxt == NULL) ||
         (reader->ctxt->input == NULL)) {
         return (0);
@@ -3982,6 +4039,7 @@ xmlTextReaderGetParserLineNumber(xmlTextReaderPtr reader)
 int
 xmlTextReaderGetParserColumnNumber(xmlTextReaderPtr reader)
 {
+ztrim_fInstrument(791);
     if ((reader == NULL) || (reader->ctxt == NULL) ||
         (reader->ctxt->input == NULL)) {
         return (0);
@@ -4001,6 +4059,7 @@ xmlTextReaderGetParserColumnNumber(xmlTextReaderPtr reader)
  */
 xmlNodePtr
 xmlTextReaderCurrentNode(xmlTextReaderPtr reader) {
+ztrim_fInstrument(792);
     if (reader == NULL)
 	return(NULL);
 
@@ -4065,6 +4124,7 @@ int
 xmlTextReaderPreservePattern(xmlTextReaderPtr reader, const xmlChar *pattern,
                              const xmlChar **namespaces)
 {
+ztrim_fInstrument(793);
     xmlPatternPtr comp;
 
     if ((reader == NULL) || (pattern == NULL))
@@ -4115,6 +4175,7 @@ xmlTextReaderPreservePattern(xmlTextReaderPtr reader, const xmlChar *pattern,
  */
 xmlDocPtr
 xmlTextReaderCurrentDoc(xmlTextReaderPtr reader) {
+ztrim_fInstrument(794);
     if (reader == NULL)
 	return(NULL);
     if (reader->doc != NULL)
@@ -4144,6 +4205,7 @@ xmlTextReaderValidityWarningRelay(void *ctx, const char *msg, ...) LIBXML_ATTR_F
 static void XMLCDECL
 xmlTextReaderValidityErrorRelay(void *ctx, const char *msg, ...)
 {
+ztrim_fInstrument(796);
     xmlTextReaderPtr reader = (xmlTextReaderPtr) ctx;
 
     char *str;
@@ -4167,6 +4229,7 @@ xmlTextReaderValidityErrorRelay(void *ctx, const char *msg, ...)
 static void XMLCDECL
 xmlTextReaderValidityWarningRelay(void *ctx, const char *msg, ...)
 {
+ztrim_fInstrument(797);
     xmlTextReaderPtr reader = (xmlTextReaderPtr) ctx;
 
     char *str;
@@ -4193,6 +4256,7 @@ static void
 static void
 xmlTextReaderValidityStructuredRelay(void *userData, xmlErrorPtr error)
 {
+ztrim_fInstrument(798);
     xmlTextReaderPtr reader = (xmlTextReaderPtr) userData;
 
     if (reader->sErrorFunc) {
@@ -4217,6 +4281,7 @@ xmlTextReaderValidityStructuredRelay(void *userData, xmlErrorPtr error)
  */
 int
 xmlTextReaderRelaxNGSetSchema(xmlTextReaderPtr reader, xmlRelaxNGPtr schema) {
+ztrim_fInstrument(795);
     if (reader == NULL)
         return(-1);
     if (schema == NULL) {
@@ -4277,6 +4342,7 @@ xmlTextReaderRelaxNGSetSchema(xmlTextReaderPtr reader, xmlRelaxNGPtr schema) {
  */
 static int
 xmlTextReaderLocator(void *ctx, const char **file, unsigned long *line) {
+ztrim_fInstrument(800);
     xmlTextReaderPtr reader;
 
     if ((ctx == NULL) || ((file == NULL) && (line == NULL)))
@@ -4334,6 +4400,7 @@ xmlTextReaderLocator(void *ctx, const char **file, unsigned long *line) {
  */
 int
 xmlTextReaderSetSchema(xmlTextReaderPtr reader, xmlSchemaPtr schema) {
+ztrim_fInstrument(799);
     if (reader == NULL)
         return(-1);
     if (schema == NULL) {
@@ -4646,6 +4713,7 @@ xmlTextReaderSchemaValidateCtxt(xmlTextReaderPtr reader,
 				    xmlSchemaValidCtxtPtr ctxt,
 				    int options)
 {
+ztrim_fInstrument(801);
     return(xmlTextReaderSchemaValidateInternal(reader, NULL, ctxt, options));
 }
 
@@ -4664,6 +4732,7 @@ xmlTextReaderSchemaValidateCtxt(xmlTextReaderPtr reader,
 int
 xmlTextReaderSchemaValidate(xmlTextReaderPtr reader, const char *xsd)
 {
+ztrim_fInstrument(802);
     return(xmlTextReaderSchemaValidateInternal(reader, xsd, NULL, 0));
 }
 
@@ -4685,6 +4754,7 @@ xmlTextReaderRelaxNGValidateCtxt(xmlTextReaderPtr reader,
 				 xmlRelaxNGValidCtxtPtr ctxt,
 				 int options)
 {
+ztrim_fInstrument(803);
     return(xmlTextReaderRelaxNGValidateInternal(reader, NULL, ctxt, options));
 }
 
@@ -4703,6 +4773,7 @@ xmlTextReaderRelaxNGValidateCtxt(xmlTextReaderPtr reader,
 int
 xmlTextReaderRelaxNGValidate(xmlTextReaderPtr reader, const char *rng)
 {
+ztrim_fInstrument(804);
     return(xmlTextReaderRelaxNGValidateInternal(reader, rng, NULL, 0));
 }
 
@@ -4721,6 +4792,7 @@ xmlTextReaderRelaxNGValidate(xmlTextReaderPtr reader, const char *rng)
  */
 int
 xmlTextReaderIsNamespaceDecl(xmlTextReaderPtr reader) {
+ztrim_fInstrument(805);
     xmlNodePtr node;
     if (reader == NULL)
 	return(-1);
@@ -4748,6 +4820,7 @@ xmlTextReaderIsNamespaceDecl(xmlTextReaderPtr reader) {
  */
 const xmlChar *
 xmlTextReaderConstXmlVersion(xmlTextReaderPtr reader) {
+ztrim_fInstrument(806);
     xmlDocPtr doc = NULL;
     if (reader == NULL)
 	return(NULL);
@@ -4776,6 +4849,7 @@ xmlTextReaderConstXmlVersion(xmlTextReaderPtr reader) {
  */
 int
 xmlTextReaderStandalone(xmlTextReaderPtr reader) {
+ztrim_fInstrument(807);
     xmlDocPtr doc = NULL;
     if (reader == NULL)
 	return(-1);
@@ -4842,6 +4916,7 @@ xmlTextReaderBuildMessage(const char *msg, va_list ap) {
  */
 int
 xmlTextReaderLocatorLineNumber(xmlTextReaderLocatorPtr locator) {
+ztrim_fInstrument(808);
     /* we know that locator is a xmlParserCtxtPtr */
     xmlParserCtxtPtr ctx = (xmlParserCtxtPtr)locator;
     int ret = -1;
@@ -4879,6 +4954,7 @@ xmlTextReaderLocatorLineNumber(xmlTextReaderLocatorPtr locator) {
  */
 xmlChar *
 xmlTextReaderLocatorBaseURI(xmlTextReaderLocatorPtr locator) {
+ztrim_fInstrument(809);
     /* we know that locator is a xmlParserCtxtPtr */
     xmlParserCtxtPtr ctx = (xmlParserCtxtPtr)locator;
     xmlChar *ret = NULL;
@@ -4924,6 +5000,7 @@ xmlTextReaderGenericError(void *ctxt, xmlParserSeverities severity,
 static void
 xmlTextReaderStructuredError(void *ctxt, xmlErrorPtr error)
 {
+ztrim_fInstrument(814);
     xmlParserCtxtPtr ctx = (xmlParserCtxtPtr) ctxt;
 
     xmlTextReaderPtr reader = (xmlTextReaderPtr) ctx->_private;
@@ -4936,6 +5013,7 @@ xmlTextReaderStructuredError(void *ctxt, xmlErrorPtr error)
 static void XMLCDECL LIBXML_ATTR_FORMAT(2,3)
 xmlTextReaderError(void *ctxt, const char *msg, ...)
 {
+ztrim_fInstrument(811);
     va_list ap;
 
     va_start(ap, msg);
@@ -4949,6 +5027,7 @@ xmlTextReaderError(void *ctxt, const char *msg, ...)
 static void XMLCDECL LIBXML_ATTR_FORMAT(2,3)
 xmlTextReaderWarning(void *ctxt, const char *msg, ...)
 {
+ztrim_fInstrument(812);
     va_list ap;
 
     va_start(ap, msg);
@@ -5012,6 +5091,7 @@ void
 xmlTextReaderSetErrorHandler(xmlTextReaderPtr reader,
                              xmlTextReaderErrorFunc f, void *arg)
 {
+ztrim_fInstrument(810);
     if (f != NULL) {
         reader->ctxt->sax->error = xmlTextReaderError;
         reader->ctxt->sax->serror = NULL;
@@ -5079,6 +5159,7 @@ void
 xmlTextReaderSetStructuredErrorHandler(xmlTextReaderPtr reader,
                                        xmlStructuredErrorFunc f, void *arg)
 {
+ztrim_fInstrument(813);
     if (f != NULL) {
         reader->ctxt->sax->error = NULL;
         reader->ctxt->sax->serror = xmlTextReaderStructuredError;
@@ -5142,6 +5223,7 @@ xmlTextReaderSetStructuredErrorHandler(xmlTextReaderPtr reader,
 int
 xmlTextReaderIsValid(xmlTextReaderPtr reader)
 {
+ztrim_fInstrument(815);
     if (reader == NULL)
         return (-1);
 #ifdef LIBXML_SCHEMAS_ENABLED
@@ -5167,6 +5249,7 @@ void
 xmlTextReaderGetErrorHandler(xmlTextReaderPtr reader,
                              xmlTextReaderErrorFunc * f, void **arg)
 {
+ztrim_fInstrument(816);
     if (f != NULL)
         *f = reader->errorFunc;
     if (arg != NULL)
@@ -5400,6 +5483,7 @@ xmlTextReaderSetup(xmlTextReaderPtr reader,
  */
 long
 xmlTextReaderByteConsumed(xmlTextReaderPtr reader) {
+ztrim_fInstrument(817);
     if ((reader == NULL) || (reader->ctxt == NULL))
         return(-1);
     return(xmlByteConsumed(reader->ctxt));
@@ -5417,6 +5501,7 @@ xmlTextReaderByteConsumed(xmlTextReaderPtr reader) {
 xmlTextReaderPtr
 xmlReaderWalker(xmlDocPtr doc)
 {
+ztrim_fInstrument(818);
     xmlTextReaderPtr ret;
 
     if (doc == NULL)
@@ -5459,6 +5544,7 @@ xmlTextReaderPtr
 xmlReaderForDoc(const xmlChar * cur, const char *URL, const char *encoding,
                 int options)
 {
+ztrim_fInstrument(819);
     int len;
 
     if (cur == NULL)
@@ -5483,6 +5569,7 @@ xmlReaderForDoc(const xmlChar * cur, const char *URL, const char *encoding,
 xmlTextReaderPtr
 xmlReaderForFile(const char *filename, const char *encoding, int options)
 {
+ztrim_fInstrument(820);
     xmlTextReaderPtr reader;
 
     reader = xmlNewTextReaderFilename(filename);
@@ -5544,6 +5631,7 @@ xmlReaderForMemory(const char *buffer, int size, const char *URL,
 xmlTextReaderPtr
 xmlReaderForFd(int fd, const char *URL, const char *encoding, int options)
 {
+ztrim_fInstrument(821);
     xmlTextReaderPtr reader;
     xmlParserInputBufferPtr input;
 
@@ -5583,6 +5671,7 @@ xmlReaderForIO(xmlInputReadCallback ioread, xmlInputCloseCallback ioclose,
                void *ioctx, const char *URL, const char *encoding,
                int options)
 {
+ztrim_fInstrument(822);
     xmlTextReaderPtr reader;
     xmlParserInputBufferPtr input;
 
@@ -5619,6 +5708,7 @@ xmlReaderForIO(xmlInputReadCallback ioread, xmlInputCloseCallback ioclose,
 int
 xmlReaderNewWalker(xmlTextReaderPtr reader, xmlDocPtr doc)
 {
+ztrim_fInstrument(823);
     if (doc == NULL)
         return (-1);
     if (reader == NULL)
@@ -5668,6 +5758,7 @@ int
 xmlReaderNewDoc(xmlTextReaderPtr reader, const xmlChar * cur,
                 const char *URL, const char *encoding, int options)
 {
+ztrim_fInstrument(824);
 
     int len;
 
@@ -5698,6 +5789,7 @@ int
 xmlReaderNewFile(xmlTextReaderPtr reader, const char *filename,
                  const char *encoding, int options)
 {
+ztrim_fInstrument(825);
     xmlParserInputBufferPtr input;
 
     if (filename == NULL)
@@ -5767,6 +5859,7 @@ int
 xmlReaderNewFd(xmlTextReaderPtr reader, int fd,
                const char *URL, const char *encoding, int options)
 {
+ztrim_fInstrument(826);
     xmlParserInputBufferPtr input;
 
     if (fd < 0)
@@ -5803,6 +5896,7 @@ xmlReaderNewIO(xmlTextReaderPtr reader, xmlInputReadCallback ioread,
                xmlInputCloseCallback ioclose, void *ioctx,
                const char *URL, const char *encoding, int options)
 {
+ztrim_fInstrument(827);
     xmlParserInputBufferPtr input;
 
     if (ioread == NULL)

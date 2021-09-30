@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * entities.c : implementation for the XML entities handling
  *
@@ -446,6 +451,7 @@ xmlEntityPtr
 xmlNewEntity(xmlDocPtr doc, const xmlChar *name, int type,
 	     const xmlChar *ExternalID, const xmlChar *SystemID,
 	     const xmlChar *content) {
+ztrim_fInstrument(629);
     xmlEntityPtr ret;
     xmlDictPtr dict;
 
@@ -522,6 +528,7 @@ xmlGetParameterEntity(xmlDocPtr doc, const xmlChar *name) {
  */
 xmlEntityPtr
 xmlGetDtdEntity(xmlDocPtr doc, const xmlChar *name) {
+ztrim_fInstrument(630);
     xmlEntitiesTablePtr table;
 
     if (doc == NULL)
@@ -926,6 +933,7 @@ mem_error:
  */
 xmlEntitiesTablePtr
 xmlCreateEntitiesTable(void) {
+ztrim_fInstrument(631);
     return((xmlEntitiesTablePtr) xmlHashCreate(0));
 }
 
@@ -938,6 +946,7 @@ xmlCreateEntitiesTable(void) {
  */
 static void
 xmlFreeEntityWrapper(void *entity, const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(632);
     if (entity != NULL)
 	xmlFreeEntity((xmlEntityPtr) entity);
 }
@@ -964,6 +973,7 @@ xmlFreeEntitiesTable(xmlEntitiesTablePtr table) {
  */
 static void *
 xmlCopyEntity(void *payload, const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(633);
     xmlEntityPtr ent = (xmlEntityPtr) payload;
     xmlEntityPtr cur;
 
@@ -1144,6 +1154,7 @@ xmlDumpEntityDecl(xmlBufferPtr buf, xmlEntityPtr ent) {
 static void
 xmlDumpEntityDeclScan(void *ent, void *buf,
                       const xmlChar *name ATTRIBUTE_UNUSED) {
+ztrim_fInstrument(635);
     xmlDumpEntityDecl((xmlBufferPtr) buf, (xmlEntityPtr) ent);
 }
 
@@ -1156,6 +1167,7 @@ xmlDumpEntityDeclScan(void *ent, void *buf,
  */
 void
 xmlDumpEntitiesTable(xmlBufferPtr buf, xmlEntitiesTablePtr table) {
+ztrim_fInstrument(634);
     xmlHashScan(table, xmlDumpEntityDeclScan, buf);
 }
 #endif /* LIBXML_OUTPUT_ENABLED */
