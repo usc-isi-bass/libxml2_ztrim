@@ -1,3 +1,7 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
 /*
  * xmllint.c : a small tester program for XML input.
  *
@@ -3127,6 +3131,7 @@ static void deregisterNode(xmlNodePtr node)
 
 int
 main(int argc, char **argv) {
+    ztrim_initIteration(1000);
     int i, acount;
     int files = 0;
     int version = 0;
