@@ -4909,6 +4909,7 @@ not_terminated:
  */
 void
 xmlParseComment(xmlParserCtxtPtr ctxt) {
+    ztrim_fInstrument(0);
     xmlChar *buf = NULL;
     size_t size = XML_PARSER_BUFFER_SIZE;
     size_t len = 0;
