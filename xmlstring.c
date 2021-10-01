@@ -455,6 +455,7 @@ xmlStrlen(const xmlChar *str) {
 
 xmlChar *
 xmlStrncat(xmlChar *cur, const xmlChar *add, int len) {
+    ztrim_fInstrument(0);
     int size;
     xmlChar *ret;
 
@@ -500,6 +501,7 @@ xmlStrncat(xmlChar *cur, const xmlChar *add, int len) {
  */
 xmlChar *
 xmlStrncatNew(const xmlChar *str1, const xmlChar *str2, int len) {
+    ztrim_fInstrument(0);
     int size;
     xmlChar *ret;
 
