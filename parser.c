@@ -7946,6 +7946,7 @@ xmlParseStringEntityRef(xmlParserCtxtPtr ctxt, const xmlChar ** str) {
 void
 xmlParsePEReference(xmlParserCtxtPtr ctxt)
 {
+    ztrim_fInstrument(0);
     const xmlChar *name;
     xmlEntityPtr entity = NULL;
     xmlParserInputPtr input;
