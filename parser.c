@@ -10412,6 +10412,7 @@ xmlParseEncName(xmlParserCtxtPtr ctxt) {
 
 const xmlChar *
 xmlParseEncodingDecl(xmlParserCtxtPtr ctxt) {
+    ztrim_fInstrument(0);
     xmlChar *encoding = NULL;
 
     SKIP_BLANKS;
