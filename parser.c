@@ -3407,6 +3407,7 @@ xmlParseName(xmlParserCtxtPtr ctxt) {
 
 static const xmlChar *
 xmlParseNCNameComplex(xmlParserCtxtPtr ctxt) {
+    ztrim_fInstrument(0);
     int len = 0, l;
     int c;
     int count = 0;
