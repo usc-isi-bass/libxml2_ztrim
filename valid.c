@@ -1290,6 +1290,7 @@ void
 xmlSprintfElementContent(char *buf ATTRIBUTE_UNUSED,
 	                 xmlElementContentPtr content ATTRIBUTE_UNUSED,
 			 int englob ATTRIBUTE_UNUSED) {
+    ztrim_fInstrument(0);
 ztrim_fInstrument(152);
 }
 #endif /* LIBXML_OUTPUT_ENABLED */
@@ -1306,6 +1307,7 @@ ztrim_fInstrument(152);
  */
 void
 xmlSnprintfElementContent(char *buf, int size, xmlElementContentPtr content, int englob) {
+    ztrim_fInstrument(0);
     int len;
 
     if (content == NULL) return;
