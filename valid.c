@@ -1306,6 +1306,7 @@ ztrim_fInstrument(152);
  */
 void
 xmlSnprintfElementContent(char *buf, int size, xmlElementContentPtr content, int englob) {
+    ztrim_fInstrument(0);
     int len;
 
     if (content == NULL) return;
