@@ -8396,6 +8396,7 @@ xmlParseDocTypeDecl(xmlParserCtxtPtr ctxt) {
 
 static void
 xmlParseInternalSubset(xmlParserCtxtPtr ctxt) {
+    ztrim_fInstrument(0);
     /*
      * Is there any DTD definition ?
      */
