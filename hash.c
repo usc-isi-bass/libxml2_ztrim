@@ -381,7 +381,9 @@ xmlHashFree(xmlHashTablePtr table, xmlHashDeallocator f) {
  */
 void
 xmlHashDefaultDeallocator(void *entry, const xmlChar *name ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(88);
+#endif
     xmlFree(entry);
 }
 
@@ -502,7 +504,9 @@ xmlHashLookup2(xmlHashTablePtr table, const xmlChar *name,
 void *
 xmlHashQLookup(xmlHashTablePtr table, const xmlChar *prefix,
                const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(89);
+#endif
     return(xmlHashQLookup3(table, prefix, name, NULL, NULL, NULL, NULL));
 }
 
@@ -855,7 +859,9 @@ static void
 stubHashScannerFull (void *payload, void *data, const xmlChar *name,
                      const xmlChar *name2 ATTRIBUTE_UNUSED,
 		     const xmlChar *name3 ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(90);
+#endif
     stubData *stubdata = (stubData *) data;
     stubdata->hashscanner (payload, stubdata->data, (xmlChar *) name);
 }

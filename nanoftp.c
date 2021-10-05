@@ -228,7 +228,9 @@ xmlNanoFTPInit(void) {
 
 void
 xmlNanoFTPCleanup(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(314);
+#endif
     if (proxy != NULL) {
 	xmlFree(proxy);
 	proxy = NULL;
@@ -264,7 +266,9 @@ ztrim_fInstrument(314);
 void
 xmlNanoFTPProxy(const char *host, int port, const char *user,
 	        const char *passwd, int type) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(315);
+#endif
     if (proxy != NULL) {
 	xmlFree(proxy);
 	proxy = NULL;
@@ -367,7 +371,9 @@ xmlNanoFTPScanURL(void *ctx, const char *URL) {
 
 int
 xmlNanoFTPUpdateURL(void *ctx, const char *URL) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(316);
+#endif
     xmlNanoFTPCtxtPtr ctxt = (xmlNanoFTPCtxtPtr) ctx;
     xmlURIPtr uri;
 
@@ -719,7 +725,9 @@ get_more:
 
 int
 xmlNanoFTPGetResponse(void *ctx) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(317);
+#endif
     int res;
 
     res = xmlNanoFTPReadResponse(ctx);
@@ -1244,7 +1252,9 @@ xmlNanoFTPConnect(void *ctx) {
 
 void*
 xmlNanoFTPConnectTo(const char *server, int port) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(318);
+#endif
     xmlNanoFTPCtxtPtr ctxt;
     int res;
 
@@ -1331,7 +1341,9 @@ xmlNanoFTPCwd(void *ctx, const char *directory) {
 
 int
 xmlNanoFTPDele(void *ctx, const char *file) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(319);
+#endif
     xmlNanoFTPCtxtPtr ctxt = (xmlNanoFTPCtxtPtr) ctx;
     char buf[400];
     int len;
@@ -1735,7 +1747,9 @@ xmlNanoFTPParseList(const char *list, ftpListCallback callback, void *userData) 
 int
 xmlNanoFTPList(void *ctx, ftpListCallback callback, void *userData,
 	       const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(320);
+#endif
     xmlNanoFTPCtxtPtr ctxt = (xmlNanoFTPCtxtPtr) ctx;
     char buf[4096 + 1];
     int len, res;
@@ -1911,7 +1925,9 @@ xmlNanoFTPGetSocket(void *ctx, const char *filename) {
 int
 xmlNanoFTPGet(void *ctx, ftpDataCallback callback, void *userData,
 	      const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(321);
+#endif
     xmlNanoFTPCtxtPtr ctxt = (xmlNanoFTPCtxtPtr) ctx;
     char buf[4096];
     int len = 0, res;

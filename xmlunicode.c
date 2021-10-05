@@ -979,7 +979,9 @@ static xmlIntFunc
  */
 int
 xmlUCSIsAegeanNumbers(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(413);
+#endif
     return(((code >= 0x10100) && (code <= 0x1013F)));
 }
 
@@ -993,7 +995,9 @@ ztrim_fInstrument(413);
  */
 int
 xmlUCSIsAlphabeticPresentationForms(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(414);
+#endif
     return(((code >= 0xFB00) && (code <= 0xFB4F)));
 }
 
@@ -1007,7 +1011,9 @@ ztrim_fInstrument(414);
  */
 int
 xmlUCSIsArabic(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(415);
+#endif
     return(((code >= 0x0600) && (code <= 0x06FF)));
 }
 
@@ -1021,7 +1027,9 @@ ztrim_fInstrument(415);
  */
 int
 xmlUCSIsArabicPresentationFormsA(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(416);
+#endif
     return(((code >= 0xFB50) && (code <= 0xFDFF)));
 }
 
@@ -1035,7 +1043,9 @@ ztrim_fInstrument(416);
  */
 int
 xmlUCSIsArabicPresentationFormsB(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(417);
+#endif
     return(((code >= 0xFE70) && (code <= 0xFEFF)));
 }
 
@@ -1049,7 +1059,9 @@ ztrim_fInstrument(417);
  */
 int
 xmlUCSIsArmenian(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(418);
+#endif
     return(((code >= 0x0530) && (code <= 0x058F)));
 }
 
@@ -1063,7 +1075,9 @@ ztrim_fInstrument(418);
  */
 int
 xmlUCSIsArrows(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(419);
+#endif
     return(((code >= 0x2190) && (code <= 0x21FF)));
 }
 
@@ -1077,7 +1091,9 @@ ztrim_fInstrument(419);
  */
 int
 xmlUCSIsBasicLatin(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(420);
+#endif
     return(((code >= 0x0000) && (code <= 0x007F)));
 }
 
@@ -1091,7 +1107,9 @@ ztrim_fInstrument(420);
  */
 int
 xmlUCSIsBengali(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(421);
+#endif
     return(((code >= 0x0980) && (code <= 0x09FF)));
 }
 
@@ -1105,7 +1123,9 @@ ztrim_fInstrument(421);
  */
 int
 xmlUCSIsBlockElements(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(422);
+#endif
     return(((code >= 0x2580) && (code <= 0x259F)));
 }
 
@@ -1119,7 +1139,9 @@ ztrim_fInstrument(422);
  */
 int
 xmlUCSIsBopomofo(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(423);
+#endif
     return(((code >= 0x3100) && (code <= 0x312F)));
 }
 
@@ -1133,7 +1155,9 @@ ztrim_fInstrument(423);
  */
 int
 xmlUCSIsBopomofoExtended(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(424);
+#endif
     return(((code >= 0x31A0) && (code <= 0x31BF)));
 }
 
@@ -1147,7 +1171,9 @@ ztrim_fInstrument(424);
  */
 int
 xmlUCSIsBoxDrawing(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(425);
+#endif
     return(((code >= 0x2500) && (code <= 0x257F)));
 }
 
@@ -1161,7 +1187,9 @@ ztrim_fInstrument(425);
  */
 int
 xmlUCSIsBraillePatterns(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(426);
+#endif
     return(((code >= 0x2800) && (code <= 0x28FF)));
 }
 
@@ -1175,7 +1203,9 @@ ztrim_fInstrument(426);
  */
 int
 xmlUCSIsBuhid(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(427);
+#endif
     return(((code >= 0x1740) && (code <= 0x175F)));
 }
 
@@ -1189,7 +1219,9 @@ ztrim_fInstrument(427);
  */
 int
 xmlUCSIsByzantineMusicalSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(428);
+#endif
     return(((code >= 0x1D000) && (code <= 0x1D0FF)));
 }
 
@@ -1203,7 +1235,9 @@ ztrim_fInstrument(428);
  */
 int
 xmlUCSIsCJKCompatibility(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(429);
+#endif
     return(((code >= 0x3300) && (code <= 0x33FF)));
 }
 
@@ -1217,7 +1251,9 @@ ztrim_fInstrument(429);
  */
 int
 xmlUCSIsCJKCompatibilityForms(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(430);
+#endif
     return(((code >= 0xFE30) && (code <= 0xFE4F)));
 }
 
@@ -1231,7 +1267,9 @@ ztrim_fInstrument(430);
  */
 int
 xmlUCSIsCJKCompatibilityIdeographs(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(431);
+#endif
     return(((code >= 0xF900) && (code <= 0xFAFF)));
 }
 
@@ -1245,7 +1283,9 @@ ztrim_fInstrument(431);
  */
 int
 xmlUCSIsCJKCompatibilityIdeographsSupplement(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(432);
+#endif
     return(((code >= 0x2F800) && (code <= 0x2FA1F)));
 }
 
@@ -1259,7 +1299,9 @@ ztrim_fInstrument(432);
  */
 int
 xmlUCSIsCJKRadicalsSupplement(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(433);
+#endif
     return(((code >= 0x2E80) && (code <= 0x2EFF)));
 }
 
@@ -1273,7 +1315,9 @@ ztrim_fInstrument(433);
  */
 int
 xmlUCSIsCJKSymbolsandPunctuation(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(434);
+#endif
     return(((code >= 0x3000) && (code <= 0x303F)));
 }
 
@@ -1287,7 +1331,9 @@ ztrim_fInstrument(434);
  */
 int
 xmlUCSIsCJKUnifiedIdeographs(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(435);
+#endif
     return(((code >= 0x4E00) && (code <= 0x9FFF)));
 }
 
@@ -1301,7 +1347,9 @@ ztrim_fInstrument(435);
  */
 int
 xmlUCSIsCJKUnifiedIdeographsExtensionA(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(436);
+#endif
     return(((code >= 0x3400) && (code <= 0x4DBF)));
 }
 
@@ -1315,7 +1363,9 @@ ztrim_fInstrument(436);
  */
 int
 xmlUCSIsCJKUnifiedIdeographsExtensionB(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(437);
+#endif
     return(((code >= 0x20000) && (code <= 0x2A6DF)));
 }
 
@@ -1329,7 +1379,9 @@ ztrim_fInstrument(437);
  */
 int
 xmlUCSIsCherokee(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(438);
+#endif
     return(((code >= 0x13A0) && (code <= 0x13FF)));
 }
 
@@ -1343,7 +1395,9 @@ ztrim_fInstrument(438);
  */
 int
 xmlUCSIsCombiningDiacriticalMarks(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(439);
+#endif
     return(((code >= 0x0300) && (code <= 0x036F)));
 }
 
@@ -1357,7 +1411,9 @@ ztrim_fInstrument(439);
  */
 int
 xmlUCSIsCombiningDiacriticalMarksforSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(440);
+#endif
     return(((code >= 0x20D0) && (code <= 0x20FF)));
 }
 
@@ -1371,7 +1427,9 @@ ztrim_fInstrument(440);
  */
 int
 xmlUCSIsCombiningHalfMarks(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(441);
+#endif
     return(((code >= 0xFE20) && (code <= 0xFE2F)));
 }
 
@@ -1385,7 +1443,9 @@ ztrim_fInstrument(441);
  */
 int
 xmlUCSIsCombiningMarksforSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(442);
+#endif
     return(((code >= 0x20D0) && (code <= 0x20FF)));
 }
 
@@ -1399,7 +1459,9 @@ ztrim_fInstrument(442);
  */
 int
 xmlUCSIsControlPictures(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(443);
+#endif
     return(((code >= 0x2400) && (code <= 0x243F)));
 }
 
@@ -1413,7 +1475,9 @@ ztrim_fInstrument(443);
  */
 int
 xmlUCSIsCurrencySymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(444);
+#endif
     return(((code >= 0x20A0) && (code <= 0x20CF)));
 }
 
@@ -1427,7 +1491,9 @@ ztrim_fInstrument(444);
  */
 int
 xmlUCSIsCypriotSyllabary(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(445);
+#endif
     return(((code >= 0x10800) && (code <= 0x1083F)));
 }
 
@@ -1441,7 +1507,9 @@ ztrim_fInstrument(445);
  */
 int
 xmlUCSIsCyrillic(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(446);
+#endif
     return(((code >= 0x0400) && (code <= 0x04FF)));
 }
 
@@ -1455,7 +1523,9 @@ ztrim_fInstrument(446);
  */
 int
 xmlUCSIsCyrillicSupplement(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(447);
+#endif
     return(((code >= 0x0500) && (code <= 0x052F)));
 }
 
@@ -1469,7 +1539,9 @@ ztrim_fInstrument(447);
  */
 int
 xmlUCSIsDeseret(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(448);
+#endif
     return(((code >= 0x10400) && (code <= 0x1044F)));
 }
 
@@ -1483,7 +1555,9 @@ ztrim_fInstrument(448);
  */
 int
 xmlUCSIsDevanagari(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(449);
+#endif
     return(((code >= 0x0900) && (code <= 0x097F)));
 }
 
@@ -1497,7 +1571,9 @@ ztrim_fInstrument(449);
  */
 int
 xmlUCSIsDingbats(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(450);
+#endif
     return(((code >= 0x2700) && (code <= 0x27BF)));
 }
 
@@ -1511,7 +1587,9 @@ ztrim_fInstrument(450);
  */
 int
 xmlUCSIsEnclosedAlphanumerics(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(451);
+#endif
     return(((code >= 0x2460) && (code <= 0x24FF)));
 }
 
@@ -1525,7 +1603,9 @@ ztrim_fInstrument(451);
  */
 int
 xmlUCSIsEnclosedCJKLettersandMonths(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(452);
+#endif
     return(((code >= 0x3200) && (code <= 0x32FF)));
 }
 
@@ -1539,7 +1619,9 @@ ztrim_fInstrument(452);
  */
 int
 xmlUCSIsEthiopic(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(453);
+#endif
     return(((code >= 0x1200) && (code <= 0x137F)));
 }
 
@@ -1553,7 +1635,9 @@ ztrim_fInstrument(453);
  */
 int
 xmlUCSIsGeneralPunctuation(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(454);
+#endif
     return(((code >= 0x2000) && (code <= 0x206F)));
 }
 
@@ -1567,7 +1651,9 @@ ztrim_fInstrument(454);
  */
 int
 xmlUCSIsGeometricShapes(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(455);
+#endif
     return(((code >= 0x25A0) && (code <= 0x25FF)));
 }
 
@@ -1581,7 +1667,9 @@ ztrim_fInstrument(455);
  */
 int
 xmlUCSIsGeorgian(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(456);
+#endif
     return(((code >= 0x10A0) && (code <= 0x10FF)));
 }
 
@@ -1595,7 +1683,9 @@ ztrim_fInstrument(456);
  */
 int
 xmlUCSIsGothic(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(457);
+#endif
     return(((code >= 0x10330) && (code <= 0x1034F)));
 }
 
@@ -1609,7 +1699,9 @@ ztrim_fInstrument(457);
  */
 int
 xmlUCSIsGreek(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(458);
+#endif
     return(((code >= 0x0370) && (code <= 0x03FF)));
 }
 
@@ -1623,7 +1715,9 @@ ztrim_fInstrument(458);
  */
 int
 xmlUCSIsGreekExtended(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(459);
+#endif
     return(((code >= 0x1F00) && (code <= 0x1FFF)));
 }
 
@@ -1637,7 +1731,9 @@ ztrim_fInstrument(459);
  */
 int
 xmlUCSIsGreekandCoptic(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(460);
+#endif
     return(((code >= 0x0370) && (code <= 0x03FF)));
 }
 
@@ -1651,7 +1747,9 @@ ztrim_fInstrument(460);
  */
 int
 xmlUCSIsGujarati(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(461);
+#endif
     return(((code >= 0x0A80) && (code <= 0x0AFF)));
 }
 
@@ -1665,7 +1763,9 @@ ztrim_fInstrument(461);
  */
 int
 xmlUCSIsGurmukhi(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(462);
+#endif
     return(((code >= 0x0A00) && (code <= 0x0A7F)));
 }
 
@@ -1679,7 +1779,9 @@ ztrim_fInstrument(462);
  */
 int
 xmlUCSIsHalfwidthandFullwidthForms(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(463);
+#endif
     return(((code >= 0xFF00) && (code <= 0xFFEF)));
 }
 
@@ -1693,7 +1795,9 @@ ztrim_fInstrument(463);
  */
 int
 xmlUCSIsHangulCompatibilityJamo(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(464);
+#endif
     return(((code >= 0x3130) && (code <= 0x318F)));
 }
 
@@ -1707,7 +1811,9 @@ ztrim_fInstrument(464);
  */
 int
 xmlUCSIsHangulJamo(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(465);
+#endif
     return(((code >= 0x1100) && (code <= 0x11FF)));
 }
 
@@ -1721,7 +1827,9 @@ ztrim_fInstrument(465);
  */
 int
 xmlUCSIsHangulSyllables(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(466);
+#endif
     return(((code >= 0xAC00) && (code <= 0xD7AF)));
 }
 
@@ -1735,7 +1843,9 @@ ztrim_fInstrument(466);
  */
 int
 xmlUCSIsHanunoo(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(467);
+#endif
     return(((code >= 0x1720) && (code <= 0x173F)));
 }
 
@@ -1749,7 +1859,9 @@ ztrim_fInstrument(467);
  */
 int
 xmlUCSIsHebrew(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(468);
+#endif
     return(((code >= 0x0590) && (code <= 0x05FF)));
 }
 
@@ -1763,7 +1875,9 @@ ztrim_fInstrument(468);
  */
 int
 xmlUCSIsHighPrivateUseSurrogates(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(469);
+#endif
     return(((code >= 0xDB80) && (code <= 0xDBFF)));
 }
 
@@ -1777,7 +1891,9 @@ ztrim_fInstrument(469);
  */
 int
 xmlUCSIsHighSurrogates(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(470);
+#endif
     return(((code >= 0xD800) && (code <= 0xDB7F)));
 }
 
@@ -1791,7 +1907,9 @@ ztrim_fInstrument(470);
  */
 int
 xmlUCSIsHiragana(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(471);
+#endif
     return(((code >= 0x3040) && (code <= 0x309F)));
 }
 
@@ -1805,7 +1923,9 @@ ztrim_fInstrument(471);
  */
 int
 xmlUCSIsIPAExtensions(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(472);
+#endif
     return(((code >= 0x0250) && (code <= 0x02AF)));
 }
 
@@ -1819,7 +1939,9 @@ ztrim_fInstrument(472);
  */
 int
 xmlUCSIsIdeographicDescriptionCharacters(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(473);
+#endif
     return(((code >= 0x2FF0) && (code <= 0x2FFF)));
 }
 
@@ -1833,7 +1955,9 @@ ztrim_fInstrument(473);
  */
 int
 xmlUCSIsKanbun(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(474);
+#endif
     return(((code >= 0x3190) && (code <= 0x319F)));
 }
 
@@ -1847,7 +1971,9 @@ ztrim_fInstrument(474);
  */
 int
 xmlUCSIsKangxiRadicals(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(475);
+#endif
     return(((code >= 0x2F00) && (code <= 0x2FDF)));
 }
 
@@ -1861,7 +1987,9 @@ ztrim_fInstrument(475);
  */
 int
 xmlUCSIsKannada(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(476);
+#endif
     return(((code >= 0x0C80) && (code <= 0x0CFF)));
 }
 
@@ -1875,7 +2003,9 @@ ztrim_fInstrument(476);
  */
 int
 xmlUCSIsKatakana(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(477);
+#endif
     return(((code >= 0x30A0) && (code <= 0x30FF)));
 }
 
@@ -1889,7 +2019,9 @@ ztrim_fInstrument(477);
  */
 int
 xmlUCSIsKatakanaPhoneticExtensions(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(478);
+#endif
     return(((code >= 0x31F0) && (code <= 0x31FF)));
 }
 
@@ -1903,7 +2035,9 @@ ztrim_fInstrument(478);
  */
 int
 xmlUCSIsKhmer(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(479);
+#endif
     return(((code >= 0x1780) && (code <= 0x17FF)));
 }
 
@@ -1917,7 +2051,9 @@ ztrim_fInstrument(479);
  */
 int
 xmlUCSIsKhmerSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(480);
+#endif
     return(((code >= 0x19E0) && (code <= 0x19FF)));
 }
 
@@ -1931,7 +2067,9 @@ ztrim_fInstrument(480);
  */
 int
 xmlUCSIsLao(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(481);
+#endif
     return(((code >= 0x0E80) && (code <= 0x0EFF)));
 }
 
@@ -1945,7 +2083,9 @@ ztrim_fInstrument(481);
  */
 int
 xmlUCSIsLatin1Supplement(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(482);
+#endif
     return(((code >= 0x0080) && (code <= 0x00FF)));
 }
 
@@ -1959,7 +2099,9 @@ ztrim_fInstrument(482);
  */
 int
 xmlUCSIsLatinExtendedA(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(483);
+#endif
     return(((code >= 0x0100) && (code <= 0x017F)));
 }
 
@@ -1973,7 +2115,9 @@ ztrim_fInstrument(483);
  */
 int
 xmlUCSIsLatinExtendedB(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(484);
+#endif
     return(((code >= 0x0180) && (code <= 0x024F)));
 }
 
@@ -1987,7 +2131,9 @@ ztrim_fInstrument(484);
  */
 int
 xmlUCSIsLatinExtendedAdditional(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(485);
+#endif
     return(((code >= 0x1E00) && (code <= 0x1EFF)));
 }
 
@@ -2001,7 +2147,9 @@ ztrim_fInstrument(485);
  */
 int
 xmlUCSIsLetterlikeSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(486);
+#endif
     return(((code >= 0x2100) && (code <= 0x214F)));
 }
 
@@ -2015,7 +2163,9 @@ ztrim_fInstrument(486);
  */
 int
 xmlUCSIsLimbu(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(487);
+#endif
     return(((code >= 0x1900) && (code <= 0x194F)));
 }
 
@@ -2029,7 +2179,9 @@ ztrim_fInstrument(487);
  */
 int
 xmlUCSIsLinearBIdeograms(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(488);
+#endif
     return(((code >= 0x10080) && (code <= 0x100FF)));
 }
 
@@ -2043,7 +2195,9 @@ ztrim_fInstrument(488);
  */
 int
 xmlUCSIsLinearBSyllabary(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(489);
+#endif
     return(((code >= 0x10000) && (code <= 0x1007F)));
 }
 
@@ -2057,7 +2211,9 @@ ztrim_fInstrument(489);
  */
 int
 xmlUCSIsLowSurrogates(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(490);
+#endif
     return(((code >= 0xDC00) && (code <= 0xDFFF)));
 }
 
@@ -2071,7 +2227,9 @@ ztrim_fInstrument(490);
  */
 int
 xmlUCSIsMalayalam(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(491);
+#endif
     return(((code >= 0x0D00) && (code <= 0x0D7F)));
 }
 
@@ -2085,7 +2243,9 @@ ztrim_fInstrument(491);
  */
 int
 xmlUCSIsMathematicalAlphanumericSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(492);
+#endif
     return(((code >= 0x1D400) && (code <= 0x1D7FF)));
 }
 
@@ -2099,7 +2259,9 @@ ztrim_fInstrument(492);
  */
 int
 xmlUCSIsMathematicalOperators(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(493);
+#endif
     return(((code >= 0x2200) && (code <= 0x22FF)));
 }
 
@@ -2113,7 +2275,9 @@ ztrim_fInstrument(493);
  */
 int
 xmlUCSIsMiscellaneousMathematicalSymbolsA(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(494);
+#endif
     return(((code >= 0x27C0) && (code <= 0x27EF)));
 }
 
@@ -2127,7 +2291,9 @@ ztrim_fInstrument(494);
  */
 int
 xmlUCSIsMiscellaneousMathematicalSymbolsB(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(495);
+#endif
     return(((code >= 0x2980) && (code <= 0x29FF)));
 }
 
@@ -2141,7 +2307,9 @@ ztrim_fInstrument(495);
  */
 int
 xmlUCSIsMiscellaneousSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(496);
+#endif
     return(((code >= 0x2600) && (code <= 0x26FF)));
 }
 
@@ -2155,7 +2323,9 @@ ztrim_fInstrument(496);
  */
 int
 xmlUCSIsMiscellaneousSymbolsandArrows(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(497);
+#endif
     return(((code >= 0x2B00) && (code <= 0x2BFF)));
 }
 
@@ -2169,7 +2339,9 @@ ztrim_fInstrument(497);
  */
 int
 xmlUCSIsMiscellaneousTechnical(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(498);
+#endif
     return(((code >= 0x2300) && (code <= 0x23FF)));
 }
 
@@ -2183,7 +2355,9 @@ ztrim_fInstrument(498);
  */
 int
 xmlUCSIsMongolian(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(499);
+#endif
     return(((code >= 0x1800) && (code <= 0x18AF)));
 }
 
@@ -2197,7 +2371,9 @@ ztrim_fInstrument(499);
  */
 int
 xmlUCSIsMusicalSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(500);
+#endif
     return(((code >= 0x1D100) && (code <= 0x1D1FF)));
 }
 
@@ -2211,7 +2387,9 @@ ztrim_fInstrument(500);
  */
 int
 xmlUCSIsMyanmar(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(501);
+#endif
     return(((code >= 0x1000) && (code <= 0x109F)));
 }
 
@@ -2225,7 +2403,9 @@ ztrim_fInstrument(501);
  */
 int
 xmlUCSIsNumberForms(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(502);
+#endif
     return(((code >= 0x2150) && (code <= 0x218F)));
 }
 
@@ -2239,7 +2419,9 @@ ztrim_fInstrument(502);
  */
 int
 xmlUCSIsOgham(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(503);
+#endif
     return(((code >= 0x1680) && (code <= 0x169F)));
 }
 
@@ -2253,7 +2435,9 @@ ztrim_fInstrument(503);
  */
 int
 xmlUCSIsOldItalic(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(504);
+#endif
     return(((code >= 0x10300) && (code <= 0x1032F)));
 }
 
@@ -2267,7 +2451,9 @@ ztrim_fInstrument(504);
  */
 int
 xmlUCSIsOpticalCharacterRecognition(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(505);
+#endif
     return(((code >= 0x2440) && (code <= 0x245F)));
 }
 
@@ -2281,7 +2467,9 @@ ztrim_fInstrument(505);
  */
 int
 xmlUCSIsOriya(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(506);
+#endif
     return(((code >= 0x0B00) && (code <= 0x0B7F)));
 }
 
@@ -2295,7 +2483,9 @@ ztrim_fInstrument(506);
  */
 int
 xmlUCSIsOsmanya(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(507);
+#endif
     return(((code >= 0x10480) && (code <= 0x104AF)));
 }
 
@@ -2309,7 +2499,9 @@ ztrim_fInstrument(507);
  */
 int
 xmlUCSIsPhoneticExtensions(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(508);
+#endif
     return(((code >= 0x1D00) && (code <= 0x1D7F)));
 }
 
@@ -2323,7 +2515,9 @@ ztrim_fInstrument(508);
  */
 int
 xmlUCSIsPrivateUse(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(509);
+#endif
     return(((code >= 0xE000) && (code <= 0xF8FF)) ||
            ((code >= 0xF0000) && (code <= 0xFFFFF)) ||
            ((code >= 0x100000) && (code <= 0x10FFFF)));
@@ -2339,7 +2533,9 @@ ztrim_fInstrument(509);
  */
 int
 xmlUCSIsPrivateUseArea(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(510);
+#endif
     return(((code >= 0xE000) && (code <= 0xF8FF)));
 }
 
@@ -2353,7 +2549,9 @@ ztrim_fInstrument(510);
  */
 int
 xmlUCSIsRunic(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(511);
+#endif
     return(((code >= 0x16A0) && (code <= 0x16FF)));
 }
 
@@ -2367,7 +2565,9 @@ ztrim_fInstrument(511);
  */
 int
 xmlUCSIsShavian(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(512);
+#endif
     return(((code >= 0x10450) && (code <= 0x1047F)));
 }
 
@@ -2381,7 +2581,9 @@ ztrim_fInstrument(512);
  */
 int
 xmlUCSIsSinhala(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(513);
+#endif
     return(((code >= 0x0D80) && (code <= 0x0DFF)));
 }
 
@@ -2395,7 +2597,9 @@ ztrim_fInstrument(513);
  */
 int
 xmlUCSIsSmallFormVariants(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(514);
+#endif
     return(((code >= 0xFE50) && (code <= 0xFE6F)));
 }
 
@@ -2409,7 +2613,9 @@ ztrim_fInstrument(514);
  */
 int
 xmlUCSIsSpacingModifierLetters(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(515);
+#endif
     return(((code >= 0x02B0) && (code <= 0x02FF)));
 }
 
@@ -2423,7 +2629,9 @@ ztrim_fInstrument(515);
  */
 int
 xmlUCSIsSpecials(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(516);
+#endif
     return(((code >= 0xFFF0) && (code <= 0xFFFF)));
 }
 
@@ -2437,7 +2645,9 @@ ztrim_fInstrument(516);
  */
 int
 xmlUCSIsSuperscriptsandSubscripts(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(517);
+#endif
     return(((code >= 0x2070) && (code <= 0x209F)));
 }
 
@@ -2451,7 +2661,9 @@ ztrim_fInstrument(517);
  */
 int
 xmlUCSIsSupplementalArrowsA(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(518);
+#endif
     return(((code >= 0x27F0) && (code <= 0x27FF)));
 }
 
@@ -2465,7 +2677,9 @@ ztrim_fInstrument(518);
  */
 int
 xmlUCSIsSupplementalArrowsB(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(519);
+#endif
     return(((code >= 0x2900) && (code <= 0x297F)));
 }
 
@@ -2479,7 +2693,9 @@ ztrim_fInstrument(519);
  */
 int
 xmlUCSIsSupplementalMathematicalOperators(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(520);
+#endif
     return(((code >= 0x2A00) && (code <= 0x2AFF)));
 }
 
@@ -2493,7 +2709,9 @@ ztrim_fInstrument(520);
  */
 int
 xmlUCSIsSupplementaryPrivateUseAreaA(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(521);
+#endif
     return(((code >= 0xF0000) && (code <= 0xFFFFF)));
 }
 
@@ -2507,7 +2725,9 @@ ztrim_fInstrument(521);
  */
 int
 xmlUCSIsSupplementaryPrivateUseAreaB(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(522);
+#endif
     return(((code >= 0x100000) && (code <= 0x10FFFF)));
 }
 
@@ -2521,7 +2741,9 @@ ztrim_fInstrument(522);
  */
 int
 xmlUCSIsSyriac(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(523);
+#endif
     return(((code >= 0x0700) && (code <= 0x074F)));
 }
 
@@ -2535,7 +2757,9 @@ ztrim_fInstrument(523);
  */
 int
 xmlUCSIsTagalog(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(524);
+#endif
     return(((code >= 0x1700) && (code <= 0x171F)));
 }
 
@@ -2549,7 +2773,9 @@ ztrim_fInstrument(524);
  */
 int
 xmlUCSIsTagbanwa(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(525);
+#endif
     return(((code >= 0x1760) && (code <= 0x177F)));
 }
 
@@ -2563,7 +2789,9 @@ ztrim_fInstrument(525);
  */
 int
 xmlUCSIsTags(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(526);
+#endif
     return(((code >= 0xE0000) && (code <= 0xE007F)));
 }
 
@@ -2577,7 +2805,9 @@ ztrim_fInstrument(526);
  */
 int
 xmlUCSIsTaiLe(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(527);
+#endif
     return(((code >= 0x1950) && (code <= 0x197F)));
 }
 
@@ -2591,7 +2821,9 @@ ztrim_fInstrument(527);
  */
 int
 xmlUCSIsTaiXuanJingSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(528);
+#endif
     return(((code >= 0x1D300) && (code <= 0x1D35F)));
 }
 
@@ -2605,7 +2837,9 @@ ztrim_fInstrument(528);
  */
 int
 xmlUCSIsTamil(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(529);
+#endif
     return(((code >= 0x0B80) && (code <= 0x0BFF)));
 }
 
@@ -2619,7 +2853,9 @@ ztrim_fInstrument(529);
  */
 int
 xmlUCSIsTelugu(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(530);
+#endif
     return(((code >= 0x0C00) && (code <= 0x0C7F)));
 }
 
@@ -2633,7 +2869,9 @@ ztrim_fInstrument(530);
  */
 int
 xmlUCSIsThaana(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(531);
+#endif
     return(((code >= 0x0780) && (code <= 0x07BF)));
 }
 
@@ -2647,7 +2885,9 @@ ztrim_fInstrument(531);
  */
 int
 xmlUCSIsThai(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(532);
+#endif
     return(((code >= 0x0E00) && (code <= 0x0E7F)));
 }
 
@@ -2661,7 +2901,9 @@ ztrim_fInstrument(532);
  */
 int
 xmlUCSIsTibetan(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(533);
+#endif
     return(((code >= 0x0F00) && (code <= 0x0FFF)));
 }
 
@@ -2675,7 +2917,9 @@ ztrim_fInstrument(533);
  */
 int
 xmlUCSIsUgaritic(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(534);
+#endif
     return(((code >= 0x10380) && (code <= 0x1039F)));
 }
 
@@ -2689,7 +2933,9 @@ ztrim_fInstrument(534);
  */
 int
 xmlUCSIsUnifiedCanadianAboriginalSyllabics(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(535);
+#endif
     return(((code >= 0x1400) && (code <= 0x167F)));
 }
 
@@ -2703,7 +2949,9 @@ ztrim_fInstrument(535);
  */
 int
 xmlUCSIsVariationSelectors(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(536);
+#endif
     return(((code >= 0xFE00) && (code <= 0xFE0F)));
 }
 
@@ -2717,7 +2965,9 @@ ztrim_fInstrument(536);
  */
 int
 xmlUCSIsVariationSelectorsSupplement(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(537);
+#endif
     return(((code >= 0xE0100) && (code <= 0xE01EF)));
 }
 
@@ -2731,7 +2981,9 @@ ztrim_fInstrument(537);
  */
 int
 xmlUCSIsYiRadicals(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(538);
+#endif
     return(((code >= 0xA490) && (code <= 0xA4CF)));
 }
 
@@ -2745,7 +2997,9 @@ ztrim_fInstrument(538);
  */
 int
 xmlUCSIsYiSyllables(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(539);
+#endif
     return(((code >= 0xA000) && (code <= 0xA48F)));
 }
 
@@ -2759,7 +3013,9 @@ ztrim_fInstrument(539);
  */
 int
 xmlUCSIsYijingHexagramSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(540);
+#endif
     return(((code >= 0x4DC0) && (code <= 0x4DFF)));
 }
 
@@ -2850,7 +3106,9 @@ xmlUCSIsCatCo(int code) {
  */
 int
 xmlUCSIsCatCs(int code) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(541);
+#endif
     return((code == 0xd800) ||
            ((code >= 0xdb7f) && (code <= 0xdb80)) ||
            ((code >= 0xdbff) && (code <= 0xdc00)) ||
@@ -3300,7 +3558,9 @@ xmlUCSIsCatZs(int code) {
  */
 int
 xmlUCSIsCat(int code, const char *cat) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(542);
+#endif
     xmlIntFunc *func;
 
     func = xmlUnicodeLookup(&xmlUnicodeCatTbl, cat);
