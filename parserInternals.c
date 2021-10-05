@@ -80,7 +80,9 @@
  */
 void
 xmlCheckVersion(int version) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(650);
+#endif
     int myversion = (int) LIBXML_VERSION;
 
     xmlInitParser();
@@ -233,7 +235,9 @@ xmlErrEncodingInt(xmlParserCtxtPtr ctxt, xmlParserErrors error,
  */
 int
 xmlIsLetter(int c) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(651);
+#endif
     return(IS_BASECHAR(c) || IS_IDEOGRAPHIC(c));
 }
 
@@ -289,7 +293,9 @@ void check_buffer(xmlParserInputPtr in) {
  */
 int
 xmlParserInputRead(xmlParserInputPtr in ATTRIBUTE_UNUSED, int len ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(652);
+#endif
     return(-1);
 }
 
@@ -1277,7 +1283,9 @@ xmlSwitchInputEncodingInt(xmlParserCtxtPtr ctxt, xmlParserInputPtr input,
 int
 xmlSwitchInputEncoding(xmlParserCtxtPtr ctxt, xmlParserInputPtr input,
                           xmlCharEncodingHandlerPtr handler) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(653);
+#endif
     return(xmlSwitchInputEncodingInt(ctxt, input, handler, -1));
 }
 
@@ -1918,7 +1926,9 @@ xmlClearParserCtxt(xmlParserCtxtPtr ctxt)
 const xmlParserNodeInfo *
 xmlParserFindNodeInfo(const xmlParserCtxtPtr ctx, const xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(655);
+#endif
     unsigned long pos;
 
     if ((ctx == NULL) || (node == NULL))
@@ -1959,7 +1969,9 @@ xmlInitNodeInfoSeq(xmlParserNodeInfoSeqPtr seq)
 void
 xmlClearNodeInfoSeq(xmlParserNodeInfoSeqPtr seq)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(654);
+#endif
     if (seq == NULL)
         return;
     if (seq->buffer != NULL)
@@ -2092,7 +2104,9 @@ xmlParserAddNodeInfo(xmlParserCtxtPtr ctxt,
 
 int
 xmlPedanticParserDefault(int val) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(656);
+#endif
     int old = xmlPedanticParserDefaultValue;
 
     xmlPedanticParserDefaultValue = val;
@@ -2111,7 +2125,9 @@ ztrim_fInstrument(656);
 
 int
 xmlLineNumbersDefault(int val) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(657);
+#endif
     int old = xmlLineNumbersDefaultValue;
 
     xmlLineNumbersDefaultValue = val;
@@ -2134,7 +2150,9 @@ ztrim_fInstrument(657);
 
 int
 xmlSubstituteEntitiesDefault(int val) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(658);
+#endif
     int old = xmlSubstituteEntitiesDefaultValue;
 
     xmlSubstituteEntitiesDefaultValue = val;
@@ -2167,7 +2185,9 @@ ztrim_fInstrument(658);
 
 int
 xmlKeepBlanksDefault(int val) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(659);
+#endif
     int old = xmlKeepBlanksDefaultValue;
 
     xmlKeepBlanksDefaultValue = val;

@@ -137,7 +137,9 @@ xmlSetGenericErrorFunc(void *ctx, xmlGenericErrorFunc handler) {
  */
 void
 xmlSetStructuredErrorFunc(void *ctx, xmlStructuredErrorFunc handler) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(1);
+#endif
     xmlStructuredErrorContext = ctx;
     xmlStructuredError = handler;
 }
@@ -157,7 +159,9 @@ ztrim_fInstrument(1);
 
 void
 xmlParserPrintFileInfo(xmlParserInputPtr input) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(2);
+#endif
     if (input != NULL) {
 	if (input->filename)
 	    xmlGenericError(xmlGenericErrorContext,
@@ -235,7 +239,9 @@ xmlParserPrintFileContextInternal(xmlParserInputPtr input ,
  */
 void
 xmlParserPrintFileContext(xmlParserInputPtr input) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(3);
+#endif
    xmlParserPrintFileContextInternal(input, xmlGenericError,
                                      xmlGenericErrorContext);
 }
@@ -688,7 +694,9 @@ __xmlSimpleError(int domain, int code, xmlNodePtr node,
 void XMLCDECL
 xmlParserError(void *ctx, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(4);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlParserInputPtr input = NULL;
     xmlParserInputPtr cur = NULL;
@@ -732,7 +740,9 @@ ztrim_fInstrument(4);
 void XMLCDECL
 xmlParserWarning(void *ctx, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(5);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlParserInputPtr input = NULL;
     xmlParserInputPtr cur = NULL;
@@ -782,7 +792,9 @@ ztrim_fInstrument(5);
 void XMLCDECL
 xmlParserValidityError(void *ctx, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(6);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlParserInputPtr input = NULL;
     char * str;
@@ -827,7 +839,9 @@ ztrim_fInstrument(6);
 void XMLCDECL
 xmlParserValidityWarning(void *ctx, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(7);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlParserInputPtr input = NULL;
     char * str;
@@ -927,7 +941,9 @@ xmlResetLastError(void)
 xmlErrorPtr
 xmlCtxtGetLastError(void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(8);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
 
     if (ctxt == NULL)
@@ -947,7 +963,9 @@ ztrim_fInstrument(8);
 void
 xmlCtxtResetLastError(void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(9);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
 
     if (ctxt == NULL)

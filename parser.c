@@ -889,7 +889,9 @@ xmlNsWarn(xmlParserCtxtPtr ctxt, xmlParserErrors error,
 int
 xmlHasFeature(xmlFeature feature)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(10);
+#endif
     switch (feature) {
 	case XML_WITH_THREAD:
 #ifdef LIBXML_THREAD_ENABLED
@@ -1395,7 +1397,9 @@ static void
 xmlCleanSpecialAttrCallback(void *payload, void *data,
                             const xmlChar *fullname, const xmlChar *fullattr,
                             const xmlChar *unused ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(45);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) data;
 
     if (((ptrdiff_t) payload) == XML_ATTRIBUTE_CDATA) {
@@ -1965,7 +1969,9 @@ nameNsPop(xmlParserCtxtPtr ctxt)
 int
 namePush(xmlParserCtxtPtr ctxt, const xmlChar * value)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(11);
+#endif
     if (ctxt == NULL) return (-1);
 
     if (ctxt->nameNr >= ctxt->nameMax) {
@@ -2559,7 +2565,9 @@ xmlParseStringCharRef(xmlParserCtxtPtr ctxt, const xmlChar **str) {
  */
 void
 xmlParserHandlePEReference(xmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(12);
+#endif
     switch(ctxt->instate) {
 	case XML_PARSER_CDATA_SECTION:
 	    return;
@@ -3407,7 +3415,9 @@ xmlParseName(xmlParserCtxtPtr ctxt) {
 
 static const xmlChar *
 xmlParseNCNameComplex(xmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
     ztrim_fInstrument(0);
+#endif
     int len = 0, l;
     int c;
     int count = 0;
@@ -4211,7 +4221,9 @@ error:
 
 xmlChar *
 xmlParseAttValue(xmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(13);
+#endif
     if ((ctxt == NULL) || (ctxt->input == NULL)) return(NULL);
     return(xmlParseAttValueInternal(ctxt, NULL, NULL, 0));
 }
@@ -6567,7 +6579,9 @@ xmlParseElementChildrenContentDeclPriv(xmlParserCtxtPtr ctxt, int inputchk,
  */
 xmlElementContentPtr
 xmlParseElementChildrenContentDecl(xmlParserCtxtPtr ctxt, int inputchk) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(14);
+#endif
     /* stub left for API/ABI compat */
     return(xmlParseElementChildrenContentDeclPriv(ctxt, inputchk, 1));
 }
@@ -8791,7 +8805,9 @@ xmlParseEndTag1(xmlParserCtxtPtr ctxt, int line) {
 
 void
 xmlParseEndTag(xmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(15);
+#endif
     xmlParseEndTag1(ctxt, 0);
 }
 #endif /* LIBXML_SAX1_ENABLED */
@@ -12678,7 +12694,9 @@ xmlParserCtxtPtr
 xmlCreateIOParserCtxt(xmlSAXHandlerPtr sax, void *user_data,
 	xmlInputReadCallback   ioread, xmlInputCloseCallback  ioclose,
 	void *ioctx, xmlCharEncoding enc) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(16);
+#endif
     xmlParserCtxtPtr ctxt;
     xmlParserInputPtr inputStream;
     xmlParserInputBufferPtr buf;
@@ -12749,7 +12767,9 @@ ztrim_fInstrument(16);
 xmlDtdPtr
 xmlIOParseDTD(xmlSAXHandlerPtr sax, xmlParserInputBufferPtr input,
 	      xmlCharEncoding enc) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(17);
+#endif
     xmlDtdPtr ret = NULL;
     xmlParserCtxtPtr ctxt;
     xmlParserInputPtr pinput = NULL;
@@ -13041,7 +13061,9 @@ xmlParseDTD(const xmlChar *ExternalID, const xmlChar *SystemID) {
 int
 xmlParseCtxtExternalEntity(xmlParserCtxtPtr ctx, const xmlChar *URL,
 	               const xmlChar *ID, xmlNodePtr *lst) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(18);
+#endif
     void *userData;
 
     if (ctx == NULL) return(-1);
@@ -13321,7 +13343,9 @@ xmlParseExternalEntityPrivate(xmlDocPtr doc, xmlParserCtxtPtr oldctxt,
 int
 xmlParseExternalEntity(xmlDocPtr doc, xmlSAXHandlerPtr sax, void *user_data,
 	  int depth, const xmlChar *URL, const xmlChar *ID, xmlNodePtr *lst) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(19);
+#endif
     return(xmlParseExternalEntityPrivate(doc, NULL, sax, user_data, depth, URL,
 		                       ID, lst));
 }
@@ -13349,7 +13373,9 @@ ztrim_fInstrument(19);
 int
 xmlParseBalancedChunkMemory(xmlDocPtr doc, xmlSAXHandlerPtr sax,
      void *user_data, int depth, const xmlChar *string, xmlNodePtr *lst) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(20);
+#endif
     return xmlParseBalancedChunkMemoryRecover( doc, sax, user_data,
                                                 depth, string, lst, 0 );
 }
@@ -14010,7 +14036,9 @@ xmlSAXParseEntity(xmlSAXHandlerPtr sax, const char *filename) {
 
 xmlDocPtr
 xmlParseEntity(const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(22);
+#endif
     return(xmlSAXParseEntity(NULL, filename));
 }
 #endif /* LIBXML_SAX1_ENABLED */
@@ -14104,7 +14132,9 @@ xmlCreateEntityParserCtxtInternal(const xmlChar *URL, const xmlChar *ID,
 xmlParserCtxtPtr
 xmlCreateEntityParserCtxt(const xmlChar *URL, const xmlChar *ID,
 	                  const xmlChar *base) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(23);
+#endif
     return xmlCreateEntityParserCtxtInternal(URL, ID, base, NULL);
 
 }
@@ -14171,7 +14201,9 @@ xmlCreateURLParserCtxt(const char *filename, int options)
 xmlParserCtxtPtr
 xmlCreateFileParserCtxt(const char *filename)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(21);
+#endif
     return(xmlCreateURLParserCtxt(filename, 0));
 }
 
@@ -14263,7 +14295,9 @@ xmlSAXParseFileWithData(xmlSAXHandlerPtr sax, const char *filename,
 xmlDocPtr
 xmlSAXParseFile(xmlSAXHandlerPtr sax, const char *filename,
                           int recovery) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(24);
+#endif
     return(xmlSAXParseFileWithData(sax,filename,recovery,NULL));
 }
 
@@ -14280,7 +14314,9 @@ ztrim_fInstrument(24);
 
 xmlDocPtr
 xmlRecoverDoc(const xmlChar *cur) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(25);
+#endif
     return(xmlSAXParseDoc(NULL, cur, 1));
 }
 
@@ -14297,7 +14333,9 @@ ztrim_fInstrument(25);
 
 xmlDocPtr
 xmlParseFile(const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(26);
+#endif
     return(xmlSAXParseFile(NULL, filename, 0));
 }
 
@@ -14315,7 +14353,9 @@ ztrim_fInstrument(26);
 
 xmlDocPtr
 xmlRecoverFile(const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(27);
+#endif
     return(xmlSAXParseFile(NULL, filename, 1));
 }
 
@@ -14334,7 +14374,9 @@ void
 xmlSetupParserForBuffer(xmlParserCtxtPtr ctxt, const xmlChar* buffer,
                              const char* filename)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(28);
+#endif
     xmlParserInputPtr input;
 
     if ((ctxt == NULL) || (buffer == NULL))
@@ -14370,7 +14412,9 @@ ztrim_fInstrument(28);
 int
 xmlSAXUserParseFile(xmlSAXHandlerPtr sax, void *user_data,
                     const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(29);
+#endif
     int ret = 0;
     xmlParserCtxtPtr ctxt;
 
@@ -14532,7 +14576,9 @@ xmlSAXParseMemoryWithData(xmlSAXHandlerPtr sax, const char *buffer,
 xmlDocPtr
 xmlSAXParseMemory(xmlSAXHandlerPtr sax, const char *buffer,
 	          int size, int recovery) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(30);
+#endif
     return xmlSAXParseMemoryWithData(sax, buffer, size, recovery, NULL);
 }
 
@@ -14547,7 +14593,9 @@ ztrim_fInstrument(30);
  */
 
 xmlDocPtr xmlParseMemory(const char *buffer, int size) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(31);
+#endif
    return(xmlSAXParseMemory(NULL, buffer, size, 0));
 }
 
@@ -14564,7 +14612,9 @@ ztrim_fInstrument(31);
  */
 
 xmlDocPtr xmlRecoverMemory(const char *buffer, int size) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(32);
+#endif
    return(xmlSAXParseMemory(NULL, buffer, size, 1));
 }
 
@@ -14582,7 +14632,9 @@ ztrim_fInstrument(32);
  */
 int xmlSAXUserParseMemory(xmlSAXHandlerPtr sax, void *user_data,
 			  const char *buffer, int size) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(33);
+#endif
     int ret = 0;
     xmlParserCtxtPtr ctxt;
 
@@ -14630,7 +14682,9 @@ ztrim_fInstrument(33);
  */
 xmlParserCtxtPtr
 xmlCreateDocParserCtxt(const xmlChar *cur) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(34);
+#endif
     int len;
 
     if (cur == NULL)
@@ -14697,7 +14751,9 @@ xmlSAXParseDoc(xmlSAXHandlerPtr sax, const xmlChar *cur, int recovery) {
 
 xmlDocPtr
 xmlParseDoc(const xmlChar *cur) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(35);
+#endif
     return(xmlSAXParseDoc(NULL, cur, 0));
 }
 #endif /* LIBXML_SAX1_ENABLED */
@@ -14739,7 +14795,9 @@ xmlAddEntityReference(xmlEntityPtr ent, xmlNodePtr firstNode,
 void
 xmlSetEntityReferenceFunc(xmlEntityReferenceFunc func)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(36);
+#endif
     xmlEntityRefFunc = func;
 }
 #endif /* LIBXML_LEGACY_ENABLED */
@@ -14830,7 +14888,9 @@ xmlInitParser(void) {
 
 void
 xmlCleanupParser(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(37);
+#endif
     if (!xmlParserInitialized)
 	return;
 
@@ -15000,7 +15060,9 @@ int
 xmlCtxtResetPush(xmlParserCtxtPtr ctxt, const char *chunk,
                  int size, const char *filename, const char *encoding)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(38);
+#endif
     xmlParserInputPtr inputStream;
     xmlParserInputBufferPtr buf;
     xmlCharEncoding enc = XML_CHAR_ENCODING_NONE;
@@ -15297,7 +15359,9 @@ xmlDoRead(xmlParserCtxtPtr ctxt, const char *URL, const char *encoding,
 xmlDocPtr
 xmlReadDoc(const xmlChar * cur, const char *URL, const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(39);
+#endif
     xmlParserCtxtPtr ctxt;
 
     if (cur == NULL)
@@ -15372,7 +15436,9 @@ xmlReadMemory(const char *buffer, int size, const char *URL, const char *encodin
 xmlDocPtr
 xmlReadFd(int fd, const char *URL, const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(40);
+#endif
     xmlParserCtxtPtr ctxt;
     xmlParserInputBufferPtr input;
     xmlParserInputPtr stream;
@@ -15417,7 +15483,9 @@ xmlDocPtr
 xmlReadIO(xmlInputReadCallback ioread, xmlInputCloseCallback ioclose,
           void *ioctx, const char *URL, const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(41);
+#endif
     xmlParserCtxtPtr ctxt;
     xmlParserInputBufferPtr input;
     xmlParserInputPtr stream;
@@ -15465,7 +15533,9 @@ xmlDocPtr
 xmlCtxtReadDoc(xmlParserCtxtPtr ctxt, const xmlChar * cur,
                const char *URL, const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(42);
+#endif
     xmlParserInputPtr stream;
 
     if (cur == NULL)
@@ -15581,7 +15651,9 @@ xmlDocPtr
 xmlCtxtReadFd(xmlParserCtxtPtr ctxt, int fd,
               const char *URL, const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(43);
+#endif
     xmlParserInputBufferPtr input;
     xmlParserInputPtr stream;
 
@@ -15628,7 +15700,9 @@ xmlCtxtReadIO(xmlParserCtxtPtr ctxt, xmlInputReadCallback ioread,
 	      const char *URL,
               const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(44);
+#endif
     xmlParserInputBufferPtr input;
     xmlParserInputPtr stream;
 
