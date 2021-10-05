@@ -229,7 +229,9 @@ xmlCharInRange (unsigned int val, const xmlChRangeGroup *rptr) {
  */
 int
 xmlIsBaseChar(unsigned int ch) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(602);
+#endif
     return(xmlIsBaseCharQ(ch));
 }
 
@@ -245,7 +247,9 @@ ztrim_fInstrument(602);
  */
 int
 xmlIsBlank(unsigned int ch) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(603);
+#endif
     return(xmlIsBlankQ(ch));
 }
 
@@ -261,7 +265,9 @@ ztrim_fInstrument(603);
  */
 int
 xmlIsChar(unsigned int ch) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(604);
+#endif
     return(xmlIsCharQ(ch));
 }
 
@@ -277,7 +283,9 @@ ztrim_fInstrument(604);
  */
 int
 xmlIsCombining(unsigned int ch) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(605);
+#endif
     return(xmlIsCombiningQ(ch));
 }
 
@@ -293,7 +301,9 @@ ztrim_fInstrument(605);
  */
 int
 xmlIsDigit(unsigned int ch) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(606);
+#endif
     return(xmlIsDigitQ(ch));
 }
 
@@ -309,7 +319,9 @@ ztrim_fInstrument(606);
  */
 int
 xmlIsExtender(unsigned int ch) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(607);
+#endif
     return(xmlIsExtenderQ(ch));
 }
 
@@ -325,7 +337,9 @@ ztrim_fInstrument(607);
  */
 int
 xmlIsIdeographic(unsigned int ch) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(608);
+#endif
     return(xmlIsIdeographicQ(ch));
 }
 
@@ -341,7 +355,9 @@ ztrim_fInstrument(608);
  */
 int
 xmlIsPubidChar(unsigned int ch) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(609);
+#endif
     return(xmlIsPubidCharQ(ch));
 }
 

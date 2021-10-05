@@ -451,7 +451,9 @@ xmlEntityPtr
 xmlNewEntity(xmlDocPtr doc, const xmlChar *name, int type,
 	     const xmlChar *ExternalID, const xmlChar *SystemID,
 	     const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(629);
+#endif
     xmlEntityPtr ret;
     xmlDictPtr dict;
 
@@ -528,7 +530,9 @@ xmlGetParameterEntity(xmlDocPtr doc, const xmlChar *name) {
  */
 xmlEntityPtr
 xmlGetDtdEntity(xmlDocPtr doc, const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(630);
+#endif
     xmlEntitiesTablePtr table;
 
     if (doc == NULL)
@@ -933,7 +937,9 @@ mem_error:
  */
 xmlEntitiesTablePtr
 xmlCreateEntitiesTable(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(631);
+#endif
     return((xmlEntitiesTablePtr) xmlHashCreate(0));
 }
 
@@ -946,7 +952,9 @@ ztrim_fInstrument(631);
  */
 static void
 xmlFreeEntityWrapper(void *entity, const xmlChar *name ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(632);
+#endif
     if (entity != NULL)
 	xmlFreeEntity((xmlEntityPtr) entity);
 }
@@ -973,7 +981,9 @@ xmlFreeEntitiesTable(xmlEntitiesTablePtr table) {
  */
 static void *
 xmlCopyEntity(void *payload, const xmlChar *name ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(633);
+#endif
     xmlEntityPtr ent = (xmlEntityPtr) payload;
     xmlEntityPtr cur;
 
@@ -1154,7 +1164,9 @@ xmlDumpEntityDecl(xmlBufferPtr buf, xmlEntityPtr ent) {
 static void
 xmlDumpEntityDeclScan(void *ent, void *buf,
                       const xmlChar *name ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(635);
+#endif
     xmlDumpEntityDecl((xmlBufferPtr) buf, (xmlEntityPtr) ent);
 }
 
@@ -1167,7 +1179,9 @@ ztrim_fInstrument(635);
  */
 void
 xmlDumpEntitiesTable(xmlBufferPtr buf, xmlEntitiesTablePtr table) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(634);
+#endif
     xmlHashScan(table, xmlDumpEntityDeclScan, buf);
 }
 #endif /* LIBXML_OUTPUT_ENABLED */

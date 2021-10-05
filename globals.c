@@ -510,7 +510,9 @@ xmlSAXHandlerV1 docbDefaultSAXHandler = {
 void
 xmlInitializeGlobalState(xmlGlobalStatePtr gs)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(340);
+#endif
 #ifdef DEBUG_GLOBALS
     fprintf(stderr, "Initializing globals at %lu for thread %d\n",
 	    (unsigned long) gs, xmlGetThreadId());
@@ -589,7 +591,9 @@ ztrim_fInstrument(340);
  */
 void
 xmlThrDefSetGenericErrorFunc(void *ctx, xmlGenericErrorFunc handler) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(341);
+#endif
     xmlMutexLock(xmlThrDefMutex);
     xmlGenericErrorContextThrDef = ctx;
     if (handler != NULL)
@@ -601,7 +605,9 @@ ztrim_fInstrument(341);
 
 void
 xmlThrDefSetStructuredErrorFunc(void *ctx, xmlStructuredErrorFunc handler) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(342);
+#endif
     xmlMutexLock(xmlThrDefMutex);
     xmlStructuredErrorContextThrDef = ctx;
     xmlStructuredErrorThrDef = handler;
@@ -619,7 +625,9 @@ ztrim_fInstrument(342);
 xmlRegisterNodeFunc
 xmlRegisterNodeDefault(xmlRegisterNodeFunc func)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(343);
+#endif
     xmlRegisterNodeFunc old = xmlRegisterNodeDefaultValue;
 
     __xmlRegisterCallbacks = 1;
@@ -630,7 +638,9 @@ ztrim_fInstrument(343);
 xmlRegisterNodeFunc
 xmlThrDefRegisterNodeDefault(xmlRegisterNodeFunc func)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(344);
+#endif
     xmlRegisterNodeFunc old;
 
     xmlMutexLock(xmlThrDefMutex);
@@ -654,7 +664,9 @@ ztrim_fInstrument(344);
 xmlDeregisterNodeFunc
 xmlDeregisterNodeDefault(xmlDeregisterNodeFunc func)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(345);
+#endif
     xmlDeregisterNodeFunc old = xmlDeregisterNodeDefaultValue;
 
     __xmlRegisterCallbacks = 1;
@@ -665,7 +677,9 @@ ztrim_fInstrument(345);
 xmlDeregisterNodeFunc
 xmlThrDefDeregisterNodeDefault(xmlDeregisterNodeFunc func)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(346);
+#endif
     xmlDeregisterNodeFunc old;
 
     xmlMutexLock(xmlThrDefMutex);
@@ -681,7 +695,9 @@ ztrim_fInstrument(346);
 xmlParserInputBufferCreateFilenameFunc
 xmlThrDefParserInputBufferCreateFilenameDefault(xmlParserInputBufferCreateFilenameFunc func)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(347);
+#endif
     xmlParserInputBufferCreateFilenameFunc old;
 
     xmlMutexLock(xmlThrDefMutex);
@@ -699,7 +715,9 @@ ztrim_fInstrument(347);
 xmlOutputBufferCreateFilenameFunc
 xmlThrDefOutputBufferCreateFilenameDefault(xmlOutputBufferCreateFilenameFunc func)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(348);
+#endif
     xmlOutputBufferCreateFilenameFunc old;
 
     xmlMutexLock(xmlThrDefMutex);
@@ -719,7 +737,9 @@ ztrim_fInstrument(348);
 #undef	docbDefaultSAXHandler
 xmlSAXHandlerV1 *
 __docbDefaultSAXHandler(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(349);
+#endif
     if (IS_MAIN_THREAD)
 	return (&docbDefaultSAXHandler);
     else
@@ -731,7 +751,9 @@ ztrim_fInstrument(349);
 #undef	htmlDefaultSAXHandler
 xmlSAXHandlerV1 *
 __htmlDefaultSAXHandler(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(350);
+#endif
     if (IS_MAIN_THREAD)
 	return (&htmlDefaultSAXHandler);
     else
@@ -742,7 +764,9 @@ ztrim_fInstrument(350);
 #undef xmlLastError
 xmlError *
 __xmlLastError(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(351);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlLastError);
     else
@@ -811,7 +835,9 @@ __xmlMemStrdup(void){
 #undef	oldXMLWDcompatibility
 int *
 __oldXMLWDcompatibility(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(352);
+#endif
     if (IS_MAIN_THREAD)
 	return (&oldXMLWDcompatibility);
     else
@@ -821,14 +847,18 @@ ztrim_fInstrument(352);
 #undef	xmlBufferAllocScheme
 xmlBufferAllocationScheme *
 __xmlBufferAllocScheme(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(353);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlBufferAllocScheme);
     else
 	return (&xmlGetGlobalState()->xmlBufferAllocScheme);
 }
 xmlBufferAllocationScheme xmlThrDefBufferAllocScheme(xmlBufferAllocationScheme v) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(354);
+#endif
     xmlBufferAllocationScheme ret;
     xmlMutexLock(xmlThrDefMutex);
     ret = xmlBufferAllocSchemeThrDef;
@@ -840,14 +870,18 @@ ztrim_fInstrument(354);
 #undef	xmlDefaultBufferSize
 int *
 __xmlDefaultBufferSize(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(355);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlDefaultBufferSize);
     else
 	return (&xmlGetGlobalState()->xmlDefaultBufferSize);
 }
 int xmlThrDefDefaultBufferSize(int v) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(356);
+#endif
     int ret;
     xmlMutexLock(xmlThrDefMutex);
     ret = xmlDefaultBufferSizeThrDef;
@@ -860,7 +894,9 @@ ztrim_fInstrument(356);
 #undef	xmlDefaultSAXHandler
 xmlSAXHandlerV1 *
 __xmlDefaultSAXHandler(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(357);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlDefaultSAXHandler);
     else
@@ -871,7 +907,9 @@ ztrim_fInstrument(357);
 #undef	xmlDefaultSAXLocator
 xmlSAXLocator *
 __xmlDefaultSAXLocator(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(358);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlDefaultSAXLocator);
     else
@@ -881,14 +919,18 @@ ztrim_fInstrument(358);
 #undef	xmlDoValidityCheckingDefaultValue
 int *
 __xmlDoValidityCheckingDefaultValue(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(359);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlDoValidityCheckingDefaultValue);
     else
 	return (&xmlGetGlobalState()->xmlDoValidityCheckingDefaultValue);
 }
 int xmlThrDefDoValidityCheckingDefaultValue(int v) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(360);
+#endif
     int ret;
     xmlMutexLock(xmlThrDefMutex);
     ret = xmlDoValidityCheckingDefaultValueThrDef;
@@ -900,7 +942,9 @@ ztrim_fInstrument(360);
 #undef	xmlGenericError
 xmlGenericErrorFunc *
 __xmlGenericError(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(361);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlGenericError);
     else
@@ -910,7 +954,9 @@ ztrim_fInstrument(361);
 #undef	xmlStructuredError
 xmlStructuredErrorFunc *
 __xmlStructuredError(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(362);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlStructuredError);
     else
@@ -920,7 +966,9 @@ ztrim_fInstrument(362);
 #undef	xmlGenericErrorContext
 void * *
 __xmlGenericErrorContext(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(363);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlGenericErrorContext);
     else
@@ -930,7 +978,9 @@ ztrim_fInstrument(363);
 #undef	xmlStructuredErrorContext
 void * *
 __xmlStructuredErrorContext(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(364);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlStructuredErrorContext);
     else
@@ -940,14 +990,18 @@ ztrim_fInstrument(364);
 #undef	xmlGetWarningsDefaultValue
 int *
 __xmlGetWarningsDefaultValue(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(365);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlGetWarningsDefaultValue);
     else
 	return (&xmlGetGlobalState()->xmlGetWarningsDefaultValue);
 }
 int xmlThrDefGetWarningsDefaultValue(int v) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(366);
+#endif
     int ret;
     xmlMutexLock(xmlThrDefMutex);
     ret = xmlGetWarningsDefaultValueThrDef;
@@ -959,14 +1013,18 @@ ztrim_fInstrument(366);
 #undef	xmlIndentTreeOutput
 int *
 __xmlIndentTreeOutput(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(367);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlIndentTreeOutput);
     else
 	return (&xmlGetGlobalState()->xmlIndentTreeOutput);
 }
 int xmlThrDefIndentTreeOutput(int v) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(368);
+#endif
     int ret;
     xmlMutexLock(xmlThrDefMutex);
     ret = xmlIndentTreeOutputThrDef;
@@ -978,14 +1036,18 @@ ztrim_fInstrument(368);
 #undef	xmlTreeIndentString
 const char * *
 __xmlTreeIndentString(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(369);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlTreeIndentString);
     else
 	return (&xmlGetGlobalState()->xmlTreeIndentString);
 }
 const char * xmlThrDefTreeIndentString(const char * v) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(370);
+#endif
     const char * ret;
     xmlMutexLock(xmlThrDefMutex);
     ret = xmlTreeIndentStringThrDef;
@@ -997,14 +1059,18 @@ ztrim_fInstrument(370);
 #undef	xmlKeepBlanksDefaultValue
 int *
 __xmlKeepBlanksDefaultValue(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(371);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlKeepBlanksDefaultValue);
     else
 	return (&xmlGetGlobalState()->xmlKeepBlanksDefaultValue);
 }
 int xmlThrDefKeepBlanksDefaultValue(int v) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(372);
+#endif
     int ret;
     xmlMutexLock(xmlThrDefMutex);
     ret = xmlKeepBlanksDefaultValueThrDef;
@@ -1016,14 +1082,18 @@ ztrim_fInstrument(372);
 #undef	xmlLineNumbersDefaultValue
 int *
 __xmlLineNumbersDefaultValue(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(373);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlLineNumbersDefaultValue);
     else
 	return (&xmlGetGlobalState()->xmlLineNumbersDefaultValue);
 }
 int xmlThrDefLineNumbersDefaultValue(int v) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(374);
+#endif
     int ret;
     xmlMutexLock(xmlThrDefMutex);
     ret = xmlLineNumbersDefaultValueThrDef;
@@ -1035,14 +1105,18 @@ ztrim_fInstrument(374);
 #undef	xmlLoadExtDtdDefaultValue
 int *
 __xmlLoadExtDtdDefaultValue(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(375);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlLoadExtDtdDefaultValue);
     else
 	return (&xmlGetGlobalState()->xmlLoadExtDtdDefaultValue);
 }
 int xmlThrDefLoadExtDtdDefaultValue(int v) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(376);
+#endif
     int ret;
     xmlMutexLock(xmlThrDefMutex);
     ret = xmlLoadExtDtdDefaultValueThrDef;
@@ -1054,14 +1128,18 @@ ztrim_fInstrument(376);
 #undef	xmlParserDebugEntities
 int *
 __xmlParserDebugEntities(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(377);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlParserDebugEntities);
     else
 	return (&xmlGetGlobalState()->xmlParserDebugEntities);
 }
 int xmlThrDefParserDebugEntities(int v) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(378);
+#endif
     int ret;
     xmlMutexLock(xmlThrDefMutex);
     ret = xmlParserDebugEntitiesThrDef;
@@ -1073,7 +1151,9 @@ ztrim_fInstrument(378);
 #undef	xmlParserVersion
 const char * *
 __xmlParserVersion(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(379);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlParserVersion);
     else
@@ -1083,15 +1163,21 @@ ztrim_fInstrument(379);
 #undef	xmlPedanticParserDefaultValue
 int *
 __xmlPedanticParserDefaultValue(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(380);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlPedanticParserDefaultValue);
     else
 	return (&xmlGetGlobalState()->xmlPedanticParserDefaultValue);
 }
 int xmlThrDefPedanticParserDefaultValue(int v) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(381);
+#endif
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(1);
+#endif
     int ret;
     xmlMutexLock(xmlThrDefMutex);
     ret = xmlPedanticParserDefaultValueThrDef;
@@ -1103,14 +1189,18 @@ ztrim_fInstrument(1);
 #undef	xmlSaveNoEmptyTags
 int *
 __xmlSaveNoEmptyTags(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(382);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlSaveNoEmptyTags);
     else
 	return (&xmlGetGlobalState()->xmlSaveNoEmptyTags);
 }
 int xmlThrDefSaveNoEmptyTags(int v) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(383);
+#endif
     int ret;
     xmlMutexLock(xmlThrDefMutex);
     ret = xmlSaveNoEmptyTagsThrDef;
@@ -1122,14 +1212,18 @@ ztrim_fInstrument(383);
 #undef	xmlSubstituteEntitiesDefaultValue
 int *
 __xmlSubstituteEntitiesDefaultValue(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(384);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlSubstituteEntitiesDefaultValue);
     else
 	return (&xmlGetGlobalState()->xmlSubstituteEntitiesDefaultValue);
 }
 int xmlThrDefSubstituteEntitiesDefaultValue(int v) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(385);
+#endif
     int ret;
     xmlMutexLock(xmlThrDefMutex);
     ret = xmlSubstituteEntitiesDefaultValueThrDef;
@@ -1141,7 +1235,9 @@ ztrim_fInstrument(385);
 #undef	xmlRegisterNodeDefaultValue
 xmlRegisterNodeFunc *
 __xmlRegisterNodeDefaultValue(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(386);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlRegisterNodeDefaultValue);
     else
@@ -1151,7 +1247,9 @@ ztrim_fInstrument(386);
 #undef	xmlDeregisterNodeDefaultValue
 xmlDeregisterNodeFunc *
 __xmlDeregisterNodeDefaultValue(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(387);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlDeregisterNodeDefaultValue);
     else
@@ -1161,7 +1259,9 @@ ztrim_fInstrument(387);
 #undef	xmlParserInputBufferCreateFilenameValue
 xmlParserInputBufferCreateFilenameFunc *
 __xmlParserInputBufferCreateFilenameValue(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(388);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlParserInputBufferCreateFilenameValue);
     else
@@ -1171,7 +1271,9 @@ ztrim_fInstrument(388);
 #undef	xmlOutputBufferCreateFilenameValue
 xmlOutputBufferCreateFilenameFunc *
 __xmlOutputBufferCreateFilenameValue(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(389);
+#endif
     if (IS_MAIN_THREAD)
 	return (&xmlOutputBufferCreateFilenameValue);
     else
