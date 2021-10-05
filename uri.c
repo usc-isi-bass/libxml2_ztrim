@@ -973,7 +973,9 @@ xmlParseURI(const char *str) {
  */
 int
 xmlParseURIReference(xmlURIPtr uri, const char *str) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(145);
+#endif
     return(xmlParse3986URIReference(uri, str));
 }
 
@@ -1344,7 +1346,9 @@ mem_error:
  */
 void
 xmlPrintURI(FILE *stream, xmlURIPtr uri) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(146);
+#endif
     xmlChar *out;
 
     out = xmlSaveUri(uri);

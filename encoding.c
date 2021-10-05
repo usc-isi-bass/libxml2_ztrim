@@ -180,7 +180,9 @@ closeIcuConverter(uconv_t *conv)
 static int
 asciiToUTF8(unsigned char* out, int *outlen,
               const unsigned char* in, int *inlen) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(645);
+#endif
     unsigned char* outstart = out;
     const unsigned char* base = in;
     const unsigned char* processed = in;
@@ -228,7 +230,9 @@ ztrim_fInstrument(645);
 static int
 UTF8Toascii(unsigned char* out, int *outlen,
               const unsigned char* in, int *inlen) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(646);
+#endif
     const unsigned char* processed = in;
     const unsigned char* outend;
     const unsigned char* outstart = out;
@@ -313,7 +317,9 @@ ztrim_fInstrument(646);
 int
 isolat1ToUTF8(unsigned char* out, int *outlen,
               const unsigned char* in, int *inlen) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(636);
+#endif
     unsigned char* outstart = out;
     const unsigned char* base = in;
     unsigned char* outend;
@@ -363,7 +369,9 @@ static int
 UTF8ToUTF8(unsigned char* out, int *outlen,
            const unsigned char* inb, int *inlenb)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(640);
+#endif
     int len;
 
     if ((out == NULL) || (outlen == NULL) || (inlenb == NULL))
@@ -415,7 +423,9 @@ ztrim_fInstrument(640);
 int
 UTF8Toisolat1(unsigned char* out, int *outlen,
               const unsigned char* in, int *inlen) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(637);
+#endif
     const unsigned char* processed = in;
     const unsigned char* outend;
     const unsigned char* outstart = out;
@@ -509,7 +519,9 @@ static int
 UTF16LEToUTF8(unsigned char* out, int *outlen,
             const unsigned char* inb, int *inlenb)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(641);
+#endif
     unsigned char* outstart = out;
     const unsigned char* processed = inb;
     unsigned char* outend;
@@ -709,7 +721,9 @@ static int
 UTF8ToUTF16(unsigned char* outb, int *outlen,
             const unsigned char* in, int *inlen)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(644);
+#endif
     if (in == NULL) {
 	/*
 	 * initialization, add the Byte Order Mark for UTF-16LE
@@ -754,7 +768,9 @@ static int
 UTF16BEToUTF8(unsigned char* out, int *outlen,
             const unsigned char* inb, int *inlenb)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(642);
+#endif
     unsigned char* outstart = out;
     const unsigned char* processed = inb;
     unsigned char* outend = out + *outlen;
@@ -844,7 +860,9 @@ static int
 UTF8ToUTF16BE(unsigned char* outb, int *outlen,
             const unsigned char* in, int *inlen)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(643);
+#endif
     unsigned short* out = (unsigned short*) outb;
     const unsigned char* processed = in;
     const unsigned char *const instart = in;
@@ -1079,7 +1097,9 @@ xmlGetEncodingAlias(const char *alias) {
  */
 int
 xmlAddEncodingAlias(const char *name, const char *alias) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(638);
+#endif
     int i;
     char upper[100];
 
@@ -1137,7 +1157,9 @@ ztrim_fInstrument(638);
  */
 int
 xmlDelEncodingAlias(const char *alias) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(639);
+#endif
     int i;
 
     if (alias == NULL)
@@ -2150,7 +2172,9 @@ xmlCharEncFirstLineInt(xmlCharEncodingHandler *handler, xmlBufferPtr out,
 int
 xmlCharEncFirstLine(xmlCharEncodingHandler *handler, xmlBufferPtr out,
                  xmlBufferPtr in) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(647);
+#endif
     return(xmlCharEncFirstLineInt(handler, out, in, -1));
 }
 
@@ -2379,7 +2403,9 @@ int
 xmlCharEncInFunc(xmlCharEncodingHandler * handler, xmlBufferPtr out,
                  xmlBufferPtr in)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(648);
+#endif
     int ret;
     int written;
     int toconv;
@@ -2643,7 +2669,9 @@ retry:
 int
 xmlCharEncOutFunc(xmlCharEncodingHandler *handler, xmlBufferPtr out,
                   xmlBufferPtr in) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(649);
+#endif
     int ret;
     int written;
     int writtentot = 0;
