@@ -245,7 +245,9 @@ xmlNsWarnMsg(xmlParserCtxtPtr ctxt, xmlParserErrors error,
 const xmlChar *
 xmlSAX2GetPublicId(void *ctx ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(570);
+#endif
     /* xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx; */
     return(NULL);
 }
@@ -262,7 +264,9 @@ ztrim_fInstrument(570);
 const xmlChar *
 xmlSAX2GetSystemId(void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(571);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     if ((ctx == NULL) || (ctxt->input == NULL)) return(NULL);
     return((const xmlChar *) ctxt->input->filename);
@@ -295,7 +299,9 @@ xmlSAX2GetLineNumber(void *ctx)
 int
 xmlSAX2GetColumnNumber(void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(572);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     if ((ctx == NULL) || (ctxt->input == NULL)) return(0);
     return(ctxt->input->col);
@@ -312,7 +318,9 @@ ztrim_fInstrument(572);
 int
 xmlSAX2IsStandalone(void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(573);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     if ((ctx == NULL) || (ctxt->myDoc == NULL)) return(0);
     return(ctxt->myDoc->standalone == 1);
@@ -329,7 +337,9 @@ ztrim_fInstrument(573);
 int
 xmlSAX2HasInternalSubset(void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(574);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     if ((ctxt == NULL) || (ctxt->myDoc == NULL)) return(0);
     return(ctxt->myDoc->intSubset != NULL);
@@ -346,7 +356,9 @@ ztrim_fInstrument(574);
 int
 xmlSAX2HasExternalSubset(void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(575);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     if ((ctxt == NULL) || (ctxt->myDoc == NULL)) return(0);
     return(ctxt->myDoc->extSubset != NULL);
@@ -365,7 +377,9 @@ void
 xmlSAX2InternalSubset(void *ctx, const xmlChar *name,
 	       const xmlChar *ExternalID, const xmlChar *SystemID)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(576);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlDtdPtr dtd;
     if (ctx == NULL) return;
@@ -404,7 +418,9 @@ void
 xmlSAX2ExternalSubset(void *ctx, const xmlChar *name,
 	       const xmlChar *ExternalID, const xmlChar *SystemID)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(577);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     if (ctx == NULL) return;
 #ifdef DEBUG_SAX
@@ -531,7 +547,9 @@ ztrim_fInstrument(577);
 xmlParserInputPtr
 xmlSAX2ResolveEntity(void *ctx, const xmlChar *publicId, const xmlChar *systemId)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(578);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlParserInputPtr ret;
     xmlChar *URI;
@@ -619,7 +637,9 @@ xmlSAX2GetEntity(void *ctx, const xmlChar *name)
 xmlEntityPtr
 xmlSAX2GetParameterEntity(void *ctx, const xmlChar *name)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(579);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlEntityPtr ret;
 
@@ -720,7 +740,9 @@ xmlSAX2AttributeDecl(void *ctx, const xmlChar *elem, const xmlChar *fullname,
               int type, int def, const xmlChar *defaultValue,
 	      xmlEnumerationPtr tree)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(580);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlAttributePtr attr;
     xmlChar *name = NULL, *prefix = NULL;
@@ -788,7 +810,9 @@ void
 xmlSAX2ElementDecl(void *ctx, const xmlChar * name, int type,
             xmlElementContentPtr content)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(581);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlElementPtr elem = NULL;
 
@@ -835,7 +859,9 @@ void
 xmlSAX2NotationDecl(void *ctx, const xmlChar *name,
 	     const xmlChar *publicId, const xmlChar *systemId)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(582);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlNotationPtr nota = NULL;
 
@@ -888,7 +914,9 @@ xmlSAX2UnparsedEntityDecl(void *ctx, const xmlChar *name,
 		   const xmlChar *publicId, const xmlChar *systemId,
 		   const xmlChar *notationName)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(583);
+#endif
     xmlEntityPtr ent;
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     if (ctx == NULL) return;
@@ -955,7 +983,9 @@ ztrim_fInstrument(583);
 void
 xmlSAX2SetDocumentLocator(void *ctx ATTRIBUTE_UNUSED, xmlSAXLocatorPtr loc ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(584);
+#endif
     /* xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx; */
 #ifdef DEBUG_SAX
     xmlGenericError(xmlGenericErrorContext,
@@ -972,7 +1002,9 @@ ztrim_fInstrument(584);
 void
 xmlSAX2StartDocument(void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(585);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlDocPtr doc;
 
@@ -1038,7 +1070,9 @@ ztrim_fInstrument(585);
 void
 xmlSAX2EndDocument(void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(586);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
 #ifdef DEBUG_SAX
     xmlGenericError(xmlGenericErrorContext,
@@ -1583,7 +1617,9 @@ process_external_subset:
 void
 xmlSAX2StartElement(void *ctx, const xmlChar *fullname, const xmlChar **atts)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(587);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlNodePtr ret;
     xmlNodePtr parent;
@@ -1797,7 +1833,9 @@ ztrim_fInstrument(587);
 void
 xmlSAX2EndElement(void *ctx, const xmlChar *name ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(588);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlNodePtr cur;
 
@@ -2211,7 +2249,9 @@ xmlSAX2StartElementNs(void *ctx,
 		      int nb_defaulted,
 		      const xmlChar **attributes)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(589);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlNodePtr ret;
     xmlNodePtr parent;
@@ -2459,7 +2499,9 @@ xmlSAX2EndElementNs(void *ctx,
                     const xmlChar * prefix ATTRIBUTE_UNUSED,
 		    const xmlChar * URI ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(590);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlParserNodeInfo node_info;
     xmlNodePtr cur;
@@ -2497,7 +2539,9 @@ ztrim_fInstrument(590);
 void
 xmlSAX2Reference(void *ctx, const xmlChar *name)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(591);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlNodePtr ret;
 
@@ -2665,7 +2709,9 @@ xmlSAX2Text(xmlParserCtxtPtr ctxt, const xmlChar *ch, int len,
 void
 xmlSAX2Characters(void *ctx, const xmlChar *ch, int len)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(592);
+#endif
     xmlSAX2Text((xmlParserCtxtPtr) ctx, ch, len, XML_TEXT_NODE);
 }
 
@@ -2681,7 +2727,9 @@ ztrim_fInstrument(592);
 void
 xmlSAX2IgnorableWhitespace(void *ctx ATTRIBUTE_UNUSED, const xmlChar *ch ATTRIBUTE_UNUSED, int len ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(593);
+#endif
     /* xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx; */
 #ifdef DEBUG_SAX
     xmlGenericError(xmlGenericErrorContext,
@@ -2701,7 +2749,9 @@ void
 xmlSAX2ProcessingInstruction(void *ctx, const xmlChar *target,
                       const xmlChar *data)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(594);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlNodePtr ret;
     xmlNodePtr parent;
@@ -2765,7 +2815,9 @@ ztrim_fInstrument(594);
 void
 xmlSAX2Comment(void *ctx, const xmlChar *value)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(595);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlNodePtr ret;
     xmlNodePtr parent;
@@ -2828,7 +2880,9 @@ ztrim_fInstrument(595);
 void
 xmlSAX2CDataBlock(void *ctx, const xmlChar *value, int len)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(596);
+#endif
     xmlSAX2Text((xmlParserCtxtPtr) ctx, value, len, XML_CDATA_SECTION_NODE);
 }
 
@@ -2850,7 +2904,9 @@ static int xmlSAX2DefaultVersionValue = 2;
 int
 xmlSAXDefaultVersion(int version)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(597);
+#endif
     int ret = xmlSAX2DefaultVersionValue;
 
     if ((version != 1) && (version != 2))
@@ -2927,7 +2983,9 @@ xmlSAXVersion(xmlSAXHandler *hdlr, int version)
 void
 xmlSAX2InitDefaultSAXHandler(xmlSAXHandler *hdlr, int warning)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(598);
+#endif
     if ((hdlr == NULL) || (hdlr->initialized != 0))
 	return;
 
@@ -2962,7 +3020,9 @@ xmlDefaultSAXHandlerInit(void)
 void
 xmlSAX2InitHtmlDefaultSAXHandler(xmlSAXHandler *hdlr)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(599);
+#endif
     if ((hdlr == NULL) || (hdlr->initialized != 0))
 	return;
 
@@ -3021,7 +3081,9 @@ htmlDefaultSAXHandlerInit(void)
 void
 xmlSAX2InitDocbDefaultSAXHandler(xmlSAXHandler *hdlr)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(600);
+#endif
     if ((hdlr == NULL) || (hdlr->initialized != 0))
 	return;
 
@@ -3064,7 +3126,9 @@ ztrim_fInstrument(600);
 void
 docbDefaultSAXHandlerInit(void)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(601);
+#endif
     xmlSAX2InitDocbDefaultSAXHandler((xmlSAXHandlerPtr) &docbDefaultSAXHandler);
 }
 

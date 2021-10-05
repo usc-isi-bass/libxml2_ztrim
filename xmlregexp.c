@@ -5527,7 +5527,9 @@ xmlFAParseRegExp(xmlRegParserCtxtPtr ctxt, int top) {
  */
 void
 xmlRegexpPrint(FILE *output, xmlRegexpPtr regexp) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(405);
+#endif
     int i;
 
     if (output == NULL)
@@ -6072,7 +6074,9 @@ xmlAutomataStatePtr
 xmlAutomataNewCountTrans(xmlAutomataPtr am, xmlAutomataStatePtr from,
 			 xmlAutomataStatePtr to, const xmlChar *token,
 			 int min, int max, void *data) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(406);
+#endif
     xmlRegAtomPtr atom;
     int counter;
 
@@ -6221,7 +6225,9 @@ xmlAutomataStatePtr
 xmlAutomataNewOnceTrans(xmlAutomataPtr am, xmlAutomataStatePtr from,
 			 xmlAutomataStatePtr to, const xmlChar *token,
 			 int min, int max, void *data) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(407);
+#endif
     xmlRegAtomPtr atom;
     int counter;
 

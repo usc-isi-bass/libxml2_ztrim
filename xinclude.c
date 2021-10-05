@@ -1282,7 +1282,9 @@ struct _xmlXIncludeMergeData {
 static void
 xmlXIncludeMergeEntity(void *payload, void *vdata,
 	               const xmlChar *name ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(833);
+#endif
     xmlEntityPtr ent = (xmlEntityPtr) payload;
     xmlXIncludeMergeDataPtr data = (xmlXIncludeMergeDataPtr) vdata;
     xmlEntityPtr ret, prev;
@@ -2571,7 +2573,9 @@ xmlXIncludeProcessFlagsData(xmlDocPtr doc, int flags, void *data) {
  */
 int
 xmlXIncludeProcessFlags(xmlDocPtr doc, int flags) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(830);
+#endif
     return xmlXIncludeProcessFlagsData(doc, flags, NULL);
 }
 
@@ -2586,7 +2590,9 @@ ztrim_fInstrument(830);
  */
 int
 xmlXIncludeProcess(xmlDocPtr doc) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(831);
+#endif
     return(xmlXIncludeProcessFlags(doc, 0));
 }
 
@@ -2632,7 +2638,9 @@ xmlXIncludeProcessTreeFlags(xmlNodePtr tree, int flags) {
  */
 int
 xmlXIncludeProcessTree(xmlNodePtr tree) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(832);
+#endif
     return(xmlXIncludeProcessTreeFlags(tree, 0));
 }
 
