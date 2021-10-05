@@ -403,7 +403,9 @@ xmlStrcasestr(const xmlChar *str, const xmlChar *val) {
 
 xmlChar *
 xmlStrsub(const xmlChar *str, int start, int len) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(396);
+#endif
     int i;
 
     if (str == NULL) return(NULL);
@@ -600,7 +602,9 @@ xmlStrPrintf(xmlChar *buf, int len, const char *msg, ...) {
  */
 int
 xmlStrVPrintf(xmlChar *buf, int len, const char *msg, va_list ap) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(397);
+#endif
     int ret;
 
     if((buf == NULL) || (msg == NULL)) {
@@ -670,7 +674,9 @@ xmlUTF8Size(const xmlChar *utf) {
  */
 int
 xmlUTF8Charcmp(const xmlChar *utf1, const xmlChar *utf2) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(398);
+#endif
 
     if (utf1 == NULL ) {
         if (utf2 == NULL)

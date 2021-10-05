@@ -626,7 +626,9 @@ xmlSchemaInitTypes(void)
 
 static void
 xmlSchemaFreeTypeEntry(void *type, const xmlChar *name ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(408);
+#endif
     xmlSchemaFreeType((xmlSchemaTypePtr) type);
 }
 
@@ -956,7 +958,9 @@ xmlSchemaValPtr
 xmlSchemaNewStringValue(xmlSchemaValType type,
 			const xmlChar *value)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(409);
+#endif
     xmlSchemaValPtr val;
 
     if (type != XML_SCHEMAS_STRING)
@@ -1106,7 +1110,9 @@ xmlSchemaGetPredefinedType(const xmlChar *name, const xmlChar *ns) {
 xmlSchemaTypePtr
 xmlSchemaGetBuiltInListSimpleTypeItemType(xmlSchemaTypePtr type)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(410);
+#endif
     if ((type == NULL) || (type->type != XML_SCHEMA_TYPE_BASIC))
 	return (NULL);
     switch (type->builtInType) {
@@ -5382,7 +5388,9 @@ xmlSchemaValidateLengthFacet(xmlSchemaTypePtr type,
 			     xmlSchemaValPtr val,
 			     unsigned long *length)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(411);
+#endif
     if (type == NULL)
         return(-1);
     return (xmlSchemaValidateLengthFacetInternal(facet,
@@ -6228,7 +6236,9 @@ xmlSchemaGetCanonValueWhtsp(xmlSchemaValPtr val,
 			    const xmlChar **retValue,
 			    xmlSchemaWhitespaceValueType ws)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(412);
+#endif
     if ((retValue == NULL) || (val == NULL))
 	return (-1);
     if ((ws == XML_SCHEMA_WHITESPACE_UNKNOWN) ||
