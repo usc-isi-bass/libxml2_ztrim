@@ -3131,7 +3131,9 @@ static void deregisterNode(xmlNodePtr node)
 
 int
 main(int argc, char **argv) {
+#ifndef ZTRIM_DONT_INSTR
     ztrim_initIteration(1000);
+#endif
     int i, acount;
     int files = 0;
     int version = 0;

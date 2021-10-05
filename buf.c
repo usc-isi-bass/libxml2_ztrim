@@ -534,7 +534,9 @@ xmlBufGrow(xmlBufPtr buf, int len) {
  */
 int
 xmlBufInflate(xmlBufPtr buf, size_t len) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(399);
+#endif
     if (buf == NULL) return(-1);
     xmlBufGrowInternal(buf, len + buf->size);
     if (buf->error)
@@ -552,7 +554,9 @@ ztrim_fInstrument(399);
  */
 size_t
 xmlBufDump(FILE *file, xmlBufPtr buf) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(400);
+#endif
     size_t ret;
 
     if ((buf == NULL) || (buf->error != 0)) {
@@ -651,7 +655,9 @@ xmlBufAddLen(xmlBufPtr buf, size_t len) {
  */
 int
 xmlBufErase(xmlBufPtr buf, size_t len) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(401);
+#endif
     if ((buf == NULL) || (buf->error))
         return(-1);
     CHECK_COMPAT(buf)
@@ -934,7 +940,9 @@ xmlBufAdd(xmlBufPtr buf, const xmlChar *str, int len) {
  */
 int
 xmlBufAddHead(xmlBufPtr buf, const xmlChar *str, int len) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(402);
+#endif
     unsigned int needSize;
 
     if ((buf == NULL) || (buf->error))
@@ -1074,7 +1082,9 @@ xmlBufCCat(xmlBufPtr buf, const char *str) {
  */
 int
 xmlBufWriteCHAR(xmlBufPtr buf, const xmlChar *string) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(403);
+#endif
     if ((buf == NULL) || (buf->error))
         return(-1);
     CHECK_COMPAT(buf)
@@ -1096,7 +1106,9 @@ ztrim_fInstrument(403);
  */
 int
 xmlBufWriteChar(xmlBufPtr buf, const char *string) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(404);
+#endif
     if ((buf == NULL) || (buf->error))
         return(-1);
     CHECK_COMPAT(buf)

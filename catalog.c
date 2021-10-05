@@ -388,7 +388,9 @@ xmlFreeCatalogEntryList(xmlCatalogEntryPtr ret) {
 static void
 xmlFreeCatalogHashEntryList(void *payload,
                             const xmlChar *name ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(328);
+#endif
     xmlCatalogEntryPtr catal = (xmlCatalogEntryPtr) payload;
     xmlCatalogEntryPtr children, next;
 
@@ -470,7 +472,9 @@ xmlFreeCatalog(xmlCatalogPtr catal) {
 static void
 xmlCatalogDumpEntry(void *payload, void *data,
                     const xmlChar *name ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(324);
+#endif
     xmlCatalogEntryPtr entry = (xmlCatalogEntryPtr) payload;
     FILE *out = (FILE *) data;
     if ((entry == NULL) || (out == NULL))
@@ -737,7 +741,9 @@ BAD_CAST "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd");
 static void
 xmlCatalogConvertEntry(void *payload, void *data,
                        const xmlChar *name ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(322);
+#endif
     xmlCatalogEntryPtr entry = (xmlCatalogEntryPtr) payload;
     xmlCatalogPtr catal = (xmlCatalogPtr) data;
     if ((entry == NULL) || (catal == NULL) || (catal->sgml == NULL) ||
@@ -2654,7 +2660,9 @@ xmlCatalogSGMLResolve(xmlCatalogPtr catal, const xmlChar *pubID,
 xmlCatalogPtr
 xmlLoadSGMLSuperCatalog(const char *filename)
 {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(323);
+#endif
     xmlChar *content;
     xmlCatalogPtr catal;
     int ret;
@@ -3031,7 +3039,9 @@ xmlACatalogRemove(xmlCatalogPtr catal, const xmlChar *value) {
  */
 xmlCatalogPtr
 xmlNewCatalog(int sgml) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(325);
+#endif
     xmlCatalogPtr catal = NULL;
 
     if (sgml) {
@@ -3055,7 +3065,9 @@ ztrim_fInstrument(325);
  */
 int
 xmlCatalogIsEmpty(xmlCatalogPtr catal) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(326);
+#endif
     if (catal == NULL)
 	return(-1);
 
@@ -3246,7 +3258,9 @@ xmlLoadCatalog(const char *filename)
  */
 void
 xmlLoadCatalogs(const char *pathss) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(327);
+#endif
     const char *cur;
     const char *paths;
     xmlChar *path;
@@ -3320,7 +3334,9 @@ xmlCatalogCleanup(void) {
  */
 xmlChar *
 xmlCatalogResolveSystem(const xmlChar *sysID) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(329);
+#endif
     xmlChar *ret;
 
     if (!xmlCatalogInitialized)
@@ -3341,7 +3357,9 @@ ztrim_fInstrument(329);
  */
 xmlChar *
 xmlCatalogResolvePublic(const xmlChar *pubID) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(330);
+#endif
     xmlChar *ret;
 
     if (!xmlCatalogInitialized)
@@ -3401,7 +3419,9 @@ xmlCatalogResolveURI(const xmlChar *URI) {
  */
 void
 xmlCatalogDump(FILE *out) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(331);
+#endif
     if (out == NULL)
 	return;
 
@@ -3427,7 +3447,9 @@ ztrim_fInstrument(331);
  */
 int
 xmlCatalogAdd(const xmlChar *type, const xmlChar *orig, const xmlChar *replace) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(332);
+#endif
     int res = -1;
 
     if (!xmlCatalogInitialized)
@@ -3465,7 +3487,9 @@ ztrim_fInstrument(332);
  */
 int
 xmlCatalogRemove(const xmlChar *value) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(333);
+#endif
     int res;
 
     if (!xmlCatalogInitialized)
@@ -3486,7 +3510,9 @@ ztrim_fInstrument(333);
  */
 int
 xmlCatalogConvert(void) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(334);
+#endif
     int res = -1;
 
     if (!xmlCatalogInitialized)
@@ -3526,7 +3552,9 @@ xmlCatalogGetDefaults(void) {
  */
 void
 xmlCatalogSetDefaults(xmlCatalogAllow allow) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(335);
+#endif
     if (xmlDebugCatalogs) {
 	switch (allow) {
 	    case XML_CATA_ALLOW_NONE:
@@ -3562,7 +3590,9 @@ ztrim_fInstrument(335);
  */
 xmlCatalogPrefer
 xmlCatalogSetDefaultPrefer(xmlCatalogPrefer prefer) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(336);
+#endif
     xmlCatalogPrefer ret = xmlCatalogDefaultPrefer;
 
     if (prefer == XML_CATA_PREFER_NONE)
@@ -3597,7 +3627,9 @@ ztrim_fInstrument(336);
  */
 int
 xmlCatalogSetDebug(int level) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(337);
+#endif
     int ret = xmlDebugCatalogs;
 
     if (level <= 0)
@@ -3767,7 +3799,9 @@ xmlCatalogLocalResolveURI(void *catalogs, const xmlChar *URI) {
  */
 const xmlChar *
 xmlCatalogGetSystem(const xmlChar *sysID) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(338);
+#endif
     xmlChar *ret;
     static xmlChar result[1000];
     static int msg = 0;
@@ -3812,7 +3846,9 @@ ztrim_fInstrument(338);
  */
 const xmlChar *
 xmlCatalogGetPublic(const xmlChar *pubID) {
+#ifndef ZTRIM_DONT_INSTR
 ztrim_fInstrument(339);
+#endif
     xmlChar *ret;
     static xmlChar result[1000];
     static int msg = 0;
