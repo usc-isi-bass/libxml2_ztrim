@@ -591,11 +591,17 @@ xz_decomp(xz_statep state)
             xz_error(state, LZMA_PROG_ERROR, "compression error");
             return -1;
         }
+#ifdef MAGMA_ENABLE_FIXES
         if ((state->how != GZIP) &&
             (ret != LZMA_OK) && (ret != LZMA_STREAM_END)) {
             xz_error(state, ret, "lzma error");
             return -1;
         }
+#endif
+#ifdef MAGMA_ENABLE_CANARIES
+        MAGMA_LOG("XML004", MAGMA_AND(state->how != GZIP, \
+            MAGMA_AND(ret != LZMA_OK, ret != LZMA_STREAM_END)));
+#endif
     } while (strm->avail_out && ret != LZMA_STREAM_END);
 
     /* update available output and crc check value */
