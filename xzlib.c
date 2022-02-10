@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /**
  * xzlib.c: front end for the transparent support of lzma compression
  *          at the I/O layer, based on an example file from lzma project
@@ -88,6 +93,9 @@ typedef struct {
 static void
 xz_error(xz_statep state, int err, const char *msg)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1661);
+#endif
     /* free previously allocated message and clear */
     if (state->msg != NULL) {
         if (state->err != LZMA_MEM_ERROR)
@@ -138,6 +146,9 @@ xz_reset(xz_statep state)
 static xzFile
 xz_open(const char *path, int fd, const char *mode ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1660);
+#endif
     xz_statep state;
 
     /* allocate xzFile structure to return */
@@ -233,6 +244,9 @@ static int
 xz_load(xz_statep state, unsigned char *buf, unsigned int len,
         unsigned int *have)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1663);
+#endif
     int ret;
 
     *have = 0;
@@ -254,6 +268,9 @@ xz_load(xz_statep state, unsigned char *buf, unsigned int len,
 static int
 xz_avail(xz_statep state)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1665);
+#endif
     lzma_stream *strm = &(state->strm);
 
     if (state->err != LZMA_OK)
@@ -365,6 +382,9 @@ is_format_lzma(xz_statep state)
 static int
 gz_next4(xz_statep state, unsigned long *ret)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1666);
+#endif
     int ch;
     unsigned long val;
     z_streamp strm = &(state->zstrm);
@@ -529,6 +549,9 @@ xz_head(xz_statep state)
 static int
 xz_decomp(xz_statep state)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1664);
+#endif
     int ret;
     unsigned had;
     unsigned long crc, len;
@@ -648,6 +671,9 @@ xz_decomp(xz_statep state)
 static int
 xz_make(xz_statep state)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1662);
+#endif
     lzma_stream *strm = &(state->strm);
 
     if (state->how == LOOK) {   /* look for lzma / gzip header */

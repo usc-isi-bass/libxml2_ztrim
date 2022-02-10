@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * debugXML.c : This is a set of routines used for debugging the tree
  *              produced by the XML parser.
@@ -137,6 +142,9 @@ xmlNsCheckScope(xmlNodePtr node, xmlNsPtr ns)
 static void
 xmlCtxtDumpSpaces(xmlDebugCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1843);
+#endif
     if (ctxt->check)
         return;
     if ((ctxt->output != NULL) && (ctxt->depth > 0)) {
@@ -196,6 +204,9 @@ xmlDebugErr3(xmlDebugCtxtPtr ctxt, int error, const char *msg, const char *extra
 static void
 xmlCtxtNsCheckScope(xmlDebugCtxtPtr ctxt, xmlNodePtr node, xmlNsPtr ns)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1846);
+#endif
     int ret;
 
     ret = xmlNsCheckScope(node, ns);
@@ -249,6 +260,9 @@ xmlCtxtCheckString(xmlDebugCtxtPtr ctxt, const xmlChar * str)
 static void
 xmlCtxtCheckName(xmlDebugCtxtPtr ctxt, const xmlChar * name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1847);
+#endif
     if (ctxt->check) {
 	if (name == NULL) {
 	    xmlDebugErr(ctxt, XML_CHECK_NO_NAME, "Name is NULL");
@@ -273,6 +287,9 @@ xmlCtxtCheckName(xmlDebugCtxtPtr ctxt, const xmlChar * name)
 
 static void
 xmlCtxtGenericNodeCheck(xmlDebugCtxtPtr ctxt, xmlNodePtr node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1845);
+#endif
     xmlDocPtr doc;
     xmlDictPtr dict;
 
@@ -421,6 +438,9 @@ xmlCtxtGenericNodeCheck(xmlDebugCtxtPtr ctxt, xmlNodePtr node) {
 static void
 xmlCtxtDumpString(xmlDebugCtxtPtr ctxt, const xmlChar * str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1844);
+#endif
     int i;
 
     if (ctxt->check) {
@@ -446,6 +466,9 @@ xmlCtxtDumpString(xmlDebugCtxtPtr ctxt, const xmlChar * str)
 static void
 xmlCtxtDumpDtdNode(xmlDebugCtxtPtr ctxt, xmlDtdPtr dtd)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1850);
+#endif
     xmlCtxtDumpSpaces(ctxt);
 
     if (dtd == NULL) {
@@ -716,6 +739,9 @@ xmlCtxtDumpEntityDecl(xmlDebugCtxtPtr ctxt, xmlEntityPtr ent)
 static void
 xmlCtxtDumpNamespace(xmlDebugCtxtPtr ctxt, xmlNsPtr ns)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1851);
+#endif
     xmlCtxtDumpSpaces(ctxt);
 
     if (ns == NULL) {
@@ -823,6 +849,9 @@ xmlCtxtDumpEntity(xmlDebugCtxtPtr ctxt, xmlEntityPtr ent)
 static void
 xmlCtxtDumpAttr(xmlDebugCtxtPtr ctxt, xmlAttrPtr attr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1812);
+#endif
     xmlCtxtDumpSpaces(ctxt);
 
     if (attr == NULL) {
@@ -878,6 +907,9 @@ xmlCtxtDumpAttrList(xmlDebugCtxtPtr ctxt, xmlAttrPtr attr)
 static void
 xmlCtxtDumpOneNode(xmlDebugCtxtPtr ctxt, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1816);
+#endif
     if (node == NULL) {
         if (!ctxt->check) {
             xmlCtxtDumpSpaces(ctxt);
@@ -1061,6 +1093,9 @@ xmlCtxtDumpOneNode(xmlDebugCtxtPtr ctxt, xmlNodePtr node)
 static void
 xmlCtxtDumpNode(xmlDebugCtxtPtr ctxt, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1818);
+#endif
     if (node == NULL) {
         if (!ctxt->check) {
             xmlCtxtDumpSpaces(ctxt);
@@ -1097,6 +1132,9 @@ xmlCtxtDumpNodeList(xmlDebugCtxtPtr ctxt, xmlNodePtr node)
 static void
 xmlCtxtDumpDocHead(xmlDebugCtxtPtr ctxt, xmlDocPtr doc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1848);
+#endif
     if (doc == NULL) {
         if (!ctxt->check)
             fprintf(ctxt->output, "DOCUMENT == NULL !\n");
@@ -1173,6 +1211,9 @@ xmlCtxtDumpDocHead(xmlDebugCtxtPtr ctxt, xmlDocPtr doc)
 static void
 xmlCtxtDumpDocumentHead(xmlDebugCtxtPtr ctxt, xmlDocPtr doc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1821);
+#endif
     if (doc == NULL) return;
     xmlCtxtDumpDocHead(ctxt, doc);
     if (!ctxt->check) {
@@ -1213,6 +1254,9 @@ xmlCtxtDumpDocumentHead(xmlDebugCtxtPtr ctxt, xmlDocPtr doc)
 static void
 xmlCtxtDumpDocument(xmlDebugCtxtPtr ctxt, xmlDocPtr doc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1823);
+#endif
     if (doc == NULL) {
         if (!ctxt->check)
             fprintf(ctxt->output, "DOCUMENT == NULL !\n");
@@ -1232,6 +1276,9 @@ static void
 xmlCtxtDumpEntityCallback(void *payload, void *data,
                           const xmlChar *name ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1849);
+#endif
     xmlEntityPtr cur = (xmlEntityPtr) payload;
     xmlDebugCtxtPtr ctxt = (xmlDebugCtxtPtr) data;
     if (cur == NULL) {
@@ -1347,6 +1394,9 @@ xmlCtxtDumpDTD(xmlDebugCtxtPtr ctxt, xmlDtdPtr dtd)
 void
 xmlDebugDumpString(FILE * output, const xmlChar * str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1810);
+#endif
     int i;
 
     if (output == NULL)
@@ -1377,6 +1427,9 @@ xmlDebugDumpString(FILE * output, const xmlChar * str)
  */
 void
 xmlDebugDumpAttr(FILE *output, xmlAttrPtr attr, int depth) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1811);
+#endif
     xmlDebugCtxt ctxt;
 
     if (output == NULL) return;
@@ -1398,6 +1451,9 @@ xmlDebugDumpAttr(FILE *output, xmlAttrPtr attr, int depth) {
 void
 xmlDebugDumpEntities(FILE * output, xmlDocPtr doc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1813);
+#endif
     xmlDebugCtxt ctxt;
 
     if (output == NULL) return;
@@ -1418,6 +1474,9 @@ xmlDebugDumpEntities(FILE * output, xmlDocPtr doc)
 void
 xmlDebugDumpAttrList(FILE * output, xmlAttrPtr attr, int depth)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1814);
+#endif
     xmlDebugCtxt ctxt;
 
     if (output == NULL) return;
@@ -1439,6 +1498,9 @@ xmlDebugDumpAttrList(FILE * output, xmlAttrPtr attr, int depth)
 void
 xmlDebugDumpOneNode(FILE * output, xmlNodePtr node, int depth)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1815);
+#endif
     xmlDebugCtxt ctxt;
 
     if (output == NULL) return;
@@ -1460,6 +1522,9 @@ xmlDebugDumpOneNode(FILE * output, xmlNodePtr node, int depth)
 void
 xmlDebugDumpNode(FILE * output, xmlNodePtr node, int depth)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1817);
+#endif
     xmlDebugCtxt ctxt;
 
     if (output == NULL)
@@ -1482,6 +1547,9 @@ xmlDebugDumpNode(FILE * output, xmlNodePtr node, int depth)
 void
 xmlDebugDumpNodeList(FILE * output, xmlNodePtr node, int depth)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1819);
+#endif
     xmlDebugCtxt ctxt;
 
     if (output == NULL)
@@ -1503,6 +1571,9 @@ xmlDebugDumpNodeList(FILE * output, xmlNodePtr node, int depth)
 void
 xmlDebugDumpDocumentHead(FILE * output, xmlDocPtr doc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1820);
+#endif
     xmlDebugCtxt ctxt;
 
     if (output == NULL)
@@ -1524,6 +1595,9 @@ xmlDebugDumpDocumentHead(FILE * output, xmlDocPtr doc)
 void
 xmlDebugDumpDocument(FILE * output, xmlDocPtr doc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1822);
+#endif
     xmlDebugCtxt ctxt;
 
     if (output == NULL)
@@ -1545,6 +1619,9 @@ xmlDebugDumpDocument(FILE * output, xmlDocPtr doc)
 void
 xmlDebugDumpDTD(FILE * output, xmlDtdPtr dtd)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1824);
+#endif
     xmlDebugCtxt ctxt;
 
     if (output == NULL)
@@ -1575,6 +1652,9 @@ xmlDebugDumpDTD(FILE * output, xmlDtdPtr dtd)
 int
 xmlDebugCheckDocument(FILE * output, xmlDocPtr doc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1825);
+#endif
     xmlDebugCtxt ctxt;
 
     if (output == NULL)
@@ -1603,6 +1683,9 @@ xmlDebugCheckDocument(FILE * output, xmlDocPtr doc)
  */
 int
 xmlLsCountNode(xmlNodePtr node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1826);
+#endif
     int ret = 0;
     xmlNodePtr list = NULL;
 
@@ -1660,6 +1743,9 @@ xmlLsCountNode(xmlNodePtr node) {
  */
 void
 xmlLsOneNode(FILE *output, xmlNodePtr node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1827);
+#endif
     if (output == NULL) return;
     if (node == NULL) {
 	fprintf(output, "NULL\n");
@@ -1795,6 +1881,9 @@ xmlLsOneNode(FILE *output, xmlNodePtr node) {
 const char *
 xmlBoolToText(int boolval)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1828);
+#endif
     if (boolval)
         return("True");
     else
@@ -1827,6 +1916,9 @@ xmlBoolToText(int boolval)
 void
 xmlShellPrintXPathError(int errorType, const char *arg)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1829);
+#endif
     const char *default_arg = "Result";
 
     if (!arg)
@@ -1918,6 +2010,9 @@ xmlShellPrintNodeCtxt(xmlShellCtxtPtr ctxt,xmlNodePtr node)
 void
 xmlShellPrintNode(xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1830);
+#endif
     xmlShellPrintNodeCtxt(NULL, node);
 }
 #endif /* LIBXML_OUTPUT_ENABLED */
@@ -1986,6 +2081,9 @@ xmlShellPrintXPathResultCtxt(xmlShellCtxtPtr ctxt,xmlXPathObjectPtr list)
 void
 xmlShellPrintXPathResult(xmlXPathObjectPtr list)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1831);
+#endif
     xmlShellPrintXPathResultCtxt(NULL, list);
 }
 
@@ -2006,6 +2104,9 @@ xmlShellList(xmlShellCtxtPtr ctxt,
              char *arg ATTRIBUTE_UNUSED, xmlNodePtr node,
              xmlNodePtr node2 ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1832);
+#endif
     xmlNodePtr cur;
     if (!ctxt)
         return (0);
@@ -2049,6 +2150,9 @@ xmlShellBase(xmlShellCtxtPtr ctxt,
              char *arg ATTRIBUTE_UNUSED, xmlNodePtr node,
              xmlNodePtr node2 ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1833);
+#endif
     xmlChar *base;
     if (!ctxt)
         return 0;
@@ -2277,6 +2381,9 @@ xmlShellDir(xmlShellCtxtPtr ctxt ATTRIBUTE_UNUSED,
             char *arg ATTRIBUTE_UNUSED, xmlNodePtr node,
             xmlNodePtr node2 ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1834);
+#endif
     if (!ctxt)
         return (0);
     if (node == NULL) {
@@ -2406,6 +2513,9 @@ int
 xmlShellCat(xmlShellCtxtPtr ctxt, char *arg ATTRIBUTE_UNUSED,
             xmlNodePtr node, xmlNodePtr node2 ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1835);
+#endif
     if (!ctxt)
         return (0);
     if (node == NULL) {
@@ -2452,6 +2562,9 @@ xmlShellLoad(xmlShellCtxtPtr ctxt, char *filename,
              xmlNodePtr node ATTRIBUTE_UNUSED,
              xmlNodePtr node2 ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1836);
+#endif
     xmlDocPtr doc;
     int html = 0;
 
@@ -2507,6 +2620,9 @@ int
 xmlShellWrite(xmlShellCtxtPtr ctxt, char *filename, xmlNodePtr node,
               xmlNodePtr node2 ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1837);
+#endif
     if (node == NULL)
         return (-1);
     if ((filename == NULL) || (filename[0] == 0)) {
@@ -2575,6 +2691,9 @@ xmlShellSave(xmlShellCtxtPtr ctxt, char *filename,
              xmlNodePtr node ATTRIBUTE_UNUSED,
              xmlNodePtr node2 ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1838);
+#endif
     if ((ctxt == NULL) || (ctxt->doc == NULL))
         return (-1);
     if ((filename == NULL) || (filename[0] == 0))
@@ -2637,6 +2756,9 @@ xmlShellValidate(xmlShellCtxtPtr ctxt, char *dtd,
                  xmlNodePtr node ATTRIBUTE_UNUSED,
                  xmlNodePtr node2 ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1839);
+#endif
     xmlValidCtxt vctxt;
     int res = -1;
 
@@ -2679,6 +2801,9 @@ xmlShellDu(xmlShellCtxtPtr ctxt,
            char *arg ATTRIBUTE_UNUSED, xmlNodePtr tree,
            xmlNodePtr node2 ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1840);
+#endif
     xmlNodePtr node;
     int indent = 0, i;
 
@@ -2763,6 +2888,9 @@ int
 xmlShellPwd(xmlShellCtxtPtr ctxt ATTRIBUTE_UNUSED, char *buffer,
             xmlNodePtr node, xmlNodePtr node2 ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1841);
+#endif
     xmlChar *path;
 
     if ((node == NULL) || (buffer == NULL))
@@ -2802,6 +2930,9 @@ void
 xmlShell(xmlDocPtr doc, char *filename, xmlShellReadlineFunc input,
          FILE * output)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1842);
+#endif
     char prompt[500] = "/ > ";
     char *cmdline = NULL, *cur;
     char command[100];

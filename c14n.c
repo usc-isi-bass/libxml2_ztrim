@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * "Canonical XML" implementation
  * http://www.w3.org/TR/xml-c14n
@@ -758,6 +763,9 @@ xmlExcC14NProcessNamespacesAxis(xmlC14NCtxPtr ctx, xmlNodePtr cur, int visible)
 	     */
             if (xmlStrEqual(prefix, BAD_CAST "#default")
                 || xmlStrEqual(prefix, BAD_CAST "")) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
                 prefix = NULL;
 		has_empty_ns_in_inclusive_list = 1;
             }
@@ -955,6 +963,9 @@ xmlC14NPrintAttrs(const void *data, void *user)
 
     xmlOutputBufferWriteString(ctx->buf, " ");
     if (attr->ns != NULL && xmlStrlen(attr->ns->prefix) > 0) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1073);
+#endif
         xmlOutputBufferWriteString(ctx->buf,
                                    (const char *) attr->ns->prefix);
         xmlOutputBufferWriteString(ctx->buf, ":");
@@ -1083,6 +1094,9 @@ xmlC14NFixupBaseAttr(xmlC14NCtxPtr ctx, xmlAttrPtr xml_base_attr)
 
     /* check if result uri is empty or not */
     if((res == NULL) || xmlStrEqual(res, BAD_CAST "")) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
         xmlFree(res);
         return (NULL);
     }
@@ -1267,10 +1281,19 @@ xmlC14NProcessAttrsAxis(xmlC14NCtxPtr ctx, xmlNodePtr cur, int parent_visible)
          */
         attr = cur->properties;
         while (attr != NULL) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
             /* special processing for XML attribute kiks in only when we have invisible parents */
             if ((!parent_visible) || (xmlC14NIsXmlAttr(attr) == 0)) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
                 /* check that attribute is visible */
                 if (xmlC14NIsVisible(ctx, attr, cur)) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
                     xmlListInsert(list, attr);
                 }
             } else {

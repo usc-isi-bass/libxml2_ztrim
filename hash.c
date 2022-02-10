@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * hash.c: chained hash tables
  *
@@ -85,6 +90,9 @@ ATTRIBUTE_NO_SANITIZE("unsigned-integer-overflow")
 static unsigned long
 xmlHashComputeKey(xmlHashTablePtr table, const xmlChar *name,
 	          const xmlChar *name2, const xmlChar *name3) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(353);
+#endif
     unsigned long value = 0L;
     char ch;
 
@@ -179,6 +187,9 @@ xmlHashComputeQKey(xmlHashTablePtr table,
  */
 xmlHashTablePtr
 xmlHashCreate(int size) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(337);
+#endif
     xmlHashTablePtr table;
 
     if (size <= 0)
@@ -213,6 +224,9 @@ xmlHashCreate(int size) {
  */
 xmlHashTablePtr
 xmlHashCreateDict(int size, xmlDictPtr dict) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(338);
+#endif
     xmlHashTablePtr table;
 
     table = xmlHashCreate(size);
@@ -325,6 +339,9 @@ xmlHashGrow(xmlHashTablePtr table, int size) {
  */
 void
 xmlHashFree(xmlHashTablePtr table, xmlHashDeallocator f) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(339);
+#endif
     int i;
     xmlHashEntryPtr iter;
     xmlHashEntryPtr next;
@@ -376,6 +393,9 @@ xmlHashFree(xmlHashTablePtr table, xmlHashDeallocator f) {
  */
 void
 xmlHashDefaultDeallocator(void *entry, const xmlChar *name ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(340);
+#endif
     xmlFree(entry);
 }
 
@@ -392,6 +412,9 @@ xmlHashDefaultDeallocator(void *entry, const xmlChar *name ATTRIBUTE_UNUSED) {
  */
 int
 xmlHashAddEntry(xmlHashTablePtr table, const xmlChar *name, void *userdata) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(341);
+#endif
     return(xmlHashAddEntry3(table, name, NULL, NULL, userdata));
 }
 
@@ -410,6 +433,9 @@ xmlHashAddEntry(xmlHashTablePtr table, const xmlChar *name, void *userdata) {
 int
 xmlHashAddEntry2(xmlHashTablePtr table, const xmlChar *name,
 	        const xmlChar *name2, void *userdata) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(343);
+#endif
     return(xmlHashAddEntry3(table, name, name2, NULL, userdata));
 }
 
@@ -429,6 +455,9 @@ xmlHashAddEntry2(xmlHashTablePtr table, const xmlChar *name,
 int
 xmlHashUpdateEntry(xmlHashTablePtr table, const xmlChar *name,
 	           void *userdata, xmlHashDeallocator f) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(344);
+#endif
     return(xmlHashUpdateEntry3(table, name, NULL, NULL, userdata, f));
 }
 
@@ -450,6 +479,12 @@ int
 xmlHashUpdateEntry2(xmlHashTablePtr table, const xmlChar *name,
 	           const xmlChar *name2, void *userdata,
 		   xmlHashDeallocator f) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(347);
+#endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(346);
+#endif
     return(xmlHashUpdateEntry3(table, name, name2, NULL, userdata, f));
 }
 
@@ -480,6 +515,9 @@ xmlHashLookup(xmlHashTablePtr table, const xmlChar *name) {
 void *
 xmlHashLookup2(xmlHashTablePtr table, const xmlChar *name,
 	      const xmlChar *name2) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(349);
+#endif
     return(xmlHashLookup3(table, name, name2, NULL));
 }
 
@@ -496,6 +534,9 @@ xmlHashLookup2(xmlHashTablePtr table, const xmlChar *name,
 void *
 xmlHashQLookup(xmlHashTablePtr table, const xmlChar *prefix,
                const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(350);
+#endif
     return(xmlHashQLookup3(table, prefix, name, NULL, NULL, NULL, NULL));
 }
 
@@ -515,6 +556,9 @@ void *
 xmlHashQLookup2(xmlHashTablePtr table, const xmlChar *prefix,
                 const xmlChar *name, const xmlChar *prefix2,
 	        const xmlChar *name2) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(352);
+#endif
     return(xmlHashQLookup3(table, prefix, name, prefix2, name2, NULL, NULL));
 }
 
@@ -536,6 +580,9 @@ int
 xmlHashAddEntry3(xmlHashTablePtr table, const xmlChar *name,
 	         const xmlChar *name2, const xmlChar *name3,
 		 void *userdata) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(342);
+#endif
     unsigned long key, len = 0;
     xmlHashEntryPtr entry;
     xmlHashEntryPtr insert;
@@ -652,6 +699,9 @@ int
 xmlHashUpdateEntry3(xmlHashTablePtr table, const xmlChar *name,
 	           const xmlChar *name2, const xmlChar *name3,
 		   void *userdata, xmlHashDeallocator f) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(345);
+#endif
     unsigned long key;
     xmlHashEntryPtr entry;
     xmlHashEntryPtr insert;
@@ -773,6 +823,9 @@ xmlHashUpdateEntry3(xmlHashTablePtr table, const xmlChar *name,
 void *
 xmlHashLookup3(xmlHashTablePtr table, const xmlChar *name,
 	       const xmlChar *name2, const xmlChar *name3) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(348);
+#endif
     unsigned long key;
     xmlHashEntryPtr entry;
 
@@ -819,6 +872,9 @@ xmlHashQLookup3(xmlHashTablePtr table,
                 const xmlChar *prefix, const xmlChar *name,
 		const xmlChar *prefix2, const xmlChar *name2,
 		const xmlChar *prefix3, const xmlChar *name3) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(351);
+#endif
     unsigned long key;
     xmlHashEntryPtr entry;
 
@@ -848,6 +904,9 @@ static void
 stubHashScannerFull (void *payload, void *data, const xmlChar *name,
                      const xmlChar *name2 ATTRIBUTE_UNUSED,
 		     const xmlChar *name3 ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(356);
+#endif
     stubData *stubdata = (stubData *) data;
     stubdata->hashscanner (payload, stubdata->data, (xmlChar *) name);
 }
@@ -862,6 +921,9 @@ stubHashScannerFull (void *payload, void *data, const xmlChar *name,
  */
 void
 xmlHashScan(xmlHashTablePtr table, xmlHashScanner f, void *data) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(354);
+#endif
     stubData stubdata;
     stubdata.data = data;
     stubdata.hashscanner = f;
@@ -878,6 +940,9 @@ xmlHashScan(xmlHashTablePtr table, xmlHashScanner f, void *data) {
  */
 void
 xmlHashScanFull(xmlHashTablePtr table, xmlHashScannerFull f, void *data) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(355);
+#endif
     int i, nb;
     xmlHashEntryPtr iter;
     xmlHashEntryPtr next;
@@ -931,6 +996,9 @@ void
 xmlHashScan3(xmlHashTablePtr table, const xmlChar *name,
 	     const xmlChar *name2, const xmlChar *name3,
 	     xmlHashScanner f, void *data) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(357);
+#endif
     stubData stubdata;
     stubdata.data = data;
     stubdata.hashscanner = f;
@@ -955,6 +1023,9 @@ void
 xmlHashScanFull3(xmlHashTablePtr table, const xmlChar *name,
 		 const xmlChar *name2, const xmlChar *name3,
 		 xmlHashScannerFull f, void *data) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(358);
+#endif
     int i;
     xmlHashEntryPtr iter;
     xmlHashEntryPtr next;
@@ -995,6 +1066,9 @@ xmlHashScanFull3(xmlHashTablePtr table, const xmlChar *name,
  */
 xmlHashTablePtr
 xmlHashCopy(xmlHashTablePtr table, xmlHashCopier f) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(359);
+#endif
     int i;
     xmlHashEntryPtr iter;
     xmlHashEntryPtr next;
@@ -1037,6 +1111,9 @@ xmlHashCopy(xmlHashTablePtr table, xmlHashCopier f) {
  */
 int
 xmlHashSize(xmlHashTablePtr table) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(360);
+#endif
     if (table == NULL)
 	return(-1);
     return(table->nbElems);
@@ -1056,6 +1133,9 @@ xmlHashSize(xmlHashTablePtr table) {
  */
 int xmlHashRemoveEntry(xmlHashTablePtr table, const xmlChar *name,
 		       xmlHashDeallocator f) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(361);
+#endif
     return(xmlHashRemoveEntry3(table, name, NULL, NULL, f));
 }
 
@@ -1075,6 +1155,9 @@ int xmlHashRemoveEntry(xmlHashTablePtr table, const xmlChar *name,
 int
 xmlHashRemoveEntry2(xmlHashTablePtr table, const xmlChar *name,
 			const xmlChar *name2, xmlHashDeallocator f) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(363);
+#endif
     return(xmlHashRemoveEntry3(table, name, name2, NULL, f));
 }
 
@@ -1095,6 +1178,9 @@ xmlHashRemoveEntry2(xmlHashTablePtr table, const xmlChar *name,
 int
 xmlHashRemoveEntry3(xmlHashTablePtr table, const xmlChar *name,
     const xmlChar *name2, const xmlChar *name3, xmlHashDeallocator f) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(362);
+#endif
     unsigned long key;
     xmlHashEntryPtr entry;
     xmlHashEntryPtr prev = NULL;
@@ -1110,6 +1196,9 @@ xmlHashRemoveEntry3(xmlHashTablePtr table, const xmlChar *name,
             if (xmlStrEqual(entry->name, name) &&
                     xmlStrEqual(entry->name2, name2) &&
                     xmlStrEqual(entry->name3, name3)) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
                 if ((f != NULL) && (entry->payload != NULL))
                     f(entry->payload, entry->name);
                 entry->payload = NULL;

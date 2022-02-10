@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * string.c : an XML string utilities module
  *
@@ -39,6 +44,9 @@
  */
 xmlChar *
 xmlStrndup(const xmlChar *cur, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1061);
+#endif
     xmlChar *ret;
 
     if ((cur == NULL) || (len < 0)) return(NULL);
@@ -64,6 +72,9 @@ xmlStrndup(const xmlChar *cur, int len) {
  */
 xmlChar *
 xmlStrdup(const xmlChar *cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1062);
+#endif
     const xmlChar *p = cur;
 
     if (cur == NULL) return(NULL);
@@ -83,6 +94,9 @@ xmlStrdup(const xmlChar *cur) {
 
 xmlChar *
 xmlCharStrndup(const char *cur, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1063);
+#endif
     int i;
     xmlChar *ret;
 
@@ -111,6 +125,9 @@ xmlCharStrndup(const char *cur, int len) {
 
 xmlChar *
 xmlCharStrdup(const char *cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1064);
+#endif
     const char *p = cur;
 
     if (cur == NULL) return(NULL);
@@ -130,6 +147,9 @@ xmlCharStrdup(const char *cur) {
 
 int
 xmlStrcmp(const xmlChar *str1, const xmlChar *str2) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1065);
+#endif
     if (str1 == str2) return(0);
     if (str1 == NULL) return(-1);
     if (str2 == NULL) return(1);
@@ -157,6 +177,9 @@ xmlStrcmp(const xmlChar *str1, const xmlChar *str2) {
 
 int
 xmlStrEqual(const xmlChar *str1, const xmlChar *str2) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
     if (str1 == str2) return(1);
     if (str1 == NULL) return(0);
     if (str2 == NULL) return(0);
@@ -183,6 +206,9 @@ xmlStrEqual(const xmlChar *str1, const xmlChar *str2) {
 
 int
 xmlStrQEqual(const xmlChar *pref, const xmlChar *name, const xmlChar *str) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1067);
+#endif
     if (pref == NULL) return(xmlStrEqual(name, str));
     if (name == NULL) return(0);
     if (str == NULL) return(0);
@@ -210,6 +236,9 @@ xmlStrQEqual(const xmlChar *pref, const xmlChar *name, const xmlChar *str) {
 
 int
 xmlStrncmp(const xmlChar *str1, const xmlChar *str2, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1068);
+#endif
     if (len <= 0) return(0);
     if (str1 == str2) return(0);
     if (str1 == NULL) return(-1);
@@ -272,6 +301,9 @@ static const xmlChar casemap[256] = {
 
 int
 xmlStrcasecmp(const xmlChar *str1, const xmlChar *str2) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1069);
+#endif
     register int tmp;
 
     if (str1 == str2) return(0);
@@ -297,6 +329,9 @@ xmlStrcasecmp(const xmlChar *str1, const xmlChar *str2) {
 
 int
 xmlStrncasecmp(const xmlChar *str1, const xmlChar *str2, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1070);
+#endif
     register int tmp;
 
     if (len <= 0) return(0);
@@ -322,6 +357,12 @@ xmlStrncasecmp(const xmlChar *str1, const xmlChar *str2, int len) {
 
 const xmlChar *
 xmlStrchr(const xmlChar *str, xmlChar val) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1072);
+#endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1071);
+#endif
     if (str == NULL) return(NULL);
     while (*str != 0) { /* non input consuming */
         if (*str == val) return((xmlChar *) str);
@@ -370,6 +411,9 @@ xmlStrstr(const xmlChar *str, const xmlChar *val) {
 
 const xmlChar *
 xmlStrcasestr(const xmlChar *str, const xmlChar *val) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1074);
+#endif
     int n;
 
     if (str == NULL) return(NULL);
@@ -398,6 +442,9 @@ xmlStrcasestr(const xmlChar *str, const xmlChar *val) {
 
 xmlChar *
 xmlStrsub(const xmlChar *str, int start, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1075);
+#endif
     int i;
 
     if (str == NULL) return(NULL);
@@ -423,6 +470,9 @@ xmlStrsub(const xmlChar *str, int start, int len) {
 
 int
 xmlStrlen(const xmlChar *str) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1073);
+#endif
     int len = 0;
 
     if (str == NULL) return(0);
@@ -449,6 +499,9 @@ xmlStrlen(const xmlChar *str) {
 
 xmlChar *
 xmlStrncat(xmlChar *cur, const xmlChar *add, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1076);
+#endif
     int size;
     xmlChar *ret;
 
@@ -497,6 +550,9 @@ xmlStrncat(xmlChar *cur, const xmlChar *add, int len) {
  */
 xmlChar *
 xmlStrncatNew(const xmlChar *str1, const xmlChar *str2, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1077);
+#endif
     int size;
     xmlChar *ret;
 
@@ -549,6 +605,9 @@ xmlStrncatNew(const xmlChar *str1, const xmlChar *str2, int len) {
  */
 xmlChar *
 xmlStrcat(xmlChar *cur, const xmlChar *add) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1078);
+#endif
     const xmlChar *p = add;
 
     if (add == NULL) return(cur);
@@ -572,6 +631,9 @@ xmlStrcat(xmlChar *cur, const xmlChar *add) {
  */
 int XMLCDECL
 xmlStrPrintf(xmlChar *buf, int len, const char *msg, ...) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1079);
+#endif
     va_list args;
     int ret;
 
@@ -600,6 +662,9 @@ xmlStrPrintf(xmlChar *buf, int len, const char *msg, ...) {
  */
 int
 xmlStrVPrintf(xmlChar *buf, int len, const char *msg, va_list ap) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1080);
+#endif
     int ret;
 
     if((buf == NULL) || (msg == NULL)) {
@@ -638,6 +703,9 @@ xmlStrVPrintf(xmlChar *buf, int len, const char *msg, va_list ap) {
  */
 int
 xmlUTF8Size(const xmlChar *utf) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1081);
+#endif
     xmlChar mask;
     int len;
 
@@ -669,6 +737,9 @@ xmlUTF8Size(const xmlChar *utf) {
  */
 int
 xmlUTF8Charcmp(const xmlChar *utf1, const xmlChar *utf2) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1082);
+#endif
 
     if (utf1 == NULL ) {
         if (utf2 == NULL)
@@ -689,6 +760,9 @@ xmlUTF8Charcmp(const xmlChar *utf1, const xmlChar *utf2) {
  */
 int
 xmlUTF8Strlen(const xmlChar *utf) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1083);
+#endif
     int ret = 0;
 
     if (utf == NULL)
@@ -733,6 +807,9 @@ xmlUTF8Strlen(const xmlChar *utf) {
  */
 int
 xmlGetUTF8Char(const unsigned char *utf, int *len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1084);
+#endif
     unsigned int c;
 
     if (utf == NULL)
@@ -805,6 +882,9 @@ error:
 int
 xmlCheckUTF8(const unsigned char *utf)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1085);
+#endif
     int ix;
     unsigned char c;
 
@@ -856,6 +936,9 @@ xmlCheckUTF8(const unsigned char *utf)
 
 int
 xmlUTF8Strsize(const xmlChar *utf, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1086);
+#endif
     const xmlChar   *ptr=utf;
     xmlChar         ch;
 
@@ -889,6 +972,9 @@ xmlUTF8Strsize(const xmlChar *utf, int len) {
  */
 xmlChar *
 xmlUTF8Strndup(const xmlChar *utf, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1087);
+#endif
     xmlChar *ret;
     int i;
 
@@ -918,6 +1004,9 @@ xmlUTF8Strndup(const xmlChar *utf, int len) {
  */
 const xmlChar *
 xmlUTF8Strpos(const xmlChar *utf, int pos) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1088);
+#endif
     xmlChar ch;
 
     if (utf == NULL) return(NULL);
@@ -950,6 +1039,9 @@ xmlUTF8Strpos(const xmlChar *utf, int pos) {
  */
 int
 xmlUTF8Strloc(const xmlChar *utf, const xmlChar *utfchar) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1089);
+#endif
     int i, size;
     xmlChar ch;
 
@@ -987,6 +1079,9 @@ xmlUTF8Strloc(const xmlChar *utf, const xmlChar *utfchar) {
 
 xmlChar *
 xmlUTF8Strsub(const xmlChar *utf, int start, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1090);
+#endif
     int            i;
     xmlChar ch;
 
@@ -1025,6 +1120,9 @@ xmlUTF8Strsub(const xmlChar *utf, int start, int len) {
 xmlChar *
 xmlEscapeFormatString(xmlChar **msg)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1091);
+#endif
     xmlChar *msgPtr = NULL;
     xmlChar *result = NULL;
     xmlChar *resultPtr = NULL;

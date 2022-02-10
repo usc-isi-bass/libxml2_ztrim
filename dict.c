@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * dict.c: dictionary of reusable strings, just used to avoid allocation
  *         and freeing operations.
@@ -158,6 +163,9 @@ static unsigned int rand_seed = 0;
  * call led to the initialization
  */
 int xmlInitializeDict(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1511);
+#endif
     return(0);
 }
 
@@ -220,6 +228,9 @@ int __xmlRandom(void) {
  */
 void
 xmlDictCleanup(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1512);
+#endif
     if (!xmlDictInitialized)
         return;
 
@@ -240,6 +251,9 @@ xmlDictCleanup(void) {
  */
 static const xmlChar *
 xmlDictAddString(xmlDictPtr dict, const xmlChar *name, unsigned int namelen) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1519);
+#endif
     xmlDictStringsPtr pool;
     const xmlChar *ret;
     size_t size = 0; /* + sizeof(_xmlDictStrings) == 1024 */
@@ -414,6 +428,9 @@ static unsigned long
 xmlDictComputeBigQKey(const xmlChar *prefix, int plen,
                       const xmlChar *name, int len, int seed)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1524);
+#endif
     uint32_t hash;
     int i;
 
@@ -449,6 +466,9 @@ xmlDictComputeBigQKey(const xmlChar *prefix, int plen,
  */
 static unsigned long
 xmlDictComputeFastKey(const xmlChar *name, int namelen, int seed) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1518);
+#endif
     unsigned long value = seed;
 
     if (name == NULL) return(0);
@@ -494,6 +514,9 @@ static unsigned long
 xmlDictComputeFastQKey(const xmlChar *prefix, int plen,
                        const xmlChar *name, int len, int seed)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1523);
+#endif
     unsigned long value = (unsigned long) seed;
 
     if (plen == 0)
@@ -573,6 +596,9 @@ xmlDictComputeFastQKey(const xmlChar *prefix, int plen,
  */
 xmlDictPtr
 xmlDictCreate(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1513);
+#endif
     xmlDictPtr dict;
 
     if (!xmlDictInitialized)
@@ -620,6 +646,9 @@ xmlDictCreate(void) {
  */
 xmlDictPtr
 xmlDictCreateSub(xmlDictPtr sub) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1514);
+#endif
     xmlDictPtr dict = xmlDictCreate();
 
     if ((dict != NULL) && (sub != NULL)) {
@@ -643,6 +672,9 @@ xmlDictCreateSub(xmlDictPtr sub) {
  */
 int
 xmlDictReference(xmlDictPtr dict) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1515);
+#endif
     if (!xmlDictInitialized)
         if (!__xmlInitializeDict())
             return(-1);
@@ -665,6 +697,9 @@ xmlDictReference(xmlDictPtr dict) {
  */
 static int
 xmlDictGrow(xmlDictPtr dict, size_t size) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1520);
+#endif
     unsigned long key, okey;
     size_t oldsize, i;
     xmlDictEntryPtr iter, next;
@@ -798,6 +833,9 @@ xmlDictGrow(xmlDictPtr dict, size_t size) {
  */
 void
 xmlDictFree(xmlDictPtr dict) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1516);
+#endif
     size_t i;
     xmlDictEntryPtr iter;
     xmlDictEntryPtr next;
@@ -863,6 +901,9 @@ xmlDictFree(xmlDictPtr dict) {
  */
 const xmlChar *
 xmlDictLookup(xmlDictPtr dict, const xmlChar *name, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1517);
+#endif
     unsigned long key, okey, nbi = 0;
     xmlDictEntryPtr entry;
     xmlDictEntryPtr insert;
@@ -1003,6 +1044,9 @@ xmlDictLookup(xmlDictPtr dict, const xmlChar *name, int len) {
  */
 const xmlChar *
 xmlDictExists(xmlDictPtr dict, const xmlChar *name, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1521);
+#endif
     unsigned long key, okey, nbi = 0;
     xmlDictEntryPtr insert;
     unsigned int l;
@@ -1111,6 +1155,9 @@ xmlDictExists(xmlDictPtr dict, const xmlChar *name, int len) {
  */
 const xmlChar *
 xmlDictQLookup(xmlDictPtr dict, const xmlChar *prefix, const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1522);
+#endif
     unsigned long okey, key, nbi = 0;
     xmlDictEntryPtr entry;
     xmlDictEntryPtr insert;
@@ -1216,6 +1263,9 @@ xmlDictQLookup(xmlDictPtr dict, const xmlChar *prefix, const xmlChar *name) {
  */
 int
 xmlDictOwns(xmlDictPtr dict, const xmlChar *str) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1525);
+#endif
     xmlDictStringsPtr pool;
 
     if ((dict == NULL) || (str == NULL))
@@ -1242,6 +1292,9 @@ xmlDictOwns(xmlDictPtr dict, const xmlChar *str) {
  */
 int
 xmlDictSize(xmlDictPtr dict) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1526);
+#endif
     if (dict == NULL)
 	return(-1);
     if (dict->subdict)
@@ -1261,6 +1314,9 @@ xmlDictSize(xmlDictPtr dict) {
  */
 size_t
 xmlDictSetLimit(xmlDictPtr dict, size_t limit) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1527);
+#endif
     size_t ret;
 
     if (dict == NULL)
@@ -1281,6 +1337,9 @@ xmlDictSetLimit(xmlDictPtr dict, size_t limit) {
  */
 size_t
 xmlDictGetUsage(xmlDictPtr dict) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1528);
+#endif
     xmlDictStringsPtr pool;
     size_t limit = 0;
 

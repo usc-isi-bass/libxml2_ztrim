@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * pattern.c: Implementation of selectors for nodes
  *
@@ -229,6 +234,9 @@ xmlNewPattern(void) {
  */
 void
 xmlFreePattern(xmlPatternPtr comp) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1585);
+#endif
     xmlFreePatternList(comp);
 }
 
@@ -270,6 +278,9 @@ xmlFreePatternInternal(xmlPatternPtr comp) {
  */
 void
 xmlFreePatternList(xmlPatternPtr comp) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1586);
+#endif
     xmlPatternPtr cur;
 
     while (comp != NULL) {
@@ -294,6 +305,9 @@ xmlFreePatternList(xmlPatternPtr comp) {
 static xmlPatParserContextPtr
 xmlNewPatParserContext(const xmlChar *pattern, xmlDictPtr dict,
                        const xmlChar **namespaces) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1595);
+#endif
     xmlPatParserContextPtr cur;
 
     if (pattern == NULL)
@@ -351,6 +365,9 @@ xmlPatternAdd(xmlPatParserContextPtr ctxt ATTRIBUTE_UNUSED,
                 xmlPatternPtr comp,
                 xmlPatOp op, xmlChar * value, xmlChar * value2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1604);
+#endif
     if (comp->nbStep >= comp->maxStep) {
         xmlStepOpPtr temp;
 	temp = (xmlStepOpPtr) xmlRealloc(comp->steps, comp->maxStep * 2 *
@@ -465,6 +482,9 @@ xmlReversePattern(xmlPatternPtr comp) {
 
 static int
 xmlPatPushState(xmlStepStates *states, int step, xmlNodePtr node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1611);
+#endif
     if ((states->states == NULL) || (states->maxstates <= 0)) {
         states->maxstates = 4;
 	states->nbstates = 0;
@@ -823,6 +843,9 @@ xmlPatScanLiteral(xmlPatParserContextPtr ctxt) {
 
 static xmlChar *
 xmlPatScanName(xmlPatParserContextPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1608);
+#endif
     const xmlChar *q, *cur;
     xmlChar *ret = NULL;
     int val, len;
@@ -861,6 +884,9 @@ xmlPatScanName(xmlPatParserContextPtr ctxt) {
 
 static xmlChar *
 xmlPatScanNCName(xmlPatParserContextPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1607);
+#endif
     const xmlChar *q, *cur;
     xmlChar *ret = NULL;
     int val, len;
@@ -922,6 +948,9 @@ xmlPatScanQName(xmlPatParserContextPtr ctxt, xmlChar **prefix) {
  */
 static void
 xmlCompileAttributeTest(xmlPatParserContextPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1606);
+#endif
     xmlChar *token = NULL;
     xmlChar *name = NULL;
     xmlChar *URL = NULL;
@@ -1015,6 +1044,9 @@ error:
 
 static void
 xmlCompileStepPattern(xmlPatParserContextPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1605);
+#endif
     xmlChar *token = NULL;
     xmlChar *name = NULL;
     xmlChar *URL = NULL;
@@ -1493,6 +1525,9 @@ xmlDebugStreamCtxt(xmlStreamCtxtPtr ctxt, int match) {
  */
 static xmlStreamCompPtr
 xmlNewStreamComp(int size) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1609);
+#endif
     xmlStreamCompPtr cur;
 
     if (size < 4)
@@ -1525,6 +1560,9 @@ xmlNewStreamComp(int size) {
  */
 static void
 xmlFreeStreamComp(xmlStreamCompPtr comp) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1596);
+#endif
     if (comp != NULL) {
         if (comp->steps != NULL)
 	    xmlFree(comp->steps);
@@ -1548,6 +1586,9 @@ xmlFreeStreamComp(xmlStreamCompPtr comp) {
 static int
 xmlStreamCompAddStep(xmlStreamCompPtr comp, const xmlChar *name,
                      const xmlChar *ns, int nodeType, int flags) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1610);
+#endif
     xmlStreamStepPtr cur;
 
     if (comp->nbStep >= comp->maxStep) {
@@ -1793,6 +1834,9 @@ xmlNewStreamCtxt(xmlStreamCompPtr stream) {
  */
 void
 xmlFreeStreamCtxt(xmlStreamCtxtPtr stream) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1587);
+#endif
     xmlStreamCtxtPtr next;
 
     while (stream != NULL) {
@@ -1815,6 +1859,9 @@ xmlFreeStreamCtxt(xmlStreamCtxtPtr stream) {
  */
 static int
 xmlStreamCtxtAddState(xmlStreamCtxtPtr comp, int idx, int level) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1603);
+#endif
     int i;
     for (i = 0;i < comp->nbState;i++) {
         if (comp->states[2 * i] < 0) {
@@ -1861,6 +1908,9 @@ static int
 xmlStreamPushInternal(xmlStreamCtxtPtr stream,
 		      const xmlChar *name, const xmlChar *ns,
 		      int nodeType) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1589);
+#endif
     int ret = 0, err = 0, final = 0, tmp, i, m, match, stepNr, desc;
     xmlStreamCompPtr comp;
     xmlStreamStep step;
@@ -2219,6 +2269,9 @@ stream_next:
 int
 xmlStreamPush(xmlStreamCtxtPtr stream,
               const xmlChar *name, const xmlChar *ns) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1588);
+#endif
     return (xmlStreamPushInternal(stream, name, ns, (int) XML_ELEMENT_NODE));
 }
 
@@ -2246,6 +2299,9 @@ xmlStreamPushNode(xmlStreamCtxtPtr stream,
 		  const xmlChar *name, const xmlChar *ns,
 		  int nodeType)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1590);
+#endif
     return (xmlStreamPushInternal(stream, name, ns,
 	nodeType));
 }
@@ -2269,6 +2325,9 @@ xmlStreamPushNode(xmlStreamCtxtPtr stream,
 int
 xmlStreamPushAttr(xmlStreamCtxtPtr stream,
 		  const xmlChar *name, const xmlChar *ns) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1591);
+#endif
     return (xmlStreamPushInternal(stream, name, ns, (int) XML_ATTRIBUTE_NODE));
 }
 
@@ -2282,6 +2341,9 @@ xmlStreamPushAttr(xmlStreamCtxtPtr stream,
  */
 int
 xmlStreamPop(xmlStreamCtxtPtr stream) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1592);
+#endif
     int i, lev;
 
     if (stream == NULL)
@@ -2331,6 +2393,9 @@ xmlStreamPop(xmlStreamCtxtPtr stream) {
 int
 xmlStreamWantsAnyNode(xmlStreamCtxtPtr streamCtxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1593);
+#endif
     if (streamCtxt == NULL)
 	return(-1);
     while (streamCtxt != NULL) {
@@ -2361,6 +2426,9 @@ xmlStreamWantsAnyNode(xmlStreamCtxtPtr streamCtxt)
 xmlPatternPtr
 xmlPatterncompile(const xmlChar *pattern, xmlDict *dict, int flags,
                   const xmlChar **namespaces) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1594);
+#endif
     xmlPatternPtr ret = NULL, cur;
     xmlPatParserContextPtr ctxt = NULL;
     const xmlChar *or, *start;
@@ -2466,6 +2534,9 @@ error:
 int
 xmlPatternMatch(xmlPatternPtr comp, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1597);
+#endif
     int ret = 0;
 
     if ((comp == NULL) || (node == NULL))
@@ -2492,6 +2563,9 @@ xmlPatternMatch(xmlPatternPtr comp, xmlNodePtr node)
 xmlStreamCtxtPtr
 xmlPatternGetStreamCtxt(xmlPatternPtr comp)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1598);
+#endif
     xmlStreamCtxtPtr ret = NULL, cur;
 
     if ((comp == NULL) || (comp->stream == NULL))
@@ -2529,6 +2603,9 @@ failed:
  */
 int
 xmlPatternStreamable(xmlPatternPtr comp) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1599);
+#endif
     if (comp == NULL)
         return(-1);
     while (comp != NULL) {
@@ -2550,6 +2627,9 @@ xmlPatternStreamable(xmlPatternPtr comp) {
  */
 int
 xmlPatternMaxDepth(xmlPatternPtr comp) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1600);
+#endif
     int ret = 0, i;
     if (comp == NULL)
         return(-1);
@@ -2578,6 +2658,9 @@ xmlPatternMaxDepth(xmlPatternPtr comp) {
  */
 int
 xmlPatternMinDepth(xmlPatternPtr comp) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1601);
+#endif
     int ret = 12345678;
     if (comp == NULL)
         return(-1);
@@ -2603,6 +2686,9 @@ xmlPatternMinDepth(xmlPatternPtr comp) {
  */
 int
 xmlPatternFromRoot(xmlPatternPtr comp) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1602);
+#endif
     if (comp == NULL)
         return(-1);
     while (comp != NULL) {

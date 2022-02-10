@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /**
  * threads.c: set of generic threading related routines
  *
@@ -176,6 +181,9 @@ static void xmlOnceInit(void);
 xmlMutexPtr
 xmlNewMutex(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1046);
+#endif
     xmlMutexPtr tok;
 
     if ((tok = malloc(sizeof(xmlMutex))) == NULL)
@@ -205,6 +213,9 @@ xmlNewMutex(void)
 void
 xmlFreeMutex(xmlMutexPtr tok)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1047);
+#endif
     if (tok == NULL)
         return;
 
@@ -228,6 +239,9 @@ xmlFreeMutex(xmlMutexPtr tok)
 void
 xmlMutexLock(xmlMutexPtr tok)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1048);
+#endif
     if (tok == NULL)
         return;
 #ifdef HAVE_PTHREAD_H
@@ -256,6 +270,9 @@ xmlMutexLock(xmlMutexPtr tok)
 void
 xmlMutexUnlock(xmlMutexPtr tok)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1049);
+#endif
     if (tok == NULL)
         return;
 #ifdef HAVE_PTHREAD_H
@@ -284,6 +301,9 @@ xmlMutexUnlock(xmlMutexPtr tok)
 xmlRMutexPtr
 xmlNewRMutex(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1050);
+#endif
     xmlRMutexPtr tok;
 
     if ((tok = malloc(sizeof(xmlRMutex))) == NULL)
@@ -318,6 +338,9 @@ xmlNewRMutex(void)
 void
 xmlFreeRMutex(xmlRMutexPtr tok ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1051);
+#endif
     if (tok == NULL)
         return;
 #ifdef HAVE_PTHREAD_H
@@ -342,6 +365,9 @@ xmlFreeRMutex(xmlRMutexPtr tok ATTRIBUTE_UNUSED)
 void
 xmlRMutexLock(xmlRMutexPtr tok)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1052);
+#endif
     if (tok == NULL)
         return;
 #ifdef HAVE_PTHREAD_H
@@ -387,6 +413,9 @@ xmlRMutexLock(xmlRMutexPtr tok)
 void
 xmlRMutexUnlock(xmlRMutexPtr tok ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1053);
+#endif
     if (tok == NULL)
         return;
 #ifdef HAVE_PTHREAD_H
@@ -653,6 +682,9 @@ xmlGlobalStateCleanup(void *data)
 xmlGlobalStatePtr
 xmlGetGlobalState(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1054);
+#endif
 #ifdef HAVE_PTHREAD_H
     xmlGlobalState *globalval;
 
@@ -763,6 +795,9 @@ xmlGetGlobalState(void)
 int
 xmlGetThreadId(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1055);
+#endif
 #ifdef HAVE_PTHREAD_H
     pthread_t id;
     int ret;
@@ -792,6 +827,9 @@ xmlGetThreadId(void)
 int
 xmlIsMainThread(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1056);
+#endif
 #ifdef HAVE_PTHREAD_H
     if (libxml_is_threaded == -1)
         xmlInitThreads();
@@ -827,6 +865,9 @@ xmlIsMainThread(void)
 void
 xmlLockLibrary(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1057);
+#endif
 #ifdef DEBUG_THREADS
     xmlGenericError(xmlGenericErrorContext, "xmlLockLibrary()\n");
 #endif
@@ -842,6 +883,9 @@ xmlLockLibrary(void)
 void
 xmlUnlockLibrary(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1058);
+#endif
 #ifdef DEBUG_THREADS
     xmlGenericError(xmlGenericErrorContext, "xmlUnlockLibrary()\n");
 #endif
@@ -857,6 +901,9 @@ xmlUnlockLibrary(void)
 void
 xmlInitThreads(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1059);
+#endif
 #ifdef HAVE_PTHREAD_H
 #ifdef XML_PTHREAD_WEAK
     if (libxml_is_threaded == -1) {
@@ -905,6 +952,9 @@ xmlInitThreads(void)
 void
 xmlCleanupThreads(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1060);
+#endif
 #ifdef DEBUG_THREADS
     xmlGenericError(xmlGenericErrorContext, "xmlCleanupThreads()\n");
 #endif

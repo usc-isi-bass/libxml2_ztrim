@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * testlimits.c: C program to run libxml2 regression tests checking various
  *       limits in document size. Will consume a lot of RAM and CPU cycles
@@ -650,6 +655,9 @@ testStructuredErrorHandler(void *ctx  ATTRIBUTE_UNUSED, xmlErrorPtr err) {
     if ((domain == XML_FROM_XPATH) && (err->str1 != NULL) &&
         (err->int1 < 100) &&
 	(err->int1 < xmlStrlen((const xmlChar *)err->str1))) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1073);
+#endif
 	xmlChar buf[150];
 	int i;
 

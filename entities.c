@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * entities.c : implementation for the XML entities handling
  *
@@ -100,6 +105,9 @@ xmlEntitiesErr(xmlParserErrors code, const char *msg)
 static void
 xmlFreeEntity(xmlEntityPtr entity)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1692);
+#endif
     xmlDictPtr dict = NULL;
 
     if (entity == NULL)
@@ -154,6 +162,9 @@ static xmlEntityPtr
 xmlCreateEntity(xmlDictPtr dict, const xmlChar *name, int type,
 	        const xmlChar *ExternalID, const xmlChar *SystemID,
 	        const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1675);
+#endif
     xmlEntityPtr ret;
 
     ret = (xmlEntityPtr) xmlMalloc(sizeof(xmlEntity));
@@ -208,6 +219,9 @@ static xmlEntityPtr
 xmlAddEntity(xmlDtdPtr dtd, const xmlChar *name, int type,
 	  const xmlChar *ExternalID, const xmlChar *SystemID,
 	  const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1672);
+#endif
     xmlDictPtr dict = NULL;
     xmlEntitiesTablePtr table = NULL;
     xmlEntityPtr ret, predef;
@@ -301,6 +315,9 @@ xmlAddEntity(xmlDtdPtr dtd, const xmlChar *name, int type,
  */
 xmlEntityPtr
 xmlGetPredefinedEntity(const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1670);
+#endif
     if (name == NULL) return(NULL);
     switch (name[0]) {
         case 'l':
@@ -344,6 +361,9 @@ xmlEntityPtr
 xmlAddDtdEntity(xmlDocPtr doc, const xmlChar *name, int type,
 	        const xmlChar *ExternalID, const xmlChar *SystemID,
 		const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1671);
+#endif
     xmlEntityPtr ret;
     xmlDtdPtr dtd;
 
@@ -393,6 +413,9 @@ xmlEntityPtr
 xmlAddDocEntity(xmlDocPtr doc, const xmlChar *name, int type,
 	        const xmlChar *ExternalID, const xmlChar *SystemID,
 	        const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1673);
+#endif
     xmlEntityPtr ret;
     xmlDtdPtr dtd;
 
@@ -446,6 +469,9 @@ xmlEntityPtr
 xmlNewEntity(xmlDocPtr doc, const xmlChar *name, int type,
 	     const xmlChar *ExternalID, const xmlChar *SystemID,
 	     const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1674);
+#endif
     xmlEntityPtr ret;
     xmlDictPtr dict;
 
@@ -491,6 +517,9 @@ xmlGetEntityFromTable(xmlEntitiesTablePtr table, const xmlChar *name) {
  */
 xmlEntityPtr
 xmlGetParameterEntity(xmlDocPtr doc, const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1676);
+#endif
     xmlEntitiesTablePtr table;
     xmlEntityPtr ret;
 
@@ -522,6 +551,9 @@ xmlGetParameterEntity(xmlDocPtr doc, const xmlChar *name) {
  */
 xmlEntityPtr
 xmlGetDtdEntity(xmlDocPtr doc, const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1677);
+#endif
     xmlEntitiesTablePtr table;
 
     if (doc == NULL)
@@ -546,6 +578,9 @@ xmlGetDtdEntity(xmlDocPtr doc, const xmlChar *name) {
  */
 xmlEntityPtr
 xmlGetDocEntity(const xmlDoc *doc, const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1678);
+#endif
     xmlEntityPtr cur;
     xmlEntitiesTablePtr table;
 
@@ -597,6 +632,9 @@ xmlGetDocEntity(const xmlDoc *doc, const xmlChar *name) {
  */
 static xmlChar *
 xmlEncodeEntitiesInternal(xmlDocPtr doc, const xmlChar *input, int attr) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1680);
+#endif
     const xmlChar *cur = input;
     xmlChar *buffer = NULL;
     xmlChar *out = NULL;
@@ -809,6 +847,12 @@ mem_error:
  */
 xmlChar *
 xmlEncodeAttributeEntities(xmlDocPtr doc, const xmlChar *input) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1681);
+#endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1679);
+#endif
     return xmlEncodeEntitiesInternal(doc, input, 1);
 }
 
@@ -841,6 +885,9 @@ xmlEncodeEntitiesReentrant(xmlDocPtr doc, const xmlChar *input) {
  */
 xmlChar *
 xmlEncodeSpecialChars(const xmlDoc *doc ATTRIBUTE_UNUSED, const xmlChar *input) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1682);
+#endif
     const xmlChar *cur = input;
     xmlChar *buffer = NULL;
     xmlChar *out = NULL;
@@ -926,6 +973,9 @@ mem_error:
  */
 xmlEntitiesTablePtr
 xmlCreateEntitiesTable(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1683);
+#endif
     return((xmlEntitiesTablePtr) xmlHashCreate(0));
 }
 
@@ -938,6 +988,9 @@ xmlCreateEntitiesTable(void) {
  */
 static void
 xmlFreeEntityWrapper(void *entity, const xmlChar *name ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1685);
+#endif
     if (entity != NULL)
 	xmlFreeEntity((xmlEntityPtr) entity);
 }
@@ -950,6 +1003,9 @@ xmlFreeEntityWrapper(void *entity, const xmlChar *name ATTRIBUTE_UNUSED) {
  */
 void
 xmlFreeEntitiesTable(xmlEntitiesTablePtr table) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1684);
+#endif
     xmlHashFree(table, xmlFreeEntityWrapper);
 }
 
@@ -964,6 +1020,9 @@ xmlFreeEntitiesTable(xmlEntitiesTablePtr table) {
  */
 static void *
 xmlCopyEntity(void *payload, const xmlChar *name ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1687);
+#endif
     xmlEntityPtr ent = (xmlEntityPtr) payload;
     xmlEntityPtr cur;
 
@@ -1001,6 +1060,9 @@ xmlCopyEntity(void *payload, const xmlChar *name ATTRIBUTE_UNUSED) {
  */
 xmlEntitiesTablePtr
 xmlCopyEntitiesTable(xmlEntitiesTablePtr table) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1686);
+#endif
     return(xmlHashCopy(table, xmlCopyEntity));
 }
 #endif /* LIBXML_TREE_ENABLED */
@@ -1017,6 +1079,9 @@ xmlCopyEntitiesTable(xmlEntitiesTablePtr table) {
  */
 static void
 xmlDumpEntityContent(xmlBufferPtr buf, const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1689);
+#endif
     if (buf->alloc == XML_BUFFER_ALLOC_IMMUTABLE) return;
     if (xmlStrchr(content, '%')) {
         const xmlChar * base, *cur;
@@ -1057,6 +1122,9 @@ xmlDumpEntityContent(xmlBufferPtr buf, const xmlChar *content) {
  */
 void
 xmlDumpEntityDecl(xmlBufferPtr buf, xmlEntityPtr ent) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1688);
+#endif
     if ((buf == NULL) || (ent == NULL)) return;
     switch (ent->etype) {
 	case XML_INTERNAL_GENERAL_ENTITY:
@@ -1144,6 +1212,9 @@ xmlDumpEntityDecl(xmlBufferPtr buf, xmlEntityPtr ent) {
 static void
 xmlDumpEntityDeclScan(void *ent, void *buf,
                       const xmlChar *name ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1691);
+#endif
     xmlDumpEntityDecl((xmlBufferPtr) buf, (xmlEntityPtr) ent);
 }
 
@@ -1156,6 +1227,9 @@ xmlDumpEntityDeclScan(void *ent, void *buf,
  */
 void
 xmlDumpEntitiesTable(xmlBufferPtr buf, xmlEntitiesTablePtr table) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1690);
+#endif
     xmlHashScan(table, xmlDumpEntityDeclScan, buf);
 }
 #endif /* LIBXML_OUTPUT_ENABLED */

@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * xmlunicode.c: this module implements the Unicode character APIs
  *
@@ -974,6 +979,9 @@ static xmlIntFunc
  */
 int
 xmlUCSIsAegeanNumbers(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1237);
+#endif
     return(((code >= 0x10100) && (code <= 0x1013F)));
 }
 
@@ -987,6 +995,9 @@ xmlUCSIsAegeanNumbers(int code) {
  */
 int
 xmlUCSIsAlphabeticPresentationForms(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1238);
+#endif
     return(((code >= 0xFB00) && (code <= 0xFB4F)));
 }
 
@@ -1000,6 +1011,9 @@ xmlUCSIsAlphabeticPresentationForms(int code) {
  */
 int
 xmlUCSIsArabic(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1239);
+#endif
     return(((code >= 0x0600) && (code <= 0x06FF)));
 }
 
@@ -1013,6 +1027,9 @@ xmlUCSIsArabic(int code) {
  */
 int
 xmlUCSIsArabicPresentationFormsA(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1240);
+#endif
     return(((code >= 0xFB50) && (code <= 0xFDFF)));
 }
 
@@ -1026,6 +1043,9 @@ xmlUCSIsArabicPresentationFormsA(int code) {
  */
 int
 xmlUCSIsArabicPresentationFormsB(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1241);
+#endif
     return(((code >= 0xFE70) && (code <= 0xFEFF)));
 }
 
@@ -1039,6 +1059,9 @@ xmlUCSIsArabicPresentationFormsB(int code) {
  */
 int
 xmlUCSIsArmenian(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1242);
+#endif
     return(((code >= 0x0530) && (code <= 0x058F)));
 }
 
@@ -1052,6 +1075,9 @@ xmlUCSIsArmenian(int code) {
  */
 int
 xmlUCSIsArrows(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1243);
+#endif
     return(((code >= 0x2190) && (code <= 0x21FF)));
 }
 
@@ -1065,6 +1091,9 @@ xmlUCSIsArrows(int code) {
  */
 int
 xmlUCSIsBasicLatin(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1244);
+#endif
     return(((code >= 0x0000) && (code <= 0x007F)));
 }
 
@@ -1078,6 +1107,9 @@ xmlUCSIsBasicLatin(int code) {
  */
 int
 xmlUCSIsBengali(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1245);
+#endif
     return(((code >= 0x0980) && (code <= 0x09FF)));
 }
 
@@ -1091,6 +1123,9 @@ xmlUCSIsBengali(int code) {
  */
 int
 xmlUCSIsBlockElements(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1246);
+#endif
     return(((code >= 0x2580) && (code <= 0x259F)));
 }
 
@@ -1104,6 +1139,9 @@ xmlUCSIsBlockElements(int code) {
  */
 int
 xmlUCSIsBopomofo(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1247);
+#endif
     return(((code >= 0x3100) && (code <= 0x312F)));
 }
 
@@ -1117,6 +1155,9 @@ xmlUCSIsBopomofo(int code) {
  */
 int
 xmlUCSIsBopomofoExtended(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1248);
+#endif
     return(((code >= 0x31A0) && (code <= 0x31BF)));
 }
 
@@ -1130,6 +1171,9 @@ xmlUCSIsBopomofoExtended(int code) {
  */
 int
 xmlUCSIsBoxDrawing(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1249);
+#endif
     return(((code >= 0x2500) && (code <= 0x257F)));
 }
 
@@ -1143,6 +1187,9 @@ xmlUCSIsBoxDrawing(int code) {
  */
 int
 xmlUCSIsBraillePatterns(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1250);
+#endif
     return(((code >= 0x2800) && (code <= 0x28FF)));
 }
 
@@ -1156,6 +1203,9 @@ xmlUCSIsBraillePatterns(int code) {
  */
 int
 xmlUCSIsBuhid(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1251);
+#endif
     return(((code >= 0x1740) && (code <= 0x175F)));
 }
 
@@ -1169,6 +1219,9 @@ xmlUCSIsBuhid(int code) {
  */
 int
 xmlUCSIsByzantineMusicalSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1252);
+#endif
     return(((code >= 0x1D000) && (code <= 0x1D0FF)));
 }
 
@@ -1182,6 +1235,9 @@ xmlUCSIsByzantineMusicalSymbols(int code) {
  */
 int
 xmlUCSIsCJKCompatibility(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1253);
+#endif
     return(((code >= 0x3300) && (code <= 0x33FF)));
 }
 
@@ -1195,6 +1251,9 @@ xmlUCSIsCJKCompatibility(int code) {
  */
 int
 xmlUCSIsCJKCompatibilityForms(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1254);
+#endif
     return(((code >= 0xFE30) && (code <= 0xFE4F)));
 }
 
@@ -1208,6 +1267,9 @@ xmlUCSIsCJKCompatibilityForms(int code) {
  */
 int
 xmlUCSIsCJKCompatibilityIdeographs(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1255);
+#endif
     return(((code >= 0xF900) && (code <= 0xFAFF)));
 }
 
@@ -1221,6 +1283,9 @@ xmlUCSIsCJKCompatibilityIdeographs(int code) {
  */
 int
 xmlUCSIsCJKCompatibilityIdeographsSupplement(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1256);
+#endif
     return(((code >= 0x2F800) && (code <= 0x2FA1F)));
 }
 
@@ -1234,6 +1299,9 @@ xmlUCSIsCJKCompatibilityIdeographsSupplement(int code) {
  */
 int
 xmlUCSIsCJKRadicalsSupplement(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1257);
+#endif
     return(((code >= 0x2E80) && (code <= 0x2EFF)));
 }
 
@@ -1247,6 +1315,9 @@ xmlUCSIsCJKRadicalsSupplement(int code) {
  */
 int
 xmlUCSIsCJKSymbolsandPunctuation(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1258);
+#endif
     return(((code >= 0x3000) && (code <= 0x303F)));
 }
 
@@ -1260,6 +1331,9 @@ xmlUCSIsCJKSymbolsandPunctuation(int code) {
  */
 int
 xmlUCSIsCJKUnifiedIdeographs(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1259);
+#endif
     return(((code >= 0x4E00) && (code <= 0x9FFF)));
 }
 
@@ -1273,6 +1347,9 @@ xmlUCSIsCJKUnifiedIdeographs(int code) {
  */
 int
 xmlUCSIsCJKUnifiedIdeographsExtensionA(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1260);
+#endif
     return(((code >= 0x3400) && (code <= 0x4DBF)));
 }
 
@@ -1286,6 +1363,9 @@ xmlUCSIsCJKUnifiedIdeographsExtensionA(int code) {
  */
 int
 xmlUCSIsCJKUnifiedIdeographsExtensionB(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1261);
+#endif
     return(((code >= 0x20000) && (code <= 0x2A6DF)));
 }
 
@@ -1299,6 +1379,9 @@ xmlUCSIsCJKUnifiedIdeographsExtensionB(int code) {
  */
 int
 xmlUCSIsCherokee(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1262);
+#endif
     return(((code >= 0x13A0) && (code <= 0x13FF)));
 }
 
@@ -1312,6 +1395,9 @@ xmlUCSIsCherokee(int code) {
  */
 int
 xmlUCSIsCombiningDiacriticalMarks(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1263);
+#endif
     return(((code >= 0x0300) && (code <= 0x036F)));
 }
 
@@ -1325,6 +1411,9 @@ xmlUCSIsCombiningDiacriticalMarks(int code) {
  */
 int
 xmlUCSIsCombiningDiacriticalMarksforSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1264);
+#endif
     return(((code >= 0x20D0) && (code <= 0x20FF)));
 }
 
@@ -1338,6 +1427,9 @@ xmlUCSIsCombiningDiacriticalMarksforSymbols(int code) {
  */
 int
 xmlUCSIsCombiningHalfMarks(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1265);
+#endif
     return(((code >= 0xFE20) && (code <= 0xFE2F)));
 }
 
@@ -1351,6 +1443,9 @@ xmlUCSIsCombiningHalfMarks(int code) {
  */
 int
 xmlUCSIsCombiningMarksforSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1266);
+#endif
     return(((code >= 0x20D0) && (code <= 0x20FF)));
 }
 
@@ -1364,6 +1459,9 @@ xmlUCSIsCombiningMarksforSymbols(int code) {
  */
 int
 xmlUCSIsControlPictures(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1267);
+#endif
     return(((code >= 0x2400) && (code <= 0x243F)));
 }
 
@@ -1377,6 +1475,9 @@ xmlUCSIsControlPictures(int code) {
  */
 int
 xmlUCSIsCurrencySymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1268);
+#endif
     return(((code >= 0x20A0) && (code <= 0x20CF)));
 }
 
@@ -1390,6 +1491,9 @@ xmlUCSIsCurrencySymbols(int code) {
  */
 int
 xmlUCSIsCypriotSyllabary(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1269);
+#endif
     return(((code >= 0x10800) && (code <= 0x1083F)));
 }
 
@@ -1403,6 +1507,9 @@ xmlUCSIsCypriotSyllabary(int code) {
  */
 int
 xmlUCSIsCyrillic(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1270);
+#endif
     return(((code >= 0x0400) && (code <= 0x04FF)));
 }
 
@@ -1416,6 +1523,9 @@ xmlUCSIsCyrillic(int code) {
  */
 int
 xmlUCSIsCyrillicSupplement(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1271);
+#endif
     return(((code >= 0x0500) && (code <= 0x052F)));
 }
 
@@ -1429,6 +1539,9 @@ xmlUCSIsCyrillicSupplement(int code) {
  */
 int
 xmlUCSIsDeseret(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1272);
+#endif
     return(((code >= 0x10400) && (code <= 0x1044F)));
 }
 
@@ -1442,6 +1555,9 @@ xmlUCSIsDeseret(int code) {
  */
 int
 xmlUCSIsDevanagari(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1273);
+#endif
     return(((code >= 0x0900) && (code <= 0x097F)));
 }
 
@@ -1455,6 +1571,9 @@ xmlUCSIsDevanagari(int code) {
  */
 int
 xmlUCSIsDingbats(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1274);
+#endif
     return(((code >= 0x2700) && (code <= 0x27BF)));
 }
 
@@ -1468,6 +1587,9 @@ xmlUCSIsDingbats(int code) {
  */
 int
 xmlUCSIsEnclosedAlphanumerics(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1275);
+#endif
     return(((code >= 0x2460) && (code <= 0x24FF)));
 }
 
@@ -1481,6 +1603,9 @@ xmlUCSIsEnclosedAlphanumerics(int code) {
  */
 int
 xmlUCSIsEnclosedCJKLettersandMonths(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1276);
+#endif
     return(((code >= 0x3200) && (code <= 0x32FF)));
 }
 
@@ -1494,6 +1619,9 @@ xmlUCSIsEnclosedCJKLettersandMonths(int code) {
  */
 int
 xmlUCSIsEthiopic(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1277);
+#endif
     return(((code >= 0x1200) && (code <= 0x137F)));
 }
 
@@ -1507,6 +1635,9 @@ xmlUCSIsEthiopic(int code) {
  */
 int
 xmlUCSIsGeneralPunctuation(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1278);
+#endif
     return(((code >= 0x2000) && (code <= 0x206F)));
 }
 
@@ -1520,6 +1651,9 @@ xmlUCSIsGeneralPunctuation(int code) {
  */
 int
 xmlUCSIsGeometricShapes(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1279);
+#endif
     return(((code >= 0x25A0) && (code <= 0x25FF)));
 }
 
@@ -1533,6 +1667,9 @@ xmlUCSIsGeometricShapes(int code) {
  */
 int
 xmlUCSIsGeorgian(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1280);
+#endif
     return(((code >= 0x10A0) && (code <= 0x10FF)));
 }
 
@@ -1546,6 +1683,9 @@ xmlUCSIsGeorgian(int code) {
  */
 int
 xmlUCSIsGothic(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1281);
+#endif
     return(((code >= 0x10330) && (code <= 0x1034F)));
 }
 
@@ -1559,6 +1699,9 @@ xmlUCSIsGothic(int code) {
  */
 int
 xmlUCSIsGreek(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1282);
+#endif
     return(((code >= 0x0370) && (code <= 0x03FF)));
 }
 
@@ -1572,6 +1715,9 @@ xmlUCSIsGreek(int code) {
  */
 int
 xmlUCSIsGreekExtended(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1283);
+#endif
     return(((code >= 0x1F00) && (code <= 0x1FFF)));
 }
 
@@ -1585,6 +1731,9 @@ xmlUCSIsGreekExtended(int code) {
  */
 int
 xmlUCSIsGreekandCoptic(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1284);
+#endif
     return(((code >= 0x0370) && (code <= 0x03FF)));
 }
 
@@ -1598,6 +1747,9 @@ xmlUCSIsGreekandCoptic(int code) {
  */
 int
 xmlUCSIsGujarati(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1285);
+#endif
     return(((code >= 0x0A80) && (code <= 0x0AFF)));
 }
 
@@ -1611,6 +1763,9 @@ xmlUCSIsGujarati(int code) {
  */
 int
 xmlUCSIsGurmukhi(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1286);
+#endif
     return(((code >= 0x0A00) && (code <= 0x0A7F)));
 }
 
@@ -1624,6 +1779,9 @@ xmlUCSIsGurmukhi(int code) {
  */
 int
 xmlUCSIsHalfwidthandFullwidthForms(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1287);
+#endif
     return(((code >= 0xFF00) && (code <= 0xFFEF)));
 }
 
@@ -1637,6 +1795,9 @@ xmlUCSIsHalfwidthandFullwidthForms(int code) {
  */
 int
 xmlUCSIsHangulCompatibilityJamo(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1288);
+#endif
     return(((code >= 0x3130) && (code <= 0x318F)));
 }
 
@@ -1650,6 +1811,9 @@ xmlUCSIsHangulCompatibilityJamo(int code) {
  */
 int
 xmlUCSIsHangulJamo(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1289);
+#endif
     return(((code >= 0x1100) && (code <= 0x11FF)));
 }
 
@@ -1663,6 +1827,9 @@ xmlUCSIsHangulJamo(int code) {
  */
 int
 xmlUCSIsHangulSyllables(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1290);
+#endif
     return(((code >= 0xAC00) && (code <= 0xD7AF)));
 }
 
@@ -1676,6 +1843,9 @@ xmlUCSIsHangulSyllables(int code) {
  */
 int
 xmlUCSIsHanunoo(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1291);
+#endif
     return(((code >= 0x1720) && (code <= 0x173F)));
 }
 
@@ -1689,6 +1859,9 @@ xmlUCSIsHanunoo(int code) {
  */
 int
 xmlUCSIsHebrew(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1292);
+#endif
     return(((code >= 0x0590) && (code <= 0x05FF)));
 }
 
@@ -1702,6 +1875,9 @@ xmlUCSIsHebrew(int code) {
  */
 int
 xmlUCSIsHighPrivateUseSurrogates(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1293);
+#endif
     return(((code >= 0xDB80) && (code <= 0xDBFF)));
 }
 
@@ -1715,6 +1891,9 @@ xmlUCSIsHighPrivateUseSurrogates(int code) {
  */
 int
 xmlUCSIsHighSurrogates(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1294);
+#endif
     return(((code >= 0xD800) && (code <= 0xDB7F)));
 }
 
@@ -1728,6 +1907,9 @@ xmlUCSIsHighSurrogates(int code) {
  */
 int
 xmlUCSIsHiragana(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1295);
+#endif
     return(((code >= 0x3040) && (code <= 0x309F)));
 }
 
@@ -1741,6 +1923,9 @@ xmlUCSIsHiragana(int code) {
  */
 int
 xmlUCSIsIPAExtensions(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1296);
+#endif
     return(((code >= 0x0250) && (code <= 0x02AF)));
 }
 
@@ -1754,6 +1939,9 @@ xmlUCSIsIPAExtensions(int code) {
  */
 int
 xmlUCSIsIdeographicDescriptionCharacters(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1297);
+#endif
     return(((code >= 0x2FF0) && (code <= 0x2FFF)));
 }
 
@@ -1767,6 +1955,9 @@ xmlUCSIsIdeographicDescriptionCharacters(int code) {
  */
 int
 xmlUCSIsKanbun(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1298);
+#endif
     return(((code >= 0x3190) && (code <= 0x319F)));
 }
 
@@ -1780,6 +1971,9 @@ xmlUCSIsKanbun(int code) {
  */
 int
 xmlUCSIsKangxiRadicals(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1299);
+#endif
     return(((code >= 0x2F00) && (code <= 0x2FDF)));
 }
 
@@ -1793,6 +1987,9 @@ xmlUCSIsKangxiRadicals(int code) {
  */
 int
 xmlUCSIsKannada(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1300);
+#endif
     return(((code >= 0x0C80) && (code <= 0x0CFF)));
 }
 
@@ -1806,6 +2003,9 @@ xmlUCSIsKannada(int code) {
  */
 int
 xmlUCSIsKatakana(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1301);
+#endif
     return(((code >= 0x30A0) && (code <= 0x30FF)));
 }
 
@@ -1819,6 +2019,9 @@ xmlUCSIsKatakana(int code) {
  */
 int
 xmlUCSIsKatakanaPhoneticExtensions(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1302);
+#endif
     return(((code >= 0x31F0) && (code <= 0x31FF)));
 }
 
@@ -1832,6 +2035,9 @@ xmlUCSIsKatakanaPhoneticExtensions(int code) {
  */
 int
 xmlUCSIsKhmer(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1303);
+#endif
     return(((code >= 0x1780) && (code <= 0x17FF)));
 }
 
@@ -1845,6 +2051,9 @@ xmlUCSIsKhmer(int code) {
  */
 int
 xmlUCSIsKhmerSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1304);
+#endif
     return(((code >= 0x19E0) && (code <= 0x19FF)));
 }
 
@@ -1858,6 +2067,9 @@ xmlUCSIsKhmerSymbols(int code) {
  */
 int
 xmlUCSIsLao(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1305);
+#endif
     return(((code >= 0x0E80) && (code <= 0x0EFF)));
 }
 
@@ -1871,6 +2083,9 @@ xmlUCSIsLao(int code) {
  */
 int
 xmlUCSIsLatin1Supplement(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1306);
+#endif
     return(((code >= 0x0080) && (code <= 0x00FF)));
 }
 
@@ -1884,6 +2099,9 @@ xmlUCSIsLatin1Supplement(int code) {
  */
 int
 xmlUCSIsLatinExtendedA(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1307);
+#endif
     return(((code >= 0x0100) && (code <= 0x017F)));
 }
 
@@ -1897,6 +2115,9 @@ xmlUCSIsLatinExtendedA(int code) {
  */
 int
 xmlUCSIsLatinExtendedB(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1308);
+#endif
     return(((code >= 0x0180) && (code <= 0x024F)));
 }
 
@@ -1910,6 +2131,9 @@ xmlUCSIsLatinExtendedB(int code) {
  */
 int
 xmlUCSIsLatinExtendedAdditional(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1309);
+#endif
     return(((code >= 0x1E00) && (code <= 0x1EFF)));
 }
 
@@ -1923,6 +2147,9 @@ xmlUCSIsLatinExtendedAdditional(int code) {
  */
 int
 xmlUCSIsLetterlikeSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1310);
+#endif
     return(((code >= 0x2100) && (code <= 0x214F)));
 }
 
@@ -1936,6 +2163,9 @@ xmlUCSIsLetterlikeSymbols(int code) {
  */
 int
 xmlUCSIsLimbu(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1311);
+#endif
     return(((code >= 0x1900) && (code <= 0x194F)));
 }
 
@@ -1949,6 +2179,9 @@ xmlUCSIsLimbu(int code) {
  */
 int
 xmlUCSIsLinearBIdeograms(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1312);
+#endif
     return(((code >= 0x10080) && (code <= 0x100FF)));
 }
 
@@ -1962,6 +2195,9 @@ xmlUCSIsLinearBIdeograms(int code) {
  */
 int
 xmlUCSIsLinearBSyllabary(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1313);
+#endif
     return(((code >= 0x10000) && (code <= 0x1007F)));
 }
 
@@ -1975,6 +2211,9 @@ xmlUCSIsLinearBSyllabary(int code) {
  */
 int
 xmlUCSIsLowSurrogates(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1314);
+#endif
     return(((code >= 0xDC00) && (code <= 0xDFFF)));
 }
 
@@ -1988,6 +2227,9 @@ xmlUCSIsLowSurrogates(int code) {
  */
 int
 xmlUCSIsMalayalam(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1315);
+#endif
     return(((code >= 0x0D00) && (code <= 0x0D7F)));
 }
 
@@ -2001,6 +2243,9 @@ xmlUCSIsMalayalam(int code) {
  */
 int
 xmlUCSIsMathematicalAlphanumericSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1316);
+#endif
     return(((code >= 0x1D400) && (code <= 0x1D7FF)));
 }
 
@@ -2014,6 +2259,9 @@ xmlUCSIsMathematicalAlphanumericSymbols(int code) {
  */
 int
 xmlUCSIsMathematicalOperators(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1317);
+#endif
     return(((code >= 0x2200) && (code <= 0x22FF)));
 }
 
@@ -2027,6 +2275,9 @@ xmlUCSIsMathematicalOperators(int code) {
  */
 int
 xmlUCSIsMiscellaneousMathematicalSymbolsA(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1318);
+#endif
     return(((code >= 0x27C0) && (code <= 0x27EF)));
 }
 
@@ -2040,6 +2291,9 @@ xmlUCSIsMiscellaneousMathematicalSymbolsA(int code) {
  */
 int
 xmlUCSIsMiscellaneousMathematicalSymbolsB(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1319);
+#endif
     return(((code >= 0x2980) && (code <= 0x29FF)));
 }
 
@@ -2053,6 +2307,9 @@ xmlUCSIsMiscellaneousMathematicalSymbolsB(int code) {
  */
 int
 xmlUCSIsMiscellaneousSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1320);
+#endif
     return(((code >= 0x2600) && (code <= 0x26FF)));
 }
 
@@ -2066,6 +2323,9 @@ xmlUCSIsMiscellaneousSymbols(int code) {
  */
 int
 xmlUCSIsMiscellaneousSymbolsandArrows(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1321);
+#endif
     return(((code >= 0x2B00) && (code <= 0x2BFF)));
 }
 
@@ -2079,6 +2339,9 @@ xmlUCSIsMiscellaneousSymbolsandArrows(int code) {
  */
 int
 xmlUCSIsMiscellaneousTechnical(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1322);
+#endif
     return(((code >= 0x2300) && (code <= 0x23FF)));
 }
 
@@ -2092,6 +2355,9 @@ xmlUCSIsMiscellaneousTechnical(int code) {
  */
 int
 xmlUCSIsMongolian(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1323);
+#endif
     return(((code >= 0x1800) && (code <= 0x18AF)));
 }
 
@@ -2105,6 +2371,9 @@ xmlUCSIsMongolian(int code) {
  */
 int
 xmlUCSIsMusicalSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1324);
+#endif
     return(((code >= 0x1D100) && (code <= 0x1D1FF)));
 }
 
@@ -2118,6 +2387,9 @@ xmlUCSIsMusicalSymbols(int code) {
  */
 int
 xmlUCSIsMyanmar(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1325);
+#endif
     return(((code >= 0x1000) && (code <= 0x109F)));
 }
 
@@ -2131,6 +2403,9 @@ xmlUCSIsMyanmar(int code) {
  */
 int
 xmlUCSIsNumberForms(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1326);
+#endif
     return(((code >= 0x2150) && (code <= 0x218F)));
 }
 
@@ -2144,6 +2419,9 @@ xmlUCSIsNumberForms(int code) {
  */
 int
 xmlUCSIsOgham(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1327);
+#endif
     return(((code >= 0x1680) && (code <= 0x169F)));
 }
 
@@ -2157,6 +2435,9 @@ xmlUCSIsOgham(int code) {
  */
 int
 xmlUCSIsOldItalic(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1328);
+#endif
     return(((code >= 0x10300) && (code <= 0x1032F)));
 }
 
@@ -2170,6 +2451,9 @@ xmlUCSIsOldItalic(int code) {
  */
 int
 xmlUCSIsOpticalCharacterRecognition(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1329);
+#endif
     return(((code >= 0x2440) && (code <= 0x245F)));
 }
 
@@ -2183,6 +2467,9 @@ xmlUCSIsOpticalCharacterRecognition(int code) {
  */
 int
 xmlUCSIsOriya(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1330);
+#endif
     return(((code >= 0x0B00) && (code <= 0x0B7F)));
 }
 
@@ -2196,6 +2483,9 @@ xmlUCSIsOriya(int code) {
  */
 int
 xmlUCSIsOsmanya(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1331);
+#endif
     return(((code >= 0x10480) && (code <= 0x104AF)));
 }
 
@@ -2209,6 +2499,9 @@ xmlUCSIsOsmanya(int code) {
  */
 int
 xmlUCSIsPhoneticExtensions(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1332);
+#endif
     return(((code >= 0x1D00) && (code <= 0x1D7F)));
 }
 
@@ -2222,6 +2515,9 @@ xmlUCSIsPhoneticExtensions(int code) {
  */
 int
 xmlUCSIsPrivateUse(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1333);
+#endif
     return(((code >= 0xE000) && (code <= 0xF8FF)) ||
            ((code >= 0xF0000) && (code <= 0xFFFFF)) ||
            ((code >= 0x100000) && (code <= 0x10FFFF)));
@@ -2237,6 +2533,9 @@ xmlUCSIsPrivateUse(int code) {
  */
 int
 xmlUCSIsPrivateUseArea(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1334);
+#endif
     return(((code >= 0xE000) && (code <= 0xF8FF)));
 }
 
@@ -2250,6 +2549,9 @@ xmlUCSIsPrivateUseArea(int code) {
  */
 int
 xmlUCSIsRunic(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1335);
+#endif
     return(((code >= 0x16A0) && (code <= 0x16FF)));
 }
 
@@ -2263,6 +2565,9 @@ xmlUCSIsRunic(int code) {
  */
 int
 xmlUCSIsShavian(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1336);
+#endif
     return(((code >= 0x10450) && (code <= 0x1047F)));
 }
 
@@ -2276,6 +2581,9 @@ xmlUCSIsShavian(int code) {
  */
 int
 xmlUCSIsSinhala(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1337);
+#endif
     return(((code >= 0x0D80) && (code <= 0x0DFF)));
 }
 
@@ -2289,6 +2597,9 @@ xmlUCSIsSinhala(int code) {
  */
 int
 xmlUCSIsSmallFormVariants(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1338);
+#endif
     return(((code >= 0xFE50) && (code <= 0xFE6F)));
 }
 
@@ -2302,6 +2613,9 @@ xmlUCSIsSmallFormVariants(int code) {
  */
 int
 xmlUCSIsSpacingModifierLetters(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1339);
+#endif
     return(((code >= 0x02B0) && (code <= 0x02FF)));
 }
 
@@ -2315,6 +2629,9 @@ xmlUCSIsSpacingModifierLetters(int code) {
  */
 int
 xmlUCSIsSpecials(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1340);
+#endif
     return(((code >= 0xFFF0) && (code <= 0xFFFF)));
 }
 
@@ -2328,6 +2645,9 @@ xmlUCSIsSpecials(int code) {
  */
 int
 xmlUCSIsSuperscriptsandSubscripts(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1341);
+#endif
     return(((code >= 0x2070) && (code <= 0x209F)));
 }
 
@@ -2341,6 +2661,9 @@ xmlUCSIsSuperscriptsandSubscripts(int code) {
  */
 int
 xmlUCSIsSupplementalArrowsA(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1342);
+#endif
     return(((code >= 0x27F0) && (code <= 0x27FF)));
 }
 
@@ -2354,6 +2677,9 @@ xmlUCSIsSupplementalArrowsA(int code) {
  */
 int
 xmlUCSIsSupplementalArrowsB(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1343);
+#endif
     return(((code >= 0x2900) && (code <= 0x297F)));
 }
 
@@ -2367,6 +2693,9 @@ xmlUCSIsSupplementalArrowsB(int code) {
  */
 int
 xmlUCSIsSupplementalMathematicalOperators(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1344);
+#endif
     return(((code >= 0x2A00) && (code <= 0x2AFF)));
 }
 
@@ -2380,6 +2709,9 @@ xmlUCSIsSupplementalMathematicalOperators(int code) {
  */
 int
 xmlUCSIsSupplementaryPrivateUseAreaA(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1345);
+#endif
     return(((code >= 0xF0000) && (code <= 0xFFFFF)));
 }
 
@@ -2393,6 +2725,9 @@ xmlUCSIsSupplementaryPrivateUseAreaA(int code) {
  */
 int
 xmlUCSIsSupplementaryPrivateUseAreaB(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1346);
+#endif
     return(((code >= 0x100000) && (code <= 0x10FFFF)));
 }
 
@@ -2406,6 +2741,9 @@ xmlUCSIsSupplementaryPrivateUseAreaB(int code) {
  */
 int
 xmlUCSIsSyriac(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1347);
+#endif
     return(((code >= 0x0700) && (code <= 0x074F)));
 }
 
@@ -2419,6 +2757,9 @@ xmlUCSIsSyriac(int code) {
  */
 int
 xmlUCSIsTagalog(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1348);
+#endif
     return(((code >= 0x1700) && (code <= 0x171F)));
 }
 
@@ -2432,6 +2773,9 @@ xmlUCSIsTagalog(int code) {
  */
 int
 xmlUCSIsTagbanwa(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1349);
+#endif
     return(((code >= 0x1760) && (code <= 0x177F)));
 }
 
@@ -2445,6 +2789,9 @@ xmlUCSIsTagbanwa(int code) {
  */
 int
 xmlUCSIsTags(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1350);
+#endif
     return(((code >= 0xE0000) && (code <= 0xE007F)));
 }
 
@@ -2458,6 +2805,9 @@ xmlUCSIsTags(int code) {
  */
 int
 xmlUCSIsTaiLe(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1351);
+#endif
     return(((code >= 0x1950) && (code <= 0x197F)));
 }
 
@@ -2471,6 +2821,9 @@ xmlUCSIsTaiLe(int code) {
  */
 int
 xmlUCSIsTaiXuanJingSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1352);
+#endif
     return(((code >= 0x1D300) && (code <= 0x1D35F)));
 }
 
@@ -2484,6 +2837,9 @@ xmlUCSIsTaiXuanJingSymbols(int code) {
  */
 int
 xmlUCSIsTamil(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1353);
+#endif
     return(((code >= 0x0B80) && (code <= 0x0BFF)));
 }
 
@@ -2497,6 +2853,9 @@ xmlUCSIsTamil(int code) {
  */
 int
 xmlUCSIsTelugu(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1354);
+#endif
     return(((code >= 0x0C00) && (code <= 0x0C7F)));
 }
 
@@ -2510,6 +2869,9 @@ xmlUCSIsTelugu(int code) {
  */
 int
 xmlUCSIsThaana(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1355);
+#endif
     return(((code >= 0x0780) && (code <= 0x07BF)));
 }
 
@@ -2523,6 +2885,9 @@ xmlUCSIsThaana(int code) {
  */
 int
 xmlUCSIsThai(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1356);
+#endif
     return(((code >= 0x0E00) && (code <= 0x0E7F)));
 }
 
@@ -2536,6 +2901,9 @@ xmlUCSIsThai(int code) {
  */
 int
 xmlUCSIsTibetan(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1357);
+#endif
     return(((code >= 0x0F00) && (code <= 0x0FFF)));
 }
 
@@ -2549,6 +2917,9 @@ xmlUCSIsTibetan(int code) {
  */
 int
 xmlUCSIsUgaritic(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1358);
+#endif
     return(((code >= 0x10380) && (code <= 0x1039F)));
 }
 
@@ -2562,6 +2933,9 @@ xmlUCSIsUgaritic(int code) {
  */
 int
 xmlUCSIsUnifiedCanadianAboriginalSyllabics(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1359);
+#endif
     return(((code >= 0x1400) && (code <= 0x167F)));
 }
 
@@ -2575,6 +2949,9 @@ xmlUCSIsUnifiedCanadianAboriginalSyllabics(int code) {
  */
 int
 xmlUCSIsVariationSelectors(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1360);
+#endif
     return(((code >= 0xFE00) && (code <= 0xFE0F)));
 }
 
@@ -2588,6 +2965,9 @@ xmlUCSIsVariationSelectors(int code) {
  */
 int
 xmlUCSIsVariationSelectorsSupplement(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1361);
+#endif
     return(((code >= 0xE0100) && (code <= 0xE01EF)));
 }
 
@@ -2601,6 +2981,9 @@ xmlUCSIsVariationSelectorsSupplement(int code) {
  */
 int
 xmlUCSIsYiRadicals(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1362);
+#endif
     return(((code >= 0xA490) && (code <= 0xA4CF)));
 }
 
@@ -2614,6 +2997,9 @@ xmlUCSIsYiRadicals(int code) {
  */
 int
 xmlUCSIsYiSyllables(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1363);
+#endif
     return(((code >= 0xA000) && (code <= 0xA48F)));
 }
 
@@ -2627,6 +3013,9 @@ xmlUCSIsYiSyllables(int code) {
  */
 int
 xmlUCSIsYijingHexagramSymbols(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1364);
+#endif
     return(((code >= 0x4DC0) && (code <= 0x4DFF)));
 }
 
@@ -2641,6 +3030,9 @@ xmlUCSIsYijingHexagramSymbols(int code) {
  */
 int
 xmlUCSIsBlock(int code, const char *block) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1365);
+#endif
     xmlIntFunc *func;
 
     func = xmlUnicodeLookup(&xmlUnicodeBlockTbl, block);
@@ -2659,6 +3051,9 @@ xmlUCSIsBlock(int code, const char *block) {
  */
 int
 xmlUCSIsCatC(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1366);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlCG));
 }
 
@@ -2672,6 +3067,9 @@ xmlUCSIsCatC(int code) {
  */
 int
 xmlUCSIsCatCc(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1367);
+#endif
     return(((code >= 0x0) && (code <= 0x1f)) ||
            ((code >= 0x7f) && (code <= 0x9f)));
 }
@@ -2686,6 +3084,9 @@ xmlUCSIsCatCc(int code) {
  */
 int
 xmlUCSIsCatCf(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1368);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlCfG));
 }
 
@@ -2699,6 +3100,9 @@ xmlUCSIsCatCf(int code) {
  */
 int
 xmlUCSIsCatCo(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1369);
+#endif
     return((code == 0xe000) ||
            (code == 0xf8ff) ||
            (code == 0xf0000) ||
@@ -2717,6 +3121,9 @@ xmlUCSIsCatCo(int code) {
  */
 int
 xmlUCSIsCatCs(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1370);
+#endif
     return((code == 0xd800) ||
            ((code >= 0xdb7f) && (code <= 0xdb80)) ||
            ((code >= 0xdbff) && (code <= 0xdc00)) ||
@@ -2733,6 +3140,9 @@ xmlUCSIsCatCs(int code) {
  */
 int
 xmlUCSIsCatL(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1371);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlLG));
 }
 
@@ -2746,6 +3156,9 @@ xmlUCSIsCatL(int code) {
  */
 int
 xmlUCSIsCatLl(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1372);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlLlG));
 }
 
@@ -2759,6 +3172,9 @@ xmlUCSIsCatLl(int code) {
  */
 int
 xmlUCSIsCatLm(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1373);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlLmG));
 }
 
@@ -2772,6 +3188,9 @@ xmlUCSIsCatLm(int code) {
  */
 int
 xmlUCSIsCatLo(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1374);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlLoG));
 }
 
@@ -2785,6 +3204,9 @@ xmlUCSIsCatLo(int code) {
  */
 int
 xmlUCSIsCatLt(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1375);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlLtG));
 }
 
@@ -2798,6 +3220,9 @@ xmlUCSIsCatLt(int code) {
  */
 int
 xmlUCSIsCatLu(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1376);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlLuG));
 }
 
@@ -2811,6 +3236,9 @@ xmlUCSIsCatLu(int code) {
  */
 int
 xmlUCSIsCatM(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1377);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlMG));
 }
 
@@ -2824,6 +3252,9 @@ xmlUCSIsCatM(int code) {
  */
 int
 xmlUCSIsCatMc(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1378);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlMcG));
 }
 
@@ -2837,6 +3268,9 @@ xmlUCSIsCatMc(int code) {
  */
 int
 xmlUCSIsCatMe(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1379);
+#endif
     return(((code >= 0x488) && (code <= 0x489)) ||
            (code == 0x6de) ||
            ((code >= 0x20dd) && (code <= 0x20e0)) ||
@@ -2853,6 +3287,9 @@ xmlUCSIsCatMe(int code) {
  */
 int
 xmlUCSIsCatMn(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1380);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlMnG));
 }
 
@@ -2866,6 +3303,9 @@ xmlUCSIsCatMn(int code) {
  */
 int
 xmlUCSIsCatN(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1381);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlNG));
 }
 
@@ -2879,6 +3319,9 @@ xmlUCSIsCatN(int code) {
  */
 int
 xmlUCSIsCatNd(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1382);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlNdG));
 }
 
@@ -2892,6 +3335,9 @@ xmlUCSIsCatNd(int code) {
  */
 int
 xmlUCSIsCatNl(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1383);
+#endif
     return(((code >= 0x16ee) && (code <= 0x16f0)) ||
            ((code >= 0x2160) && (code <= 0x2183)) ||
            (code == 0x3007) ||
@@ -2910,6 +3356,9 @@ xmlUCSIsCatNl(int code) {
  */
 int
 xmlUCSIsCatNo(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1384);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlNoG));
 }
 
@@ -2923,6 +3372,9 @@ xmlUCSIsCatNo(int code) {
  */
 int
 xmlUCSIsCatP(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1385);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlPG));
 }
 
@@ -2936,6 +3388,9 @@ xmlUCSIsCatP(int code) {
  */
 int
 xmlUCSIsCatPc(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1386);
+#endif
     return((code == 0x5f) ||
            ((code >= 0x203f) && (code <= 0x2040)) ||
            (code == 0x2054) ||
@@ -2956,6 +3411,9 @@ xmlUCSIsCatPc(int code) {
  */
 int
 xmlUCSIsCatPd(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1387);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlPdG));
 }
 
@@ -2969,6 +3427,9 @@ xmlUCSIsCatPd(int code) {
  */
 int
 xmlUCSIsCatPe(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1388);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlPeG));
 }
 
@@ -2982,6 +3443,9 @@ xmlUCSIsCatPe(int code) {
  */
 int
 xmlUCSIsCatPf(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1389);
+#endif
     return((code == 0xbb) ||
            (code == 0x2019) ||
            (code == 0x201d) ||
@@ -2998,6 +3462,9 @@ xmlUCSIsCatPf(int code) {
  */
 int
 xmlUCSIsCatPi(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1390);
+#endif
     return((code == 0xab) ||
            (code == 0x2018) ||
            ((code >= 0x201b) && (code <= 0x201c)) ||
@@ -3015,6 +3482,9 @@ xmlUCSIsCatPi(int code) {
  */
 int
 xmlUCSIsCatPo(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1391);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlPoG));
 }
 
@@ -3028,6 +3498,9 @@ xmlUCSIsCatPo(int code) {
  */
 int
 xmlUCSIsCatPs(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1392);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlPsG));
 }
 
@@ -3041,6 +3514,9 @@ xmlUCSIsCatPs(int code) {
  */
 int
 xmlUCSIsCatS(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1393);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlSG));
 }
 
@@ -3054,6 +3530,9 @@ xmlUCSIsCatS(int code) {
  */
 int
 xmlUCSIsCatSc(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1394);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlScG));
 }
 
@@ -3067,6 +3546,9 @@ xmlUCSIsCatSc(int code) {
  */
 int
 xmlUCSIsCatSk(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1395);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlSkG));
 }
 
@@ -3080,6 +3562,9 @@ xmlUCSIsCatSk(int code) {
  */
 int
 xmlUCSIsCatSm(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1396);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlSmG));
 }
 
@@ -3093,6 +3578,9 @@ xmlUCSIsCatSm(int code) {
  */
 int
 xmlUCSIsCatSo(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1397);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlSoG));
 }
 
@@ -3106,6 +3594,9 @@ xmlUCSIsCatSo(int code) {
  */
 int
 xmlUCSIsCatZ(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1398);
+#endif
     return(xmlCharInRange((unsigned int)code, &xmlZG));
 }
 
@@ -3119,6 +3610,9 @@ xmlUCSIsCatZ(int code) {
  */
 int
 xmlUCSIsCatZl(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1399);
+#endif
     return((code == 0x2028));
 }
 
@@ -3132,6 +3626,9 @@ xmlUCSIsCatZl(int code) {
  */
 int
 xmlUCSIsCatZp(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1400);
+#endif
     return((code == 0x2029));
 }
 
@@ -3145,6 +3642,9 @@ xmlUCSIsCatZp(int code) {
  */
 int
 xmlUCSIsCatZs(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1401);
+#endif
     return((code == 0x20) ||
            (code == 0xa0) ||
            (code == 0x1680) ||
@@ -3166,6 +3666,9 @@ xmlUCSIsCatZs(int code) {
  */
 int
 xmlUCSIsCat(int code, const char *cat) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1402);
+#endif
     xmlIntFunc *func;
 
     func = xmlUnicodeLookup(&xmlUnicodeCatTbl, cat);

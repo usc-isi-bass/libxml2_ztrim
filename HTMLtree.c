@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * HTMLtree.c : implementation of access function for an HTML tree.
  *
@@ -48,6 +53,9 @@
  */
 const xmlChar *
 htmlGetMetaEncoding(htmlDocPtr doc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1793);
+#endif
     htmlNodePtr cur;
     const xmlChar *content;
     const xmlChar *encoding;
@@ -162,6 +170,9 @@ found_content:
  */
 int
 htmlSetMetaEncoding(htmlDocPtr doc, const xmlChar *encoding) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1794);
+#endif
     htmlNodePtr cur, meta = NULL, head = NULL;
     const xmlChar *content = NULL;
     char newcontent[100];
@@ -322,6 +333,9 @@ static const char* htmlBooleanAttrs[] = {
 int
 htmlIsBooleanAttr(const xmlChar *name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1795);
+#endif
     int i = 0;
 
     while (htmlBooleanAttrs[i] != NULL) {
@@ -450,6 +464,9 @@ htmlBufNodeDumpFormat(xmlBufPtr buf, xmlDocPtr doc, xmlNodePtr cur,
  */
 int
 htmlNodeDump(xmlBufferPtr buf, xmlDocPtr doc, xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1796);
+#endif
     xmlBufPtr buffer;
     size_t ret;
 
@@ -487,6 +504,9 @@ htmlNodeDump(xmlBufferPtr buf, xmlDocPtr doc, xmlNodePtr cur) {
 int
 htmlNodeDumpFileFormat(FILE *out, xmlDocPtr doc,
 	               xmlNodePtr cur, const char *encoding, int format) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1797);
+#endif
     xmlOutputBufferPtr buf;
     xmlCharEncodingHandlerPtr handler = NULL;
     int ret;
@@ -535,6 +555,9 @@ htmlNodeDumpFileFormat(FILE *out, xmlDocPtr doc,
  */
 void
 htmlNodeDumpFile(FILE *out, xmlDocPtr doc, xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1799);
+#endif
     htmlNodeDumpFileFormat(out, doc, cur, NULL, 1);
 }
 
@@ -550,6 +573,9 @@ htmlNodeDumpFile(FILE *out, xmlDocPtr doc, xmlNodePtr cur) {
  */
 void
 htmlDocDumpMemoryFormat(xmlDocPtr cur, xmlChar**mem, int *size, int format) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1800);
+#endif
     xmlOutputBufferPtr buf;
     xmlCharEncodingHandlerPtr handler = NULL;
     const char *encoding;
@@ -617,6 +643,9 @@ htmlDocDumpMemoryFormat(xmlDocPtr cur, xmlChar**mem, int *size, int format) {
  */
 void
 htmlDocDumpMemory(xmlDocPtr cur, xmlChar**mem, int *size) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1802);
+#endif
 	htmlDocDumpMemoryFormat(cur, mem, size, 1);
 }
 
@@ -675,6 +704,9 @@ htmlDtdDumpOutput(xmlOutputBufferPtr buf, xmlDocPtr doc,
  */
 static void
 htmlAttrDumpOutput(xmlOutputBufferPtr buf, xmlDocPtr doc, xmlAttrPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1803);
+#endif
     xmlChar *value;
 
     /*
@@ -744,6 +776,9 @@ void
 htmlNodeDumpFormatOutput(xmlOutputBufferPtr buf, xmlDocPtr doc,
 	                 xmlNodePtr cur, const char *encoding ATTRIBUTE_UNUSED,
                          int format) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1798);
+#endif
     xmlNodePtr root, parent;
     xmlAttrPtr attr;
     const htmlElemDesc * info;
@@ -976,6 +1011,9 @@ htmlNodeDumpFormatOutput(xmlOutputBufferPtr buf, xmlDocPtr doc,
 void
 htmlNodeDumpOutput(xmlOutputBufferPtr buf, xmlDocPtr doc,
 	           xmlNodePtr cur, const char *encoding ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1804);
+#endif
     htmlNodeDumpFormatOutput(buf, doc, cur, NULL, 1);
 }
 
@@ -992,6 +1030,9 @@ void
 htmlDocContentDumpFormatOutput(xmlOutputBufferPtr buf, xmlDocPtr cur,
 	                       const char *encoding ATTRIBUTE_UNUSED,
                                int format) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1801);
+#endif
     htmlNodeDumpFormatOutput(buf, cur, (xmlNodePtr) cur, NULL, format);
 }
 
@@ -1006,6 +1047,9 @@ htmlDocContentDumpFormatOutput(xmlOutputBufferPtr buf, xmlDocPtr cur,
 void
 htmlDocContentDumpOutput(xmlOutputBufferPtr buf, xmlDocPtr cur,
 	                 const char *encoding ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1805);
+#endif
     htmlNodeDumpFormatOutput(buf, cur, (xmlNodePtr) cur, NULL, 1);
 }
 
@@ -1026,6 +1070,9 @@ htmlDocContentDumpOutput(xmlOutputBufferPtr buf, xmlDocPtr cur,
  */
 int
 htmlDocDump(FILE *f, xmlDocPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1806);
+#endif
     xmlOutputBufferPtr buf;
     xmlCharEncodingHandlerPtr handler = NULL;
     const char *encoding;
@@ -1077,6 +1124,9 @@ htmlDocDump(FILE *f, xmlDocPtr cur) {
  */
 int
 htmlSaveFile(const char *filename, xmlDocPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1807);
+#endif
     xmlOutputBufferPtr buf;
     xmlCharEncodingHandlerPtr handler = NULL;
     const char *encoding;
@@ -1134,6 +1184,9 @@ htmlSaveFile(const char *filename, xmlDocPtr cur) {
 int
 htmlSaveFileFormat(const char *filename, xmlDocPtr cur,
 	           const char *encoding, int format) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1808);
+#endif
     xmlOutputBufferPtr buf;
     xmlCharEncodingHandlerPtr handler = NULL;
     int ret;
@@ -1190,6 +1243,9 @@ htmlSaveFileFormat(const char *filename, xmlDocPtr cur,
  */
 int
 htmlSaveFileEnc(const char *filename, xmlDocPtr cur, const char *encoding) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1809);
+#endif
     return(htmlSaveFileFormat(filename, cur, encoding, 1));
 }
 

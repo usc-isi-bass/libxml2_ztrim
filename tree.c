@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * tree.c : implementation of access function for an XML tree.
  *
@@ -222,6 +227,9 @@ xmlGetParameterEntityFromDtd(const xmlDtd *dtd, const xmlChar *name) {
 xmlChar *
 xmlBuildQName(const xmlChar *ncname, const xmlChar *prefix,
 	      xmlChar *memory, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(178);
+#endif
     int lenn, lenp;
     xmlChar *ret;
 
@@ -266,6 +274,9 @@ xmlBuildQName(const xmlChar *ncname, const xmlChar *prefix,
  */
 xmlChar *
 xmlSplitQName2(const xmlChar *name, xmlChar **prefix) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(179);
+#endif
     int len = 0;
     xmlChar *ret = NULL;
 
@@ -326,6 +337,9 @@ xmlSplitQName2(const xmlChar *name, xmlChar **prefix) {
 
 const xmlChar *
 xmlSplitQName3(const xmlChar *name, int *len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(180);
+#endif
     int l = 0;
 
     if (name == NULL) return(NULL);
@@ -371,6 +385,9 @@ xmlSplitQName3(const xmlChar *name, int *len) {
  */
 int
 xmlValidateNCName(const xmlChar *value, int space) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(181);
+#endif
     const xmlChar *cur = value;
     int c,l;
 
@@ -445,6 +462,9 @@ try_complex:
  */
 int
 xmlValidateQName(const xmlChar *value, int space) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(182);
+#endif
     const xmlChar *cur = value;
     int c,l;
 
@@ -543,6 +563,9 @@ try_complex:
  */
 int
 xmlValidateName(const xmlChar *value, int space) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(183);
+#endif
     const xmlChar *cur = value;
     int c,l;
 
@@ -612,6 +635,9 @@ try_complex:
  */
 int
 xmlValidateNMToken(const xmlChar *value, int space) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(184);
+#endif
     const xmlChar *cur = value;
     int c,l;
 
@@ -690,6 +716,9 @@ try_complex:
  */
 void
 xmlSetBufferAllocationScheme(xmlBufferAllocationScheme scheme) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(185);
+#endif
     if ((scheme == XML_BUFFER_ALLOC_EXACT) ||
         (scheme == XML_BUFFER_ALLOC_DOUBLEIT) ||
         (scheme == XML_BUFFER_ALLOC_HYBRID))
@@ -711,6 +740,9 @@ xmlSetBufferAllocationScheme(xmlBufferAllocationScheme scheme) {
  */
 xmlBufferAllocationScheme
 xmlGetBufferAllocationScheme(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(186);
+#endif
     return(xmlBufferAllocScheme);
 }
 
@@ -732,6 +764,9 @@ xmlGetBufferAllocationScheme(void) {
  */
 xmlNsPtr
 xmlNewNs(xmlNodePtr node, const xmlChar *href, const xmlChar *prefix) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(187);
+#endif
     xmlNsPtr cur;
 
     if ((node != NULL) && (node->type != XML_ELEMENT_NODE))
@@ -805,6 +840,9 @@ xmlNewNs(xmlNodePtr node, const xmlChar *href, const xmlChar *prefix) {
  */
 void
 xmlSetNs(xmlNodePtr node, xmlNsPtr ns) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(189);
+#endif
     if (node == NULL) {
 #ifdef DEBUG_TREE
         xmlGenericError(xmlGenericErrorContext,
@@ -825,6 +863,9 @@ xmlSetNs(xmlNodePtr node, xmlNsPtr ns) {
  */
 void
 xmlFreeNs(xmlNsPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(188);
+#endif
     if (cur == NULL) {
 #ifdef DEBUG_TREE
         xmlGenericError(xmlGenericErrorContext,
@@ -845,6 +886,9 @@ xmlFreeNs(xmlNsPtr cur) {
  */
 void
 xmlFreeNsList(xmlNsPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(190);
+#endif
     xmlNsPtr next;
     if (cur == NULL) {
 #ifdef DEBUG_TREE
@@ -875,6 +919,9 @@ xmlFreeNsList(xmlNsPtr cur) {
 xmlDtdPtr
 xmlNewDtd(xmlDocPtr doc, const xmlChar *name,
                     const xmlChar *ExternalID, const xmlChar *SystemID) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(191);
+#endif
     xmlDtdPtr cur;
 
     if ((doc != NULL) && (doc->extSubset != NULL)) {
@@ -923,6 +970,9 @@ xmlNewDtd(xmlDocPtr doc, const xmlChar *name,
 
 xmlDtdPtr
 xmlGetIntSubset(const xmlDoc *doc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(192);
+#endif
     xmlNodePtr cur;
 
     if (doc == NULL)
@@ -949,6 +999,9 @@ xmlGetIntSubset(const xmlDoc *doc) {
 xmlDtdPtr
 xmlCreateIntSubset(xmlDocPtr doc, const xmlChar *name,
                    const xmlChar *ExternalID, const xmlChar *SystemID) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(193);
+#endif
     xmlDtdPtr cur;
 
     if ((doc != NULL) && (xmlGetIntSubset(doc) != NULL)) {
@@ -1102,6 +1155,9 @@ xmlCreateIntSubset(xmlDocPtr doc, const xmlChar *name,
  */
 void
 xmlFreeDtd(xmlDtdPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(194);
+#endif
     xmlDictPtr dict = NULL;
 
     if (cur == NULL) {
@@ -1160,6 +1216,9 @@ xmlFreeDtd(xmlDtdPtr cur) {
  */
 xmlDocPtr
 xmlNewDoc(const xmlChar *version) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(197);
+#endif
     xmlDocPtr cur;
 
     if (version == NULL)
@@ -1207,6 +1266,9 @@ xmlNewDoc(const xmlChar *version) {
  */
 void
 xmlFreeDoc(xmlDocPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(198);
+#endif
     xmlDtdPtr extSubset, intSubset;
     xmlDictPtr dict = NULL;
 
@@ -1273,6 +1335,9 @@ xmlFreeDoc(xmlDocPtr cur) {
  */
 xmlNodePtr
 xmlStringLenGetNodeList(const xmlDoc *doc, const xmlChar *value, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(200);
+#endif
     xmlNodePtr ret = NULL, last = NULL;
     xmlNodePtr node;
     xmlChar *val;
@@ -1433,6 +1498,9 @@ xmlStringLenGetNodeList(const xmlDoc *doc, const xmlChar *value, int len) {
 			    }
 			}
 			if (last == NULL) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(204);
+#endif
 			    last = ret = node;
 			} else {
 			    last = xmlAddNextSibling(last, node);
@@ -1694,6 +1762,9 @@ out:
 xmlChar *
 xmlNodeListGetString(xmlDocPtr doc, const xmlNode *list, int inLine)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(205);
+#endif
     const xmlNode *node = list;
     xmlChar *ret = NULL;
     xmlEntityPtr ent;
@@ -1784,6 +1855,9 @@ xmlNodeListGetString(xmlDocPtr doc, const xmlNode *list, int inLine)
 xmlChar *
 xmlNodeListGetRawString(const xmlDoc *doc, const xmlNode *list, int inLine)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(206);
+#endif
     const xmlNode *node = list;
     xmlChar *ret = NULL;
     xmlEntityPtr ent;
@@ -1857,6 +1931,9 @@ xmlNewPropInternal(xmlNodePtr node, xmlNsPtr ns,
                    const xmlChar * name, const xmlChar * value,
                    int eatname)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(208);
+#endif
     xmlAttrPtr cur;
     xmlDocPtr doc = NULL;
 
@@ -1950,6 +2027,9 @@ xmlNewPropInternal(xmlNodePtr node, xmlNsPtr ns,
  */
 xmlAttrPtr
 xmlNewProp(xmlNodePtr node, const xmlChar *name, const xmlChar *value) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(207);
+#endif
 
     if (name == NULL) {
 #ifdef DEBUG_TREE
@@ -1976,6 +2056,9 @@ xmlNewProp(xmlNodePtr node, const xmlChar *name, const xmlChar *value) {
 xmlAttrPtr
 xmlNewNsProp(xmlNodePtr node, xmlNsPtr ns, const xmlChar *name,
            const xmlChar *value) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(209);
+#endif
 
     if (name == NULL) {
 #ifdef DEBUG_TREE
@@ -2001,6 +2084,9 @@ xmlNewNsProp(xmlNodePtr node, xmlNsPtr ns, const xmlChar *name,
 xmlAttrPtr
 xmlNewNsPropEatName(xmlNodePtr node, xmlNsPtr ns, xmlChar *name,
            const xmlChar *value) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(210);
+#endif
 
     if (name == NULL) {
 #ifdef DEBUG_TREE
@@ -2029,6 +2115,9 @@ xmlNewNsPropEatName(xmlNodePtr node, xmlNsPtr ns, xmlChar *name,
  */
 xmlAttrPtr
 xmlNewDocProp(xmlDocPtr doc, const xmlChar *name, const xmlChar *value) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(211);
+#endif
     xmlAttrPtr cur;
 
     if (name == NULL) {
@@ -2083,6 +2172,9 @@ xmlNewDocProp(xmlDocPtr doc, const xmlChar *name, const xmlChar *value) {
  */
 void
 xmlFreePropList(xmlAttrPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(212);
+#endif
     xmlAttrPtr next;
     if (cur == NULL) return;
     while (cur != NULL) {
@@ -2100,6 +2192,9 @@ xmlFreePropList(xmlAttrPtr cur) {
  */
 void
 xmlFreeProp(xmlAttrPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(213);
+#endif
     xmlDictPtr dict = NULL;
     if (cur == NULL) return;
 
@@ -2128,6 +2223,9 @@ xmlFreeProp(xmlAttrPtr cur) {
  */
 int
 xmlRemoveProp(xmlAttrPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(214);
+#endif
     xmlAttrPtr tmp;
     if (cur == NULL) {
 #ifdef DEBUG_TREE
@@ -2179,6 +2277,9 @@ xmlRemoveProp(xmlAttrPtr cur) {
  */
 xmlNodePtr
 xmlNewDocPI(xmlDocPtr doc, const xmlChar *name, const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(215);
+#endif
     xmlNodePtr cur;
 
     if (name == NULL) {
@@ -2226,6 +2327,9 @@ xmlNewDocPI(xmlDocPtr doc, const xmlChar *name, const xmlChar *content) {
  */
 xmlNodePtr
 xmlNewPI(const xmlChar *name, const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(216);
+#endif
     return(xmlNewDocPI(NULL, name, content));
 }
 
@@ -2241,6 +2345,9 @@ xmlNewPI(const xmlChar *name, const xmlChar *content) {
  */
 xmlNodePtr
 xmlNewNode(xmlNsPtr ns, const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(217);
+#endif
     xmlNodePtr cur;
 
     if (name == NULL) {
@@ -2283,6 +2390,9 @@ xmlNewNode(xmlNsPtr ns, const xmlChar *name) {
  */
 xmlNodePtr
 xmlNewNodeEatName(xmlNsPtr ns, xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(218);
+#endif
     xmlNodePtr cur;
 
     if (name == NULL) {
@@ -2332,6 +2442,9 @@ xmlNewNodeEatName(xmlNsPtr ns, xmlChar *name) {
 xmlNodePtr
 xmlNewDocNode(xmlDocPtr doc, xmlNsPtr ns,
               const xmlChar *name, const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(219);
+#endif
     xmlNodePtr cur;
 
     if ((doc != NULL) && (doc->dict != NULL))
@@ -2369,6 +2482,9 @@ xmlNewDocNode(xmlDocPtr doc, xmlNsPtr ns,
 xmlNodePtr
 xmlNewDocNodeEatName(xmlDocPtr doc, xmlNsPtr ns,
               xmlChar *name, const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(220);
+#endif
     xmlNodePtr cur;
 
     cur = xmlNewNodeEatName(ns, name);
@@ -2403,6 +2519,9 @@ xmlNewDocNodeEatName(xmlDocPtr doc, xmlNsPtr ns,
 xmlNodePtr
 xmlNewDocRawNode(xmlDocPtr doc, xmlNsPtr ns,
                  const xmlChar *name, const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(221);
+#endif
     xmlNodePtr cur;
 
     cur = xmlNewDocNode(doc, ns, name, NULL);
@@ -2425,6 +2544,9 @@ xmlNewDocRawNode(xmlDocPtr doc, xmlNsPtr ns,
  */
 xmlNodePtr
 xmlNewDocFragment(xmlDocPtr doc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(222);
+#endif
     xmlNodePtr cur;
 
     /*
@@ -2455,6 +2577,9 @@ xmlNewDocFragment(xmlDocPtr doc) {
  */
 xmlNodePtr
 xmlNewText(const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(223);
+#endif
     xmlNodePtr cur;
 
     /*
@@ -2501,6 +2626,9 @@ xmlNewText(const xmlChar *content) {
 xmlNodePtr
 xmlNewTextChild(xmlNodePtr parent, xmlNsPtr ns,
             const xmlChar *name, const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(224);
+#endif
     xmlNodePtr cur, prev;
 
     if (parent == NULL) {
@@ -2570,6 +2698,9 @@ xmlNewTextChild(xmlNodePtr parent, xmlNsPtr ns,
  */
 xmlNodePtr
 xmlNewCharRef(xmlDocPtr doc, const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(225);
+#endif
     xmlNodePtr cur;
 
     if (name == NULL)
@@ -2613,6 +2744,9 @@ xmlNewCharRef(xmlDocPtr doc, const xmlChar *name) {
  */
 xmlNodePtr
 xmlNewReference(const xmlDoc *doc, const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(203);
+#endif
     xmlNodePtr cur;
     xmlEntityPtr ent;
 
@@ -2669,6 +2803,9 @@ xmlNewReference(const xmlDoc *doc, const xmlChar *name) {
  */
 xmlNodePtr
 xmlNewDocText(const xmlDoc *doc, const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(201);
+#endif
     xmlNodePtr cur;
 
     cur = xmlNewText(content);
@@ -2686,6 +2823,9 @@ xmlNewDocText(const xmlDoc *doc, const xmlChar *content) {
  */
 xmlNodePtr
 xmlNewTextLen(const xmlChar *content, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(226);
+#endif
     xmlNodePtr cur;
 
     /*
@@ -2721,6 +2861,9 @@ xmlNewTextLen(const xmlChar *content, int len) {
  */
 xmlNodePtr
 xmlNewDocTextLen(xmlDocPtr doc, const xmlChar *content, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(227);
+#endif
     xmlNodePtr cur;
 
     cur = xmlNewTextLen(content, len);
@@ -2737,6 +2880,9 @@ xmlNewDocTextLen(xmlDocPtr doc, const xmlChar *content, int len) {
  */
 xmlNodePtr
 xmlNewComment(const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(228);
+#endif
     xmlNodePtr cur;
 
     /*
@@ -2771,6 +2917,9 @@ xmlNewComment(const xmlChar *content) {
  */
 xmlNodePtr
 xmlNewCDataBlock(xmlDocPtr doc, const xmlChar *content, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(229);
+#endif
     xmlNodePtr cur;
 
     /*
@@ -2804,6 +2953,9 @@ xmlNewCDataBlock(xmlDocPtr doc, const xmlChar *content, int len) {
  */
 xmlNodePtr
 xmlNewDocComment(xmlDocPtr doc, const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(230);
+#endif
     xmlNodePtr cur;
 
     cur = xmlNewComment(content);
@@ -2820,6 +2972,9 @@ xmlNewDocComment(xmlDocPtr doc, const xmlChar *content) {
  */
 void
 xmlSetTreeDoc(xmlNodePtr tree, xmlDocPtr doc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(231);
+#endif
     xmlAttrPtr prop;
 
     if ((tree == NULL) || (tree->type == XML_NAMESPACE_DECL))
@@ -2867,6 +3022,9 @@ xmlSetTreeDoc(xmlNodePtr tree, xmlDocPtr doc) {
  */
 void
 xmlSetListDoc(xmlNodePtr list, xmlDocPtr doc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(232);
+#endif
     xmlNodePtr cur;
 
     if ((list == NULL) || (list->type == XML_NAMESPACE_DECL))
@@ -2900,6 +3058,9 @@ xmlSetListDoc(xmlNodePtr list, xmlDocPtr doc) {
 xmlNodePtr
 xmlNewChild(xmlNodePtr parent, xmlNsPtr ns,
             const xmlChar *name, const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(233);
+#endif
     xmlNodePtr cur, prev;
 
     if (parent == NULL) {
@@ -2974,6 +3135,9 @@ xmlNewChild(xmlNodePtr parent, xmlNsPtr ns,
  */
 static xmlNodePtr
 xmlAddPropSibling(xmlNodePtr prev, xmlNodePtr cur, xmlNodePtr prop) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(236);
+#endif
 	xmlAttrPtr attr;
 
 	if ((cur == NULL) || (cur->type != XML_ATTRIBUTE_NODE) ||
@@ -3026,6 +3190,9 @@ xmlAddPropSibling(xmlNodePtr prev, xmlNodePtr cur, xmlNodePtr prop) {
  */
 xmlNodePtr
 xmlAddNextSibling(xmlNodePtr cur, xmlNodePtr elem) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(202);
+#endif
     if ((cur == NULL) || (cur->type == XML_NAMESPACE_DECL)) {
 #ifdef DEBUG_TREE
         xmlGenericError(xmlGenericErrorContext,
@@ -3104,6 +3271,9 @@ xmlAddNextSibling(xmlNodePtr cur, xmlNodePtr elem) {
  */
 xmlNodePtr
 xmlAddPrevSibling(xmlNodePtr cur, xmlNodePtr elem) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(237);
+#endif
     if ((cur == NULL) || (cur->type == XML_NAMESPACE_DECL)) {
 #ifdef DEBUG_TREE
         xmlGenericError(xmlGenericErrorContext,
@@ -3180,6 +3350,9 @@ xmlAddPrevSibling(xmlNodePtr cur, xmlNodePtr elem) {
  */
 xmlNodePtr
 xmlAddSibling(xmlNodePtr cur, xmlNodePtr elem) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(238);
+#endif
     xmlNodePtr parent;
 
     if ((cur == NULL) || (cur->type == XML_NAMESPACE_DECL)) {
@@ -3256,6 +3429,9 @@ xmlAddSibling(xmlNodePtr cur, xmlNodePtr elem) {
  */
 xmlNodePtr
 xmlAddChildList(xmlNodePtr parent, xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(239);
+#endif
     xmlNodePtr prev;
 
     if ((parent == NULL) || (parent->type == XML_NAMESPACE_DECL)) {
@@ -3342,6 +3518,9 @@ xmlAddChildList(xmlNodePtr parent, xmlNodePtr cur) {
  */
 xmlNodePtr
 xmlAddChild(xmlNodePtr parent, xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(240);
+#endif
     xmlNodePtr prev;
 
     if ((parent == NULL) || (parent->type == XML_NAMESPACE_DECL)) {
@@ -3466,6 +3645,9 @@ xmlAddChild(xmlNodePtr parent, xmlNodePtr cur) {
  */
 xmlNodePtr
 xmlGetLastChild(const xmlNode *parent) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(242);
+#endif
     if ((parent == NULL) || (parent->type == XML_NAMESPACE_DECL)) {
 #ifdef DEBUG_TREE
         xmlGenericError(xmlGenericErrorContext,
@@ -3495,6 +3677,9 @@ xmlGetLastChild(const xmlNode *parent) {
  */
 unsigned long
 xmlChildElementCount(xmlNodePtr parent) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(243);
+#endif
     unsigned long ret = 0;
     xmlNodePtr cur = NULL;
 
@@ -3532,6 +3717,9 @@ xmlChildElementCount(xmlNodePtr parent) {
  */
 xmlNodePtr
 xmlFirstElementChild(xmlNodePtr parent) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(244);
+#endif
     xmlNodePtr cur = NULL;
 
     if (parent == NULL)
@@ -3568,6 +3756,9 @@ xmlFirstElementChild(xmlNodePtr parent) {
  */
 xmlNodePtr
 xmlLastElementChild(xmlNodePtr parent) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(245);
+#endif
     xmlNodePtr cur = NULL;
 
     if (parent == NULL)
@@ -3605,6 +3796,9 @@ xmlLastElementChild(xmlNodePtr parent) {
  */
 xmlNodePtr
 xmlPreviousElementSibling(xmlNodePtr node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(246);
+#endif
     if (node == NULL)
         return(NULL);
     switch (node->type) {
@@ -3644,6 +3838,9 @@ xmlPreviousElementSibling(xmlNodePtr node) {
  */
 xmlNodePtr
 xmlNextElementSibling(xmlNodePtr node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(247);
+#endif
     if (node == NULL)
         return(NULL);
     switch (node->type) {
@@ -3681,6 +3878,9 @@ xmlNextElementSibling(xmlNodePtr node) {
  */
 void
 xmlFreeNodeList(xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(199);
+#endif
     xmlNodePtr next;
     xmlNodePtr parent;
     xmlDictPtr dict = NULL;
@@ -3772,6 +3972,9 @@ xmlFreeNodeList(xmlNodePtr cur) {
  */
 void
 xmlFreeNode(xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(196);
+#endif
     xmlDictPtr dict = NULL;
 
     if (cur == NULL) return;
@@ -3847,6 +4050,9 @@ xmlFreeNode(xmlNodePtr cur) {
  */
 void
 xmlUnlinkNode(xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(195);
+#endif
     if (cur == NULL) {
 #ifdef DEBUG_TREE
         xmlGenericError(xmlGenericErrorContext,
@@ -3923,6 +4129,9 @@ xmlUnlinkNode(xmlNodePtr cur) {
  */
 xmlNodePtr
 xmlReplaceNode(xmlNodePtr old, xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(248);
+#endif
     if (old == cur) return(NULL);
     if ((old == NULL) || (old->type == XML_NAMESPACE_DECL) ||
         (old->parent == NULL)) {
@@ -3995,6 +4204,9 @@ xmlReplaceNode(xmlNodePtr old, xmlNodePtr cur) {
  */
 xmlNsPtr
 xmlCopyNamespace(xmlNsPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(249);
+#endif
     xmlNsPtr ret;
 
     if (cur == NULL) return(NULL);
@@ -4022,6 +4234,9 @@ xmlCopyNamespace(xmlNsPtr cur) {
  */
 xmlNsPtr
 xmlCopyNamespaceList(xmlNsPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(250);
+#endif
     xmlNsPtr ret = NULL;
     xmlNsPtr p = NULL,q;
 
@@ -4043,6 +4258,9 @@ xmlStaticCopyNodeList(xmlNodePtr node, xmlDocPtr doc, xmlNodePtr parent);
 
 static xmlAttrPtr
 xmlCopyPropInternal(xmlDocPtr doc, xmlNodePtr target, xmlAttrPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(252);
+#endif
     xmlAttrPtr ret;
 
     if (cur == NULL) return(NULL);
@@ -4150,6 +4368,9 @@ xmlCopyPropInternal(xmlDocPtr doc, xmlNodePtr target, xmlAttrPtr cur) {
  */
 xmlAttrPtr
 xmlCopyProp(xmlNodePtr target, xmlAttrPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(251);
+#endif
 	return xmlCopyPropInternal(NULL, target, cur);
 }
 
@@ -4164,6 +4385,9 @@ xmlCopyProp(xmlNodePtr target, xmlAttrPtr cur) {
  */
 xmlAttrPtr
 xmlCopyPropList(xmlNodePtr target, xmlAttrPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(253);
+#endif
     xmlAttrPtr ret = NULL;
     xmlAttrPtr p = NULL,q;
 
@@ -4207,6 +4431,9 @@ xmlCopyPropList(xmlNodePtr target, xmlAttrPtr cur) {
 static xmlNodePtr
 xmlStaticCopyNode(xmlNodePtr node, xmlDocPtr doc, xmlNodePtr parent,
                   int extended) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(255);
+#endif
     xmlNodePtr ret;
 
     if (node == NULL) return(NULL);
@@ -4359,6 +4586,9 @@ out:
 
 static xmlNodePtr
 xmlStaticCopyNodeList(xmlNodePtr node, xmlDocPtr doc, xmlNodePtr parent) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(258);
+#endif
     xmlNodePtr ret = NULL;
     xmlNodePtr p = NULL,q;
 
@@ -4411,6 +4641,9 @@ xmlStaticCopyNodeList(xmlNodePtr node, xmlDocPtr doc, xmlNodePtr parent) {
  */
 xmlNodePtr
 xmlCopyNode(xmlNodePtr node, int extended) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(254);
+#endif
     xmlNodePtr ret;
 
     ret = xmlStaticCopyNode(node, NULL, NULL, extended);
@@ -4431,6 +4664,9 @@ xmlCopyNode(xmlNodePtr node, int extended) {
  */
 xmlNodePtr
 xmlDocCopyNode(xmlNodePtr node, xmlDocPtr doc, int extended) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(256);
+#endif
     xmlNodePtr ret;
 
     ret = xmlStaticCopyNode(node, doc, NULL, extended);
@@ -4447,6 +4683,9 @@ xmlDocCopyNode(xmlNodePtr node, xmlDocPtr doc, int extended) {
  * Returns: a new #xmlNodePtr, or NULL in case of error.
  */
 xmlNodePtr xmlDocCopyNodeList(xmlDocPtr doc, xmlNodePtr node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(257);
+#endif
     xmlNodePtr ret = xmlStaticCopyNodeList(node, doc, NULL);
     return(ret);
 }
@@ -4461,6 +4700,12 @@ xmlNodePtr xmlDocCopyNodeList(xmlDocPtr doc, xmlNodePtr node) {
  * Returns: a new #xmlNodePtr, or NULL in case of error.
  */
 xmlNodePtr xmlCopyNodeList(xmlNodePtr node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(264);
+#endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(259);
+#endif
     xmlNodePtr ret = xmlStaticCopyNodeList(node, NULL, NULL);
     return(ret);
 }
@@ -4476,6 +4721,9 @@ xmlNodePtr xmlCopyNodeList(xmlNodePtr node) {
  */
 xmlDtdPtr
 xmlCopyDtd(xmlDtdPtr dtd) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(260);
+#endif
     xmlDtdPtr ret;
     xmlNodePtr cur, p = NULL, q;
 
@@ -4565,6 +4813,9 @@ xmlCopyDtd(xmlDtdPtr dtd) {
  */
 xmlDocPtr
 xmlCopyDoc(xmlDocPtr doc, int recursive) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(261);
+#endif
     xmlDocPtr ret;
 
     if (doc == NULL) return(NULL);
@@ -4633,6 +4884,9 @@ xmlCopyDoc(xmlDocPtr doc, int recursive) {
 static long
 xmlGetLineNoInternal(const xmlNode *node, int depth)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(263);
+#endif
     long result = -1;
 
     if (depth >= 5)
@@ -4683,6 +4937,9 @@ xmlGetLineNoInternal(const xmlNode *node, int depth)
 long
 xmlGetLineNo(const xmlNode *node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(262);
+#endif
     return(xmlGetLineNoInternal(node, 0));
 }
 
@@ -4946,6 +5203,9 @@ xmlGetNodePath(const xmlNode *node)
  */
 xmlNodePtr
 xmlDocGetRootElement(const xmlDoc *doc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(265);
+#endif
     xmlNodePtr ret;
 
     if (doc == NULL) return(NULL);
@@ -4972,6 +5232,9 @@ xmlDocGetRootElement(const xmlDoc *doc) {
  */
 xmlNodePtr
 xmlDocSetRootElement(xmlDocPtr doc, xmlNodePtr root) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(266);
+#endif
     xmlNodePtr old = NULL;
 
     if (doc == NULL) return(NULL);
@@ -5011,6 +5274,9 @@ xmlDocSetRootElement(xmlDocPtr doc, xmlNodePtr root) {
  */
 void
 xmlNodeSetLang(xmlNodePtr cur, const xmlChar *lang) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(267);
+#endif
     xmlNsPtr ns;
 
     if (cur == NULL) return;
@@ -5060,6 +5326,9 @@ xmlNodeSetLang(xmlNodePtr cur, const xmlChar *lang) {
  */
 xmlChar *
 xmlNodeGetLang(const xmlNode *cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(270);
+#endif
     xmlChar *lang;
 
     if ((cur == NULL) || (cur->type == XML_NAMESPACE_DECL))
@@ -5085,6 +5354,9 @@ xmlNodeGetLang(const xmlNode *cur) {
  */
 void
 xmlNodeSetSpacePreserve(xmlNodePtr cur, int val) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(272);
+#endif
     xmlNsPtr ns;
 
     if (cur == NULL) return;
@@ -5141,6 +5413,9 @@ xmlNodeSetSpacePreserve(xmlNodePtr cur, int val) {
  */
 int
 xmlNodeGetSpacePreserve(const xmlNode *cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(273);
+#endif
     xmlChar *space;
 
     if ((cur == NULL) || (cur->type != XML_ELEMENT_NODE))
@@ -5173,6 +5448,9 @@ xmlNodeGetSpacePreserve(const xmlNode *cur) {
  */
 void
 xmlNodeSetName(xmlNodePtr cur, const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(274);
+#endif
     xmlDocPtr doc;
     xmlDictPtr dict;
     const xmlChar *freeme = NULL;
@@ -5237,6 +5515,9 @@ xmlNodeSetName(xmlNodePtr cur, const xmlChar *name) {
  */
 void
 xmlNodeSetBase(xmlNodePtr cur, const xmlChar* uri) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(275);
+#endif
     xmlNsPtr ns;
     xmlChar* fixed;
 
@@ -5284,6 +5565,9 @@ xmlNodeSetBase(xmlNodePtr cur, const xmlChar* uri) {
 	return;
     fixed = xmlPathToURI(uri);
     if (fixed != NULL) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(280);
+#endif
 	xmlSetNsProp(cur, ns, BAD_CAST "base", fixed);
 	xmlFree(fixed);
     } else {
@@ -5311,6 +5595,9 @@ xmlNodeSetBase(xmlNodePtr cur, const xmlChar* uri) {
  */
 xmlChar *
 xmlNodeGetBase(const xmlDoc *doc, const xmlNode *cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(276);
+#endif
     xmlChar *oldbase = NULL;
     xmlChar *base, *newbase;
 
@@ -5397,6 +5684,9 @@ xmlNodeGetBase(const xmlDoc *doc, const xmlNode *cur) {
 int
 xmlNodeBufGetContent(xmlBufferPtr buffer, const xmlNode *cur)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(278);
+#endif
     xmlBufPtr buf;
     int ret;
 
@@ -5425,6 +5715,9 @@ xmlNodeBufGetContent(xmlBufferPtr buffer, const xmlNode *cur)
 int
 xmlBufGetNodeContent(xmlBufPtr buf, const xmlNode *cur)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(279);
+#endif
     if ((cur == NULL) || (buf == NULL)) return(-1);
     switch (cur->type) {
         case XML_CDATA_SECTION_NODE:
@@ -5670,6 +5963,9 @@ xmlNodeGetContent(const xmlNode *cur)
  */
 void
 xmlNodeSetContent(xmlNodePtr cur, const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(235);
+#endif
     if (cur == NULL) {
 #ifdef DEBUG_TREE
         xmlGenericError(xmlGenericErrorContext,
@@ -5747,6 +6043,9 @@ xmlNodeSetContent(xmlNodePtr cur, const xmlChar *content) {
  */
 void
 xmlNodeSetContentLen(xmlNodePtr cur, const xmlChar *content, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(282);
+#endif
     if (cur == NULL) {
 #ifdef DEBUG_TREE
         xmlGenericError(xmlGenericErrorContext,
@@ -5821,6 +6120,9 @@ xmlNodeSetContentLen(xmlNodePtr cur, const xmlChar *content, int len) {
  */
 void
 xmlNodeAddContentLen(xmlNodePtr cur, const xmlChar *content, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(283);
+#endif
     if (cur == NULL) {
 #ifdef DEBUG_TREE
         xmlGenericError(xmlGenericErrorContext,
@@ -5859,6 +6161,9 @@ xmlNodeAddContentLen(xmlNodePtr cur, const xmlChar *content, int len) {
 	        if ((cur->content == (xmlChar *) &(cur->properties)) ||
 		    ((cur->doc != NULL) && (cur->doc->dict != NULL) &&
 			    xmlDictOwns(cur->doc->dict, cur->content))) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1525);
+#endif
 		    cur->content = xmlStrncatNew(cur->content, content, len);
 		    cur->properties = NULL;
 		    cur->nsDef = NULL;
@@ -5896,6 +6201,9 @@ xmlNodeAddContentLen(xmlNodePtr cur, const xmlChar *content, int len) {
  */
 void
 xmlNodeAddContent(xmlNodePtr cur, const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(234);
+#endif
     int len;
 
     if (cur == NULL) {
@@ -5920,6 +6228,9 @@ xmlNodeAddContent(xmlNodePtr cur, const xmlChar *content) {
  */
 xmlNodePtr
 xmlTextMerge(xmlNodePtr first, xmlNodePtr second) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(284);
+#endif
     if (first == NULL) return(second);
     if (second == NULL) return(first);
     if (first->type != XML_TEXT_NODE) return(first);
@@ -5946,6 +6257,9 @@ xmlTextMerge(xmlNodePtr first, xmlNodePtr second) {
 xmlNsPtr *
 xmlGetNsList(const xmlDoc *doc ATTRIBUTE_UNUSED, const xmlNode *node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(285);
+#endif
     xmlNsPtr cur;
     xmlNsPtr *ret = NULL;
     int nbns = 0;
@@ -6010,6 +6324,9 @@ xmlGetNsList(const xmlDoc *doc ATTRIBUTE_UNUSED, const xmlNode *node)
 static xmlNsPtr
 xmlTreeEnsureXMLDecl(xmlDocPtr doc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(287);
+#endif
     if (doc == NULL)
 	return (NULL);
     if (doc->oldNs != NULL)
@@ -6049,6 +6366,9 @@ xmlTreeEnsureXMLDecl(xmlDocPtr doc)
  */
 xmlNsPtr
 xmlSearchNs(xmlDocPtr doc, xmlNodePtr node, const xmlChar *nameSpace) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(286);
+#endif
 
     xmlNsPtr cur;
     const xmlNode *orig = node;
@@ -6139,6 +6459,9 @@ static int
 xmlNsInScope(xmlDocPtr doc ATTRIBUTE_UNUSED, xmlNodePtr node,
              xmlNodePtr ancestor, const xmlChar * prefix)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(288);
+#endif
     xmlNsPtr tst;
 
     while ((node != NULL) && (node != ancestor)) {
@@ -6179,6 +6502,9 @@ xmlNsInScope(xmlDocPtr doc ATTRIBUTE_UNUSED, xmlNodePtr node,
 xmlNsPtr
 xmlSearchNsByHref(xmlDocPtr doc, xmlNodePtr node, const xmlChar * href)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(268);
+#endif
     xmlNsPtr cur;
     xmlNodePtr orig = node;
     int is_attr;
@@ -6270,6 +6596,9 @@ xmlSearchNsByHref(xmlDocPtr doc, xmlNodePtr node, const xmlChar * href)
  */
 static xmlNsPtr
 xmlNewReconciledNs(xmlDocPtr doc, xmlNodePtr tree, xmlNsPtr ns) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(290);
+#endif
     xmlNsPtr def;
     xmlChar prefix[50];
     int counter = 1;
@@ -6339,6 +6668,9 @@ xmlNewReconciledNs(xmlDocPtr doc, xmlNodePtr tree, xmlNsPtr ns) {
  */
 int
 xmlReconciliateNs(xmlDocPtr doc, xmlNodePtr tree) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(289);
+#endif
     xmlNsPtr *oldNs = NULL;
     xmlNsPtr *newNs = NULL;
     int sizeCache = 0;
@@ -6523,6 +6855,9 @@ static xmlAttrPtr
 xmlGetPropNodeInternal(const xmlNode *node, const xmlChar *name,
 		       const xmlChar *nsName, int useDTD)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(292);
+#endif
     xmlAttrPtr prop;
 
     if ((node == NULL) || (node->type != XML_ELEMENT_NODE) || (name == NULL))
@@ -6536,6 +6871,9 @@ xmlGetPropNodeInternal(const xmlNode *node, const xmlChar *name,
 	    */
 	    do {
 		if ((prop->ns == NULL) && xmlStrEqual(prop->name, name)) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
 		    return(prop);
 		}
 		prop = prop->next;
@@ -6646,6 +6984,9 @@ xmlGetPropNodeInternal(const xmlNode *node, const xmlChar *name,
 static xmlChar*
 xmlGetPropNodeValueInternal(const xmlAttr *prop)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(281);
+#endif
     if (prop == NULL)
 	return(NULL);
     if (prop->type == XML_ATTRIBUTE_NODE) {
@@ -6663,6 +7004,10 @@ xmlGetPropNodeValueInternal(const xmlAttr *prop)
 		*/
 		return(xmlStrdup(prop->children->content));
 	    } else {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(298);
+#endif
+
 		xmlChar *ret;
 
 		ret = xmlNodeListGetString(prop->doc, prop->children, 1);
@@ -6691,6 +7036,9 @@ xmlGetPropNodeValueInternal(const xmlAttr *prop)
  */
 xmlAttrPtr
 xmlHasProp(const xmlNode *node, const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(291);
+#endif
     xmlAttrPtr prop;
     xmlDocPtr doc;
 
@@ -6746,6 +7094,9 @@ xmlHasProp(const xmlNode *node, const xmlChar *name) {
  */
 xmlAttrPtr
 xmlHasNsProp(const xmlNode *node, const xmlChar *name, const xmlChar *nameSpace) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(241);
+#endif
 
     return(xmlGetPropNodeInternal(node, name, nameSpace, xmlCheckDTD));
 }
@@ -6768,6 +7119,9 @@ xmlHasNsProp(const xmlNode *node, const xmlChar *name, const xmlChar *nameSpace)
  */
 xmlChar *
 xmlGetProp(const xmlNode *node, const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(277);
+#endif
     xmlAttrPtr prop;
 
     prop = xmlHasProp(node, name);
@@ -6793,6 +7147,9 @@ xmlGetProp(const xmlNode *node, const xmlChar *name) {
  */
 xmlChar *
 xmlGetNoNsProp(const xmlNode *node, const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(293);
+#endif
     xmlAttrPtr prop;
 
     prop = xmlGetPropNodeInternal(node, name, NULL, xmlCheckDTD);
@@ -6818,6 +7175,9 @@ xmlGetNoNsProp(const xmlNode *node, const xmlChar *name) {
  */
 xmlChar *
 xmlGetNsProp(const xmlNode *node, const xmlChar *name, const xmlChar *nameSpace) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(271);
+#endif
     xmlAttrPtr prop;
 
     prop = xmlGetPropNodeInternal(node, name, nameSpace, xmlCheckDTD);
@@ -6838,6 +7198,9 @@ xmlGetNsProp(const xmlNode *node, const xmlChar *name, const xmlChar *nameSpace)
  */
 int
 xmlUnsetProp(xmlNodePtr node, const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(294);
+#endif
     xmlAttrPtr prop;
 
     prop = xmlGetPropNodeInternal(node, name, NULL, 0);
@@ -6859,6 +7222,9 @@ xmlUnsetProp(xmlNodePtr node, const xmlChar *name) {
  */
 int
 xmlUnsetNsProp(xmlNodePtr node, xmlNsPtr ns, const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(295);
+#endif
     xmlAttrPtr prop;
 
     prop = xmlGetPropNodeInternal(node, name, (ns != NULL) ? ns->href : NULL, 0);
@@ -6887,6 +7253,9 @@ xmlUnsetNsProp(xmlNodePtr node, xmlNsPtr ns, const xmlChar *name) {
  */
 xmlAttrPtr
 xmlSetProp(xmlNodePtr node, const xmlChar *name, const xmlChar *value) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(296);
+#endif
     int len;
     const xmlChar *nqname;
 
@@ -6925,6 +7294,9 @@ xmlAttrPtr
 xmlSetNsProp(xmlNodePtr node, xmlNsPtr ns, const xmlChar *name,
 	     const xmlChar *value)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(269);
+#endif
     xmlAttrPtr prop;
 
     if (ns && (ns->href == NULL))
@@ -6977,6 +7349,9 @@ xmlSetNsProp(xmlNodePtr node, xmlNsPtr ns, const xmlChar *name,
  */
 int
 xmlNodeIsText(const xmlNode *node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(297);
+#endif
     if (node == NULL) return(0);
 
     if (node->type == XML_TEXT_NODE) return(1);
@@ -7023,6 +7398,9 @@ xmlIsBlankNode(const xmlNode *node) {
 
 int
 xmlTextConcat(xmlNodePtr node, const xmlChar *content, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(299);
+#endif
     if (node == NULL) return(-1);
 
     if ((node->type != XML_TEXT_NODE) &&
@@ -7039,6 +7417,9 @@ xmlTextConcat(xmlNodePtr node, const xmlChar *content, int len) {
     if ((node->content == (xmlChar *) &(node->properties)) ||
         ((node->doc != NULL) && (node->doc->dict != NULL) &&
 		xmlDictOwns(node->doc->dict, node->content))) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1525);
+#endif
 	node->content = xmlStrncatNew(node->content, content, len);
     } else {
         node->content = xmlStrncat(node->content, content, len);
@@ -7063,6 +7444,9 @@ xmlTextConcat(xmlNodePtr node, const xmlChar *content, int len) {
  */
 xmlBufferPtr
 xmlBufferCreate(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(300);
+#endif
     xmlBufferPtr ret;
 
     ret = (xmlBufferPtr) xmlMalloc(sizeof(xmlBuffer));
@@ -7093,6 +7477,9 @@ xmlBufferCreate(void) {
  */
 xmlBufferPtr
 xmlBufferCreateSize(size_t size) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(301);
+#endif
     xmlBufferPtr ret;
 
     ret = (xmlBufferPtr) xmlMalloc(sizeof(xmlBuffer));
@@ -7129,6 +7516,9 @@ xmlBufferCreateSize(size_t size) {
  */
 xmlChar *
 xmlBufferDetach(xmlBufferPtr buf) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(302);
+#endif
     xmlChar *ret;
 
     if (buf == NULL)
@@ -7158,6 +7548,9 @@ xmlBufferDetach(xmlBufferPtr buf) {
  */
 xmlBufferPtr
 xmlBufferCreateStatic(void *mem, size_t size) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(303);
+#endif
     xmlBufferPtr ret;
 
     if ((mem == NULL) || (size == 0))
@@ -7185,6 +7578,12 @@ xmlBufferCreateStatic(void *mem, size_t size) {
 void
 xmlBufferSetAllocationScheme(xmlBufferPtr buf,
                              xmlBufferAllocationScheme scheme) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(313);
+#endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(304);
+#endif
     if (buf == NULL) {
 #ifdef DEBUG_BUFFER
         xmlGenericError(xmlGenericErrorContext,
@@ -7210,6 +7609,9 @@ xmlBufferSetAllocationScheme(xmlBufferPtr buf,
  */
 void
 xmlBufferFree(xmlBufferPtr buf) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(305);
+#endif
     if (buf == NULL) {
 #ifdef DEBUG_BUFFER
         xmlGenericError(xmlGenericErrorContext,
@@ -7236,6 +7638,9 @@ xmlBufferFree(xmlBufferPtr buf) {
  */
 void
 xmlBufferEmpty(xmlBufferPtr buf) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(306);
+#endif
     if (buf == NULL) return;
     if (buf->content == NULL) return;
     buf->use = 0;
@@ -7264,6 +7669,9 @@ xmlBufferEmpty(xmlBufferPtr buf) {
  */
 int
 xmlBufferShrink(xmlBufferPtr buf, unsigned int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(307);
+#endif
     if (buf == NULL) return(-1);
     if (len == 0) return(0);
     if (len > buf->use) return(-1);
@@ -7309,6 +7717,9 @@ xmlBufferShrink(xmlBufferPtr buf, unsigned int len) {
  */
 int
 xmlBufferGrow(xmlBufferPtr buf, unsigned int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(308);
+#endif
     int size;
     xmlChar *newbuf;
 
@@ -7364,6 +7775,9 @@ xmlBufferGrow(xmlBufferPtr buf, unsigned int len) {
  */
 int
 xmlBufferDump(FILE *file, xmlBufferPtr buf) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(309);
+#endif
     int ret;
 
     if (buf == NULL) {
@@ -7398,6 +7812,9 @@ xmlBufferDump(FILE *file, xmlBufferPtr buf) {
 const xmlChar *
 xmlBufferContent(const xmlBuffer *buf)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(310);
+#endif
     if(!buf)
         return NULL;
 
@@ -7416,6 +7833,9 @@ xmlBufferContent(const xmlBuffer *buf)
 int
 xmlBufferLength(const xmlBuffer *buf)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(311);
+#endif
     if(!buf)
         return 0;
 
@@ -7434,6 +7854,9 @@ xmlBufferLength(const xmlBuffer *buf)
 int
 xmlBufferResize(xmlBufferPtr buf, unsigned int size)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(312);
+#endif
     unsigned int newSize;
     xmlChar* rebuf = NULL;
     size_t start_buf;
@@ -7599,6 +8022,9 @@ xmlBufferAdd(xmlBufferPtr buf, const xmlChar *str, int len) {
  */
 int
 xmlBufferAddHead(xmlBufferPtr buf, const xmlChar *str, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(314);
+#endif
     unsigned int needSize;
 
     if (buf == NULL)
@@ -7666,6 +8092,9 @@ xmlBufferAddHead(xmlBufferPtr buf, const xmlChar *str, int len) {
  */
 int
 xmlBufferCat(xmlBufferPtr buf, const xmlChar *str) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(315);
+#endif
     if (buf == NULL)
         return(-1);
     if (buf->alloc == XML_BUFFER_ALLOC_IMMUTABLE) return -1;
@@ -7685,6 +8114,9 @@ xmlBufferCat(xmlBufferPtr buf, const xmlChar *str) {
  */
 int
 xmlBufferCCat(xmlBufferPtr buf, const char *str) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(316);
+#endif
     const char *cur;
 
     if (buf == NULL)
@@ -7720,6 +8152,9 @@ xmlBufferCCat(xmlBufferPtr buf, const char *str) {
  */
 void
 xmlBufferWriteCHAR(xmlBufferPtr buf, const xmlChar *string) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(317);
+#endif
     if (buf == NULL)
         return;
     if (buf->alloc == XML_BUFFER_ALLOC_IMMUTABLE) return;
@@ -7736,6 +8171,9 @@ xmlBufferWriteCHAR(xmlBufferPtr buf, const xmlChar *string) {
  */
 void
 xmlBufferWriteChar(xmlBufferPtr buf, const char *string) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(318);
+#endif
     if (buf == NULL)
         return;
     if (buf->alloc == XML_BUFFER_ALLOC_IMMUTABLE) return;
@@ -7754,6 +8192,9 @@ xmlBufferWriteChar(xmlBufferPtr buf, const char *string) {
  */
 void
 xmlBufferWriteQuotedString(xmlBufferPtr buf, const xmlChar *string) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(319);
+#endif
     const xmlChar *cur, *base;
     if (buf == NULL)
         return;
@@ -7804,6 +8245,9 @@ xmlBufferWriteQuotedString(xmlBufferPtr buf, const xmlChar *string) {
  */
 int
 xmlGetDocCompressMode (const xmlDoc *doc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(320);
+#endif
     if (doc == NULL) return(-1);
     return(doc->compression);
 }
@@ -7818,6 +8262,9 @@ xmlGetDocCompressMode (const xmlDoc *doc) {
  */
 void
 xmlSetDocCompressMode (xmlDocPtr doc, int mode) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(321);
+#endif
     if (doc == NULL) return;
     if (mode < 0) doc->compression = 0;
     else if (mode > 9) doc->compression = 9;
@@ -7833,6 +8280,9 @@ xmlSetDocCompressMode (xmlDocPtr doc, int mode) {
 int
 xmlGetCompressMode(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(322);
+#endif
     return (xmlCompressMode);
 }
 
@@ -7845,6 +8295,9 @@ xmlGetCompressMode(void)
  */
 void
 xmlSetCompressMode(int mode) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(323);
+#endif
     if (mode < 0) xmlCompressMode = 0;
     else if (mode > 9) xmlCompressMode = 9;
     else xmlCompressMode = mode;
@@ -7901,6 +8354,9 @@ struct xmlNsMap {
 static void
 xmlDOMWrapNsMapFree(xmlNsMapPtr nsmap)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(326);
+#endif
     xmlNsMapItemPtr cur, tmp;
 
     if (nsmap == NULL)
@@ -7933,6 +8389,9 @@ static xmlNsMapItemPtr
 xmlDOMWrapNsMapAddItem(xmlNsMapPtr *nsmap, int position,
 		       xmlNsPtr oldNs, xmlNsPtr newNs, int depth)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(332);
+#endif
     xmlNsMapItemPtr ret;
     xmlNsMapPtr map;
 
@@ -8020,6 +8479,9 @@ xmlDOMWrapStoreNs(xmlDocPtr doc,
 		   const xmlChar *nsName,
 		   const xmlChar *prefix)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(329);
+#endif
     xmlNsPtr ns;
 
     if (doc == NULL)
@@ -8031,6 +8493,9 @@ xmlDOMWrapStoreNs(xmlDocPtr doc,
 	/* Reuse. */
 	ns = ns->next;
 	while (ns != NULL) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
 	    if (((ns->prefix == prefix) ||
 		xmlStrEqual(ns->prefix, prefix)) &&
 		xmlStrEqual(ns->href, nsName)) {
@@ -8059,6 +8524,9 @@ xmlDOMWrapStoreNs(xmlDocPtr doc,
 xmlDOMWrapCtxtPtr
 xmlDOMWrapNewCtxt(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(324);
+#endif
     xmlDOMWrapCtxtPtr ret;
 
     ret = xmlMalloc(sizeof(xmlDOMWrapCtxt));
@@ -8079,6 +8547,9 @@ xmlDOMWrapNewCtxt(void)
 void
 xmlDOMWrapFreeCtxt(xmlDOMWrapCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(325);
+#endif
     if (ctxt == NULL)
 	return;
     if (ctxt->namespaceMap != NULL)
@@ -8105,6 +8576,9 @@ xmlTreeNSListLookupByPrefix(xmlNsPtr nsList, const xmlChar *prefix)
     if (nsList == NULL)
 	return (NULL);
     {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
 	xmlNsPtr ns;
 	ns = nsList;
 	do {
@@ -8132,6 +8606,9 @@ static int
 xmlDOMWrapNSNormGatherInScopeNs(xmlNsMapPtr *map,
 				xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(331);
+#endif
     xmlNodePtr cur;
     xmlNsPtr ns;
     xmlNsMapItemPtr mi;
@@ -8150,6 +8627,9 @@ xmlDOMWrapNSNormGatherInScopeNs(xmlNsMapPtr *map,
 	    if (cur->nsDef != NULL) {
 		ns = cur->nsDef;
 		do {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
 		    shadowed = 0;
 		    if (XML_NSMAP_NOTEMPTY(*map)) {
 			/*
@@ -8195,6 +8675,9 @@ xmlDOMWrapNSNormGatherInScopeNs(xmlNsMapPtr *map,
 		xmlFree((char *)old); \
 	} else if ((sourceDoc) && (sourceDoc->dict) && \
 	    xmlDictOwns(sourceDoc->dict, str)) { \
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1525);
+#endif
 	    str = BAD_CAST xmlStrdup(str); \
 	} \
     }
@@ -8207,6 +8690,9 @@ xmlDOMWrapNSNormGatherInScopeNs(xmlNsMapPtr *map,
     if (adoptStr && (str != NULL) && (sourceDoc != NULL) && \
 	(sourceDoc->dict != NULL) && \
 	xmlDictOwns(sourceDoc->dict, cur->content)) { \
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1525);
+#endif
 	if (destDoc->dict) \
 	    cur->content = (xmlChar *) \
 		xmlDictLookup(destDoc->dict, cur->content, -1); \
@@ -8225,6 +8711,9 @@ static int
 xmlDOMWrapNSNormAddNsMapItem2(xmlNsPtr **list, int *size, int *number,
 			xmlNsPtr oldNs, xmlNsPtr newNs)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(328);
+#endif
     if (*list == NULL) {
 	*list = (xmlNsPtr *) xmlMalloc(6 * sizeof(xmlNsPtr));
 	if (*list == NULL) {
@@ -8269,6 +8758,9 @@ int
 xmlDOMWrapRemoveNode(xmlDOMWrapCtxtPtr ctxt, xmlDocPtr doc,
 		     xmlNodePtr node, int options ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(327);
+#endif
     xmlNsPtr *list = NULL;
     int sizeList, nbList, i, j;
     xmlNsPtr ns;
@@ -8426,6 +8918,9 @@ xmlSearchNsByNamespaceStrict(xmlDocPtr doc, xmlNodePtr node,
 		    if (prefixed && (ns->prefix == NULL))
 			continue;
 		    if (prev != NULL) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
 			/*
 			* Check the last level of ns-decls for a
 			* shadowing prefix.
@@ -8436,6 +8931,9 @@ xmlSearchNsByNamespaceStrict(xmlDocPtr doc, xmlNodePtr node,
 				((prevns->prefix != NULL) &&
 				(ns->prefix != NULL) &&
 				xmlStrEqual(prevns->prefix, ns->prefix))) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
 				/*
 				* Shadowed.
 				*/
@@ -8572,6 +9070,9 @@ xmlDOMWrapNSNormDeclareNsForced(xmlDocPtr doc,
 				const xmlChar *prefix,
 				int checkShadow)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(336);
+#endif
 
     xmlNsPtr ret;
     char buf[50];
@@ -8655,6 +9156,9 @@ xmlDOMWrapNSNormAcquireNormalizedNs(xmlDocPtr doc,
 				   int ancestorsOnly,
 				   int prefixed)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(333);
+#endif
     xmlNsMapItemPtr mi;
 
     if ((doc == NULL) || (ns == NULL) || (retNs == NULL) ||
@@ -8685,6 +9189,9 @@ xmlDOMWrapNSNormAcquireNormalizedNs(xmlDocPtr doc,
 	* Try to find an equal ns-name in in-scope ns-decls.
 	*/
 	XML_NSMAP_FOREACH(*nsMap, mi) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
 	    if ((mi->depth >= XML_TREE_NSMAP_PARENT) &&
 		/*
 		* ancestorsOnly: This should be turned on to gain speed,
@@ -8727,6 +9234,9 @@ xmlDOMWrapNSNormAcquireNormalizedNs(xmlDocPtr doc,
 	*/
 	if (xmlDOMWrapNsMapAddItem(nsMap, -1, ns,
 		tmpns, XML_TREE_NSMAP_DOC) == NULL) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
 	    xmlFreeNs(tmpns);
 	    return (-1);
 	}
@@ -8791,6 +9301,9 @@ xmlDOMWrapReconcileNamespaces(xmlDOMWrapCtxtPtr ctxt ATTRIBUTE_UNUSED,
 			      xmlNodePtr elem,
 			      int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(330);
+#endif
     int depth = -1, adoptns = 0, parnsdone = 0;
     xmlNsPtr ns, prevns;
     xmlDocPtr doc;
@@ -8877,6 +9390,9 @@ xmlDOMWrapReconcileNamespaces(xmlDOMWrapCtxtPtr ctxt ATTRIBUTE_UNUSED,
 			* Does it shadow any ns-decl?
 			*/
 			if (XML_NSMAP_NOTEMPTY(nsMap)) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
 			    XML_NSMAP_FOREACH(nsMap, mi) {
 				if ((mi->depth >= XML_TREE_NSMAP_PARENT) &&
 				    (mi->shadowDepth == -1) &&
@@ -9427,6 +9943,9 @@ xmlDOMWrapCloneNode(xmlDOMWrapCtxtPtr ctxt,
 		      int deep,
 		      int options ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(334);
+#endif
     int ret = 0;
     xmlNodePtr cur, curElem = NULL;
     xmlNsMapPtr nsMap = NULL;
@@ -10085,6 +10604,9 @@ xmlDOMWrapAdoptNode(xmlDOMWrapCtxtPtr ctxt,
 		    xmlNodePtr destParent,
 		    int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(335);
+#endif
     if ((node == NULL) || (node->type == XML_NAMESPACE_DECL) ||
         (destDoc == NULL) ||
 	((destParent != NULL) && (destParent->doc != destDoc)))

@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * list.c: lists handling implementation
  *
@@ -78,6 +83,9 @@ xmlLinkDeallocator(xmlListPtr l, xmlLinkPtr lk)
 static int
 xmlLinkCompare(const void *data0, const void *data1)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1763);
+#endif
     if (data0 < data1)
         return (-1);
     else if (data0 == data1)
@@ -97,6 +105,9 @@ xmlLinkCompare(const void *data0, const void *data1)
 static xmlLinkPtr
 xmlListLowerSearch(xmlListPtr l, void *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1769);
+#endif
     xmlLinkPtr lk;
 
     if (l == NULL)
@@ -117,6 +128,9 @@ xmlListLowerSearch(xmlListPtr l, void *data)
 static xmlLinkPtr
 xmlListHigherSearch(xmlListPtr l, void *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1771);
+#endif
     xmlLinkPtr lk;
 
     if (l == NULL)
@@ -137,6 +151,9 @@ xmlListHigherSearch(xmlListPtr l, void *data)
 static xmlLinkPtr
 xmlListLinkSearch(xmlListPtr l, void *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1765);
+#endif
     xmlLinkPtr lk;
     if (l == NULL)
         return(NULL);
@@ -162,6 +179,9 @@ xmlListLinkSearch(xmlListPtr l, void *data)
 static xmlLinkPtr
 xmlListLinkReverseSearch(xmlListPtr l, void *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1767);
+#endif
     xmlLinkPtr lk;
     if (l == NULL)
         return(NULL);
@@ -187,6 +207,9 @@ xmlListLinkReverseSearch(xmlListPtr l, void *data)
 xmlListPtr
 xmlListCreate(xmlListDeallocator deallocator, xmlListDataCompare compare)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1762);
+#endif
     xmlListPtr l;
     if (NULL == (l = (xmlListPtr )xmlMalloc( sizeof(xmlList)))) {
         xmlGenericError(xmlGenericErrorContext,
@@ -230,6 +253,9 @@ xmlListCreate(xmlListDeallocator deallocator, xmlListDataCompare compare)
 void *
 xmlListSearch(xmlListPtr l, void *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1764);
+#endif
     xmlLinkPtr lk;
     if (l == NULL)
         return(NULL);
@@ -251,6 +277,9 @@ xmlListSearch(xmlListPtr l, void *data)
 void *
 xmlListReverseSearch(xmlListPtr l, void *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1766);
+#endif
     xmlLinkPtr lk;
     if (l == NULL)
         return(NULL);
@@ -272,6 +301,9 @@ xmlListReverseSearch(xmlListPtr l, void *data)
 int
 xmlListInsert(xmlListPtr l, void *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1768);
+#endif
     xmlLinkPtr lkPlace, lkNew;
 
     if (l == NULL)
@@ -304,6 +336,9 @@ xmlListInsert(xmlListPtr l, void *data)
  */
 int xmlListAppend(xmlListPtr l, void *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1770);
+#endif
     xmlLinkPtr lkPlace, lkNew;
 
     if (l == NULL)
@@ -332,6 +367,9 @@ int xmlListAppend(xmlListPtr l, void *data)
  */
 void xmlListDelete(xmlListPtr l)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1772);
+#endif
     if (l == NULL)
         return;
 
@@ -352,6 +390,9 @@ void xmlListDelete(xmlListPtr l)
 int
 xmlListRemoveFirst(xmlListPtr l, void *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1774);
+#endif
     xmlLinkPtr lk;
 
     if (l == NULL)
@@ -377,6 +418,9 @@ xmlListRemoveFirst(xmlListPtr l, void *data)
 int
 xmlListRemoveLast(xmlListPtr l, void *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1775);
+#endif
     xmlLinkPtr lk;
 
     if (l == NULL)
@@ -402,6 +446,9 @@ xmlListRemoveLast(xmlListPtr l, void *data)
 int
 xmlListRemoveAll(xmlListPtr l, void *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1776);
+#endif
     int count=0;
 
     if (l == NULL)
@@ -421,6 +468,9 @@ xmlListRemoveAll(xmlListPtr l, void *data)
 void
 xmlListClear(xmlListPtr l)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1773);
+#endif
     xmlLinkPtr  lk;
 
     if (l == NULL)
@@ -445,6 +495,9 @@ xmlListClear(xmlListPtr l)
 int
 xmlListEmpty(xmlListPtr l)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1777);
+#endif
     if (l == NULL)
         return(-1);
     return (l->sentinel->next == l->sentinel);
@@ -461,6 +514,9 @@ xmlListEmpty(xmlListPtr l)
 xmlLinkPtr
 xmlListFront(xmlListPtr l)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1778);
+#endif
     if (l == NULL)
         return(NULL);
     return (l->sentinel->next);
@@ -477,6 +533,9 @@ xmlListFront(xmlListPtr l)
 xmlLinkPtr
 xmlListEnd(xmlListPtr l)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1779);
+#endif
     if (l == NULL)
         return(NULL);
     return (l->sentinel->prev);
@@ -493,6 +552,9 @@ xmlListEnd(xmlListPtr l)
 int
 xmlListSize(xmlListPtr l)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1780);
+#endif
     xmlLinkPtr lk;
     int count=0;
 
@@ -512,6 +574,9 @@ xmlListSize(xmlListPtr l)
 void
 xmlListPopFront(xmlListPtr l)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1781);
+#endif
     if(!xmlListEmpty(l))
         xmlLinkDeallocator(l, l->sentinel->next);
 }
@@ -525,6 +590,9 @@ xmlListPopFront(xmlListPtr l)
 void
 xmlListPopBack(xmlListPtr l)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1782);
+#endif
     if(!xmlListEmpty(l))
         xmlLinkDeallocator(l, l->sentinel->prev);
 }
@@ -541,6 +609,9 @@ xmlListPopBack(xmlListPtr l)
 int
 xmlListPushFront(xmlListPtr l, void *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1783);
+#endif
     xmlLinkPtr lkPlace, lkNew;
 
     if (l == NULL)
@@ -573,6 +644,9 @@ xmlListPushFront(xmlListPtr l, void *data)
 int
 xmlListPushBack(xmlListPtr l, void *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1784);
+#endif
     xmlLinkPtr lkPlace, lkNew;
 
     if (l == NULL)
@@ -603,6 +677,9 @@ xmlListPushBack(xmlListPtr l, void *data)
 void *
 xmlLinkGetData(xmlLinkPtr lk)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1785);
+#endif
     if (lk == NULL)
         return(NULL);
     return lk->data;
@@ -617,6 +694,9 @@ xmlLinkGetData(xmlLinkPtr lk)
 void
 xmlListReverse(xmlListPtr l)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1786);
+#endif
     xmlLinkPtr lk;
     xmlLinkPtr lkPrev;
 
@@ -642,6 +722,9 @@ xmlListReverse(xmlListPtr l)
 void
 xmlListSort(xmlListPtr l)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1787);
+#endif
     xmlListPtr lTemp;
 
     if (l == NULL)
@@ -674,6 +757,9 @@ xmlListSort(xmlListPtr l)
  */
 void
 xmlListWalk(xmlListPtr l, xmlListWalker walker, void *user) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1790);
+#endif
     xmlLinkPtr lk;
 
     if ((l == NULL) || (walker == NULL))
@@ -695,6 +781,9 @@ xmlListWalk(xmlListPtr l, xmlListWalker walker, void *user) {
  */
 void
 xmlListReverseWalk(xmlListPtr l, xmlListWalker walker, void *user) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1791);
+#endif
     xmlLinkPtr lk;
 
     if ((l == NULL) || (walker == NULL))
@@ -716,6 +805,9 @@ xmlListReverseWalk(xmlListPtr l, xmlListWalker walker, void *user) {
 void
 xmlListMerge(xmlListPtr l1, xmlListPtr l2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1789);
+#endif
     xmlListCopy(l1, l2);
     xmlListClear(l2);
 }
@@ -731,6 +823,9 @@ xmlListMerge(xmlListPtr l1, xmlListPtr l2)
 xmlListPtr
 xmlListDup(const xmlListPtr old)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1788);
+#endif
     xmlListPtr cur;
 
     if (old == NULL)
@@ -760,6 +855,9 @@ xmlListDup(const xmlListPtr old)
 int
 xmlListCopy(xmlListPtr cur, const xmlListPtr old)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1792);
+#endif
     /* Walk the old tree and insert the data into the new one */
     xmlLinkPtr lk;
 

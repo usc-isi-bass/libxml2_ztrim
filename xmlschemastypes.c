@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * schemastypes.c : implementation of the XML Schema Datatypes
  *             definition and validity checking
@@ -265,6 +270,9 @@ xmlSchemaNewMinLengthFacet(int value)
 static xmlSchemaTypePtr
 xmlSchemaInitBasicType(const char *name, xmlSchemaValType type,
 		       xmlSchemaTypePtr baseType) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1192);
+#endif
     xmlSchemaTypePtr ret;
 
     ret = (xmlSchemaTypePtr) xmlMalloc(sizeof(xmlSchemaType));
@@ -372,6 +380,9 @@ struct _xmlSchemaModelGroup {
 static xmlSchemaParticlePtr
 xmlSchemaAddParticle(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1998);
+#endif
     xmlSchemaParticlePtr ret = NULL;
 
     ret = (xmlSchemaParticlePtr)
@@ -395,6 +406,9 @@ xmlSchemaAddParticle(void)
 void
 xmlSchemaInitTypes(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1191);
+#endif
     if (xmlSchemaTypesInitialized != 0)
         return;
     xmlSchemaTypesBank = xmlHashCreate(40);
@@ -621,6 +635,9 @@ xmlSchemaInitTypes(void)
 
 static void
 xmlSchemaFreeTypeEntry(void *type, const xmlChar *name ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1194);
+#endif
     xmlSchemaFreeType((xmlSchemaTypePtr) type);
 }
 
@@ -631,6 +648,9 @@ xmlSchemaFreeTypeEntry(void *type, const xmlChar *name ATTRIBUTE_UNUSED) {
  */
 void
 xmlSchemaCleanupTypes(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1193);
+#endif
     if (xmlSchemaTypesInitialized == 0)
 	return;
     /*
@@ -669,6 +689,9 @@ xmlSchemaCleanupTypes(void) {
 int
 xmlSchemaIsBuiltInTypeFacet(xmlSchemaTypePtr type, int facetType)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1195);
+#endif
     if (type == NULL)
 	return (-1);
     if (type->type != XML_SCHEMA_TYPE_BASIC)
@@ -747,6 +770,9 @@ xmlSchemaIsBuiltInTypeFacet(xmlSchemaTypePtr type, int facetType)
 xmlSchemaTypePtr
 xmlSchemaGetBuiltInType(xmlSchemaValType type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1196);
+#endif
     if (xmlSchemaTypesInitialized == 0)
 	xmlSchemaInitTypes();
     switch (type) {
@@ -859,6 +885,9 @@ xmlSchemaGetBuiltInType(xmlSchemaValType type)
  */
 int
 xmlSchemaValueAppend(xmlSchemaValPtr prev, xmlSchemaValPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1197);
+#endif
 
     if ((prev == NULL) || (cur == NULL))
 	return (-1);
@@ -877,6 +906,9 @@ xmlSchemaValueAppend(xmlSchemaValPtr prev, xmlSchemaValPtr cur) {
  */
 xmlSchemaValPtr
 xmlSchemaValueGetNext(xmlSchemaValPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1198);
+#endif
 
     if (cur == NULL)
 	return (NULL);
@@ -895,6 +927,9 @@ xmlSchemaValueGetNext(xmlSchemaValPtr cur) {
 const xmlChar *
 xmlSchemaValueGetAsString(xmlSchemaValPtr val)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1199);
+#endif
     if (val == NULL)
 	return (NULL);
     switch (val->type) {
@@ -928,6 +963,9 @@ xmlSchemaValueGetAsString(xmlSchemaValPtr val)
 int
 xmlSchemaValueGetAsBoolean(xmlSchemaValPtr val)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1200);
+#endif
     if ((val == NULL) || (val->type != XML_SCHEMAS_BOOLEAN))
 	return (0);
     return (val->value.b);
@@ -950,6 +988,9 @@ xmlSchemaValPtr
 xmlSchemaNewStringValue(xmlSchemaValType type,
 			const xmlChar *value)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1201);
+#endif
     xmlSchemaValPtr val;
 
     if (type != XML_SCHEMAS_STRING)
@@ -978,6 +1019,12 @@ xmlSchemaValPtr
 xmlSchemaNewNOTATIONValue(const xmlChar *name,
 			  const xmlChar *ns)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1203);
+#endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1202);
+#endif
     xmlSchemaValPtr val;
 
     val = xmlSchemaNewValue(XML_SCHEMAS_NOTATION);
@@ -1023,6 +1070,9 @@ xmlSchemaNewQNameValue(const xmlChar *namespaceName,
  */
 void
 xmlSchemaFreeValue(xmlSchemaValPtr value) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1204);
+#endif
     xmlSchemaValPtr prev;
 
     while (value != NULL) {
@@ -1080,6 +1130,9 @@ xmlSchemaFreeValue(xmlSchemaValPtr value) {
  */
 xmlSchemaTypePtr
 xmlSchemaGetPredefinedType(const xmlChar *name, const xmlChar *ns) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1205);
+#endif
     if (xmlSchemaTypesInitialized == 0)
 	xmlSchemaInitTypes();
     if (name == NULL)
@@ -1099,6 +1152,9 @@ xmlSchemaGetPredefinedType(const xmlChar *name, const xmlChar *ns) {
 xmlSchemaTypePtr
 xmlSchemaGetBuiltInListSimpleTypeItemType(xmlSchemaTypePtr type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1206);
+#endif
     if ((type == NULL) || (type->type != XML_SCHEMA_TYPE_BASIC))
 	return (NULL);
     switch (type->builtInType) {
@@ -1965,6 +2021,9 @@ error:
  */
 static xmlChar *
 xmlSchemaStrip(const xmlChar *value) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1231);
+#endif
     const xmlChar *start = value, *end, *f;
 
     if (value == NULL) return(NULL);
@@ -1989,6 +2048,9 @@ xmlSchemaStrip(const xmlChar *value) {
  */
 xmlChar *
 xmlSchemaWhiteSpaceReplace(const xmlChar *value) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1207);
+#endif
     const xmlChar *cur = value;
     xmlChar *ret = NULL, *mcur;
 
@@ -2022,6 +2084,9 @@ xmlSchemaWhiteSpaceReplace(const xmlChar *value) {
  */
 xmlChar *
 xmlSchemaCollapseString(const xmlChar *value) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1208);
+#endif
     const xmlChar *start = value, *end, *f;
     xmlChar *g;
     int col = 0;
@@ -2080,6 +2145,9 @@ xmlSchemaCollapseString(const xmlChar *value) {
 static int
 xmlSchemaValAtomicListNode(xmlSchemaTypePtr type, const xmlChar *value,
 	                   xmlSchemaValPtr *ret, xmlNodePtr node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1230);
+#endif
     xmlChar *val, *cur, *endval;
     int nb_values = 0;
     int tmp = 0;
@@ -2149,6 +2217,9 @@ xmlSchemaValAtomicListNode(xmlSchemaTypePtr type, const xmlChar *value,
 static int
 xmlSchemaParseUInt(const xmlChar **str, unsigned long *llo,
                    unsigned long *lmi, unsigned long *lhi) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1229);
+#endif
     unsigned long lo = 0, mi = 0, hi = 0;
     const xmlChar *tmp, *cur = *str;
     int ret = 0, i = 0;
@@ -2246,6 +2317,9 @@ xmlSchemaValAtomicType(xmlSchemaTypePtr type, const xmlChar * value,
 		       xmlSchemaWhitespaceValueType ws,
 		       int normOnTheFly, int applyNorm, int createStringValue)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1210);
+#endif
     xmlSchemaValPtr v;
     xmlChar *norm = NULL;
     int ret = 0;
@@ -3470,6 +3544,12 @@ xmlSchemaValAtomicType(xmlSchemaTypePtr type, const xmlChar * value,
 int
 xmlSchemaValPredefTypeNode(xmlSchemaTypePtr type, const xmlChar *value,
 	                   xmlSchemaValPtr *val, xmlNodePtr node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1212);
+#endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1209);
+#endif
     return(xmlSchemaValAtomicType(type, value, val, node, 0,
 	XML_SCHEMA_WHITESPACE_UNKNOWN, 1, 1, 0));
 }
@@ -3491,6 +3571,9 @@ xmlSchemaValPredefTypeNode(xmlSchemaTypePtr type, const xmlChar *value,
 int
 xmlSchemaValPredefTypeNodeNoNorm(xmlSchemaTypePtr type, const xmlChar *value,
 				 xmlSchemaValPtr *val, xmlNodePtr node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1211);
+#endif
     return(xmlSchemaValAtomicType(type, value, val, node, 1,
 	XML_SCHEMA_WHITESPACE_UNKNOWN, 1, 0, 1));
 }
@@ -3525,6 +3608,9 @@ xmlSchemaValidatePredefinedType(xmlSchemaTypePtr type, const xmlChar *value,
 static int
 xmlSchemaCompareDecimals(xmlSchemaValPtr x, xmlSchemaValPtr y)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1232);
+#endif
     xmlSchemaValPtr swp;
     int order = 1, integx, integy, dlen;
     unsigned long hi, mi, lo;
@@ -3794,6 +3880,9 @@ xmlSchemaDupVal (xmlSchemaValPtr v)
 xmlSchemaValPtr
 xmlSchemaCopyValue(xmlSchemaValPtr val)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1213);
+#endif
     xmlSchemaValPtr ret = NULL, prev = NULL, cur;
 
     /*
@@ -4026,6 +4115,9 @@ _xmlSchemaDateAdd (xmlSchemaValPtr dt, xmlSchemaValPtr dur)
 static xmlSchemaValPtr
 xmlSchemaDateNormalize (xmlSchemaValPtr dt, double offset)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1226);
+#endif
     xmlSchemaValPtr dur, ret;
 
     if (dt == NULL)
@@ -4384,6 +4476,9 @@ xmlSchemaComparePreserveReplaceStrings(const xmlChar *x,
 				       const xmlChar *y,
 				       int invert)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1233);
+#endif
     int tmp;
 
     while ((*x != 0) && (*y != 0)) {
@@ -4452,6 +4547,9 @@ xmlSchemaComparePreserveCollapseStrings(const xmlChar *x,
 				        const xmlChar *y,
 					int invert)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1234);
+#endif
     int tmp;
 
     /*
@@ -4541,6 +4639,9 @@ xmlSchemaCompareReplaceCollapseStrings(const xmlChar *x,
 				       const xmlChar *y,
 				       int invert)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1235);
+#endif
     int tmp;
 
     /*
@@ -4811,6 +4912,9 @@ xmlSchemaCompareValuesInternal(xmlSchemaValType xtype,
 			       const xmlChar *yvalue,
 			       xmlSchemaWhitespaceValueType yws)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1215);
+#endif
     switch (xtype) {
 	case XML_SCHEMAS_UNKNOWN:
 	case XML_SCHEMAS_ANYTYPE:
@@ -5012,6 +5116,9 @@ xmlSchemaCompareValuesInternal(xmlSchemaValType xtype,
 	    if ((x == NULL) || (y == NULL))
 		return(-2);
             if (ytype == XML_SCHEMAS_BASE64BINARY) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1216);
+#endif
                 if (x->value.base64.total == y->value.base64.total) {
                     int ret = xmlStrcmp(x->value.base64.str,
 		                        y->value.base64.str);
@@ -5049,6 +5156,9 @@ xmlSchemaCompareValuesInternal(xmlSchemaValType xtype,
  */
 int
 xmlSchemaCompareValues(xmlSchemaValPtr x, xmlSchemaValPtr y) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1214);
+#endif
     xmlSchemaWhitespaceValueType xws, yws;
 
     if ((x == NULL) || (y == NULL))
@@ -5131,6 +5241,9 @@ xmlSchemaCompareValuesWhtspExt(xmlSchemaValType xtype,
  */
 static int
 xmlSchemaNormLen(const xmlChar *value) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1236);
+#endif
     const xmlChar *utf;
     int ret = 0;
 
@@ -5178,6 +5291,9 @@ xmlSchemaNormLen(const xmlChar *value) {
 unsigned long
 xmlSchemaGetFacetValueAsULong(xmlSchemaFacetPtr facet)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1217);
+#endif
     /*
     * TODO: Check if this is a decimal.
     */
@@ -5204,6 +5320,9 @@ xmlSchemaValidateListSimpleTypeFacet(xmlSchemaFacetPtr facet,
 				     unsigned long actualLen,
 				     unsigned long *expectedLen)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1218);
+#endif
     if (facet == NULL)
         return(-1);
     /*
@@ -5261,6 +5380,9 @@ xmlSchemaValidateLengthFacetInternal(xmlSchemaFacetPtr facet,
 				     unsigned long *length,
 				     xmlSchemaWhitespaceValueType ws)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1221);
+#endif
     unsigned int len = 0;
 
     if ((length == NULL) || (facet == NULL))
@@ -5374,6 +5496,9 @@ xmlSchemaValidateLengthFacet(xmlSchemaTypePtr type,
 			     xmlSchemaValPtr val,
 			     unsigned long *length)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1220);
+#endif
     if (type == NULL)
         return(-1);
     return (xmlSchemaValidateLengthFacetInternal(facet,
@@ -5404,6 +5529,9 @@ xmlSchemaValidateLengthFacetWhtsp(xmlSchemaFacetPtr facet,
 				  unsigned long *length,
 				  xmlSchemaWhitespaceValueType ws)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1222);
+#endif
     return (xmlSchemaValidateLengthFacetInternal(facet, valType, value, val,
 	length, ws));
 }
@@ -5430,6 +5558,9 @@ xmlSchemaValidateFacetInternal(xmlSchemaFacetPtr facet,
 			       xmlSchemaValPtr val,
 			       xmlSchemaWhitespaceValueType ws)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1223);
+#endif
     int ret;
     int stringType;
 
@@ -5656,6 +5787,9 @@ xmlSchemaValidateFacet(xmlSchemaTypePtr base,
 	               const xmlChar *value,
 		       xmlSchemaValPtr val)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1219);
+#endif
     /*
     * This tries to ensure API compatibility regarding the old
     * xmlSchemaValidateFacet() and the new xmlSchemaValidateFacetInternal() and
@@ -5697,6 +5831,9 @@ xmlSchemaValidateFacetWhtsp(xmlSchemaFacetPtr facet,
 			    xmlSchemaValPtr val,
 			    xmlSchemaWhitespaceValueType ws)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1224);
+#endif
      return(xmlSchemaValidateFacetInternal(facet, fws, valType,
 	 value, val, ws));
 }
@@ -5803,6 +5940,9 @@ xmlSchemaFormatFloat(double number, char buffer[], int buffersize)
 int
 xmlSchemaGetCanonValue(xmlSchemaValPtr val, const xmlChar **retValue)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1225);
+#endif
     if ((retValue == NULL) || (val == NULL))
 	return (-1);
     *retValue = NULL;
@@ -6219,6 +6359,9 @@ xmlSchemaGetCanonValueWhtsp(xmlSchemaValPtr val,
 			    const xmlChar **retValue,
 			    xmlSchemaWhitespaceValueType ws)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1227);
+#endif
     if ((retValue == NULL) || (val == NULL))
 	return (-1);
     if ((ws == XML_SCHEMA_WHITESPACE_UNKNOWN) ||
@@ -6266,6 +6409,9 @@ xmlSchemaGetCanonValueWhtsp(xmlSchemaValPtr val,
 xmlSchemaValType
 xmlSchemaGetValType(xmlSchemaValPtr val)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1228);
+#endif
     if (val == NULL)
         return(XML_SCHEMAS_UNKNOWN);
     return (val->type);

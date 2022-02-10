@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * schemas.c : implementation of the XML Schema handling and
  *             schema validity checking
@@ -1137,6 +1142,21 @@ xmlSchemaParseAttributeGroupRef(xmlSchemaParserCtxtPtr pctxt,
 static const xmlChar *
 xmlSchemaItemTypeToStr(xmlSchemaTypeType type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2032);
+#endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2029);
+#endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2014);
+#endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1981);
+#endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1940);
+#endif
     switch (type) {
 	case XML_SCHEMA_TYPE_BASIC:
 	    return(BAD_CAST "simple type definition");
@@ -1217,6 +1237,9 @@ xmlSchemaGetComponentTypeStr(xmlSchemaBasicItemPtr item)
 static xmlNodePtr
 xmlSchemaGetComponentNode(xmlSchemaBasicItemPtr item)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1946);
+#endif
     switch (item->type) {
 	case XML_SCHEMA_TYPE_ELEMENT:
 	    return (((xmlSchemaElementPtr) item)->node);
@@ -1314,6 +1337,9 @@ xmlSchemaFormatQName(xmlChar **buf,
 		     const xmlChar *namespaceName,
 		     const xmlChar *localName)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1874);
+#endif
     FREE_AND_NULL(*buf)
     if (namespaceName != NULL) {
 	*buf = xmlStrdup(BAD_CAST "{");
@@ -1342,6 +1368,9 @@ xmlSchemaFormatQNameNs(xmlChar **buf, xmlNsPtr ns, const xmlChar *localName)
 static const xmlChar *
 xmlSchemaGetComponentName(xmlSchemaBasicItemPtr item)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1951);
+#endif
     switch (item->type) {
 	case XML_SCHEMA_TYPE_ELEMENT:
 	    return (((xmlSchemaElementPtr) item)->name);
@@ -1397,6 +1426,9 @@ xmlSchemaGetQNameRefTargetNs(void *ref)
 static const xmlChar *
 xmlSchemaGetComponentTargetNs(xmlSchemaBasicItemPtr item)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1950);
+#endif
     switch (item->type) {
 	case XML_SCHEMA_TYPE_ELEMENT:
 	    return (((xmlSchemaElementPtr) item)->targetNamespace);
@@ -1447,6 +1479,9 @@ xmlSchemaGetComponentQName(xmlChar **buf,
 static const xmlChar*
 xmlSchemaGetComponentDesignation(xmlChar **buf, void *item)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1949);
+#endif
     xmlChar *str = NULL;
 
     *buf = xmlStrcat(*buf, WXS_ITEM_TYPE_NAME(item));
@@ -1505,6 +1540,9 @@ xmlSchemaGetCanonValueWhtspExt_1(xmlSchemaValPtr val,
 			         xmlChar **retValue,
 				 int for_hash)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2055);
+#endif
     int list;
     xmlSchemaValType valType;
     const xmlChar *value, *value2 = NULL;
@@ -1625,6 +1663,9 @@ xmlSchemaFormatItemForReport(xmlChar **buf,
 		     xmlSchemaBasicItemPtr item,
 		     xmlNodePtr itemNode)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1947);
+#endif
     xmlChar *str = NULL;
     int named = 1;
 
@@ -2088,6 +2129,9 @@ xmlSchemaErr4Line(xmlSchemaAbstractCtxtPtr ctxt,
 		  const xmlChar *str1, const xmlChar *str2,
 		  const xmlChar *str3, const xmlChar *str4)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1945);
+#endif
     xmlStructuredErrorFunc schannel = NULL;
     xmlGenericErrorFunc channel = NULL;
     void *data = NULL;
@@ -2228,6 +2272,9 @@ xmlSchemaFormatNodeForError(xmlChar ** msg,
 			    xmlSchemaAbstractCtxtPtr actxt,
 			    xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1948);
+#endif
     xmlChar *str = NULL;
 
     *msg = NULL;
@@ -2333,6 +2380,9 @@ xmlSchemaInternalErr2(xmlSchemaAbstractCtxtPtr actxt,
 		     const xmlChar *str1,
 		     const xmlChar *str2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1944);
+#endif
     xmlChar *msg = NULL;
 
     if (actxt == NULL)
@@ -2381,6 +2431,9 @@ xmlSchemaCustomErr4(xmlSchemaAbstractCtxtPtr actxt,
 		   const xmlChar *str1, const xmlChar *str2,
 		   const xmlChar *str3, const xmlChar *str4)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1875);
+#endif
     xmlChar *msg = NULL;
 
     if ((node == NULL) && (item != NULL) &&
@@ -2422,6 +2475,9 @@ xmlSchemaCustomWarning(xmlSchemaAbstractCtxtPtr actxt,
 		   const xmlChar *str2,
 		   const xmlChar *str3)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1952);
+#endif
     xmlChar *msg = NULL;
 
     xmlSchemaFormatNodeForError(&msg, actxt, node);
@@ -2446,6 +2502,9 @@ xmlSchemaKeyrefErr(xmlSchemaValidCtxtPtr vctxt,
 		   const xmlChar *str1,
 		   const xmlChar *str2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2075);
+#endif
     xmlChar *msg = NULL, *qname = NULL;
 
     msg = xmlStrdup(BAD_CAST "Element '%s': ");
@@ -2476,6 +2535,9 @@ xmlSchemaEvalErrorNodeType(xmlSchemaAbstractCtxtPtr actxt,
 static int
 xmlSchemaIsGlobalItem(xmlSchemaTypePtr item)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1963);
+#endif
     switch (item->type) {
 	case XML_SCHEMA_TYPE_COMPLEX:
 	case XML_SCHEMA_TYPE_SIMPLE:
@@ -2509,6 +2571,9 @@ xmlSchemaSimpleTypeErr(xmlSchemaAbstractCtxtPtr actxt,
 		       xmlSchemaTypePtr type,
 		       int displayValue)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2050);
+#endif
     xmlChar *msg = NULL;
 
     xmlSchemaFormatNodeForError(&msg, actxt, node);
@@ -2577,6 +2642,9 @@ xmlSchemaIllegalAttrErr(xmlSchemaAbstractCtxtPtr actxt,
 			xmlSchemaAttrInfoPtr ni,
 			xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2073);
+#endif
     xmlChar *msg = NULL, *str = NULL;
 
     xmlSchemaFormatNodeForError(&msg, actxt, node);
@@ -2598,6 +2666,9 @@ xmlSchemaComplexTypeErr(xmlSchemaAbstractCtxtPtr actxt,
 			int nbneg,
 			xmlChar **values)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2070);
+#endif
     xmlChar *str = NULL, *msg = NULL;
     xmlChar *localName, *nsName;
     const xmlChar *cur, *end;
@@ -2700,6 +2771,9 @@ xmlSchemaFacetErr(xmlSchemaAbstractCtxtPtr actxt,
 		  const xmlChar *str1,
 		  const xmlChar *str2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2054);
+#endif
     xmlChar *str = NULL, *msg = NULL;
     xmlSchemaTypeType facetType;
     int nodeType = xmlSchemaEvalErrorNodeType(actxt, node);
@@ -2840,6 +2914,9 @@ xmlSchemaPMissingAttrErr(xmlSchemaParserCtxtPtr ctxt,
 			 const char *name,
 			 const char *message)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1978);
+#endif
     xmlChar *des = NULL;
 
     xmlSchemaFormatItemForReport(&des, NULL, ownerItem, ownerElem);
@@ -2879,6 +2956,9 @@ xmlSchemaPResCompAttrErr(xmlSchemaParserCtxtPtr ctxt,
 			 xmlSchemaTypeType refType,
 			 const char *refTypeStr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2017);
+#endif
     xmlChar *des = NULL, *strA = NULL;
 
     xmlSchemaFormatItemForReport(&des, NULL, ownerItem, ownerElem);
@@ -2912,6 +2992,9 @@ xmlSchemaPCustomAttrErr(xmlSchemaParserCtxtPtr ctxt,
 			xmlAttrPtr attr,
 			const char *msg)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1999);
+#endif
     xmlChar *des = NULL;
 
     if (ownerDes == NULL)
@@ -2950,6 +3033,9 @@ xmlSchemaPIllegalAttrErr(xmlSchemaParserCtxtPtr ctxt,
 			 xmlSchemaBasicItemPtr ownerComp ATTRIBUTE_UNUSED,
 			 xmlAttrPtr attr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1971);
+#endif
     xmlChar *strA = NULL, *strB = NULL;
 
     xmlSchemaFormatNodeForError(&strA, ACTXT_CAST ctxt, attr->parent);
@@ -2985,6 +3071,9 @@ xmlSchemaPCustomErrExt(xmlSchemaParserCtxtPtr ctxt,
 		    const xmlChar *str2,
 		    const xmlChar *str3)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1975);
+#endif
     xmlChar *des = NULL, *msg = NULL;
 
     xmlSchemaFormatItemForReport(&des, NULL, item, itemElem);
@@ -3046,6 +3135,9 @@ xmlSchemaPAttrUseErr4(xmlSchemaParserCtxtPtr ctxt,
 		    const xmlChar *str1, const xmlChar *str2,
 		    const xmlChar *str3,const xmlChar *str4)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2037);
+#endif
     xmlChar *str = NULL, *msg = NULL;
 
     xmlSchemaFormatItemForReport(&msg, NULL, ownerItem, NULL);
@@ -3108,6 +3200,9 @@ xmlSchemaPIllegalFacetListUnionErr(xmlSchemaParserCtxtPtr ctxt,
 			  xmlSchemaTypePtr type,
 			  xmlSchemaFacetPtr facet)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2031);
+#endif
     xmlChar *des = NULL;
 
     xmlSchemaFormatItemForReport(&des, NULL, WXS_BASIC_CAST type,
@@ -3169,6 +3264,9 @@ xmlSchemaPSimpleTypeErr(xmlSchemaParserCtxtPtr ctxt,
 			const xmlChar *str1,
 			const xmlChar *str2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1959);
+#endif
     xmlChar *msg = NULL;
 
     xmlSchemaFormatNodeForError(&msg, ACTXT_CAST ctxt, node);
@@ -3259,6 +3357,9 @@ xmlSchemaPContentErr(xmlSchemaParserCtxtPtr ctxt,
 		     const char *message,
 		     const char *content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1970);
+#endif
     xmlChar *des = NULL;
 
     xmlSchemaFormatItemForReport(&des, NULL, ownerItem, ownerElem);
@@ -3337,6 +3438,9 @@ xmlSchemaNewSchema(xmlSchemaParserCtxtPtr ctxt)
 xmlSchemaFacetPtr
 xmlSchemaNewFacet(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1852);
+#endif
     xmlSchemaFacetPtr ret;
 
     ret = (xmlSchemaFacetPtr) xmlMalloc(sizeof(xmlSchemaFacet));
@@ -3401,6 +3505,9 @@ xmlSchemaItemListClear(xmlSchemaItemListPtr list)
 static int
 xmlSchemaItemListAdd(xmlSchemaItemListPtr list, void *item)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1954);
+#endif
     if (list->items == NULL) {
 	list->items = (void **) xmlMalloc(
 	    20 * sizeof(void *));
@@ -3428,6 +3535,9 @@ xmlSchemaItemListAddSize(xmlSchemaItemListPtr list,
 			 int initialSize,
 			 void *item)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1987);
+#endif
     if (list->items == NULL) {
 	if (initialSize <= 0)
 	    initialSize = 1;
@@ -3534,6 +3644,9 @@ xmlSchemaItemListInsertSize(xmlSchemaItemListPtr list,
 static int
 xmlSchemaItemListRemove(xmlSchemaItemListPtr list, int idx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2025);
+#endif
     int i;
     if ((list->items == NULL) || (idx >= list->nbItems)) {
 	xmlSchemaPSimpleErr("Internal error: xmlSchemaItemListRemove, "
@@ -3576,6 +3689,9 @@ xmlSchemaItemListFree(xmlSchemaItemListPtr list)
 static void
 xmlSchemaBucketFree(xmlSchemaBucketPtr bucket)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1859);
+#endif
     if (bucket == NULL)
 	return;
     if (bucket->globals != NULL) {
@@ -3607,6 +3723,9 @@ xmlSchemaBucketFree(xmlSchemaBucketPtr bucket)
 static void
 xmlSchemaBucketFreeEntry(void *bucket, const xmlChar *name ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1858);
+#endif
     xmlSchemaBucketFree((xmlSchemaBucketPtr) bucket);
 }
 
@@ -3747,6 +3866,9 @@ xmlSchemaBucketCreate(xmlSchemaParserCtxtPtr pctxt,
 static int
 xmlSchemaAddItemSize(xmlSchemaItemListPtr *list, int initialSize, void *item)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1986);
+#endif
     if (*list == NULL) {
 	*list = xmlSchemaItemListCreate();
 	if (*list == NULL)
@@ -3765,6 +3887,9 @@ xmlSchemaAddItemSize(xmlSchemaItemListPtr *list, int initialSize, void *item)
 static void
 xmlSchemaFreeAnnot(xmlSchemaAnnotPtr annot)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1854);
+#endif
     if (annot == NULL)
         return;
     if (annot->next == NULL) {
@@ -3871,6 +3996,9 @@ xmlSchemaFreeWildcardNsSet(xmlSchemaWildcardNsPtr set)
 void
 xmlSchemaFreeWildcard(xmlSchemaWildcardPtr wildcard)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1853);
+#endif
     if (wildcard == NULL)
         return;
     if (wildcard->annot != NULL)
@@ -3933,6 +4061,9 @@ xmlSchemaFreeTypeLinkList(xmlSchemaTypeLinkPtr link)
 static void
 xmlSchemaFreeIDCStateObjList(xmlSchemaIDCStateObjPtr sto)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1888);
+#endif
     xmlSchemaIDCStateObjPtr next;
     while (sto != NULL) {
 	next = sto->next;
@@ -4009,6 +4140,9 @@ xmlSchemaFreeElement(xmlSchemaElementPtr elem)
 void
 xmlSchemaFreeFacet(xmlSchemaFacetPtr facet)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1855);
+#endif
     if (facet == NULL)
         return;
     if (facet->val != NULL)
@@ -4029,6 +4163,9 @@ xmlSchemaFreeFacet(xmlSchemaFacetPtr facet)
 void
 xmlSchemaFreeType(xmlSchemaTypePtr type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1856);
+#endif
     if (type == NULL)
         return;
     if (type->annot != NULL)
@@ -4093,6 +4230,9 @@ xmlSchemaFreeModelGroup(xmlSchemaModelGroupPtr item)
 static void
 xmlSchemaComponentListFree(xmlSchemaItemListPtr list)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1939);
+#endif
     if ((list == NULL) || (list->nbItems == 0))
 	return;
     {
@@ -4178,6 +4318,9 @@ xmlSchemaComponentListFree(xmlSchemaItemListPtr list)
 void
 xmlSchemaFree(xmlSchemaPtr schema)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1857);
+#endif
     if (schema == NULL)
         return;
     /* @volatiles is not used anymore :-/ */
@@ -4245,6 +4388,9 @@ xmlSchemaElementDump(void *payload, void *data,
 		     const xmlChar * namespace ATTRIBUTE_UNUSED,
                      const xmlChar * context ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1863);
+#endif
     xmlSchemaElementPtr elem = (xmlSchemaElementPtr) payload;
     FILE *output = (FILE *) data;
     if (elem == NULL)
@@ -4329,6 +4475,9 @@ xmlSchemaElementDump(void *payload, void *data,
 static void
 xmlSchemaAnnotDump(FILE * output, xmlSchemaAnnotPtr annot)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1861);
+#endif
     xmlChar *content;
 
     if (annot == NULL)
@@ -4353,6 +4502,9 @@ xmlSchemaAnnotDump(FILE * output, xmlSchemaAnnotPtr annot)
 static void
 xmlSchemaContentModelDump(xmlSchemaParticlePtr particle, FILE * output, int depth)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1942);
+#endif
     xmlChar *str = NULL;
     xmlSchemaTreeItemPtr term;
     char shift[100];
@@ -4470,6 +4622,9 @@ xmlSchemaAttrUsesDump(xmlSchemaItemListPtr uses, FILE * output)
 static void
 xmlSchemaTypeDump(xmlSchemaTypePtr type, FILE * output)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1941);
+#endif
     if (type == NULL) {
         fprintf(output, "Type: NULL\n");
         return;
@@ -4565,6 +4720,9 @@ static void
 xmlSchemaTypeDumpEntry(void *type, void *output,
                        const xmlChar *name ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1862);
+#endif
     xmlSchemaTypeDump((xmlSchemaTypePtr) type, (FILE *) output);
 }
 
@@ -4578,6 +4736,9 @@ xmlSchemaTypeDumpEntry(void *type, void *output,
 void
 xmlSchemaDump(FILE * output, xmlSchemaPtr schema)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1860);
+#endif
     if (output == NULL)
         return;
     if (schema == NULL) {
@@ -4698,6 +4859,9 @@ xmlSchemaDebugDumpIDCTable(FILE * output,
 static xmlAttrPtr
 xmlSchemaGetPropNode(xmlNodePtr node, const char *name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1956);
+#endif
     xmlAttrPtr prop;
 
     if ((node == NULL) || (name == NULL))
@@ -4822,6 +4986,9 @@ static xmlSchemaElementPtr
 xmlSchemaGetElem(xmlSchemaPtr schema, const xmlChar * name,
                  const xmlChar * nsName)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2018);
+#endif
     xmlSchemaElementPtr ret = NULL;
 
     if ((name == NULL) || (schema == NULL))
@@ -4856,12 +5023,18 @@ static xmlSchemaTypePtr
 xmlSchemaGetType(xmlSchemaPtr schema, const xmlChar * name,
                  const xmlChar * nsName)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2016);
+#endif
     xmlSchemaTypePtr ret = NULL;
 
     if (name == NULL)
         return (NULL);
     /* First try the built-in types. */
     if ((nsName != NULL) && xmlStrEqual(nsName, xmlSchemaNs)) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
 	ret = xmlSchemaGetPredefinedType(name, nsName);
 	if (ret != NULL)
 	    goto exit;
@@ -4903,6 +5076,9 @@ static xmlSchemaAttributePtr
 xmlSchemaGetAttributeDecl(xmlSchemaPtr schema, const xmlChar * name,
                  const xmlChar * nsName)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2020);
+#endif
     xmlSchemaAttributePtr ret = NULL;
 
     if ((name == NULL) || (schema == NULL))
@@ -5003,6 +5179,9 @@ xmlSchemaGetNotation(xmlSchemaPtr schema,
 		     const xmlChar *name,
 		     const xmlChar *nsName)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2053);
+#endif
     xmlSchemaNotationPtr ret = NULL;
 
     if ((name == NULL) || (schema == NULL))
@@ -5046,6 +5225,9 @@ xmlSchemaGetNamedComponent(xmlSchemaPtr schema,
 			   const xmlChar *name,
 			   const xmlChar *targetNs)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2019);
+#endif
     switch (itemType) {
 	case XML_SCHEMA_TYPE_GROUP:
 	    return ((xmlSchemaBasicItemPtr) xmlSchemaGetGroup(schema,
@@ -5080,6 +5262,9 @@ xmlSchemaGetNamedComponent(xmlSchemaPtr schema,
 static int
 xmlSchemaIsBlank(xmlChar * str, int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1953);
+#endif
     if (str == NULL)
         return (1);
     if (len < 0) {
@@ -5110,6 +5295,9 @@ xmlSchemaFindRedefCompInGraph(xmlSchemaBucketPtr bucket,
 			      const xmlChar *name,
 			      const xmlChar *nsName)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2015);
+#endif
     xmlSchemaBasicItemPtr ret;
     int i;
 
@@ -5238,6 +5426,9 @@ xmlSchemaAddAttribute(xmlSchemaParserCtxtPtr ctxt, xmlSchemaPtr schema,
                       const xmlChar * name, const xmlChar * nsName,
 		      xmlNodePtr node, int topLevel)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2005);
+#endif
     xmlSchemaAttributePtr ret = NULL;
 
     if ((ctxt == NULL) || (schema == NULL))
@@ -5278,6 +5469,9 @@ static xmlSchemaAttributeUsePtr
 xmlSchemaAddAttributeUse(xmlSchemaParserCtxtPtr pctxt,
 			 xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2004);
+#endif
     xmlSchemaAttributeUsePtr ret = NULL;
 
     if (pctxt == NULL)
@@ -5309,6 +5503,9 @@ xmlSchemaAddRedef(xmlSchemaParserCtxtPtr pctxt,
 		  const xmlChar *refName,
 		  const xmlChar *refTargetNs)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1985);
+#endif
     xmlSchemaRedefPtr ret;
 
     ret = (xmlSchemaRedefPtr)
@@ -5443,6 +5640,9 @@ xmlSchemaAddType(xmlSchemaParserCtxtPtr ctxt, xmlSchemaPtr schema,
                  const xmlChar * name, const xmlChar * nsName,
 		 xmlNodePtr node, int topLevel)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1979);
+#endif
     xmlSchemaTypePtr ret = NULL;
 
     if ((ctxt == NULL) || (schema == NULL))
@@ -5481,6 +5681,9 @@ xmlSchemaNewQNameRef(xmlSchemaParserCtxtPtr pctxt,
 		     const xmlChar *refName,
 		     const xmlChar *refNs)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2003);
+#endif
     xmlSchemaQNameRefPtr ret;
 
     ret = (xmlSchemaQNameRefPtr)
@@ -5540,6 +5743,9 @@ xmlSchemaAddModelGroup(xmlSchemaParserCtxtPtr ctxt,
 		       xmlSchemaTypeType type,
 		       xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1994);
+#endif
     xmlSchemaModelGroupPtr ret = NULL;
 
     if ((ctxt == NULL) || (schema == NULL))
@@ -5580,6 +5786,9 @@ static xmlSchemaParticlePtr
 xmlSchemaAddParticle(xmlSchemaParserCtxtPtr ctxt,
 		     xmlNodePtr node, int min, int max)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1998);
+#endif
     xmlSchemaParticlePtr ret = NULL;
     if (ctxt == NULL)
         return (NULL);
@@ -5730,6 +5939,9 @@ static xmlSchemaWildcardPtr
 xmlSchemaAddWildcard(xmlSchemaParserCtxtPtr ctxt, xmlSchemaPtr schema,
 		     xmlSchemaTypeType type, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2000);
+#endif
     xmlSchemaWildcardPtr ret = NULL;
 
     if ((ctxt == NULL) || (schema == NULL))
@@ -5760,6 +5972,9 @@ xmlSchemaSubstGroupFree(xmlSchemaSubstGroupPtr group)
 static void
 xmlSchemaSubstGroupFreeEntry(void *group, const xmlChar *name ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1943);
+#endif
     xmlSchemaSubstGroupFree((xmlSchemaSubstGroupPtr) group);
 }
 
@@ -5873,6 +6088,9 @@ xmlSchemaPValAttrNodeQNameValue(xmlSchemaParserCtxtPtr ctxt,
 				       const xmlChar **uri,
 				       const xmlChar **local)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1992);
+#endif
     const xmlChar *pref;
     xmlNsPtr ns;
     int len, ret;
@@ -5952,6 +6170,9 @@ xmlSchemaPValAttrNodeQName(xmlSchemaParserCtxtPtr ctxt,
 				       const xmlChar **uri,
 				       const xmlChar **local)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1991);
+#endif
     const xmlChar *value;
 
     value = xmlSchemaGetNodeContent(ctxt, (xmlNodePtr) attr);
@@ -6007,6 +6228,9 @@ xmlSchemaPValAttrQName(xmlSchemaParserCtxtPtr ctxt,
 static int
 xmlSchemaPValAttrNodeID(xmlSchemaParserCtxtPtr ctxt, xmlAttrPtr attr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1961);
+#endif
     int ret;
     const xmlChar *value;
 
@@ -6086,6 +6310,9 @@ static int
 xmlGetMaxOccurs(xmlSchemaParserCtxtPtr ctxt, xmlNodePtr node,
 		int min, int max, int def, const char *expected)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1996);
+#endif
     const xmlChar *val, *cur;
     int ret = 0;
     xmlAttrPtr attr;
@@ -6160,6 +6387,9 @@ static int
 xmlGetMinOccurs(xmlSchemaParserCtxtPtr ctxt, xmlNodePtr node,
 		int min, int max, int def, const char *expected)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1995);
+#endif
     const xmlChar *val, *cur;
     int ret = 0;
     xmlAttrPtr attr;
@@ -6223,6 +6453,9 @@ xmlSchemaPGetBoolNodeValue(xmlSchemaParserCtxtPtr ctxt,
 			   xmlSchemaBasicItemPtr ownerItem,
 			   xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1980);
+#endif
     xmlChar *value = NULL;
     int res = 0;
 
@@ -6270,6 +6503,9 @@ xmlGetBooleanProp(xmlSchemaParserCtxtPtr ctxt,
 		  xmlNodePtr node,
                   const char *name, int def)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1993);
+#endif
     const xmlChar *val;
 
     val = xmlSchemaGetProp(ctxt, node, name);
@@ -6354,6 +6590,12 @@ xmlSchemaPValAttrNodeValue(xmlSchemaParserCtxtPtr pctxt,
 			   const xmlChar *value,
 			   xmlSchemaTypePtr type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1984);
+#endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1962);
+#endif
 
     int ret = 0;
 
@@ -6426,6 +6668,9 @@ xmlSchemaPValAttrNode(xmlSchemaParserCtxtPtr ctxt,
 			   xmlSchemaTypePtr type,
 			   const xmlChar **value)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1957);
+#endif
     const xmlChar *val;
 
     if ((ctxt == NULL) || (type == NULL) || (attr == NULL))
@@ -6465,6 +6710,9 @@ xmlSchemaPValAttr(xmlSchemaParserCtxtPtr ctxt,
 		       xmlSchemaTypePtr type,
 		       const xmlChar **value)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1972);
+#endif
     xmlAttrPtr attr;
 
     if ((ctxt == NULL) || (type == NULL)) {
@@ -6499,6 +6747,9 @@ xmlSchemaCheckReference(xmlSchemaParserCtxtPtr pctxt,
 		  xmlAttrPtr attr,
 		  const xmlChar *namespaceName)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2002);
+#endif
     /* TODO: Pointer comparison instead? */
     if (xmlStrEqual(pctxt->targetNamespace, namespaceName))
 	return (0);
@@ -6555,6 +6806,9 @@ xmlSchemaParseLocalAttributes(xmlSchemaParserCtxtPtr ctxt, xmlSchemaPtr schema,
                         xmlNodePtr *child, xmlSchemaItemListPtr *list,
 			int parentType, int *hasRefs)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1983);
+#endif
     void *item;
 
     while ((IS_SCHEMA((*child), "attribute")) ||
@@ -6597,6 +6851,9 @@ xmlSchemaParseLocalAttributes(xmlSchemaParserCtxtPtr ctxt, xmlSchemaPtr schema,
 static xmlSchemaAnnotPtr
 xmlSchemaParseAnnotation(xmlSchemaParserCtxtPtr ctxt, xmlNodePtr node, int needed)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1964);
+#endif
     xmlSchemaAnnotPtr ret;
     xmlNodePtr child = NULL;
     xmlAttrPtr attr;
@@ -6618,6 +6875,9 @@ xmlSchemaParseAnnotation(xmlSchemaParserCtxtPtr ctxt, xmlNodePtr node, int neede
 	ret = NULL;
     attr = node->properties;
     while (attr != NULL) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
 	if (((attr->ns == NULL) &&
 	    (!xmlStrEqual(attr->name, BAD_CAST "id"))) ||
 	    ((attr->ns != NULL) &&
@@ -6638,7 +6898,11 @@ xmlSchemaParseAnnotation(xmlSchemaParserCtxtPtr ctxt, xmlNodePtr node, int neede
 	    /* TODO: make available the content of "appinfo". */
 	    /*
 	    * source = anyURI
-	    * {any attributes with non-schema namespace . . .}>
+	    * {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
+any attributes with non-schema namespace . . .}>
 	    * Content: ({any})*
 	    */
 	    attr = child->properties;
@@ -6812,6 +7076,9 @@ xmlSchemaParseWildcardNs(xmlSchemaParserCtxtPtr ctxt,
 			 xmlSchemaWildcardPtr wildc,
 			 xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2001);
+#endif
     const xmlChar *pc, *ns, *dictnsItem;
     int ret = 0;
     xmlChar *nsItem;
@@ -6922,6 +7189,9 @@ xmlSchemaPCheckParticleCorrect_2(xmlSchemaParserCtxtPtr ctxt,
 				 xmlNodePtr node,
 				 int minOccurs,
 				 int maxOccurs) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1997);
+#endif
 
     if ((maxOccurs == 0) && ( minOccurs == 0))
 	return (0);
@@ -7864,6 +8134,9 @@ xmlSchemaParseAttributeGroupDefinition(xmlSchemaParserCtxtPtr pctxt,
 				       xmlSchemaPtr schema,
 				       xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1968);
+#endif
     const xmlChar *name;
     xmlSchemaAttributeGroupPtr ret;
     xmlNodePtr child = NULL;
@@ -7959,6 +8232,9 @@ xmlSchemaPValAttrFormDefault(const xmlChar *value,
 			     int *flags,
 			     int flagQualified)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1958);
+#endif
     if (xmlStrEqual(value, BAD_CAST "qualified")) {
 	if  ((*flags & flagQualified) == 0)
 	    *flags |= flagQualified;
@@ -7995,6 +8271,9 @@ xmlSchemaPValAttrBlockFinal(const xmlChar *value,
 			    int flagList,
 			    int flagUnion)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1960);
+#endif
     int ret = 0;
 
     /*
@@ -8196,6 +8475,9 @@ static xmlSchemaAnnotPtr
 xmlSchemaAddAnnotation(xmlSchemaAnnotItemPtr annItem,
 		       xmlSchemaAnnotPtr annot)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1988);
+#endif
     if ((annItem == NULL) || (annot == NULL))
 	return (NULL);
     switch (annItem->type) {
@@ -8296,6 +8578,9 @@ xmlSchemaParseIDCSelectorAndField(xmlSchemaParserCtxtPtr ctxt,
 			  xmlNodePtr node,
 			  int isField)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2007);
+#endif
     xmlSchemaIDCSelectPtr item;
     xmlNodePtr child = NULL;
     xmlAttrPtr attr;
@@ -8394,6 +8679,9 @@ xmlSchemaParseIDC(xmlSchemaParserCtxtPtr ctxt,
 		  xmlSchemaTypeType idcCategory,
 		  const xmlChar *targetNamespace)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2006);
+#endif
     xmlSchemaIDCPtr item = NULL;
     xmlNodePtr child = NULL;
     xmlAttrPtr attr;
@@ -8541,6 +8829,9 @@ static xmlSchemaBasicItemPtr
 xmlSchemaParseElement(xmlSchemaParserCtxtPtr ctxt, xmlSchemaPtr schema,
                       xmlNodePtr node, int *isElemRef, int topLevel)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1967);
+#endif
     xmlSchemaElementPtr decl = NULL;
     xmlSchemaParticlePtr particle = NULL;
     xmlSchemaAnnotPtr annot = NULL;
@@ -9219,6 +9510,9 @@ static xmlSchemaTypePtr
 xmlSchemaParseSimpleType(xmlSchemaParserCtxtPtr ctxt, xmlSchemaPtr schema,
                          xmlNodePtr node, int topLevel)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1966);
+#endif
     xmlSchemaTypePtr type, oldCtxtType;
     xmlNodePtr child = NULL;
     const xmlChar *attrValue = NULL;
@@ -9434,6 +9728,9 @@ xmlSchemaParseModelGroupDefRef(xmlSchemaParserCtxtPtr ctxt,
 			       xmlSchemaPtr schema,
 			       xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1982);
+#endif
     xmlSchemaParticlePtr item;
     xmlNodePtr child = NULL;
     xmlAttrPtr attr;
@@ -9536,6 +9833,9 @@ xmlSchemaParseModelGroupDefinition(xmlSchemaParserCtxtPtr ctxt,
 				   xmlSchemaPtr schema,
 				   xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1969);
+#endif
     xmlSchemaModelGroupDefPtr item;
     xmlNodePtr child = NULL;
     xmlAttrPtr attr;
@@ -9833,6 +10133,9 @@ static int
 xmlSchemaParseSchemaTopLevel(xmlSchemaParserCtxtPtr ctxt,
                              xmlSchemaPtr schema, xmlNodePtr nodes)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1955);
+#endif
     xmlNodePtr child;
     xmlSchemaAnnotPtr annot;
     int res = 0, oldErrs, tmpOldErrs;
@@ -9970,6 +10273,9 @@ xmlSchemaRedefListFree(xmlSchemaRedefPtr redef)
 static void
 xmlSchemaConstructionCtxtFree(xmlSchemaConstructionCtxtPtr con)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1870);
+#endif
     /*
     * After the construction context has been freed, there will be
     * no schema graph available any more. Only the schema buckets
@@ -9992,6 +10298,9 @@ xmlSchemaConstructionCtxtFree(xmlSchemaConstructionCtxtPtr con)
 static xmlSchemaConstructionCtxtPtr
 xmlSchemaConstructionCtxtCreate(xmlDictPtr dict)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1877);
+#endif
     xmlSchemaConstructionCtxtPtr ret;
 
     ret = (xmlSchemaConstructionCtxtPtr)
@@ -10025,6 +10334,9 @@ xmlSchemaConstructionCtxtCreate(xmlDictPtr dict)
 static xmlSchemaParserCtxtPtr
 xmlSchemaParserCtxtCreate(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1865);
+#endif
     xmlSchemaParserCtxtPtr ret;
 
     ret = (xmlSchemaParserCtxtPtr) xmlMalloc(sizeof(xmlSchemaParserCtxt));
@@ -10056,6 +10368,9 @@ xmlSchemaParserCtxtCreate(void)
 static xmlSchemaParserCtxtPtr
 xmlSchemaNewParserCtxtUseDict(const char *URL, xmlDictPtr dict)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1976);
+#endif
     xmlSchemaParserCtxtPtr ret;
 
     ret = xmlSchemaParserCtxtCreate();
@@ -10182,6 +10497,9 @@ xmlSchemaParseNewDocWithContext(xmlSchemaParserCtxtPtr pctxt,
 		     xmlSchemaPtr schema,
 		     xmlSchemaBucketPtr bucket)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1879);
+#endif
     int oldFlags;
     xmlDocPtr oldDoc;
     xmlNodePtr node;
@@ -10209,6 +10527,9 @@ xmlSchemaParseNewDocWithContext(xmlSchemaParserCtxtPtr pctxt,
 
     if ((bucket->targetNamespace != NULL) &&
 	xmlStrEqual(bucket->targetNamespace, xmlSchemaNs)) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
 	/*
 	* We are parsing the schema for schemas!
 	*/
@@ -10251,6 +10572,9 @@ xmlSchemaParseNewDoc(xmlSchemaParserCtxtPtr pctxt,
 		     xmlSchemaPtr schema,
 		     xmlSchemaBucketPtr bucket)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1974);
+#endif
     xmlSchemaParserCtxtPtr newpctxt;
     int res = 0;
 
@@ -10323,6 +10647,9 @@ static const xmlChar *
 xmlSchemaBuildAbsoluteURI(xmlDictPtr dict, const xmlChar* location,
 			  xmlNodePtr ctxtNode)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1973);
+#endif
     /*
     * Build an absolute location URI.
     */
@@ -10376,6 +10703,9 @@ xmlSchemaAddSchemaDoc(xmlSchemaParserCtxtPtr pctxt,
 		const xmlChar *importNamespace,
 		xmlSchemaBucketPtr *bucket)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1878);
+#endif
     const xmlChar *targetNamespace = NULL;
     xmlSchemaSchemaRelationPtr relation = NULL;
     xmlDocPtr doc = NULL;
@@ -11037,6 +11367,9 @@ xmlSchemaParseIncludeOrRedefine(xmlSchemaParserCtxtPtr pctxt,
 				xmlNodePtr node,
 				int type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1977);
+#endif
     xmlNodePtr child = NULL;
     const xmlChar *schemaLocation = NULL;
     int res = 0; /* hasRedefinitions = 0 */
@@ -11563,6 +11896,9 @@ static xmlSchemaTypePtr
 xmlSchemaParseRestriction(xmlSchemaParserCtxtPtr ctxt, xmlSchemaPtr schema,
                           xmlNodePtr node, xmlSchemaTypeType parentType)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1989);
+#endif
     xmlSchemaTypePtr type;
     xmlNodePtr child = NULL;
     xmlAttrPtr attr;
@@ -11867,6 +12203,9 @@ static xmlSchemaTypePtr
 xmlSchemaParseExtension(xmlSchemaParserCtxtPtr ctxt, xmlSchemaPtr schema,
                         xmlNodePtr node, xmlSchemaTypeType parentType)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1990);
+#endif
     xmlSchemaTypePtr type;
     xmlNodePtr child = NULL;
     xmlAttrPtr attr;
@@ -12187,6 +12526,9 @@ static xmlSchemaTypePtr
 xmlSchemaParseComplexType(xmlSchemaParserCtxtPtr ctxt, xmlSchemaPtr schema,
                           xmlNodePtr node, int topLevel)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1965);
+#endif
     xmlSchemaTypePtr type, ctxtType;
     xmlNodePtr child = NULL;
     const xmlChar *name = NULL;
@@ -12531,6 +12873,9 @@ xmlSchemaParserCtxtGetOptions(xmlSchemaParserCtxtPtr ctxt)
 xmlSchemaParserCtxtPtr
 xmlSchemaNewParserCtxt(const char *URL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1864);
+#endif
     xmlSchemaParserCtxtPtr ret;
 
     if (URL == NULL)
@@ -12557,6 +12902,9 @@ xmlSchemaNewParserCtxt(const char *URL)
 xmlSchemaParserCtxtPtr
 xmlSchemaNewMemParserCtxt(const char *buffer, int size)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1866);
+#endif
     xmlSchemaParserCtxtPtr ret;
 
     if ((buffer == NULL) || (size <= 0))
@@ -12582,6 +12930,9 @@ xmlSchemaNewMemParserCtxt(const char *buffer, int size)
 xmlSchemaParserCtxtPtr
 xmlSchemaNewDocParserCtxt(xmlDocPtr doc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1867);
+#endif
     xmlSchemaParserCtxtPtr ret;
 
     if (doc == NULL)
@@ -12606,6 +12957,9 @@ xmlSchemaNewDocParserCtxt(xmlDocPtr doc)
 void
 xmlSchemaFreeParserCtxt(xmlSchemaParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1868);
+#endif
     if (ctxt == NULL)
         return;
     if (ctxt->doc != NULL && !ctxt->preserve)
@@ -12639,6 +12993,9 @@ static int
 xmlSchemaBuildContentModelForSubstGroup(xmlSchemaParserCtxtPtr pctxt,
 	xmlSchemaParticlePtr particle, int counter, xmlAutomataStatePtr end)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2046);
+#endif
     xmlAutomataStatePtr start, tmp;
     xmlSchemaElementPtr elemDecl, member;
     xmlSchemaSubstGroupPtr substGroup;
@@ -12821,6 +13178,9 @@ static int
 xmlSchemaBuildAContentModel(xmlSchemaParserCtxtPtr pctxt,
 			    xmlSchemaParticlePtr particle)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2045);
+#endif
     int ret = 0, tmp2;
 
     if (particle == NULL) {
@@ -13288,6 +13648,9 @@ static void
 xmlSchemaResolveElementReferences(xmlSchemaElementPtr elemDecl,
 				  xmlSchemaParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2009);
+#endif
     if ((ctxt == NULL) || (elemDecl == NULL) ||
 	((elemDecl != NULL) &&
 	(elemDecl->flags & XML_SCHEMAS_ELEM_INTERNAL_RESOLVED)))
@@ -13446,6 +13809,9 @@ xmlSchemaResolveUnionMemberTypes(xmlSchemaParserCtxtPtr ctxt,
 static int
 xmlSchemaIsDerivedFromBuiltInType(xmlSchemaTypePtr type, int valType)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2034);
+#endif
     if (type == NULL)
 	return (0);
     if (WXS_IS_COMPLEX(type))
@@ -13512,6 +13878,9 @@ xmlSchemaQueryBuiltInType(xmlSchemaTypePtr type)
 static xmlSchemaTypePtr
 xmlSchemaGetPrimitiveType(xmlSchemaTypePtr type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2030);
+#endif
 
     while (type != NULL) {
 	/*
@@ -13565,6 +13934,9 @@ xmlSchemaCloneWildcardNsConstraints(xmlSchemaParserCtxtPtr ctxt,
 				    xmlSchemaWildcardPtr dest,
 				    xmlSchemaWildcardPtr source)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2026);
+#endif
     xmlSchemaWildcardNsPtr cur, tmp, last;
 
     if ((source == NULL) || (dest == NULL))
@@ -14114,6 +14486,9 @@ xmlSchemaGetEffectiveValueConstraint(xmlSchemaAttributeUsePtr attruse,
 				     const xmlChar **value,
 				     xmlSchemaValPtr *val)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2038);
+#endif
     *fixed = 0;
     *value = NULL;
     if (val != 0)
@@ -14152,6 +14527,9 @@ static int
 xmlSchemaCheckCVCWildcardNamespace(xmlSchemaWildcardPtr wild,
 				   const xmlChar* ns)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2039);
+#endif
     if (wild == NULL)
 	return(-1);
 
@@ -14200,6 +14578,9 @@ xmlSchemaCheckDerivationOKRestriction2to4(xmlSchemaParserCtxtPtr pctxt,
 				       xmlSchemaWildcardPtr wild,
 				       xmlSchemaWildcardPtr baseWild)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2036);
+#endif
     xmlSchemaAttributeUsePtr cur = NULL, bcur;
     int i, j, found; /* err = 0; */
     const xmlChar *bEffValue;
@@ -14497,6 +14878,9 @@ static int
 xmlSchemaFixupTypeAttributeUses(xmlSchemaParserCtxtPtr pctxt,
 				  xmlSchemaTypePtr type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2024);
+#endif
     xmlSchemaTypePtr baseType = NULL;
     xmlSchemaAttributeUsePtr use;
     xmlSchemaItemListPtr uses, baseUses, prohibs = NULL;
@@ -14712,6 +15096,9 @@ xmlSchemaTypeFinalContains(xmlSchemaTypePtr type, int final)
 static xmlSchemaTypeLinkPtr
 xmlSchemaGetUnionSimpleTypeMemberTypes(xmlSchemaTypePtr type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2028);
+#endif
     while ((type != NULL) && (type->type == XML_SCHEMA_TYPE_SIMPLE)) {
 	if (type->memberTypes != NULL)
 	    return (type->memberTypes);
@@ -14847,6 +15234,9 @@ xmlSchemaGetParticleTotalRangeMax(xmlSchemaParticlePtr particle)
 static int
 xmlSchemaGetParticleEmptiable(xmlSchemaParticlePtr particle)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2041);
+#endif
     xmlSchemaParticlePtr part;
     int emptiable;
 
@@ -14892,6 +15282,9 @@ xmlSchemaGetParticleEmptiable(xmlSchemaParticlePtr particle)
 static int
 xmlSchemaIsParticleEmptiable(xmlSchemaParticlePtr particle)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2040);
+#endif
     /*
     * SPEC (1) "Its {min occurs} is 0."
     */
@@ -15027,6 +15420,9 @@ xmlSchemaCheckTypeDefCircularInternal(xmlSchemaParserCtxtPtr pctxt,
 			   xmlSchemaTypePtr ctxtType,
 			   xmlSchemaTypePtr ancestor)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2021);
+#endif
     int ret;
 
     if ((ancestor == NULL) || (ancestor->type == XML_SCHEMA_TYPE_BASIC))
@@ -15090,6 +15486,9 @@ xmlSchemaCheckUnionTypeDefCircularRecur(xmlSchemaParserCtxtPtr pctxt,
 					xmlSchemaTypePtr ctxType,
 					xmlSchemaTypeLinkPtr members)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2027);
+#endif
     xmlSchemaTypeLinkPtr member;
     xmlSchemaTypePtr memberType;
 
@@ -15932,6 +16331,9 @@ xmlSchemaParseCheckCOSValidDefault(xmlSchemaParserCtxtPtr pctxt,
 				   const xmlChar *value,
 				   xmlSchemaValPtr *val)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1872);
+#endif
     int ret = 0;
 
     /*
@@ -16156,6 +16558,9 @@ xmlSchemaCheckCOSCTDerivedOK(xmlSchemaAbstractCtxtPtr actxt,
 			     xmlSchemaTypePtr baseType,
 			     int set)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2044);
+#endif
     int equal = xmlSchemaAreEqualTypes(type, baseType);
     /* TODO: Error codes. */
     /*
@@ -16227,6 +16632,9 @@ xmlSchemaCheckCOSDerivedOK(xmlSchemaAbstractCtxtPtr actxt,
 			   xmlSchemaTypePtr baseType,
 			   int set)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2043);
+#endif
     if (WXS_IS_SIMPLE(type))
 	return (xmlSchemaCheckCOSSTDerivedOK(actxt, type, baseType, set));
     else
@@ -17304,6 +17712,9 @@ xmlSchemaDeriveFacetErr(xmlSchemaParserCtxtPtr pctxt,
 			int orEqual,
 			int ofBase)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2033);
+#endif
     xmlChar *msg = NULL;
 
     msg = xmlStrdup(BAD_CAST "'");
@@ -18052,6 +18463,9 @@ static int
 xmlSchemaFixupSimpleTypeStageOne(xmlSchemaParserCtxtPtr pctxt,
 			  xmlSchemaTypePtr type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2011);
+#endif
     if (type->type != XML_SCHEMA_TYPE_SIMPLE)
 	return(0);
     if (! WXS_IS_TYPE_NOT_FIXED_1(type))
@@ -18179,6 +18593,9 @@ static int
 xmlSchemaFixupSimpleTypeStageTwo(xmlSchemaParserCtxtPtr pctxt,
 				 xmlSchemaTypePtr type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2012);
+#endif
     int res, olderrs = pctxt->nberrors;
 
     if (type->type != XML_SCHEMA_TYPE_SIMPLE)
@@ -18272,6 +18689,9 @@ static int
 xmlSchemaFixupComplexType(xmlSchemaParserCtxtPtr pctxt,
 			  xmlSchemaTypePtr type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2013);
+#endif
     int res = 0, olderrs = pctxt->nberrors;
     xmlSchemaTypePtr baseType = type->baseType;
 
@@ -18756,6 +19176,9 @@ xmlSchemaCheckFacet(xmlSchemaFacetPtr facet,
                     xmlSchemaParserCtxtPtr pctxt,
 		    const xmlChar * name ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1871);
+#endif
     int ret = 0, ctxtGiven;
 
     if ((facet == NULL) || (typeDecl == NULL))
@@ -19010,6 +19433,9 @@ static xmlSchemaTreeItemPtr
 xmlSchemaGetCircModelGrDefRef(xmlSchemaModelGroupDefPtr groupDef,
 			      xmlSchemaTreeItemPtr particle)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2022);
+#endif
     xmlSchemaTreeItemPtr circ = NULL;
     xmlSchemaTreeItemPtr term;
     xmlSchemaModelGroupDefPtr gdef;
@@ -19164,6 +19590,9 @@ static xmlSchemaQNameRefPtr
 xmlSchemaCheckAttrGroupCircularRecur(xmlSchemaAttributeGroupPtr ctxtGr,
 				     xmlSchemaItemListPtr list)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2023);
+#endif
     xmlSchemaAttributeGroupPtr gr;
     xmlSchemaQNameRefPtr ref, circ;
     int i;
@@ -19285,6 +19714,9 @@ xmlSchemaExpandAttributeGroupRefs(xmlSchemaParserCtxtPtr pctxt,
 				  xmlSchemaItemListPtr list,
 				  xmlSchemaItemListPtr prohibs)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2010);
+#endif
     xmlSchemaAttributeGroupPtr gr;
     xmlSchemaAttributeUsePtr use;
     xmlSchemaItemListPtr sublist;
@@ -19677,6 +20109,9 @@ static xmlSchemaElementPtr
 xmlSchemaCheckSubstGroupCircular(xmlSchemaElementPtr elemDecl,
 				 xmlSchemaElementPtr ancestor)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2042);
+#endif
     xmlSchemaElementPtr ret;
 
     if (WXS_SUBST_HEAD(ancestor) == NULL)
@@ -20224,6 +20659,9 @@ static int
 xmlSchemaAreValuesEqual(xmlSchemaValPtr x,
 		       xmlSchemaValPtr y)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2035);
+#endif
     xmlSchemaTypePtr tx, ty, ptx, pty;
     int ret;
 
@@ -20250,6 +20688,9 @@ xmlSchemaAreValuesEqual(xmlSchemaValPtr x,
 	*/
 	if ((ptx->builtInType == XML_SCHEMAS_STRING) ||
 	    WXS_IS_ANY_SIMPLE_TYPE(ptx)) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
 	    if (! xmlStrEqual(
 		xmlSchemaValueGetAsString(x),
 		xmlSchemaValueGetAsString(y)))
@@ -20827,6 +21268,9 @@ static int
 xmlSchemaAddComponents(xmlSchemaParserCtxtPtr pctxt,
 		       xmlSchemaBucketPtr bucket)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2008);
+#endif
     xmlSchemaBasicItemPtr item;
     int err;
     xmlHashTablePtr *table;
@@ -20946,6 +21390,9 @@ static int
 xmlSchemaFixupComponents(xmlSchemaParserCtxtPtr pctxt,
 			 xmlSchemaBucketPtr rootBucket)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1880);
+#endif
     xmlSchemaConstructionCtxtPtr con = pctxt->constructor;
     xmlSchemaTreeItemPtr item, *items;
     int nbItems, i, ret = 0;
@@ -21417,6 +21864,9 @@ exit:
 xmlSchemaPtr
 xmlSchemaParse(xmlSchemaParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1876);
+#endif
     xmlSchemaPtr mainSchema = NULL;
     xmlSchemaBucketPtr bucket = NULL;
     int res;
@@ -21542,6 +21992,9 @@ xmlSchemaSetParserErrors(xmlSchemaParserCtxtPtr ctxt,
                          xmlSchemaValidityErrorFunc err,
                          xmlSchemaValidityWarningFunc warn, void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1881);
+#endif
     if (ctxt == NULL)
         return;
     ctxt->error = err;
@@ -21564,6 +22017,9 @@ xmlSchemaSetParserStructuredErrors(xmlSchemaParserCtxtPtr ctxt,
 				   xmlStructuredErrorFunc serror,
 				   void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1883);
+#endif
     if (ctxt == NULL)
 	return;
     ctxt->serror = serror;
@@ -21588,6 +22044,9 @@ xmlSchemaGetParserErrors(xmlSchemaParserCtxtPtr ctxt,
 			 xmlSchemaValidityErrorFunc * err,
 			 xmlSchemaValidityWarningFunc * warn, void **ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1885);
+#endif
 	if (ctxt == NULL)
 		return(-1);
 	if (err != NULL)
@@ -21611,6 +22070,9 @@ xmlSchemaGetParserErrors(xmlSchemaParserCtxtPtr ctxt,
 static const xmlChar *
 xmlSchemaFacetTypeToString(xmlSchemaTypeType type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1873);
+#endif
     switch (type) {
         case XML_SCHEMA_FACET_PATTERN:
             return (BAD_CAST "pattern");
@@ -21645,6 +22107,9 @@ xmlSchemaFacetTypeToString(xmlSchemaTypeType type)
 static xmlSchemaWhitespaceValueType
 xmlSchemaGetWhiteSpaceFacetValue(xmlSchemaTypePtr type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2051);
+#endif
     /*
     * The normalization type can be changed only for types which are derived
     * from xsd:string.
@@ -21822,6 +22287,9 @@ static xmlSchemaAttrInfoPtr
 xmlSchemaGetMetaAttrInfo(xmlSchemaValidCtxtPtr vctxt,
 			 int metaType)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2066);
+#endif
     if (vctxt->nbAttrInfos == 0)
 	return (NULL);
     {
@@ -21935,6 +22403,9 @@ static const xmlChar *
 xmlSchemaLookupNamespace(xmlSchemaValidCtxtPtr vctxt,
 			 const xmlChar *prefix)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2052);
+#endif
     if (vctxt->sax != NULL) {
 	int i, j;
 	xmlSchemaNodeInfoPtr inode;
@@ -22000,6 +22471,9 @@ xmlSchemaValidateNotation(xmlSchemaValidCtxtPtr vctxt,
 			  xmlSchemaValPtr *val,
 			  int valNeeded)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2048);
+#endif
     int ret;
 
     if (vctxt && (vctxt->schema == NULL)) {
@@ -22106,6 +22580,9 @@ static void
 xmlSchemaAugmentIDC(void *payload, void *data,
                     const xmlChar *name ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2067);
+#endif
     xmlSchemaIDCPtr idcDef = (xmlSchemaIDCPtr) payload;
     xmlSchemaValidCtxtPtr vctxt = (xmlSchemaValidCtxtPtr) data;
     xmlSchemaIDCAugPtr aidc;
@@ -22143,6 +22620,9 @@ xmlSchemaAugmentIDC(void *payload, void *data,
 static void
 xmlSchemaAugmentImportedIDC(void *payload, void *data,
                             const xmlChar *name ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2064);
+#endif
     xmlSchemaImportPtr imported = (xmlSchemaImportPtr) payload;
     xmlSchemaValidCtxtPtr vctxt = (xmlSchemaValidCtxtPtr) data;
     if (imported->schema->idcDef != NULL) {
@@ -22371,6 +22851,9 @@ xmlSchemaIDCFreeKey(xmlSchemaPSVIIDCKeyPtr key)
 static void
 xmlSchemaIDCFreeBinding(xmlSchemaPSVIIDCBindingPtr bind)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2057);
+#endif
     if (bind->nodeTable != NULL)
 	xmlFree(bind->nodeTable);
     if (bind->dupls != NULL)
@@ -22399,6 +22882,9 @@ xmlSchemaIDCFreeIDCTable(xmlSchemaPSVIIDCBindingPtr bind)
 static void
 xmlFreeIDCHashEntry (void *payload, const xmlChar *name ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2056);
+#endif
     xmlIDCHashEntryPtr e = payload, n;
     while (e) {
 	n = e->next;
@@ -22533,6 +23019,9 @@ xmlSchemaIDCAddStateObject(xmlSchemaValidCtxtPtr vctxt,
 			xmlSchemaIDCSelectPtr sel,
 			int type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2071);
+#endif
     xmlSchemaIDCStateObjPtr sto;
 
     /*
@@ -22604,6 +23093,9 @@ static int
 xmlSchemaXPathEvaluate(xmlSchemaValidCtxtPtr vctxt,
 		       xmlElementType nodeType)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2065);
+#endif
     xmlSchemaIDCStateObjPtr sto, head = NULL, first;
     int res, resolved = 0, depth = vctxt->depth;
 
@@ -22740,6 +23232,9 @@ xmlSchemaFormatIDCKeySequence_1(xmlSchemaValidCtxtPtr vctxt,
 				xmlSchemaPSVIIDCKeyPtr *seq,
 				int count, int for_hash)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2074);
+#endif
     int i, res;
     xmlChar *value = NULL;
 
@@ -22833,6 +23328,9 @@ static int
 xmlSchemaXPathProcessHistory(xmlSchemaValidCtxtPtr vctxt,
 			     int depth)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2072);
+#endif
     xmlSchemaIDCStateObjPtr sto, nextsto;
     int res, matchDepth;
     xmlSchemaPSVIIDCKeyPtr key = NULL;
@@ -24133,6 +24631,9 @@ xmlSchemaCheckCVCIDCKeyRef(xmlSchemaValidCtxtPtr vctxt)
 static xmlSchemaAttrInfoPtr
 xmlSchemaGetFreshAttrInfo(xmlSchemaValidCtxtPtr vctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2063);
+#endif
     xmlSchemaAttrInfoPtr iattr;
     /*
     * Grow/create list of attribute infos.
@@ -24192,6 +24693,9 @@ xmlSchemaValidatorPushAttribute(xmlSchemaValidCtxtPtr vctxt,
 			xmlChar *value,
 			int ownedValue)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2059);
+#endif
     xmlSchemaAttrInfoPtr attr;
 
     attr = xmlSchemaGetFreshAttrInfo(vctxt);
@@ -24248,6 +24752,9 @@ static void
 xmlSchemaClearElemInfo(xmlSchemaValidCtxtPtr vctxt,
 		       xmlSchemaNodeInfoPtr ielem)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1890);
+#endif
     ielem->hasKeyrefs = 0;
     ielem->appliedXPath = 0;
     if (ielem->flags & XML_SCHEMA_NODE_INFO_FLAG_OWNED_NAMES) {
@@ -24387,6 +24894,9 @@ xmlSchemaValidateFacets(xmlSchemaAbstractCtxtPtr actxt,
 			unsigned long length,
 			int fireErrors)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2049);
+#endif
     int ret, error = 0, found;
 
     xmlSchemaTypePtr tmpType;
@@ -24611,6 +25121,9 @@ static xmlChar *
 xmlSchemaNormalizeValue(xmlSchemaTypePtr type,
 			const xmlChar *value)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2047);
+#endif
     switch (xmlSchemaGetWhiteSpaceFacetValue(type)) {
 	case XML_SCHEMA_WHITESPACE_COLLAPSE:
 	    return (xmlSchemaCollapseString(value));
@@ -25094,6 +25607,9 @@ xmlSchemaProcessXSIType(xmlSchemaValidCtxtPtr vctxt,
 			xmlSchemaTypePtr *localType,
 			xmlSchemaElementPtr elemDecl)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2068);
+#endif
     int ret = 0;
     /*
     * cvc-elt (3.3.4) : (4)
@@ -25380,6 +25896,9 @@ xmlSchemaVAttributesSimple(xmlSchemaValidCtxtPtr vctxt)
 static void
 xmlSchemaClearAttrInfos(xmlSchemaValidCtxtPtr vctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1889);
+#endif
     int i;
     xmlSchemaAttrInfoPtr attr;
 
@@ -26172,6 +26691,9 @@ xmlSchemaVContentModelCallback(xmlRegExecCtxtPtr exec ATTRIBUTE_UNUSED,
 			       const xmlChar * name ATTRIBUTE_UNUSED,
 			       void *transdata, void *inputdata)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2069);
+#endif
     xmlSchemaElementPtr item = (xmlSchemaElementPtr) transdata;
     xmlSchemaNodeInfoPtr inode = (xmlSchemaNodeInfoPtr) inputdata;
     inode->decl = item;
@@ -26199,6 +26721,9 @@ xmlSchemaVContentModelCallback(xmlRegExecCtxtPtr exec ATTRIBUTE_UNUSED,
 static int
 xmlSchemaValidatorPushElem(xmlSchemaValidCtxtPtr vctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2058);
+#endif
     vctxt->inode = xmlSchemaGetFreshElemInfo(vctxt);
     if (vctxt->inode == NULL) {
 	VERROR_INT("xmlSchemaValidatorPushElem",
@@ -26233,6 +26758,9 @@ xmlSchemaVCheckINodeDataType(xmlSchemaValidCtxtPtr vctxt,
 static int
 xmlSchemaValidatorPopElem(xmlSchemaValidCtxtPtr vctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2062);
+#endif
     int ret = 0;
     xmlSchemaNodeInfoPtr inode = vctxt->inode;
 
@@ -26533,6 +27061,10 @@ default_psvi:
 		    "there is a fixed value constraint");
 		goto end_elem;
 	    } else {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
+
 		/*
 		* 5.2.2.2 The appropriate case among the following must
 		* be true:
@@ -26930,6 +27462,9 @@ xmlSchemaVPushText(xmlSchemaValidCtxtPtr vctxt,
 		  int nodeType, const xmlChar *value, int len,
 		  int mode, int *consumed)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2061);
+#endif
     /*
     * Unfortunately we have to duplicate the text sometimes.
     * OPTIMIZE: Maybe we could skip it, if:
@@ -27044,6 +27579,10 @@ xmlSchemaVPushText(xmlSchemaValidCtxtPtr vctxt,
 	    vctxt->inode->value = BAD_CAST xmlStrncat(
 		(xmlChar *) vctxt->inode->value, value, len);
 	} else {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1076);
+#endif
+
 	    vctxt->inode->value =
 		BAD_CAST xmlStrncatNew(vctxt->inode->value, value, len);
 	    vctxt->inode->flags |= XML_SCHEMA_NODE_INFO_FLAG_OWNED_VALUES;
@@ -27056,6 +27595,9 @@ xmlSchemaVPushText(xmlSchemaValidCtxtPtr vctxt,
 static int
 xmlSchemaValidateElem(xmlSchemaValidCtxtPtr vctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2060);
+#endif
     int ret = 0;
 
     if ((vctxt->skipDepth != -1) &&
@@ -27449,6 +27991,9 @@ xmlSchemaSAXHandleText(void *ctx,
 		       const xmlChar * ch,
 		       int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1901);
+#endif
     xmlSchemaValidCtxtPtr vctxt = (xmlSchemaValidCtxtPtr) ctx;
 
     if (vctxt->depth < 0)
@@ -27474,6 +28019,9 @@ xmlSchemaSAXHandleCDataSection(void *ctx,
 			     const xmlChar * ch,
 			     int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1902);
+#endif
     xmlSchemaValidCtxtPtr vctxt = (xmlSchemaValidCtxtPtr) ctx;
 
     if (vctxt->depth < 0)
@@ -27495,6 +28043,9 @@ static void
 xmlSchemaSAXHandleReference(void *ctx ATTRIBUTE_UNUSED,
 			    const xmlChar * name ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1903);
+#endif
     xmlSchemaValidCtxtPtr vctxt = (xmlSchemaValidCtxtPtr) ctx;
 
     if (vctxt->depth < 0)
@@ -27516,6 +28067,9 @@ xmlSchemaSAXHandleStartElementNs(void *ctx,
 				 int nb_defaulted ATTRIBUTE_UNUSED,
 				 const xmlChar ** attributes)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1899);
+#endif
     xmlSchemaValidCtxtPtr vctxt = (xmlSchemaValidCtxtPtr) ctx;
     int ret;
     xmlSchemaNodeInfoPtr ielem;
@@ -27677,6 +28231,9 @@ xmlSchemaSAXHandleEndElementNs(void *ctx,
 			       const xmlChar * prefix ATTRIBUTE_UNUSED,
 			       const xmlChar * URI ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1900);
+#endif
     xmlSchemaValidCtxtPtr vctxt = (xmlSchemaValidCtxtPtr) ctx;
     int res;
 
@@ -27732,6 +28289,9 @@ internal_error:
 xmlSchemaValidCtxtPtr
 xmlSchemaNewValidCtxt(xmlSchemaPtr schema)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1886);
+#endif
     xmlSchemaValidCtxtPtr ret;
 
     ret = (xmlSchemaValidCtxtPtr) xmlMalloc(sizeof(xmlSchemaValidCtxt));
@@ -27757,6 +28317,9 @@ xmlSchemaNewValidCtxt(xmlSchemaPtr schema)
  */
 void
 xmlSchemaValidateSetFilename(xmlSchemaValidCtxtPtr vctxt, const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1887);
+#endif
     if (vctxt == NULL)
         return;
     if (vctxt->filename != NULL)
@@ -27897,6 +28460,9 @@ xmlSchemaClearValidCtxt(xmlSchemaValidCtxtPtr vctxt)
 void
 xmlSchemaFreeValidCtxt(xmlSchemaValidCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1869);
+#endif
     if (ctxt == NULL)
         return;
     if (ctxt->value != NULL)
@@ -27988,6 +28554,9 @@ xmlSchemaFreeValidCtxt(xmlSchemaValidCtxtPtr ctxt)
 int
 xmlSchemaIsValid(xmlSchemaValidCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1891);
+#endif
     if (ctxt == NULL)
         return(-1);
     return(ctxt->err == 0);
@@ -28007,6 +28576,9 @@ xmlSchemaSetValidErrors(xmlSchemaValidCtxtPtr ctxt,
                         xmlSchemaValidityErrorFunc err,
                         xmlSchemaValidityWarningFunc warn, void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1882);
+#endif
     if (ctxt == NULL)
         return;
     ctxt->error = err;
@@ -28028,6 +28600,9 @@ void
 xmlSchemaSetValidStructuredErrors(xmlSchemaValidCtxtPtr ctxt,
 				  xmlStructuredErrorFunc serror, void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1884);
+#endif
     if (ctxt == NULL)
         return;
     ctxt->serror = serror;
@@ -28054,6 +28629,9 @@ xmlSchemaGetValidErrors(xmlSchemaValidCtxtPtr ctxt,
 			xmlSchemaValidityErrorFunc * err,
 			xmlSchemaValidityWarningFunc * warn, void **ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1892);
+#endif
 	if (ctxt == NULL)
 		return (-1);
 	if (err != NULL)
@@ -28081,6 +28659,9 @@ xmlSchemaSetValidOptions(xmlSchemaValidCtxtPtr ctxt,
 			 int options)
 
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1893);
+#endif
     int i;
 
     if (ctxt == NULL)
@@ -28111,6 +28692,9 @@ int
 xmlSchemaValidCtxtGetOptions(xmlSchemaValidCtxtPtr ctxt)
 
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1894);
+#endif
     if (ctxt == NULL)
 	return (-1);
     else
@@ -28290,6 +28874,9 @@ internal_error:
 
 static int
 xmlSchemaPreRun(xmlSchemaValidCtxtPtr vctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1931);
+#endif
     /*
     * Some initialization.
     */
@@ -28351,6 +28938,9 @@ xmlSchemaPreRun(xmlSchemaValidCtxtPtr vctxt) {
 
 static void
 xmlSchemaPostRun(xmlSchemaValidCtxtPtr vctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1933);
+#endif
     if (vctxt->xsiAssemble) {
 	if (vctxt->schema != NULL) {
 	    xmlSchemaFree(vctxt->schema);
@@ -28363,6 +28953,9 @@ xmlSchemaPostRun(xmlSchemaValidCtxtPtr vctxt) {
 static int
 xmlSchemaVStart(xmlSchemaValidCtxtPtr vctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1896);
+#endif
     int ret = 0;
 
     if (xmlSchemaPreRun(vctxt) < 0)
@@ -28412,6 +29005,9 @@ xmlSchemaVStart(xmlSchemaValidCtxtPtr vctxt)
 int
 xmlSchemaValidateOneElement(xmlSchemaValidCtxtPtr ctxt, xmlNodePtr elem)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1895);
+#endif
     if ((ctxt == NULL) || (elem == NULL) || (elem->type != XML_ELEMENT_NODE))
 	return (-1);
 
@@ -28437,6 +29033,9 @@ xmlSchemaValidateOneElement(xmlSchemaValidCtxtPtr ctxt, xmlNodePtr elem)
 int
 xmlSchemaValidateDoc(xmlSchemaValidCtxtPtr ctxt, xmlDocPtr doc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1897);
+#endif
     if ((ctxt == NULL) || (doc == NULL))
         return (-1);
 
@@ -28490,6 +29089,9 @@ static void
 internalSubsetSplit(void *ctx, const xmlChar *name,
 	       const xmlChar *ExternalID, const xmlChar *SystemID)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1904);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->internalSubset != NULL))
@@ -28500,6 +29102,9 @@ internalSubsetSplit(void *ctx, const xmlChar *name,
 static int
 isStandaloneSplit(void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1905);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->isStandalone != NULL))
@@ -28510,6 +29115,9 @@ isStandaloneSplit(void *ctx)
 static int
 hasInternalSubsetSplit(void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1906);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->hasInternalSubset != NULL))
@@ -28520,6 +29128,9 @@ hasInternalSubsetSplit(void *ctx)
 static int
 hasExternalSubsetSplit(void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1907);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->hasExternalSubset != NULL))
@@ -28531,6 +29142,9 @@ static void
 externalSubsetSplit(void *ctx, const xmlChar *name,
 	       const xmlChar *ExternalID, const xmlChar *SystemID)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1924);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->externalSubset != NULL))
@@ -28541,6 +29155,9 @@ externalSubsetSplit(void *ctx, const xmlChar *name,
 static xmlParserInputPtr
 resolveEntitySplit(void *ctx, const xmlChar *publicId, const xmlChar *systemId)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1908);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->resolveEntity != NULL))
@@ -28552,6 +29169,9 @@ resolveEntitySplit(void *ctx, const xmlChar *publicId, const xmlChar *systemId)
 static xmlEntityPtr
 getEntitySplit(void *ctx, const xmlChar *name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1909);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->getEntity != NULL))
@@ -28562,6 +29182,9 @@ getEntitySplit(void *ctx, const xmlChar *name)
 static xmlEntityPtr
 getParameterEntitySplit(void *ctx, const xmlChar *name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1923);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->getParameterEntity != NULL))
@@ -28574,6 +29197,9 @@ static void
 entityDeclSplit(void *ctx, const xmlChar *name, int type,
           const xmlChar *publicId, const xmlChar *systemId, xmlChar *content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1910);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->entityDecl != NULL))
@@ -28586,6 +29212,9 @@ attributeDeclSplit(void *ctx, const xmlChar * elem,
                    const xmlChar * name, int type, int def,
                    const xmlChar * defaultValue, xmlEnumerationPtr tree)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1912);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->attributeDecl != NULL)) {
@@ -28600,6 +29229,9 @@ static void
 elementDeclSplit(void *ctx, const xmlChar *name, int type,
 	    xmlElementContentPtr content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1913);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->elementDecl != NULL))
@@ -28610,6 +29242,9 @@ static void
 notationDeclSplit(void *ctx, const xmlChar *name,
 	     const xmlChar *publicId, const xmlChar *systemId)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1911);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->notationDecl != NULL))
@@ -28622,6 +29257,9 @@ unparsedEntityDeclSplit(void *ctx, const xmlChar *name,
 		   const xmlChar *publicId, const xmlChar *systemId,
 		   const xmlChar *notationName)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1914);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->unparsedEntityDecl != NULL))
@@ -28632,6 +29270,9 @@ unparsedEntityDeclSplit(void *ctx, const xmlChar *name,
 static void
 setDocumentLocatorSplit(void *ctx, xmlSAXLocatorPtr loc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1915);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->setDocumentLocator != NULL))
@@ -28641,6 +29282,9 @@ setDocumentLocatorSplit(void *ctx, xmlSAXLocatorPtr loc)
 static void
 startDocumentSplit(void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1916);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->startDocument != NULL))
@@ -28650,6 +29294,9 @@ startDocumentSplit(void *ctx)
 static void
 endDocumentSplit(void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1917);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->endDocument != NULL))
@@ -28660,6 +29307,9 @@ static void
 processingInstructionSplit(void *ctx, const xmlChar *target,
                       const xmlChar *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1918);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->processingInstruction != NULL))
@@ -28669,6 +29319,9 @@ processingInstructionSplit(void *ctx, const xmlChar *target,
 static void
 commentSplit(void *ctx, const xmlChar *value)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1919);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->comment != NULL))
@@ -28681,6 +29334,9 @@ commentSplit(void *ctx, const xmlChar *value)
 
 static void XMLCDECL
 warningSplit(void *ctx, const char *msg ATTRIBUTE_UNUSED, ...) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1920);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->warning != NULL)) {
@@ -28689,6 +29345,9 @@ warningSplit(void *ctx, const char *msg ATTRIBUTE_UNUSED, ...) {
 }
 static void XMLCDECL
 errorSplit(void *ctx, const char *msg ATTRIBUTE_UNUSED, ...) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1921);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->error != NULL)) {
@@ -28697,6 +29356,9 @@ errorSplit(void *ctx, const char *msg ATTRIBUTE_UNUSED, ...) {
 }
 static void XMLCDECL
 fatalErrorSplit(void *ctx, const char *msg ATTRIBUTE_UNUSED, ...) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1922);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if ((ctxt != NULL) && (ctxt->user_sax != NULL) &&
         (ctxt->user_sax->fatalError != NULL)) {
@@ -28711,6 +29373,9 @@ fatalErrorSplit(void *ctx, const char *msg ATTRIBUTE_UNUSED, ...) {
 static void
 charactersSplit(void *ctx, const xmlChar *ch, int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1925);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if (ctxt == NULL)
         return;
@@ -28723,6 +29388,9 @@ charactersSplit(void *ctx, const xmlChar *ch, int len)
 static void
 ignorableWhitespaceSplit(void *ctx, const xmlChar *ch, int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1926);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if (ctxt == NULL)
         return;
@@ -28736,6 +29404,9 @@ ignorableWhitespaceSplit(void *ctx, const xmlChar *ch, int len)
 static void
 cdataBlockSplit(void *ctx, const xmlChar *value, int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1927);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if (ctxt == NULL)
         return;
@@ -28749,6 +29420,9 @@ cdataBlockSplit(void *ctx, const xmlChar *value, int len)
 static void
 referenceSplit(void *ctx, const xmlChar *name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1928);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if (ctxt == NULL)
         return;
@@ -28765,6 +29439,9 @@ startElementNsSplit(void *ctx, const xmlChar * localname,
 		    int nb_namespaces, const xmlChar ** namespaces,
 		    int nb_attributes, int nb_defaulted,
 		    const xmlChar ** attributes) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1929);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if (ctxt == NULL)
         return;
@@ -28784,6 +29461,9 @@ startElementNsSplit(void *ctx, const xmlChar * localname,
 static void
 endElementNsSplit(void *ctx, const xmlChar * localname,
 		    const xmlChar * prefix, const xmlChar * URI) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1930);
+#endif
     xmlSchemaSAXPlugPtr ctxt = (xmlSchemaSAXPlugPtr) ctx;
     if (ctxt == NULL)
         return;
@@ -28811,6 +29491,9 @@ xmlSchemaSAXPlugPtr
 xmlSchemaSAXPlug(xmlSchemaValidCtxtPtr ctxt,
 		 xmlSAXHandlerPtr *sax, void **user_data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1898);
+#endif
     xmlSchemaSAXPlugPtr ret;
     xmlSAXHandlerPtr old_sax;
 
@@ -28952,6 +29635,9 @@ xmlSchemaSAXPlug(xmlSchemaValidCtxtPtr ctxt,
 int
 xmlSchemaSAXUnplug(xmlSchemaSAXPlugPtr plug)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1932);
+#endif
     xmlSAXHandlerPtr *sax;
     void **user_data;
 
@@ -28990,6 +29676,9 @@ xmlSchemaValidateSetLocator(xmlSchemaValidCtxtPtr vctxt,
                             xmlSchemaValidityLocatorFunc f,
 			    void *ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1934);
+#endif
     if (vctxt == NULL) return;
     vctxt->locFunc = f;
     vctxt->locCtxt = ctxt;
@@ -29009,6 +29698,9 @@ xmlSchemaValidateSetLocator(xmlSchemaValidCtxtPtr vctxt,
 static int
 xmlSchemaValidateStreamLocator(void *ctx, const char **file,
                                unsigned long *line) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1936);
+#endif
     xmlParserCtxtPtr ctxt;
 
     if ((ctx == NULL) || ((file == NULL) && (line == NULL)))
@@ -29050,6 +29742,9 @@ xmlSchemaValidateStream(xmlSchemaValidCtxtPtr ctxt,
                         xmlParserInputBufferPtr input, xmlCharEncoding enc,
                         xmlSAXHandlerPtr sax, void *user_data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1935);
+#endif
     xmlSchemaSAXPlugPtr plug = NULL;
     xmlSAXHandlerPtr old_sax = NULL;
     xmlParserCtxtPtr pctxt = NULL;
@@ -29136,6 +29831,9 @@ xmlSchemaValidateFile(xmlSchemaValidCtxtPtr ctxt,
                       const char * filename,
 		      int options ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1937);
+#endif
     int ret;
     xmlParserInputBufferPtr input;
 
@@ -29163,6 +29861,9 @@ xmlSchemaValidateFile(xmlSchemaValidCtxtPtr ctxt,
 xmlParserCtxtPtr
 xmlSchemaValidCtxtGetParserCtxt(xmlSchemaValidCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1938);
+#endif
     if (ctxt == NULL)
         return(NULL);
     return (ctxt->parserCtxt);

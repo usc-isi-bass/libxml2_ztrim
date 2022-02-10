@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * HTMLparser.c : an HTML 4.0 non-verifying parser
  *
@@ -76,6 +81,9 @@ static void htmlParseComment(htmlParserCtxtPtr ctxt);
 static void
 htmlErrMemory(xmlParserCtxtPtr ctxt, const char *extra)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(612);
+#endif
     if ((ctxt != NULL) && (ctxt->disableSAX != 0) &&
         (ctxt->instate == XML_PARSER_EOF))
 	return;
@@ -109,6 +117,9 @@ static void LIBXML_ATTR_FORMAT(3,0)
 htmlParseErr(xmlParserCtxtPtr ctxt, xmlParserErrors error,
              const char *msg, const xmlChar *str1, const xmlChar *str2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(616);
+#endif
     if ((ctxt != NULL) && (ctxt->disableSAX != 0) &&
         (ctxt->instate == XML_PARSER_EOF))
 	return;
@@ -136,6 +147,9 @@ static void LIBXML_ATTR_FORMAT(3,0)
 htmlParseErrInt(xmlParserCtxtPtr ctxt, xmlParserErrors error,
              const char *msg, int val)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(618);
+#endif
     if ((ctxt != NULL) && (ctxt->disableSAX != 0) &&
         (ctxt->instate == XML_PARSER_EOF))
 	return;
@@ -166,6 +180,9 @@ htmlParseErrInt(xmlParserCtxtPtr ctxt, xmlParserErrors error,
 static int
 htmlnamePush(htmlParserCtxtPtr ctxt, const xmlChar * value)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(665);
+#endif
     if ((ctxt->html < 3) && (xmlStrEqual(value, BAD_CAST "head")))
         ctxt->html = 3;
     if ((ctxt->html < 10) && (xmlStrEqual(value, BAD_CAST "body")))
@@ -196,6 +213,9 @@ htmlnamePush(htmlParserCtxtPtr ctxt, const xmlChar * value)
 static const xmlChar *
 htmlnamePop(htmlParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(621);
+#endif
     const xmlChar *ret;
 
     if (ctxt->nameNr <= 0)
@@ -224,6 +244,9 @@ htmlnamePop(htmlParserCtxtPtr ctxt)
 static int
 htmlNodeInfoPush(htmlParserCtxtPtr ctxt, htmlParserNodeInfo *value)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(674);
+#endif
     if (ctxt->nodeInfoNr >= ctxt->nodeInfoMax) {
         if (ctxt->nodeInfoMax == 0)
                 ctxt->nodeInfoMax = 5;
@@ -414,6 +437,9 @@ htmlFindEncoding(xmlParserCtxtPtr ctxt) {
 
 static int
 htmlCurrentChar(xmlParserCtxtPtr ctxt, int *len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(660);
+#endif
     const unsigned char *cur;
     unsigned char c;
     unsigned int val;
@@ -600,6 +626,9 @@ encoding_error:
 
 static int
 htmlSkipBlankChars(xmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(625);
+#endif
     int res = 0;
 
     while (IS_BLANK_CH(*(ctxt->input->cur))) {
@@ -1414,6 +1443,9 @@ static const elementPriority htmlEndPriority[] = {
  */
 void
 htmlInitAutoClose(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(602);
+#endif
 }
 
 static int
@@ -1434,6 +1466,9 @@ htmlCompareTags(const void *key, const void *member) {
  */
 const htmlElemDesc *
 htmlTagLookup(const xmlChar *tag) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(603);
+#endif
     if (tag == NULL)
         return(NULL);
 
@@ -1551,6 +1586,9 @@ htmlAutoCloseOnClose(htmlParserCtxtPtr ctxt, const xmlChar * newtag)
 static void
 htmlAutoCloseOnEnd(htmlParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(622);
+#endif
     int i;
 
     if (ctxt->nameNr == 0)
@@ -1577,6 +1615,9 @@ htmlAutoCloseOnEnd(htmlParserCtxtPtr ctxt)
 static void
 htmlAutoClose(htmlParserCtxtPtr ctxt, const xmlChar * newtag)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(663);
+#endif
     while ((newtag != NULL) && (ctxt->name != NULL) &&
            (htmlCheckAutoClose(newtag, ctxt->name))) {
         if ((ctxt->sax != NULL) && (ctxt->sax->endElement != NULL))
@@ -1612,6 +1653,9 @@ htmlAutoClose(htmlParserCtxtPtr ctxt, const xmlChar * newtag)
  */
 int
 htmlAutoCloseTag(htmlDocPtr doc, const xmlChar *name, htmlNodePtr elem) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(604);
+#endif
     htmlNodePtr child;
 
     if (elem == NULL) return(1);
@@ -1638,6 +1682,9 @@ htmlAutoCloseTag(htmlDocPtr doc, const xmlChar *name, htmlNodePtr elem) {
  */
 int
 htmlIsAutoClosed(htmlDocPtr doc, htmlNodePtr elem) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(605);
+#endif
     htmlNodePtr child;
 
     if (elem == NULL) return(1);
@@ -1660,6 +1707,9 @@ htmlIsAutoClosed(htmlDocPtr doc, htmlNodePtr elem) {
  */
 static void
 htmlCheckImplied(htmlParserCtxtPtr ctxt, const xmlChar *newtag) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(664);
+#endif
     int i;
 
     if (ctxt->options & HTML_PARSE_NOIMPLIED)
@@ -1728,6 +1778,9 @@ htmlCheckImplied(htmlParserCtxtPtr ctxt, const xmlChar *newtag) {
 
 static int
 htmlCheckParagraph(htmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(666);
+#endif
     const xmlChar *tag;
     int i;
 
@@ -1767,6 +1820,9 @@ htmlCheckParagraph(htmlParserCtxtPtr ctxt) {
  */
 int
 htmlIsScriptAttribute(const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(606);
+#endif
     unsigned int i;
 
     if (name == NULL)
@@ -2108,6 +2164,9 @@ static const htmlEntityDesc  html40EntitiesTable[] = {
  */
 const htmlEntityDesc *
 htmlEntityLookup(const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(607);
+#endif
     unsigned int i;
 
     for (i = 0;i < (sizeof(html40EntitiesTable)/
@@ -2131,6 +2190,9 @@ htmlEntityLookup(const xmlChar *name) {
  */
 const htmlEntityDesc *
 htmlEntityValueLookup(unsigned int value) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(608);
+#endif
     unsigned int i;
 
     for (i = 0;i < (sizeof(html40EntitiesTable)/
@@ -2162,6 +2224,9 @@ htmlEntityValueLookup(unsigned int value) {
 int
 UTF8ToHtml(unsigned char* out, int *outlen,
               const unsigned char* in, int *inlen) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(609);
+#endif
     const unsigned char* processed = in;
     const unsigned char* outend;
     const unsigned char* outstart = out;
@@ -2266,6 +2331,9 @@ UTF8ToHtml(unsigned char* out, int *outlen,
 int
 htmlEncodeEntities(unsigned char* out, int *outlen,
 		   const unsigned char* in, int *inlen, int quoteChar) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(610);
+#endif
     const unsigned char* processed = in;
     const unsigned char* outend;
     const unsigned char* outstart = out;
@@ -2457,6 +2525,9 @@ static int areBlanks(htmlParserCtxtPtr ctxt, const xmlChar *str, int len) {
 	   for all tags "b" allowing PCDATA */
 	for ( i = 0; i < sizeof(allowPCData)/sizeof(allowPCData[0]); i++ ) {
 	    if ( xmlStrEqual(ctxt->name, BAD_CAST allowPCData[i]) ) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
 		return(0);
 	    }
 	}
@@ -2466,6 +2537,9 @@ static int areBlanks(htmlParserCtxtPtr ctxt, const xmlChar *str, int len) {
 	/* keep ws in constructs like <p><b>xy</b> <i>z</i><p>
 	   for all tags "p" allowing PCDATA */
 	for ( i = 0; i < sizeof(allowPCData)/sizeof(allowPCData[0]); i++ ) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
 	    if ( xmlStrEqual(lastChild->name, BAD_CAST allowPCData[i]) ) {
 		return(0);
 	    }
@@ -2486,6 +2560,9 @@ static int areBlanks(htmlParserCtxtPtr ctxt, const xmlChar *str, int len) {
  */
 htmlDocPtr
 htmlNewDocNoDtD(const xmlChar *URI, const xmlChar *ExternalID) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(611);
+#endif
     xmlDocPtr cur;
 
     /*
@@ -2531,6 +2608,9 @@ htmlNewDocNoDtD(const xmlChar *URI, const xmlChar *ExternalID) {
  */
 htmlDocPtr
 htmlNewDoc(const xmlChar *URI, const xmlChar *ExternalID) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(613);
+#endif
     if ((URI == NULL) && (ExternalID == NULL))
 	return(htmlNewDocNoDtD(
 		    BAD_CAST "http://www.w3.org/TR/REC-html40/loose.dtd",
@@ -2567,6 +2647,9 @@ static const xmlChar * htmlParseNameComplex(xmlParserCtxtPtr ctxt);
 
 static const xmlChar *
 htmlParseHTMLName(htmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(661);
+#endif
     int i = 0;
     xmlChar loc[HTML_PARSER_BUFFER_SIZE];
 
@@ -2601,6 +2684,9 @@ htmlParseHTMLName(htmlParserCtxtPtr ctxt) {
 
 static const xmlChar *
 htmlParseHTMLName_nonInvasive(htmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(670);
+#endif
     int i = 0;
     xmlChar loc[HTML_PARSER_BUFFER_SIZE];
 
@@ -2630,6 +2716,9 @@ htmlParseHTMLName_nonInvasive(htmlParserCtxtPtr ctxt) {
 
 static const xmlChar *
 htmlParseName(htmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(615);
+#endif
     const xmlChar *in;
     const xmlChar *ret;
     int count = 0;
@@ -2739,6 +2828,9 @@ htmlParseNameComplex(xmlParserCtxtPtr ctxt) {
 
 static xmlChar *
 htmlParseHTMLAttribute(htmlParserCtxtPtr ctxt, const xmlChar stop) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(667);
+#endif
     xmlChar *buffer = NULL;
     int buffer_size = 0;
     xmlChar *out = NULL;
@@ -2879,6 +2971,9 @@ htmlParseHTMLAttribute(htmlParserCtxtPtr ctxt, const xmlChar stop) {
  */
 const htmlEntityDesc *
 htmlParseEntityRef(htmlParserCtxtPtr ctxt, const xmlChar **str) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(614);
+#endif
     const xmlChar *name;
     const htmlEntityDesc * ent = NULL;
 
@@ -2973,6 +3068,9 @@ htmlParseAttValue(htmlParserCtxtPtr ctxt) {
 
 static xmlChar *
 htmlParseSystemLiteral(htmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(675);
+#endif
     size_t len = 0, startPosition = 0;
     const xmlChar *q;
     int err = 0;
@@ -3114,6 +3212,9 @@ htmlParsePubidLiteral(htmlParserCtxtPtr ctxt) {
  */
 static void
 htmlParseScript(htmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(671);
+#endif
     xmlChar buf[HTML_PARSER_BIG_BUFFER_SIZE + 5];
     int nbchar = 0;
     int cur,l;
@@ -3137,6 +3238,9 @@ htmlParseScript(htmlParserCtxtPtr ctxt) {
                 if (xmlStrncasecmp(ctxt->name, ctxt->input->cur+2,
 				   xmlStrlen(ctxt->name)) == 0)
                 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1073);
+#endif
                     break; /* while */
                 } else {
 		    htmlParseErr(ctxt, XML_ERR_TAG_NAME_MISMATCH,
@@ -3201,6 +3305,9 @@ htmlParseScript(htmlParserCtxtPtr ctxt) {
 
 static void
 htmlParseCharDataInternal(htmlParserCtxtPtr ctxt, int readahead) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(662);
+#endif
     xmlChar buf[HTML_PARSER_BIG_BUFFER_SIZE + 6];
     int nbchar = 0;
     int cur, l;
@@ -3372,6 +3479,9 @@ htmlParseExternalID(htmlParserCtxtPtr ctxt, xmlChar **publicID) {
  */
 static void
 htmlParsePI(htmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(627);
+#endif
     xmlChar *buf = NULL;
     int len = 0;
     int size = HTML_PARSER_BUFFER_SIZE;
@@ -3489,6 +3599,9 @@ htmlParsePI(htmlParserCtxtPtr ctxt) {
  */
 static void
 htmlParseComment(htmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(626);
+#endif
     xmlChar *buf = NULL;
     int len;
     int size = HTML_PARSER_BUFFER_SIZE;
@@ -3600,6 +3713,9 @@ unfinished:
  */
 int
 htmlParseCharRef(htmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(617);
+#endif
     int val = 0;
 
     if ((ctxt == NULL) || (ctxt->input == NULL)) {
@@ -3680,6 +3796,9 @@ htmlParseCharRef(htmlParserCtxtPtr ctxt) {
 
 static void
 htmlParseDocTypeDecl(htmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(628);
+#endif
     const xmlChar *name;
     xmlChar *ExternalID = NULL;
     xmlChar *URI = NULL;
@@ -3799,6 +3918,9 @@ htmlParseAttribute(htmlParserCtxtPtr ctxt, xmlChar **value) {
  */
 static void
 htmlCheckEncodingDirect(htmlParserCtxtPtr ctxt, const xmlChar *encoding) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(668);
+#endif
 
     if ((ctxt == NULL) || (encoding == NULL) ||
         (ctxt->options & HTML_PARSE_IGNORE_ENC))
@@ -3886,6 +4008,9 @@ htmlCheckEncodingDirect(htmlParserCtxtPtr ctxt, const xmlChar *encoding) {
  */
 static void
 htmlCheckEncoding(htmlParserCtxtPtr ctxt, const xmlChar *attvalue) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(639);
+#endif
     const xmlChar *encoding;
 
     if (!attvalue)
@@ -3963,6 +4088,9 @@ htmlCheckMeta(htmlParserCtxtPtr ctxt, const xmlChar **atts) {
 
 static int
 htmlParseStartTag(htmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(620);
+#endif
     const xmlChar *name;
     const xmlChar *attname;
     xmlChar *attvalue;
@@ -4175,6 +4303,9 @@ failed:
 static int
 htmlParseEndTag(htmlParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(669);
+#endif
     const xmlChar *name;
     const xmlChar *oldname;
     int i, ret;
@@ -4211,6 +4342,9 @@ htmlParseEndTag(htmlParserCtxtPtr ctxt)
         (xmlStrEqual(name, BAD_CAST "html") ||
          xmlStrEqual(name, BAD_CAST "body") ||
 	 xmlStrEqual(name, BAD_CAST "head"))) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
 	ctxt->depth--;
 	return (0);
     }
@@ -4275,6 +4409,9 @@ htmlParseEndTag(htmlParserCtxtPtr ctxt)
  */
 static void
 htmlParseReference(htmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(672);
+#endif
     const htmlEntityDesc * ent;
     xmlChar out[6];
     const xmlChar *name;
@@ -4498,6 +4635,9 @@ htmlParseContent(htmlParserCtxtPtr ctxt) {
 
 void
 htmlParseElement(htmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(619);
+#endif
     const xmlChar *name;
     xmlChar *currentNode = NULL;
     const htmlElemDesc * info;
@@ -4619,6 +4759,9 @@ htmlParseElement(htmlParserCtxtPtr ctxt) {
 
 static void
 htmlParserFinishElementParsing(htmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(673);
+#endif
     /*
      * Capture end position and add node
      */
@@ -4741,6 +4884,9 @@ htmlParseElementInternal(htmlParserCtxtPtr ctxt) {
 
 static void
 htmlParseContentInternal(htmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(623);
+#endif
     xmlChar *currentNode;
     int depth;
     const xmlChar *name;
@@ -4914,6 +5060,9 @@ __htmlParseContent(void *ctxt) {
 
 int
 htmlParseDocument(htmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(624);
+#endif
     xmlChar start[4];
     xmlCharEncoding enc;
     xmlDtdPtr dtd;
@@ -5161,6 +5310,9 @@ htmlInitParserCtxt(htmlParserCtxtPtr ctxt)
 void
 htmlFreeParserCtxt(htmlParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(629);
+#endif
     xmlFreeParserCtxt(ctxt);
 }
 
@@ -5175,6 +5327,9 @@ htmlFreeParserCtxt(htmlParserCtxtPtr ctxt)
 htmlParserCtxtPtr
 htmlNewParserCtxt(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(630);
+#endif
     xmlParserCtxtPtr ctxt;
 
     ctxt = (xmlParserCtxtPtr) xmlMalloc(sizeof(xmlParserCtxt));
@@ -5201,6 +5356,9 @@ htmlNewParserCtxt(void)
  */
 htmlParserCtxtPtr
 htmlCreateMemoryParserCtxt(const char *buffer, int size) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(631);
+#endif
     xmlParserCtxtPtr ctxt;
     xmlParserInputPtr input;
     xmlParserInputBufferPtr buf;
@@ -5244,6 +5402,9 @@ htmlCreateMemoryParserCtxt(const char *buffer, int size) {
  */
 static htmlParserCtxtPtr
 htmlCreateDocParserCtxt(const xmlChar *cur, const char *encoding) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(636);
+#endif
     int len;
     htmlParserCtxtPtr ctxt;
 
@@ -5319,6 +5480,9 @@ static int
 htmlParseLookupSequence(htmlParserCtxtPtr ctxt, xmlChar first,
                         xmlChar next, xmlChar third, int ignoreattrval)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(676);
+#endif
     int base, len;
     htmlParserInputPtr in;
     const xmlChar *buf;
@@ -5433,6 +5597,9 @@ htmlParseLookupSequence(htmlParserCtxtPtr ctxt, xmlChar first,
 static int
 htmlParseLookupCommentEnd(htmlParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(677);
+#endif
     int mark = 0;
     int cur = CUR_PTR - BASE_PTR;
 
@@ -5460,6 +5627,9 @@ htmlParseLookupCommentEnd(htmlParserCtxtPtr ctxt)
  */
 static int
 htmlParseTryOrFinish(htmlParserCtxtPtr ctxt, int terminate) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(633);
+#endif
     int ret = 0;
     htmlParserInputPtr in;
     ptrdiff_t avail = 0;
@@ -6259,6 +6429,9 @@ done:
 int
 htmlParseChunk(htmlParserCtxtPtr ctxt, const char *chunk, int size,
               int terminate) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(632);
+#endif
     if ((ctxt == NULL) || (ctxt->input == NULL)) {
 	htmlParseErr(ctxt, XML_ERR_INTERNAL_ERROR,
 		     "htmlParseChunk: context error\n", NULL, NULL);
@@ -6346,6 +6519,9 @@ htmlParserCtxtPtr
 htmlCreatePushParserCtxt(htmlSAXHandlerPtr sax, void *user_data,
                          const char *chunk, int size, const char *filename,
 			 xmlCharEncoding enc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(634);
+#endif
     htmlParserCtxtPtr ctxt;
     htmlParserInputPtr inputStream;
     xmlParserInputBufferPtr buf;
@@ -6434,6 +6610,9 @@ htmlCreatePushParserCtxt(htmlSAXHandlerPtr sax, void *user_data,
 htmlDocPtr
 htmlSAXParseDoc(const xmlChar *cur, const char *encoding,
                 htmlSAXHandlerPtr sax, void *userData) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(635);
+#endif
     htmlDocPtr ret;
     htmlParserCtxtPtr ctxt;
 
@@ -6473,6 +6652,9 @@ htmlSAXParseDoc(const xmlChar *cur, const char *encoding,
 
 htmlDocPtr
 htmlParseDoc(const xmlChar *cur, const char *encoding) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(637);
+#endif
     return(htmlSAXParseDoc(cur, encoding, NULL, NULL));
 }
 
@@ -6491,6 +6673,9 @@ htmlParseDoc(const xmlChar *cur, const char *encoding) {
 htmlParserCtxtPtr
 htmlCreateFileParserCtxt(const char *filename, const char *encoding)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(638);
+#endif
     htmlParserCtxtPtr ctxt;
     htmlParserInputPtr inputStream;
     char *canonicFilename;
@@ -6561,6 +6746,9 @@ htmlCreateFileParserCtxt(const char *filename, const char *encoding)
 htmlDocPtr
 htmlSAXParseFile(const char *filename, const char *encoding, htmlSAXHandlerPtr sax,
                  void *userData) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(640);
+#endif
     htmlDocPtr ret;
     htmlParserCtxtPtr ctxt;
     htmlSAXHandlerPtr oldsax = NULL;
@@ -6600,6 +6788,9 @@ htmlSAXParseFile(const char *filename, const char *encoding, htmlSAXHandlerPtr s
 
 htmlDocPtr
 htmlParseFile(const char *filename, const char *encoding) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(641);
+#endif
     return(htmlSAXParseFile(filename, encoding, NULL, NULL));
 }
 
@@ -6614,6 +6805,9 @@ htmlParseFile(const char *filename, const char *encoding) {
 
 int
 htmlHandleOmittedElem(int val) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(642);
+#endif
     int old = htmlOmittedDefaultValue;
 
     htmlOmittedDefaultValue = val;
@@ -6632,6 +6826,9 @@ htmlHandleOmittedElem(int val) {
  */
 int
 htmlElementAllowedHere(const htmlElemDesc* parent, const xmlChar* elt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(643);
+#endif
   const char** p ;
 
   if ( ! elt || ! parent || ! parent->subelts )
@@ -6655,6 +6852,9 @@ htmlElementAllowedHere(const htmlElemDesc* parent, const xmlChar* elt) {
  */
 htmlStatus
 htmlElementStatusHere(const htmlElemDesc* parent, const htmlElemDesc* elt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(644);
+#endif
   if ( ! parent || ! elt )
     return HTML_INVALID ;
   if ( ! htmlElementAllowedHere(parent, (const xmlChar*) elt->name ) )
@@ -6675,6 +6875,9 @@ htmlElementStatusHere(const htmlElemDesc* parent, const htmlElemDesc* elt) {
  */
 htmlStatus
 htmlAttrAllowed(const htmlElemDesc* elt, const xmlChar* attr, int legacy) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(645);
+#endif
   const char** p ;
 
   if ( !elt || ! attr )
@@ -6713,6 +6916,9 @@ htmlAttrAllowed(const htmlElemDesc* elt, const xmlChar* attr, int legacy) {
  */
 htmlStatus
 htmlNodeStatus(const htmlNodePtr node, int legacy) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(646);
+#endif
   if ( ! node )
     return HTML_INVALID ;
 
@@ -6758,6 +6964,9 @@ htmlNodeStatus(const htmlNodePtr node, int legacy) {
 void
 htmlCtxtReset(htmlParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(647);
+#endif
     xmlParserInputPtr input;
     xmlDictPtr dict;
 
@@ -6849,6 +7058,9 @@ htmlCtxtReset(htmlParserCtxtPtr ctxt)
 int
 htmlCtxtUseOptions(htmlParserCtxtPtr ctxt, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(648);
+#endif
     if (ctxt == NULL)
         return(-1);
 
@@ -6923,6 +7135,9 @@ static htmlDocPtr
 htmlDoRead(htmlParserCtxtPtr ctxt, const char *URL, const char *encoding,
           int options, int reuse)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(650);
+#endif
     htmlDocPtr ret;
 
     htmlCtxtUseOptions(ctxt, options);
@@ -6968,6 +7183,9 @@ htmlDoRead(htmlParserCtxtPtr ctxt, const char *URL, const char *encoding,
 htmlDocPtr
 htmlReadDoc(const xmlChar * cur, const char *URL, const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(649);
+#endif
     htmlParserCtxtPtr ctxt;
 
     if (cur == NULL)
@@ -6993,6 +7211,9 @@ htmlReadDoc(const xmlChar * cur, const char *URL, const char *encoding, int opti
 htmlDocPtr
 htmlReadFile(const char *filename, const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(651);
+#endif
     htmlParserCtxtPtr ctxt;
 
     xmlInitParser();
@@ -7017,6 +7238,9 @@ htmlReadFile(const char *filename, const char *encoding, int options)
 htmlDocPtr
 htmlReadMemory(const char *buffer, int size, const char *URL, const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(652);
+#endif
     htmlParserCtxtPtr ctxt;
 
     xmlInitParser();
@@ -7043,6 +7267,9 @@ htmlReadMemory(const char *buffer, int size, const char *URL, const char *encodi
 htmlDocPtr
 htmlReadFd(int fd, const char *URL, const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(653);
+#endif
     htmlParserCtxtPtr ctxt;
     xmlParserInputBufferPtr input;
     xmlParserInputPtr stream;
@@ -7087,6 +7314,9 @@ htmlDocPtr
 htmlReadIO(xmlInputReadCallback ioread, xmlInputCloseCallback ioclose,
           void *ioctx, const char *URL, const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(654);
+#endif
     htmlParserCtxtPtr ctxt;
     xmlParserInputBufferPtr input;
     xmlParserInputPtr stream;
@@ -7134,6 +7364,9 @@ htmlDocPtr
 htmlCtxtReadDoc(htmlParserCtxtPtr ctxt, const xmlChar * cur,
                const char *URL, const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(655);
+#endif
     xmlParserInputPtr stream;
 
     if (cur == NULL)
@@ -7168,6 +7401,9 @@ htmlDocPtr
 htmlCtxtReadFile(htmlParserCtxtPtr ctxt, const char *filename,
                 const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(656);
+#endif
     xmlParserInputPtr stream;
 
     if (filename == NULL)
@@ -7204,6 +7440,9 @@ htmlDocPtr
 htmlCtxtReadMemory(htmlParserCtxtPtr ctxt, const char *buffer, int size,
                   const char *URL, const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(657);
+#endif
     xmlParserInputBufferPtr input;
     xmlParserInputPtr stream;
 
@@ -7247,6 +7486,9 @@ htmlDocPtr
 htmlCtxtReadFd(htmlParserCtxtPtr ctxt, int fd,
               const char *URL, const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(658);
+#endif
     xmlParserInputBufferPtr input;
     xmlParserInputPtr stream;
 
@@ -7292,6 +7534,9 @@ htmlCtxtReadIO(htmlParserCtxtPtr ctxt, xmlInputReadCallback ioread,
 	      const char *URL,
               const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(659);
+#endif
     xmlParserInputBufferPtr input;
     xmlParserInputPtr stream;
 
