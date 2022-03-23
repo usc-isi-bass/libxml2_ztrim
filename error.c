@@ -26,9 +26,6 @@ void XMLCDECL xmlGenericErrorDefaultFunc	(void *ctx ATTRIBUTE_UNUSED,
 				 ...) LIBXML_ATTR_FORMAT(2,3);
 
 #define XML_GET_VAR_STR(msg, str) {				\
-#ifndef ZTRIM_DONT_INSTR
-ztrim_fInstrument(1987);
-#endif
     int       size, prev_size = -1;				\
     int       chars;						\
     char      *larger;						\

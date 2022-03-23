@@ -380,9 +380,6 @@ static int xmlSaveNoEmptyTagsThrDef = 0;
  * Default SAX version1 handler for XML, builds the DOM tree
  */
 xmlSAXHandlerV1 xmlDefaultSAXHandler = {
-#ifndef ZTRIM_DONT_INSTR
-ztrim_fInstrument(1864);
-#endif
     xmlSAX2InternalSubset,
     xmlSAX2IsStandalone,
     xmlSAX2HasInternalSubset,
