@@ -1318,9 +1318,6 @@ ztrim_fInstrument(152);
  */
 void
 xmlSnprintfElementContent(char *buf, int size, xmlElementContentPtr content, int englob) {
-#ifndef ZTRIM_DONT_INSTR
-    ztrim_fInstrument(0);
-#endif
     int len;
 
     if (content == NULL) return;
@@ -1414,6 +1411,9 @@ xmlSnprintfElementContent(char *buf, int size, xmlElementContentPtr content, int
     }
 #ifdef MAGMA_ENABLE_FIXES
     if (size - strlen(buf) <= 2) return;
+#endif
+#ifndef ZTRIM_DONT_INSTR
+    ztrim_fInstrument(0);
 #endif
 #ifdef MAGMA_ENABLE_CANARIES
     MAGMA_LOG("XML006", size - strlen(buf) <= 2);
