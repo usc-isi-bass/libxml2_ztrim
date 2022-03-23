@@ -1369,9 +1369,6 @@ xmlSprintfElementContent(char *buf ATTRIBUTE_UNUSED,
  */
 void
 xmlSnprintfElementContent(char *buf, int size, xmlElementContentPtr content, int englob) {
-#ifndef ZTRIM_DONT_INSTR
-ztrim_fInstrument(2110);
-#endif
     int len;
 
     if (content == NULL) return;
@@ -1426,6 +1423,12 @@ ztrim_fInstrument(2110);
 	    break;
         }
 	case XML_ELEMENT_CONTENT_SEQ:
+#ifdef MAGMA_ENABLE_CANARIES
+        MAGMA_LOG("XML101", content->c1 == NULL);
+#endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(0);
+#endif
 	    if ((content->c1->type == XML_ELEMENT_CONTENT_OR) ||
 	        (content->c1->type == XML_ELEMENT_CONTENT_SEQ))
 		xmlSnprintfElementContent(buf, size, content->c1, 1);
@@ -1438,6 +1441,12 @@ ztrim_fInstrument(2110);
 		return;
 	    }
             strcat(buf, " , ");
+#ifdef MAGMA_ENABLE_CANARIES
+        MAGMA_LOG("XML101", content->c2 == NULL);
+#endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(0);
+#endif
 	    if (((content->c2->type == XML_ELEMENT_CONTENT_OR) ||
 		 (content->c2->ocur != XML_ELEMENT_CONTENT_ONCE)) &&
 		(content->c2->type != XML_ELEMENT_CONTENT_ELEMENT))
@@ -1446,6 +1455,12 @@ ztrim_fInstrument(2110);
 		xmlSnprintfElementContent(buf, size, content->c2, 0);
 	    break;
 	case XML_ELEMENT_CONTENT_OR:
+#ifdef MAGMA_ENABLE_CANARIES
+        MAGMA_LOG("XML101", content->c1 == NULL);
+#endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(0);
+#endif
 	    if ((content->c1->type == XML_ELEMENT_CONTENT_OR) ||
 	        (content->c1->type == XML_ELEMENT_CONTENT_SEQ))
 		xmlSnprintfElementContent(buf, size, content->c1, 1);
@@ -1458,6 +1473,12 @@ ztrim_fInstrument(2110);
 		return;
 	    }
             strcat(buf, " | ");
+#ifdef MAGMA_ENABLE_CANARIES
+        MAGMA_LOG("XML101", content->c2 == NULL);
+#endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(0);
+#endif
 	    if (((content->c2->type == XML_ELEMENT_CONTENT_SEQ) ||
 		 (content->c2->ocur != XML_ELEMENT_CONTENT_ONCE)) &&
 		(content->c2->type != XML_ELEMENT_CONTENT_ELEMENT))
