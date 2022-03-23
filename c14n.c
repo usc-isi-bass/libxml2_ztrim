@@ -103,9 +103,6 @@ static int			xmlC14NIsNodeInNodeset		(void *user_data,
 static int xmlC14NProcessNode(xmlC14NCtxPtr ctx, xmlNodePtr cur);
 static int xmlC14NProcessNodeList(xmlC14NCtxPtr ctx, xmlNodePtr cur);
 typedef enum {
-#ifndef ZTRIM_DONT_INSTR
-ztrim_fInstrument(1407);
-#endif
     XMLC14N_NORMALIZE_ATTR = 0,
     XMLC14N_NORMALIZE_COMMENT = 1,
     XMLC14N_NORMALIZE_PI = 2,
