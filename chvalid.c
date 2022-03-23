@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * chvalid.c:	this module implements the character range
  *		validation APIs
@@ -166,6 +171,9 @@ const xmlChRangeGroup xmlIsIdeographicGroup =
  */
 int
 xmlCharInRange (unsigned int val, const xmlChRangeGroup *rptr) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1406);
+#endif
     int low, high, mid;
     const xmlChSRange *sptr;
     const xmlChLRange *lptr;

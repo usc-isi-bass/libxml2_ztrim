@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * xmlmodule.c : basic API for dynamic module loading added 2.6.17
  *
@@ -48,6 +53,9 @@ static int xmlModulePlatformSymbol(void *handle, const char *name, void **result
 static void
 xmlModuleErrMemory(xmlModulePtr module, const char *extra)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(283);
+#endif
     const char *name = NULL;
 
     if (module != NULL) {
@@ -77,6 +85,9 @@ xmlModuleErrMemory(xmlModulePtr module, const char *extra)
 xmlModulePtr
 xmlModuleOpen(const char *name, int options ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(284);
+#endif
     xmlModulePtr module;
 
     module = (xmlModulePtr) xmlMalloc(sizeof(xmlModule));
@@ -118,6 +129,9 @@ xmlModuleOpen(const char *name, int options ATTRIBUTE_UNUSED)
 int
 xmlModuleSymbol(xmlModulePtr module, const char *name, void **symbol)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(285);
+#endif
     int rc = -1;
 
     if ((NULL == module) || (symbol == NULL) || (name == NULL)) {
@@ -154,6 +168,9 @@ xmlModuleSymbol(xmlModulePtr module, const char *name, void **symbol)
 int
 xmlModuleClose(xmlModulePtr module)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(286);
+#endif
     int rc;
 
     if (NULL == module) {
@@ -190,6 +207,9 @@ xmlModuleClose(xmlModulePtr module)
 int
 xmlModuleFree(xmlModulePtr module)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(287);
+#endif
     if (NULL == module) {
         __xmlRaiseError(NULL, NULL, NULL, NULL, NULL, XML_FROM_MODULE,
                         XML_MODULE_CLOSE, XML_ERR_FATAL, NULL, 0, NULL,
@@ -340,6 +360,9 @@ xmlModulePlatformClose(void *handle)
 static int
 xmlModulePlatformSymbol(void *handle, const char *name, void **symbol)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(288);
+#endif
 XML_IGNORE_PEDANTIC_WARNINGS
 #ifdef _WIN32_WCE
     /*
@@ -380,6 +403,9 @@ xmlModulePlatformOpen(const char *name)
 static int
 xmlModulePlatformClose(void *handle)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(289);
+#endif
     status_t rc;
 
     rc = unload_add_on((image_id) handle);
@@ -421,6 +447,9 @@ xmlModulePlatformSymbol(void *handle, const char *name, void **symbol)
 static void *
 xmlModulePlatformOpen(const char *name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(290);
+#endif
     char errbuf[256];
     void *handle;
     int rc;

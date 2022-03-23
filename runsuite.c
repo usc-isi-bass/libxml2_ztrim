@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * runsuite.c: C program to run libxml2 against published testsuites
  *
@@ -43,6 +48,9 @@ static int verbose = 0;
  ************************************************************************/
 
 static int checkTestFile(const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(394);
+#endif
     struct stat buf;
 
     if (stat(filename, &buf) == -1)
@@ -97,6 +105,9 @@ static char *testEntitiesName[MAX_ENTITIES];
 static char *testEntitiesValue[MAX_ENTITIES];
 static int nb_entities = 0;
 static void resetEntities(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(395);
+#endif
     int i;
 
     for (i = 0;i < nb_entities;i++) {
@@ -108,6 +119,9 @@ static void resetEntities(void) {
     nb_entities = 0;
 }
 static int addEntity(char *name, char *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(396);
+#endif
     if (nb_entities >= MAX_ENTITIES) {
 	fprintf(stderr, "Too many entities defined\n");
 	return(-1);
@@ -126,6 +140,9 @@ static int addEntity(char *name, char *content) {
 static xmlParserInputPtr
 testExternalEntityLoader(const char *URL, const char *ID,
 			 xmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(397);
+#endif
     xmlParserInputPtr ret;
     int i;
 
@@ -164,6 +181,9 @@ static char testErrors[32769];
 static int testErrorsSize = 0;
 
 static void test_log(const char *msg, ...) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(398);
+#endif
     va_list args;
     if (logfile != NULL) {
         fprintf(logfile, "\n------------\n");
@@ -182,6 +202,9 @@ static void test_log(const char *msg, ...) {
 
 static void
 testErrorHandler(void *ctx  ATTRIBUTE_UNUSED, const char *msg, ...) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(399);
+#endif
     va_list args;
     int res;
 
@@ -206,6 +229,9 @@ static xmlXPathContextPtr ctxtXPath;
 
 static void
 initializeLibxml2(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(400);
+#endif
     xmlGetWarningsDefaultValue = 0;
     xmlPedanticParserDefault(0);
 
@@ -236,6 +262,9 @@ initializeLibxml2(void) {
 
 static xmlNodePtr
 getNext(xmlNodePtr cur, const char *xpath) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(401);
+#endif
     xmlNodePtr ret = NULL;
     xmlXPathObjectPtr res;
     xmlXPathCompExprPtr comp;
@@ -264,6 +293,9 @@ getNext(xmlNodePtr cur, const char *xpath) {
 
 static xmlChar *
 getString(xmlNodePtr cur, const char *xpath) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(402);
+#endif
     xmlChar *ret = NULL;
     xmlXPathObjectPtr res;
     xmlXPathCompExprPtr comp;
@@ -297,6 +329,9 @@ getString(xmlNodePtr cur, const char *xpath) {
 
 static int
 xsdIncorrectTestCase(xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(403);
+#endif
     xmlNodePtr test;
     xmlBufferPtr buf;
     xmlRelaxNGParserCtxtPtr pctxt;
@@ -354,6 +389,9 @@ done:
 
 static void
 installResources(xmlNodePtr tst, const xmlChar *base) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(404);
+#endif
     xmlNodePtr test;
     xmlBufferPtr buf;
     xmlChar *name, *content, *res;
@@ -389,6 +427,9 @@ installResources(xmlNodePtr tst, const xmlChar *base) {
 
 static void
 installDirs(xmlNodePtr tst, const xmlChar *base) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(405);
+#endif
     xmlNodePtr test;
     xmlChar *name, *res;
 
@@ -415,6 +456,9 @@ installDirs(xmlNodePtr tst, const xmlChar *base) {
 
 static int
 xsdTestCase(xmlNodePtr tst) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(406);
+#endif
     xmlNodePtr test, tmp, cur;
     xmlBufferPtr buf;
     xmlDocPtr doc = NULL;
@@ -602,6 +646,9 @@ done:
 
 static int
 xsdTestSuite(xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(407);
+#endif
     if (verbose) {
 	xmlChar *doc = getString(cur, "string(documentation)");
 
@@ -621,6 +668,9 @@ xsdTestSuite(xmlNodePtr cur) {
 
 static int
 xsdTest(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(408);
+#endif
     xmlDocPtr doc;
     xmlNodePtr cur;
     const char *filename = "test/xsdtest/xsdtestsuite.xml";
@@ -659,6 +709,9 @@ done:
 
 static int
 rngTestSuite(xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(409);
+#endif
     if (verbose) {
 	xmlChar *doc = getString(cur, "string(documentation)");
 
@@ -684,6 +737,9 @@ rngTestSuite(xmlNodePtr cur) {
 
 static int
 rngTest1(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(410);
+#endif
     xmlDocPtr doc;
     xmlNodePtr cur;
     const char *filename = "test/relaxng/OASIS/spectest.xml";
@@ -722,6 +778,9 @@ done:
 
 static int
 rngTest2(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(411);
+#endif
     xmlDocPtr doc;
     xmlNodePtr cur;
     const char *filename = "test/relaxng/testsuite.xml";
@@ -767,6 +826,9 @@ done:
 static int
 xstcTestInstance(xmlNodePtr cur, xmlSchemaPtr schemas,
                  const xmlChar *spath, const char *base) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(412);
+#endif
     xmlChar *href = NULL;
     xmlChar *path = NULL;
     xmlChar *validity = NULL;
@@ -861,6 +923,9 @@ done:
 
 static int
 xstcTestGroup(xmlNodePtr cur, const char *base) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(413);
+#endif
     xmlChar *href = NULL;
     xmlChar *path = NULL;
     xmlChar *validity = NULL;
@@ -979,6 +1044,9 @@ done:
 
 static int
 xstcMetadata(const char *metadata, const char *base) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(414);
+#endif
     xmlDocPtr doc;
     xmlNodePtr cur;
     xmlChar *contributor;

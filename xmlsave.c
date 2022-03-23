@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * xmlsave.c: Implementation of the document serializer
  *
@@ -53,6 +58,9 @@
  */
 int
 xmlIsXHTML(const xmlChar *systemID, const xmlChar *publicID) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(633);
+#endif
     if ((systemID == NULL) && (publicID == NULL))
 	return(-1);
     if (publicID != NULL) {
@@ -121,6 +129,9 @@ xmlSaveErrMemory(const char *extra)
 static void
 xmlSaveErr(int code, xmlNodePtr node, const char *extra)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(634);
+#endif
     const char *msg = NULL;
 
     switch(code) {
@@ -149,6 +160,9 @@ xmlSaveErr(int code, xmlNodePtr node, const char *extra)
  ************************************************************************/
 static unsigned char *
 xmlSerializeHexCharRef(unsigned char *out, int val) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(635);
+#endif
     unsigned char *ptr;
 
     *out++ = '&';
@@ -206,6 +220,9 @@ xmlSerializeHexCharRef(unsigned char *out, int val) {
 static int
 xmlEscapeEntities(unsigned char* out, int *outlen,
                  const xmlChar* in, int *inlen) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(636);
+#endif
     unsigned char* outstart = out;
     const unsigned char* base = in;
     unsigned char* outend = out + *outlen;
@@ -329,6 +346,9 @@ error:
 static void
 xmlSaveCtxtInit(xmlSaveCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(637);
+#endif
     int i;
     int len;
 
@@ -378,6 +398,9 @@ xmlFreeSaveCtxt(xmlSaveCtxtPtr ctxt)
 static xmlSaveCtxtPtr
 xmlNewSaveCtxt(const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(638);
+#endif
     xmlSaveCtxtPtr ret;
 
     ret = (xmlSaveCtxtPtr) xmlMalloc(sizeof(xmlSaveCtxt));
@@ -433,6 +456,9 @@ xmlNewSaveCtxt(const char *encoding, int options)
 static void
 xmlAttrSerializeContent(xmlOutputBufferPtr buf, xmlAttrPtr attr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(639);
+#endif
     xmlNodePtr children;
 
     children = attr->children;
@@ -465,6 +491,9 @@ xmlAttrSerializeContent(xmlOutputBufferPtr buf, xmlAttrPtr attr)
  */
 void
 xmlBufDumpNotationTable(xmlBufPtr buf, xmlNotationTablePtr table) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(640);
+#endif
     xmlBufferPtr buffer;
 
     buffer = xmlBufferCreate();
@@ -488,6 +517,9 @@ xmlBufDumpNotationTable(xmlBufPtr buf, xmlNotationTablePtr table) {
  */
 void
 xmlBufDumpElementDecl(xmlBufPtr buf, xmlElementPtr elem) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(641);
+#endif
     xmlBufferPtr buffer;
 
     buffer = xmlBufferCreate();
@@ -511,6 +543,9 @@ xmlBufDumpElementDecl(xmlBufPtr buf, xmlElementPtr elem) {
  */
 void
 xmlBufDumpAttributeDecl(xmlBufPtr buf, xmlAttributePtr attr) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(642);
+#endif
     xmlBufferPtr buffer;
 
     buffer = xmlBufferCreate();
@@ -533,6 +568,9 @@ xmlBufDumpAttributeDecl(xmlBufPtr buf, xmlAttributePtr attr) {
  */
 void
 xmlBufDumpEntityDecl(xmlBufPtr buf, xmlEntityPtr ent) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(643);
+#endif
     xmlBufferPtr buffer;
 
     buffer = xmlBufferCreate();
@@ -553,6 +591,9 @@ xmlBufDumpEntityDecl(xmlBufPtr buf, xmlEntityPtr ent) {
  ************************************************************************/
 
 static int xmlSaveSwitchEncoding(xmlSaveCtxtPtr ctxt, const char *encoding) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(644);
+#endif
     xmlOutputBufferPtr buf = ctxt->buf;
 
     if ((encoding != NULL) && (buf->encoder == NULL) && (buf->conv == NULL)) {
@@ -604,6 +645,9 @@ static int xmlDocContentDumpOutput(xmlSaveCtxtPtr ctxt, xmlDocPtr cur);
 static void
 xmlOutputBufferWriteWSNonSig(xmlSaveCtxtPtr ctxt, int extra)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(645);
+#endif
     int i;
     if ((ctxt == NULL) || (ctxt->buf == NULL))
         return;
@@ -628,6 +672,9 @@ xmlOutputBufferWriteWSNonSig(xmlSaveCtxtPtr ctxt, int extra)
  */
 static void
 xmlNsDumpOutput(xmlOutputBufferPtr buf, xmlNsPtr cur, xmlSaveCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(646);
+#endif
     if ((cur == NULL) || (buf == NULL)) return;
     if ((cur->type == XML_LOCAL_NAMESPACE) && (cur->href != NULL)) {
 	if (xmlStrEqual(cur->prefix, BAD_CAST "xml"))
@@ -703,6 +750,9 @@ xmlNsListDumpOutput(xmlOutputBufferPtr buf, xmlNsPtr cur) {
  */
 static void
 xmlDtdDumpOutput(xmlSaveCtxtPtr ctxt, xmlDtdPtr dtd) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(647);
+#endif
     xmlOutputBufferPtr buf;
     xmlNodePtr cur;
     int format, level;
@@ -759,6 +809,9 @@ xmlDtdDumpOutput(xmlSaveCtxtPtr ctxt, xmlDtdPtr dtd) {
  */
 static void
 xmlAttrDumpOutput(xmlSaveCtxtPtr ctxt, xmlAttrPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(648);
+#endif
     xmlOutputBufferPtr buf;
 
     if (cur == NULL) return;
@@ -787,6 +840,9 @@ xmlAttrDumpOutput(xmlSaveCtxtPtr ctxt, xmlAttrPtr cur) {
  */
 static int
 htmlNodeDumpOutputInternal(xmlSaveCtxtPtr ctxt, xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(649);
+#endif
     const xmlChar *oldenc = NULL;
     const xmlChar *oldctxtenc = ctxt->encoding;
     const xmlChar *encoding = ctxt->encoding;
@@ -846,6 +902,9 @@ htmlNodeDumpOutputInternal(xmlSaveCtxtPtr ctxt, xmlNodePtr cur) {
  */
 static void
 xmlNodeDumpOutputInternal(xmlSaveCtxtPtr ctxt, xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(650);
+#endif
     int format = ctxt->format;
     xmlNodePtr tmp, root, unformattedNode = NULL, parent;
     xmlAttrPtr attr;
@@ -1114,6 +1173,9 @@ xmlNodeDumpOutputInternal(xmlSaveCtxtPtr ctxt, xmlNodePtr cur) {
  */
 static int
 xmlDocContentDumpOutput(xmlSaveCtxtPtr ctxt, xmlDocPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(651);
+#endif
 #ifdef LIBXML_HTML_ENABLED
     xmlDtdPtr dtd;
     int is_xhtml = 0;
@@ -1280,6 +1342,9 @@ xmlDocContentDumpOutput(xmlSaveCtxtPtr ctxt, xmlDocPtr cur) {
  */
 static int
 xhtmlIsEmpty(xmlNodePtr node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(652);
+#endif
     if (node == NULL)
 	return(-1);
     if (node->type != XML_ELEMENT_NODE)
@@ -1345,6 +1410,9 @@ xhtmlIsEmpty(xmlNodePtr node) {
  */
 static void
 xhtmlAttrListDumpOutput(xmlSaveCtxtPtr ctxt, xmlAttrPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(653);
+#endif
     xmlAttrPtr xml_lang = NULL;
     xmlAttrPtr lang = NULL;
     xmlAttrPtr name = NULL;
@@ -1429,6 +1497,9 @@ xhtmlAttrListDumpOutput(xmlSaveCtxtPtr ctxt, xmlAttrPtr cur) {
  */
 static void
 xhtmlNodeDumpOutput(xmlSaveCtxtPtr ctxt, xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(654);
+#endif
     int format = ctxt->format, addmeta;
     xmlNodePtr tmp, root, unformattedNode = NULL;
     xmlChar *start, *end;
@@ -1759,6 +1830,9 @@ xhtmlNodeDumpOutput(xmlSaveCtxtPtr ctxt, xmlNodePtr cur) {
 xmlSaveCtxtPtr
 xmlSaveToFd(int fd, const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(655);
+#endif
     xmlSaveCtxtPtr ret;
 
     ret = xmlNewSaveCtxt(encoding, options);
@@ -1787,6 +1861,9 @@ xmlSaveToFd(int fd, const char *encoding, int options)
 xmlSaveCtxtPtr
 xmlSaveToFilename(const char *filename, const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(656);
+#endif
     xmlSaveCtxtPtr ret;
     int compression = 0; /* TODO handle compression option */
 
@@ -1817,6 +1894,9 @@ xmlSaveToFilename(const char *filename, const char *encoding, int options)
 xmlSaveCtxtPtr
 xmlSaveToBuffer(xmlBufferPtr buffer, const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(657);
+#endif
     xmlSaveCtxtPtr ret;
 
     ret = xmlNewSaveCtxt(encoding, options);
@@ -1848,6 +1928,9 @@ xmlSaveToIO(xmlOutputWriteCallback iowrite,
             xmlOutputCloseCallback ioclose,
             void *ioctx, const char *encoding, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(658);
+#endif
     xmlSaveCtxtPtr ret;
 
     ret = xmlNewSaveCtxt(encoding, options);
@@ -1897,6 +1980,9 @@ xmlSaveDoc(xmlSaveCtxtPtr ctxt, xmlDocPtr doc)
 long
 xmlSaveTree(xmlSaveCtxtPtr ctxt, xmlNodePtr cur)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(659);
+#endif
     long ret = 0;
 
     if ((ctxt == NULL) || (cur == NULL)) return(-1);
@@ -2007,6 +2093,9 @@ void
 xmlBufAttrSerializeTxtContent(xmlBufPtr buf, xmlDocPtr doc,
                               xmlAttrPtr attr, const xmlChar * string)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(660);
+#endif
     xmlChar *base, *cur;
 
     if (string == NULL)
@@ -2131,6 +2220,9 @@ void
 xmlAttrSerializeTxtContent(xmlBufferPtr buf, xmlDocPtr doc,
                            xmlAttrPtr attr, const xmlChar * string)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(661);
+#endif
     xmlBufPtr buffer;
 
     if ((buf == NULL) || (string == NULL))
@@ -2162,6 +2254,9 @@ int
 xmlNodeDump(xmlBufferPtr buf, xmlDocPtr doc, xmlNodePtr cur, int level,
             int format)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(662);
+#endif
     xmlBufPtr buffer;
     size_t ret;
 
@@ -2197,6 +2292,9 @@ size_t
 xmlBufNodeDump(xmlBufPtr buf, xmlDocPtr doc, xmlNodePtr cur, int level,
             int format)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(663);
+#endif
     size_t use;
     int ret;
     xmlOutputBufferPtr outbuf;
@@ -2252,6 +2350,9 @@ xmlBufNodeDump(xmlBufPtr buf, xmlDocPtr doc, xmlNodePtr cur, int level,
 void
 xmlElemDump(FILE * f, xmlDocPtr doc, xmlNodePtr cur)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(664);
+#endif
     xmlOutputBufferPtr outbuf;
 
     xmlInitParser();
@@ -2307,6 +2408,9 @@ void
 xmlNodeDumpOutput(xmlOutputBufferPtr buf, xmlDocPtr doc, xmlNodePtr cur,
                   int level, int format, const char *encoding)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(665);
+#endif
     xmlSaveCtxt ctxt;
 #ifdef LIBXML_HTML_ENABLED
     xmlDtdPtr dtd;
@@ -2362,6 +2466,9 @@ void
 xmlDocDumpFormatMemoryEnc(xmlDocPtr out_doc, xmlChar **doc_txt_ptr,
 		int * doc_txt_len, const char * txt_encoding,
 		int format) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(666);
+#endif
     xmlSaveCtxt ctxt;
     int                         dummy = 0;
     xmlOutputBufferPtr          out_buff = NULL;
@@ -2498,6 +2605,9 @@ xmlDocDumpMemoryEnc(xmlDocPtr out_doc, xmlChar **doc_txt_ptr,
  */
 int
 xmlDocFormatDump(FILE *f, xmlDocPtr cur, int format) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(667);
+#endif
     xmlSaveCtxt ctxt;
     xmlOutputBufferPtr buf;
     const char * encoding;
@@ -2564,6 +2674,9 @@ xmlDocDump(FILE *f, xmlDocPtr cur) {
  */
 int
 xmlSaveFileTo(xmlOutputBufferPtr buf, xmlDocPtr cur, const char *encoding) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(668);
+#endif
     xmlSaveCtxt ctxt;
     int ret;
 
@@ -2601,6 +2714,9 @@ int
 xmlSaveFormatFileTo(xmlOutputBufferPtr buf, xmlDocPtr cur,
                     const char *encoding, int format)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(669);
+#endif
     xmlSaveCtxt ctxt;
     int ret;
 
@@ -2639,6 +2755,9 @@ xmlSaveFormatFileTo(xmlOutputBufferPtr buf, xmlDocPtr cur,
 int
 xmlSaveFormatFileEnc( const char * filename, xmlDocPtr cur,
 			const char * encoding, int format ) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(670);
+#endif
     xmlSaveCtxt ctxt;
     xmlOutputBufferPtr buf;
     xmlCharEncodingHandlerPtr handler = NULL;

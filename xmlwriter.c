@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 
 /*
  * xmlwriter.c: XML text writer implementation
@@ -134,6 +139,9 @@ static void
 xmlWriterErrMsg(xmlTextWriterPtr ctxt, xmlParserErrors error,
                const char *msg)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1870);
+#endif
     if (ctxt != NULL) {
 	__xmlRaiseError(NULL, NULL, NULL, ctxt->ctxt,
 	            NULL, XML_FROM_WRITER, error, XML_ERR_FATAL,
@@ -157,6 +165,9 @@ static void LIBXML_ATTR_FORMAT(3,0)
 xmlWriterErrMsgInt(xmlTextWriterPtr ctxt, xmlParserErrors error,
                const char *msg, int val)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1871);
+#endif
     if (ctxt != NULL) {
 	__xmlRaiseError(NULL, NULL, NULL, ctxt->ctxt,
 	            NULL, XML_FROM_WRITER, error, XML_ERR_FATAL,
@@ -180,6 +191,9 @@ xmlWriterErrMsgInt(xmlTextWriterPtr ctxt, xmlParserErrors error,
 xmlTextWriterPtr
 xmlNewTextWriter(xmlOutputBufferPtr out)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1872);
+#endif
     xmlTextWriterPtr ret;
 
     ret = (xmlTextWriterPtr) xmlMalloc(sizeof(xmlTextWriter));
@@ -241,6 +255,9 @@ xmlNewTextWriter(xmlOutputBufferPtr out)
 xmlTextWriterPtr
 xmlNewTextWriterFilename(const char *uri, int compression)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1873);
+#endif
     xmlTextWriterPtr ret;
     xmlOutputBufferPtr out;
 
@@ -277,6 +294,9 @@ xmlNewTextWriterFilename(const char *uri, int compression)
 xmlTextWriterPtr
 xmlNewTextWriterMemory(xmlBufferPtr buf, int compression ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1874);
+#endif
     xmlTextWriterPtr ret;
     xmlOutputBufferPtr out;
 
@@ -316,6 +336,9 @@ xmlTextWriterPtr
 xmlNewTextWriterPushParser(xmlParserCtxtPtr ctxt,
                            int compression ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1875);
+#endif
     xmlTextWriterPtr ret;
     xmlOutputBufferPtr out;
 
@@ -359,6 +382,9 @@ xmlNewTextWriterPushParser(xmlParserCtxtPtr ctxt,
 xmlTextWriterPtr
 xmlNewTextWriterDoc(xmlDocPtr * doc, int compression)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1876);
+#endif
     xmlTextWriterPtr ret;
     xmlSAXHandler saxHandler;
     xmlParserCtxtPtr ctxt;
@@ -422,6 +448,9 @@ xmlNewTextWriterDoc(xmlDocPtr * doc, int compression)
 xmlTextWriterPtr
 xmlNewTextWriterTree(xmlDocPtr doc, xmlNodePtr node, int compression)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1877);
+#endif
     xmlTextWriterPtr ret;
     xmlSAXHandler saxHandler;
     xmlParserCtxtPtr ctxt;
@@ -476,6 +505,9 @@ xmlNewTextWriterTree(xmlDocPtr doc, xmlNodePtr node, int compression)
 void
 xmlFreeTextWriter(xmlTextWriterPtr writer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1878);
+#endif
     if (writer == NULL)
         return;
 
@@ -519,6 +551,9 @@ int
 xmlTextWriterStartDocument(xmlTextWriterPtr writer, const char *version,
                            const char *encoding, const char *standalone)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1879);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -638,6 +673,9 @@ xmlTextWriterStartDocument(xmlTextWriterPtr writer, const char *version,
 int
 xmlTextWriterEndDocument(xmlTextWriterPtr writer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1880);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -724,6 +762,9 @@ xmlTextWriterEndDocument(xmlTextWriterPtr writer)
 int
 xmlTextWriterStartComment(xmlTextWriterPtr writer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1881);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -808,6 +849,9 @@ xmlTextWriterStartComment(xmlTextWriterPtr writer)
 int
 xmlTextWriterEndComment(xmlTextWriterPtr writer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1882);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -867,6 +911,9 @@ int XMLCDECL
 xmlTextWriterWriteFormatComment(xmlTextWriterPtr writer,
                                 const char *format, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1883);
+#endif
     int rc;
     va_list ap;
 
@@ -892,6 +939,9 @@ int
 xmlTextWriterWriteVFormatComment(xmlTextWriterPtr writer,
                                  const char *format, va_list argptr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1884);
+#endif
     int rc;
     xmlChar *buf;
 
@@ -923,6 +973,9 @@ xmlTextWriterWriteVFormatComment(xmlTextWriterPtr writer,
 int
 xmlTextWriterWriteComment(xmlTextWriterPtr writer, const xmlChar * content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1885);
+#endif
     int count;
     int sum;
 
@@ -955,6 +1008,9 @@ xmlTextWriterWriteComment(xmlTextWriterPtr writer, const xmlChar * content)
 int
 xmlTextWriterStartElement(xmlTextWriterPtr writer, const xmlChar * name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1886);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -1054,6 +1110,9 @@ xmlTextWriterStartElementNS(xmlTextWriterPtr writer,
                             const xmlChar * prefix, const xmlChar * name,
                             const xmlChar * namespaceURI)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1887);
+#endif
     int count;
     int sum;
     xmlChar *buf;
@@ -1117,6 +1176,9 @@ xmlTextWriterStartElementNS(xmlTextWriterPtr writer,
 int
 xmlTextWriterEndElement(xmlTextWriterPtr writer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1888);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -1209,6 +1271,9 @@ xmlTextWriterEndElement(xmlTextWriterPtr writer)
 int
 xmlTextWriterFullEndElement(xmlTextWriterPtr writer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1889);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -1295,6 +1360,9 @@ int XMLCDECL
 xmlTextWriterWriteFormatRaw(xmlTextWriterPtr writer, const char *format,
                             ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1890);
+#endif
     int rc;
     va_list ap;
 
@@ -1320,6 +1388,9 @@ int
 xmlTextWriterWriteVFormatRaw(xmlTextWriterPtr writer, const char *format,
                              va_list argptr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1891);
+#endif
     int rc;
     xmlChar *buf;
 
@@ -1351,6 +1422,9 @@ int
 xmlTextWriterWriteRawLen(xmlTextWriterPtr writer, const xmlChar * content,
                          int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1892);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -1421,6 +1495,9 @@ int XMLCDECL
 xmlTextWriterWriteFormatString(xmlTextWriterPtr writer, const char *format,
                                ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1893);
+#endif
     int rc;
     va_list ap;
 
@@ -1449,6 +1526,9 @@ int
 xmlTextWriterWriteVFormatString(xmlTextWriterPtr writer,
                                 const char *format, va_list argptr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1894);
+#endif
     int rc;
     xmlChar *buf;
 
@@ -1477,6 +1557,9 @@ xmlTextWriterWriteVFormatString(xmlTextWriterPtr writer,
 int
 xmlTextWriterWriteString(xmlTextWriterPtr writer, const xmlChar * content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1895);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -1541,6 +1624,9 @@ static int
 xmlOutputBufferWriteBase64(xmlOutputBufferPtr out, int len,
                            const unsigned char *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1896);
+#endif
     static unsigned char dtable[64] =
             {'A','B','C','D','E','F','G','H','I','J','K','L','M',
 	     'N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
@@ -1623,6 +1709,9 @@ int
 xmlTextWriterWriteBase64(xmlTextWriterPtr writer, const char *data,
                          int start, int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1897);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -1672,6 +1761,9 @@ static int
 xmlOutputBufferWriteBinHex(xmlOutputBufferPtr out,
                            int len, const unsigned char *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1898);
+#endif
     int count;
     int sum;
     static char hex[16] =
@@ -1716,6 +1808,9 @@ int
 xmlTextWriterWriteBinHex(xmlTextWriterPtr writer, const char *data,
                          int start, int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1899);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -1761,6 +1856,9 @@ xmlTextWriterWriteBinHex(xmlTextWriterPtr writer, const char *data,
 int
 xmlTextWriterStartAttribute(xmlTextWriterPtr writer, const xmlChar * name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1900);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -1829,6 +1927,9 @@ xmlTextWriterStartAttributeNS(xmlTextWriterPtr writer,
                               const xmlChar * prefix, const xmlChar * name,
                               const xmlChar * namespaceURI)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1901);
+#endif
     int count;
     int sum;
     xmlChar *buf;
@@ -1916,6 +2017,9 @@ xmlTextWriterStartAttributeNS(xmlTextWriterPtr writer,
 int
 xmlTextWriterEndAttribute(xmlTextWriterPtr writer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1902);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -1968,6 +2072,9 @@ xmlTextWriterWriteFormatAttribute(xmlTextWriterPtr writer,
                                   const xmlChar * name, const char *format,
                                   ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1903);
+#endif
     int rc;
     va_list ap;
 
@@ -1995,6 +2102,9 @@ xmlTextWriterWriteVFormatAttribute(xmlTextWriterPtr writer,
                                    const xmlChar * name,
                                    const char *format, va_list argptr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1904);
+#endif
     int rc;
     xmlChar *buf;
 
@@ -2025,6 +2135,9 @@ int
 xmlTextWriterWriteAttribute(xmlTextWriterPtr writer, const xmlChar * name,
                             const xmlChar * content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1905);
+#endif
     int count;
     int sum;
 
@@ -2065,6 +2178,9 @@ xmlTextWriterWriteFormatAttributeNS(xmlTextWriterPtr writer,
                                     const xmlChar * namespaceURI,
                                     const char *format, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1906);
+#endif
     int rc;
     va_list ap;
 
@@ -2097,6 +2213,9 @@ xmlTextWriterWriteVFormatAttributeNS(xmlTextWriterPtr writer,
                                      const xmlChar * namespaceURI,
                                      const char *format, va_list argptr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1907);
+#endif
     int rc;
     xmlChar *buf;
 
@@ -2132,6 +2251,9 @@ xmlTextWriterWriteAttributeNS(xmlTextWriterPtr writer,
                               const xmlChar * namespaceURI,
                               const xmlChar * content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1908);
+#endif
     int count;
     int sum;
 
@@ -2171,6 +2293,9 @@ xmlTextWriterWriteFormatElement(xmlTextWriterPtr writer,
                                 const xmlChar * name, const char *format,
                                 ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1909);
+#endif
     int rc;
     va_list ap;
 
@@ -2198,6 +2323,9 @@ xmlTextWriterWriteVFormatElement(xmlTextWriterPtr writer,
                                  const xmlChar * name, const char *format,
                                  va_list argptr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1910);
+#endif
     int rc;
     xmlChar *buf;
 
@@ -2228,6 +2356,9 @@ int
 xmlTextWriterWriteElement(xmlTextWriterPtr writer, const xmlChar * name,
                           const xmlChar * content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1911);
+#endif
     int count;
     int sum;
 
@@ -2270,6 +2401,9 @@ xmlTextWriterWriteFormatElementNS(xmlTextWriterPtr writer,
                                   const xmlChar * namespaceURI,
                                   const char *format, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1912);
+#endif
     int rc;
     va_list ap;
 
@@ -2302,6 +2436,9 @@ xmlTextWriterWriteVFormatElementNS(xmlTextWriterPtr writer,
                                    const xmlChar * namespaceURI,
                                    const char *format, va_list argptr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1913);
+#endif
     int rc;
     xmlChar *buf;
 
@@ -2337,6 +2474,9 @@ xmlTextWriterWriteElementNS(xmlTextWriterPtr writer,
                             const xmlChar * namespaceURI,
                             const xmlChar * content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1914);
+#endif
     int count;
     int sum;
 
@@ -2373,6 +2513,9 @@ xmlTextWriterWriteElementNS(xmlTextWriterPtr writer,
 int
 xmlTextWriterStartPI(xmlTextWriterPtr writer, const xmlChar * target)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1915);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -2469,6 +2612,9 @@ xmlTextWriterStartPI(xmlTextWriterPtr writer, const xmlChar * target)
 int
 xmlTextWriterEndPI(xmlTextWriterPtr writer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1916);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -2524,6 +2670,9 @@ int XMLCDECL
 xmlTextWriterWriteFormatPI(xmlTextWriterPtr writer, const xmlChar * target,
                            const char *format, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1917);
+#endif
     int rc;
     va_list ap;
 
@@ -2551,6 +2700,9 @@ xmlTextWriterWriteVFormatPI(xmlTextWriterPtr writer,
                             const xmlChar * target, const char *format,
                             va_list argptr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1918);
+#endif
     int rc;
     xmlChar *buf;
 
@@ -2581,6 +2733,9 @@ int
 xmlTextWriterWritePI(xmlTextWriterPtr writer, const xmlChar * target,
                      const xmlChar * content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1919);
+#endif
     int count;
     int sum;
 
@@ -2614,6 +2769,9 @@ xmlTextWriterWritePI(xmlTextWriterPtr writer, const xmlChar * target,
 int
 xmlTextWriterStartCDATA(xmlTextWriterPtr writer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1920);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -2693,6 +2851,9 @@ xmlTextWriterStartCDATA(xmlTextWriterPtr writer)
 int
 xmlTextWriterEndCDATA(xmlTextWriterPtr writer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1921);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -2739,6 +2900,9 @@ int XMLCDECL
 xmlTextWriterWriteFormatCDATA(xmlTextWriterPtr writer, const char *format,
                               ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1922);
+#endif
     int rc;
     va_list ap;
 
@@ -2764,6 +2928,9 @@ int
 xmlTextWriterWriteVFormatCDATA(xmlTextWriterPtr writer, const char *format,
                                va_list argptr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1923);
+#endif
     int rc;
     xmlChar *buf;
 
@@ -2792,6 +2959,9 @@ xmlTextWriterWriteVFormatCDATA(xmlTextWriterPtr writer, const char *format,
 int
 xmlTextWriterWriteCDATA(xmlTextWriterPtr writer, const xmlChar * content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1924);
+#endif
     int count;
     int sum;
 
@@ -2830,6 +3000,9 @@ xmlTextWriterStartDTD(xmlTextWriterPtr writer,
                       const xmlChar * name,
                       const xmlChar * pubid, const xmlChar * sysid)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1925);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -2965,6 +3138,9 @@ xmlTextWriterStartDTD(xmlTextWriterPtr writer,
 int
 xmlTextWriterEndDTD(xmlTextWriterPtr writer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1926);
+#endif
     int loop;
     int count;
     int sum;
@@ -3050,6 +3226,9 @@ xmlTextWriterWriteFormatDTD(xmlTextWriterPtr writer,
                             const xmlChar * pubid,
                             const xmlChar * sysid, const char *format, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1927);
+#endif
     int rc;
     va_list ap;
 
@@ -3082,6 +3261,9 @@ xmlTextWriterWriteVFormatDTD(xmlTextWriterPtr writer,
                              const xmlChar * sysid,
                              const char *format, va_list argptr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1928);
+#endif
     int rc;
     xmlChar *buf;
 
@@ -3116,6 +3298,9 @@ xmlTextWriterWriteDTD(xmlTextWriterPtr writer,
                       const xmlChar * pubid,
                       const xmlChar * sysid, const xmlChar * subset)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1929);
+#endif
     int count;
     int sum;
 
@@ -3150,6 +3335,9 @@ xmlTextWriterWriteDTD(xmlTextWriterPtr writer,
 int
 xmlTextWriterStartDTDElement(xmlTextWriterPtr writer, const xmlChar * name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1930);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -3237,6 +3425,9 @@ xmlTextWriterStartDTDElement(xmlTextWriterPtr writer, const xmlChar * name)
 int
 xmlTextWriterEndDTDElement(xmlTextWriterPtr writer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1931);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -3293,6 +3484,9 @@ xmlTextWriterWriteFormatDTDElement(xmlTextWriterPtr writer,
                                    const xmlChar * name,
                                    const char *format, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1932);
+#endif
     int rc;
     va_list ap;
 
@@ -3320,6 +3514,9 @@ xmlTextWriterWriteVFormatDTDElement(xmlTextWriterPtr writer,
                                     const xmlChar * name,
                                     const char *format, va_list argptr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1933);
+#endif
     int rc;
     xmlChar *buf;
 
@@ -3350,6 +3547,9 @@ int
 xmlTextWriterWriteDTDElement(xmlTextWriterPtr writer,
                              const xmlChar * name, const xmlChar * content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1934);
+#endif
     int count;
     int sum;
 
@@ -3387,6 +3587,9 @@ xmlTextWriterWriteDTDElement(xmlTextWriterPtr writer,
 int
 xmlTextWriterStartDTDAttlist(xmlTextWriterPtr writer, const xmlChar * name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1935);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -3474,6 +3677,9 @@ xmlTextWriterStartDTDAttlist(xmlTextWriterPtr writer, const xmlChar * name)
 int
 xmlTextWriterEndDTDAttlist(xmlTextWriterPtr writer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1936);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -3530,6 +3736,9 @@ xmlTextWriterWriteFormatDTDAttlist(xmlTextWriterPtr writer,
                                    const xmlChar * name,
                                    const char *format, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1937);
+#endif
     int rc;
     va_list ap;
 
@@ -3557,6 +3766,9 @@ xmlTextWriterWriteVFormatDTDAttlist(xmlTextWriterPtr writer,
                                     const xmlChar * name,
                                     const char *format, va_list argptr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1938);
+#endif
     int rc;
     xmlChar *buf;
 
@@ -3587,6 +3799,9 @@ int
 xmlTextWriterWriteDTDAttlist(xmlTextWriterPtr writer,
                              const xmlChar * name, const xmlChar * content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1939);
+#endif
     int count;
     int sum;
 
@@ -3626,6 +3841,9 @@ int
 xmlTextWriterStartDTDEntity(xmlTextWriterPtr writer,
                             int pe, const xmlChar * name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1940);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -3725,6 +3943,9 @@ xmlTextWriterStartDTDEntity(xmlTextWriterPtr writer,
 int
 xmlTextWriterEndDTDEntity(xmlTextWriterPtr writer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1941);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -3789,6 +4010,9 @@ xmlTextWriterWriteFormatDTDInternalEntity(xmlTextWriterPtr writer,
                                           const xmlChar * name,
                                           const char *format, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1942);
+#endif
     int rc;
     va_list ap;
 
@@ -3820,6 +4044,9 @@ xmlTextWriterWriteVFormatDTDInternalEntity(xmlTextWriterPtr writer,
                                            const char *format,
                                            va_list argptr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1943);
+#endif
     int rc;
     xmlChar *buf;
 
@@ -3859,6 +4086,9 @@ xmlTextWriterWriteDTDEntity(xmlTextWriterPtr writer,
                             const xmlChar * ndataid,
                             const xmlChar * content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1944);
+#endif
     if ((content == NULL) && (pubid == NULL) && (sysid == NULL))
         return -1;
     if ((pe != 0) && (ndataid != NULL))
@@ -3889,6 +4119,9 @@ xmlTextWriterWriteDTDInternalEntity(xmlTextWriterPtr writer,
                                     const xmlChar * name,
                                     const xmlChar * content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1945);
+#endif
     int count;
     int sum;
 
@@ -3935,6 +4168,9 @@ xmlTextWriterWriteDTDExternalEntity(xmlTextWriterPtr writer,
                                     const xmlChar * sysid,
                                     const xmlChar * ndataid)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1946);
+#endif
     int count;
     int sum;
 
@@ -3981,6 +4217,9 @@ xmlTextWriterWriteDTDExternalEntityContents(xmlTextWriterPtr writer,
                                             const xmlChar * sysid,
                                             const xmlChar * ndataid)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1947);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -4112,6 +4351,9 @@ xmlTextWriterWriteDTDNotation(xmlTextWriterPtr writer,
                               const xmlChar * name,
                               const xmlChar * pubid, const xmlChar * sysid)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1948);
+#endif
     int count;
     int sum;
     xmlLinkPtr lk;
@@ -4230,6 +4472,9 @@ xmlTextWriterWriteDTDNotation(xmlTextWriterPtr writer,
 int
 xmlTextWriterFlush(xmlTextWriterPtr writer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1949);
+#endif
     int count;
 
     if (writer == NULL)
@@ -4256,6 +4501,9 @@ xmlTextWriterFlush(xmlTextWriterPtr writer)
 static void
 xmlFreeTextWriterStackEntry(xmlLinkPtr lk)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1950);
+#endif
     xmlTextWriterStackEntry *p;
 
     p = (xmlTextWriterStackEntry *) xmlLinkGetData(lk);
@@ -4279,6 +4527,9 @@ xmlFreeTextWriterStackEntry(xmlLinkPtr lk)
 static int
 xmlCmpTextWriterStackEntry(const void *data0, const void *data1)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1951);
+#endif
     xmlTextWriterStackEntry *p0;
     xmlTextWriterStackEntry *p1;
 
@@ -4310,6 +4561,9 @@ xmlCmpTextWriterStackEntry(const void *data0, const void *data1)
 static int
 xmlTextWriterOutputNSDecl(xmlTextWriterPtr writer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1952);
+#endif
     xmlLinkPtr lk;
     xmlTextWriterNsStackEntry *np;
     int count;
@@ -4355,6 +4609,9 @@ xmlTextWriterOutputNSDecl(xmlTextWriterPtr writer)
 static void
 xmlFreeTextWriterNsStackEntry(xmlLinkPtr lk)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1953);
+#endif
     xmlTextWriterNsStackEntry *p;
 
     p = (xmlTextWriterNsStackEntry *) xmlLinkGetData(lk);
@@ -4381,6 +4638,9 @@ xmlFreeTextWriterNsStackEntry(xmlLinkPtr lk)
 static int
 xmlCmpTextWriterNsStackEntry(const void *data0, const void *data1)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1954);
+#endif
     xmlTextWriterNsStackEntry *p0;
     xmlTextWriterNsStackEntry *p1;
     int rc;
@@ -4418,6 +4678,9 @@ xmlCmpTextWriterNsStackEntry(const void *data0, const void *data1)
 static int
 xmlTextWriterWriteDocCallback(void *context, const char *str, int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1955);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) context;
     int rc;
 
@@ -4442,6 +4705,9 @@ xmlTextWriterWriteDocCallback(void *context, const char *str, int len)
 static int
 xmlTextWriterCloseDocCallback(void *context)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1956);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) context;
     int rc;
 
@@ -4467,6 +4733,9 @@ xmlTextWriterCloseDocCallback(void *context)
 static xmlChar *
 xmlTextWriterVSprintf(const char *format, va_list argptr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1957);
+#endif
     int size;
     int count;
     xmlChar *buf;
@@ -4508,6 +4777,9 @@ xmlTextWriterVSprintf(const char *format, va_list argptr)
 static void
 xmlTextWriterStartDocumentCallback(void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1958);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlDocPtr doc;
 
@@ -4576,6 +4848,9 @@ xmlTextWriterStartDocumentCallback(void *ctx)
 int
 xmlTextWriterSetIndent(xmlTextWriterPtr writer, int indent)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1959);
+#endif
     if ((writer == NULL) || (indent < 0))
         return -1;
 
@@ -4597,6 +4872,9 @@ xmlTextWriterSetIndent(xmlTextWriterPtr writer, int indent)
 int
 xmlTextWriterSetIndentString(xmlTextWriterPtr writer, const xmlChar * str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1960);
+#endif
     if ((writer == NULL) || (!str))
         return -1;
 
@@ -4641,6 +4919,9 @@ xmlTextWriterSetQuoteChar(xmlTextWriterPtr writer, xmlChar quotechar)
 static int
 xmlTextWriterWriteIndent(xmlTextWriterPtr writer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1961);
+#endif
     int lksize;
     int i;
     int ret;
@@ -4671,6 +4952,9 @@ static int
 xmlTextWriterHandleStateDependencies(xmlTextWriterPtr writer,
                                      xmlTextWriterStackEntry * p)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1962);
+#endif
     int count;
     int sum;
     char extra[3];

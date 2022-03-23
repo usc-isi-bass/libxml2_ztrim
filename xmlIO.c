@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * xmlIO.c : implementation of the I/O interfaces used by the parser
  *
@@ -200,6 +205,9 @@ static const char *IOerr[] = {
 static wchar_t *
 __xmlIOWin32UTF8ToWChar(const char *u8String)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2002);
+#endif
     wchar_t *wString = NULL;
 
     if (u8String) {
@@ -245,6 +253,9 @@ xmlIOErrMemory(const char *extra)
 void
 __xmlIOErr(int domain, int code, const char *extra)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2003);
+#endif
     unsigned int idx;
 
     if (code == 0) {
@@ -436,6 +447,9 @@ xmlIOErr(int code, const char *extra)
 void
 __xmlLoaderErr(void *ctx, const char *msg, const char *filename)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2004);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlStructuredErrorFunc schannel = NULL;
     xmlGenericErrorFunc channel = NULL;
@@ -493,6 +507,9 @@ xmlNormalizeWindowsPath(const xmlChar *path)
 void
 xmlCleanupInputCallbacks(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2005);
+#endif
     int i;
 
     if (!xmlInputCallbackInitialized)
@@ -520,6 +537,9 @@ xmlCleanupInputCallbacks(void)
 int
 xmlPopInputCallbacks(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2006);
+#endif
     if (!xmlInputCallbackInitialized)
         return(-1);
 
@@ -545,6 +565,9 @@ xmlPopInputCallbacks(void)
 void
 xmlCleanupOutputCallbacks(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2007);
+#endif
     int i;
 
     if (!xmlOutputCallbackInitialized)
@@ -572,6 +595,9 @@ xmlCleanupOutputCallbacks(void)
 int
 xmlPopOutputCallbacks(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2008);
+#endif
     if (!xmlOutputCallbackInitialized)
         return(-1);
 
@@ -608,6 +634,9 @@ xmlPopOutputCallbacks(void)
 static FILE*
 xmlWrapOpenUtf8(const char *path,int mode)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2009);
+#endif
     FILE *fd = NULL;
     wchar_t *wPath;
 
@@ -628,6 +657,9 @@ xmlWrapOpenUtf8(const char *path,int mode)
 static gzFile
 xmlWrapGzOpenUtf8(const char *path, const char *mode)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2010);
+#endif
     gzFile fd;
     wchar_t *wPath;
 
@@ -662,6 +694,9 @@ xmlWrapGzOpenUtf8(const char *path, const char *mode)
  */
 static int
 xmlWrapStatUtf8(const char *path, struct _stat *info) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2011);
+#endif
     int retval = -1;
     wchar_t *wPath;
 
@@ -695,6 +730,9 @@ xmlWrapStatUtf8(const char *path, struct _stat *info) {
 int
 xmlCheckFilename (const char *path)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2012);
+#endif
 #ifdef HAVE_STAT
 #if defined(_WIN32) || defined (__DJGPP__) && !defined (__CYGWIN__)
     struct _stat stat_buffer;
@@ -825,6 +863,9 @@ xmlFileMatch (const char *filename ATTRIBUTE_UNUSED) {
  */
 static void *
 xmlFileOpen_real (const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2013);
+#endif
     const char *path = filename;
     FILE *fd;
 
@@ -883,6 +924,9 @@ xmlFileOpen_real (const char *filename) {
  */
 void *
 xmlFileOpen (const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2014);
+#endif
     char *unescaped;
     void *retval;
 
@@ -910,6 +954,9 @@ xmlFileOpen (const char *filename) {
  */
 static void *
 xmlFileOpenW (const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2015);
+#endif
     const char *path = NULL;
     FILE *fd;
 
@@ -982,6 +1029,9 @@ xmlFileRead (void * context, char * buffer, int len) {
  */
 static int
 xmlFileWrite (void * context, const char * buffer, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2016);
+#endif
     int items;
 
     if ((context == NULL) || (buffer == NULL))
@@ -1005,6 +1055,9 @@ xmlFileWrite (void * context, const char * buffer, int len) {
  */
 int
 xmlFileClose (void * context) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2017);
+#endif
     FILE *fil;
     int ret;
 
@@ -1033,6 +1086,9 @@ xmlFileClose (void * context) {
  */
 static int
 xmlFileFlush (void * context) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2018);
+#endif
     int ret;
 
     if (context == NULL)
@@ -1095,6 +1151,9 @@ xmlGzfileMatch (const char *filename ATTRIBUTE_UNUSED) {
  */
 static void *
 xmlGzfileOpen_real (const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2019);
+#endif
     const char *path = NULL;
     gzFile fd;
 
@@ -1145,6 +1204,9 @@ xmlGzfileOpen_real (const char *filename) {
  */
 static void *
 xmlGzfileOpen (const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2020);
+#endif
     char *unescaped;
     void *retval;
 
@@ -1172,6 +1234,9 @@ xmlGzfileOpen (const char *filename) {
  */
 static void *
 xmlGzfileOpenW (const char *filename, int compression) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2021);
+#endif
     const char *path = NULL;
     char mode[15];
     gzFile fd;
@@ -1301,6 +1366,9 @@ xmlXzfileMatch (const char *filename ATTRIBUTE_UNUSED) {
  */
 static void *
 xmlXzfileOpen_real (const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2022);
+#endif
     const char *path = NULL;
     xzFile fd;
 
@@ -1339,6 +1407,9 @@ xmlXzfileOpen_real (const char *filename) {
  */
 static void *
 xmlXzfileOpen (const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2023);
+#endif
     char *unescaped;
     void *retval;
 
@@ -1442,6 +1513,9 @@ typedef struct xmlZMemBuff_
  */
 static void
 append_reverse_ulong( xmlZMemBuff * buff, unsigned long data ) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2024);
+#endif
 
     int		idx;
 
@@ -1473,6 +1547,9 @@ append_reverse_ulong( xmlZMemBuff * buff, unsigned long data ) {
  */
 static void
 xmlFreeZMemBuff( xmlZMemBuffPtr buff ) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2025);
+#endif
 
 #ifdef DEBUG_HTTP
     int z_err;
@@ -1508,6 +1585,9 @@ xmlFreeZMemBuff( xmlZMemBuffPtr buff ) {
  */
 static void *
 xmlCreateZMemBuff( int compression ) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2026);
+#endif
 
     int			z_err;
     int			hdr_lgth;
@@ -1572,6 +1652,9 @@ xmlCreateZMemBuff( int compression ) {
  */
 static int
 xmlZMemBuffExtend( xmlZMemBuffPtr buff, size_t ext_amt ) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2027);
+#endif
 
     int			rc = -1;
     size_t		new_size;
@@ -1630,6 +1713,9 @@ xmlZMemBuffExtend( xmlZMemBuffPtr buff, size_t ext_amt ) {
  */
 static int
 xmlZMemBuffAppend( xmlZMemBuffPtr buff, const char * src, int len ) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2028);
+#endif
 
     int		z_err;
     size_t	min_accept;
@@ -1680,6 +1766,9 @@ xmlZMemBuffAppend( xmlZMemBuffPtr buff, const char * src, int len ) {
  */
 static int
 xmlZMemBuffGetContent( xmlZMemBuffPtr buff, char ** data_ref ) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2029);
+#endif
 
     int		zlgth = -1;
     int		z_err;
@@ -1749,6 +1838,9 @@ xmlZMemBuffGetContent( xmlZMemBuffPtr buff, char ** data_ref ) {
 static void
 xmlFreeHTTPWriteCtxt( xmlIOHTTPWriteCtxtPtr ctxt )
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2030);
+#endif
     if ( ctxt->uri != NULL )
 	xmlFree( ctxt->uri );
 
@@ -1814,6 +1906,9 @@ xmlIOHTTPOpen (const char *filename) {
 void *
 xmlIOHTTPOpenW(const char *post_uri, int compression ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2031);
+#endif
 
     xmlIOHTTPWriteCtxtPtr ctxt = NULL;
 
@@ -1911,6 +2006,9 @@ xmlIOHTTPRead(void * context, char * buffer, int len) {
 
 static int
 xmlIOHTTPWrite( void * context, const char * buffer, int len ) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2032);
+#endif
 
     xmlIOHTTPWriteCtxtPtr	ctxt = context;
 
@@ -1969,6 +2067,9 @@ xmlIOHTTPClose (void * context) {
  */
 static int
 xmlIOHTTPCloseWrite( void * context, const char * http_mthd ) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2033);
+#endif
 
     int				close_rc = -1;
     int				http_rtn = 0;
@@ -2205,6 +2306,9 @@ int
 xmlRegisterInputCallbacks(xmlInputMatchCallback matchFunc,
 	xmlInputOpenCallback openFunc, xmlInputReadCallback readFunc,
 	xmlInputCloseCallback closeFunc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2034);
+#endif
     if (xmlInputCallbackNr >= MAX_INPUT_CALLBACK) {
 	return(-1);
     }
@@ -2232,6 +2336,9 @@ int
 xmlRegisterOutputCallbacks(xmlOutputMatchCallback matchFunc,
 	xmlOutputOpenCallback openFunc, xmlOutputWriteCallback writeFunc,
 	xmlOutputCloseCallback closeFunc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2035);
+#endif
     if (xmlOutputCallbackNr >= MAX_OUTPUT_CALLBACK) {
 	return(-1);
     }
@@ -2251,6 +2358,9 @@ xmlRegisterOutputCallbacks(xmlOutputMatchCallback matchFunc,
  */
 void
 xmlRegisterDefaultInputCallbacks(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2036);
+#endif
     if (xmlInputCallbackInitialized)
 	return;
 
@@ -2285,6 +2395,9 @@ xmlRegisterDefaultInputCallbacks(void) {
  */
 void
 xmlRegisterDefaultOutputCallbacks (void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2037);
+#endif
     if (xmlOutputCallbackInitialized)
 	return;
 
@@ -2326,6 +2439,9 @@ xmlRegisterDefaultOutputCallbacks (void) {
  */
 void
 xmlRegisterHTTPPostCallbacks( void ) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2038);
+#endif
 
     /*  Register defaults if not done previously  */
 
@@ -2349,6 +2465,9 @@ xmlRegisterHTTPPostCallbacks( void ) {
  */
 xmlParserInputBufferPtr
 xmlAllocParserInputBuffer(xmlCharEncoding enc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2039);
+#endif
     xmlParserInputBufferPtr ret;
 
     ret = (xmlParserInputBufferPtr) xmlMalloc(sizeof(xmlParserInputBuffer));
@@ -2388,6 +2507,9 @@ xmlAllocParserInputBuffer(xmlCharEncoding enc) {
  */
 xmlOutputBufferPtr
 xmlAllocOutputBuffer(xmlCharEncodingHandlerPtr encoder) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2040);
+#endif
     xmlOutputBufferPtr ret;
 
     ret = (xmlOutputBufferPtr) xmlMalloc(sizeof(xmlOutputBuffer));
@@ -2439,6 +2561,9 @@ xmlAllocOutputBuffer(xmlCharEncodingHandlerPtr encoder) {
  */
 xmlOutputBufferPtr
 xmlAllocOutputBufferInternal(xmlCharEncodingHandlerPtr encoder) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2041);
+#endif
     xmlOutputBufferPtr ret;
 
     ret = (xmlOutputBufferPtr) xmlMalloc(sizeof(xmlOutputBuffer));
@@ -2492,6 +2617,9 @@ xmlAllocOutputBufferInternal(xmlCharEncodingHandlerPtr encoder) {
  */
 void
 xmlFreeParserInputBuffer(xmlParserInputBufferPtr in) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2042);
+#endif
     if (in == NULL) return;
 
     if (in->raw) {
@@ -2525,6 +2653,9 @@ xmlFreeParserInputBuffer(xmlParserInputBufferPtr in) {
 int
 xmlOutputBufferClose(xmlOutputBufferPtr out)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2043);
+#endif
     int written;
     int err_rc = 0;
 
@@ -2557,6 +2688,9 @@ xmlOutputBufferClose(xmlOutputBufferPtr out)
 
 xmlParserInputBufferPtr
 __xmlParserInputBufferCreateFilename(const char *URI, xmlCharEncoding enc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2044);
+#endif
     xmlParserInputBufferPtr ret;
     int i = 0;
     void *context = NULL;
@@ -2652,6 +2786,9 @@ xmlOutputBufferPtr
 __xmlOutputBufferCreateFilename(const char *URI,
                               xmlCharEncodingHandlerPtr encoder,
                               int compression ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2045);
+#endif
     xmlOutputBufferPtr ret;
     xmlURIPtr puri;
     int i = 0;
@@ -2809,6 +2946,9 @@ xmlOutputBufferCreateFilename(const char *URI,
  */
 xmlParserInputBufferPtr
 xmlParserInputBufferCreateFile(FILE *file, xmlCharEncoding enc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2046);
+#endif
     xmlParserInputBufferPtr ret;
 
     if (xmlInputCallbackInitialized == 0)
@@ -2839,6 +2979,9 @@ xmlParserInputBufferCreateFile(FILE *file, xmlCharEncoding enc) {
  */
 xmlOutputBufferPtr
 xmlOutputBufferCreateFile(FILE *file, xmlCharEncodingHandlerPtr encoder) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2047);
+#endif
     xmlOutputBufferPtr ret;
 
     if (xmlOutputCallbackInitialized == 0)
@@ -2868,6 +3011,9 @@ xmlOutputBufferCreateFile(FILE *file, xmlCharEncodingHandlerPtr encoder) {
 xmlOutputBufferPtr
 xmlOutputBufferCreateBuffer(xmlBufferPtr buffer,
                             xmlCharEncodingHandlerPtr encoder) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2048);
+#endif
     xmlOutputBufferPtr ret;
 
     if (buffer == NULL) return(NULL);
@@ -2925,6 +3071,9 @@ xmlOutputBufferGetSize(xmlOutputBufferPtr out) {
  */
 xmlParserInputBufferPtr
 xmlParserInputBufferCreateFd(int fd, xmlCharEncoding enc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2049);
+#endif
     xmlParserInputBufferPtr ret;
 
     if (fd < 0) return(NULL);
@@ -2952,6 +3101,9 @@ xmlParserInputBufferCreateFd(int fd, xmlCharEncoding enc) {
  */
 xmlParserInputBufferPtr
 xmlParserInputBufferCreateMem(const char *mem, int size, xmlCharEncoding enc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2050);
+#endif
     xmlParserInputBufferPtr ret;
     int errcode;
 
@@ -2989,6 +3141,9 @@ xmlParserInputBufferCreateMem(const char *mem, int size, xmlCharEncoding enc) {
 xmlParserInputBufferPtr
 xmlParserInputBufferCreateStatic(const char *mem, int size,
                                  xmlCharEncoding enc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2051);
+#endif
     xmlParserInputBufferPtr ret;
 
     if (size < 0) return(NULL);
@@ -3031,6 +3186,9 @@ xmlParserInputBufferCreateStatic(const char *mem, int size,
  */
 xmlOutputBufferPtr
 xmlOutputBufferCreateFd(int fd, xmlCharEncodingHandlerPtr encoder) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2052);
+#endif
     xmlOutputBufferPtr ret;
 
     if (fd < 0) return(NULL);
@@ -3061,6 +3219,9 @@ xmlOutputBufferCreateFd(int fd, xmlCharEncodingHandlerPtr encoder) {
 xmlParserInputBufferPtr
 xmlParserInputBufferCreateIO(xmlInputReadCallback   ioread,
 	 xmlInputCloseCallback  ioclose, void *ioctx, xmlCharEncoding enc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2053);
+#endif
     xmlParserInputBufferPtr ret;
 
     if (ioread == NULL) return(NULL);
@@ -3092,6 +3253,9 @@ xmlOutputBufferPtr
 xmlOutputBufferCreateIO(xmlOutputWriteCallback   iowrite,
 	 xmlOutputCloseCallback  ioclose, void *ioctx,
 	 xmlCharEncodingHandlerPtr encoder) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2054);
+#endif
     xmlOutputBufferPtr ret;
 
     if (iowrite == NULL) return(NULL);
@@ -3118,6 +3282,9 @@ xmlOutputBufferCreateIO(xmlOutputWriteCallback   iowrite,
 xmlParserInputBufferCreateFilenameFunc
 xmlParserInputBufferCreateFilenameDefault(xmlParserInputBufferCreateFilenameFunc func)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2055);
+#endif
     xmlParserInputBufferCreateFilenameFunc old = xmlParserInputBufferCreateFilenameValue;
     if (old == NULL) {
 		old = __xmlParserInputBufferCreateFilename;
@@ -3138,6 +3305,9 @@ xmlParserInputBufferCreateFilenameDefault(xmlParserInputBufferCreateFilenameFunc
 xmlOutputBufferCreateFilenameFunc
 xmlOutputBufferCreateFilenameDefault(xmlOutputBufferCreateFilenameFunc func)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2056);
+#endif
     xmlOutputBufferCreateFilenameFunc old = xmlOutputBufferCreateFilenameValue;
 #ifdef LIBXML_OUTPUT_ENABLED
     if (old == NULL) {
@@ -3164,6 +3334,9 @@ xmlOutputBufferCreateFilenameDefault(xmlOutputBufferCreateFilenameFunc func)
 int
 xmlParserInputBufferPush(xmlParserInputBufferPtr in,
 	                 int len, const char *buf) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2057);
+#endif
     int nbchars = 0;
     int ret;
 
@@ -3237,6 +3410,9 @@ endOfInput (void * context ATTRIBUTE_UNUSED,
  */
 int
 xmlParserInputBufferGrow(xmlParserInputBufferPtr in, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2058);
+#endif
     char *buffer = NULL;
     int res = 0;
     int nbchars = 0;
@@ -3361,6 +3537,9 @@ xmlParserInputBufferRead(xmlParserInputBufferPtr in, int len) {
  */
 int
 xmlOutputBufferWrite(xmlOutputBufferPtr out, int len, const char *buf) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2059);
+#endif
     int nbchars = 0; /* number of chars to output to I/O */
     int ret;         /* return from function call */
     int written = 0; /* number of char written to I/O so far */
@@ -3466,6 +3645,9 @@ done:
 static int
 xmlEscapeContent(unsigned char* out, int *outlen,
                  const xmlChar* in, int *inlen) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2060);
+#endif
     unsigned char* outstart = out;
     const unsigned char* base = in;
     unsigned char* outend = out + *outlen;
@@ -3528,6 +3710,9 @@ xmlEscapeContent(unsigned char* out, int *outlen,
 int
 xmlOutputBufferWriteEscape(xmlOutputBufferPtr out, const xmlChar *str,
                            xmlCharEncodingOutputFunc escaping) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2061);
+#endif
     int nbchars = 0; /* number of chars to output to I/O */
     int ret;         /* return from function call */
     int written = 0; /* number of char written to I/O so far */
@@ -3660,6 +3845,9 @@ done:
  */
 int
 xmlOutputBufferWriteString(xmlOutputBufferPtr out, const char *str) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2062);
+#endif
     int len;
 
     if ((out == NULL) || (out->error)) return(-1);
@@ -3682,6 +3870,9 @@ xmlOutputBufferWriteString(xmlOutputBufferPtr out, const char *str) {
  */
 int
 xmlOutputBufferFlush(xmlOutputBufferPtr out) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2063);
+#endif
     int nbchars = 0, ret = 0;
 
     if ((out == NULL) || (out->error)) return(-1);
@@ -3747,6 +3938,9 @@ xmlOutputBufferFlush(xmlOutputBufferPtr out) {
  */
 char *
 xmlParserGetDirectory(const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2064);
+#endif
     char *ret = NULL;
     char dir[1024];
     char *cur;
@@ -3807,6 +4001,9 @@ xmlParserGetDirectory(const char *filename) {
  */
 xmlParserInputPtr
 xmlCheckHTTPInput(xmlParserCtxtPtr ctxt, xmlParserInputPtr ret) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2065);
+#endif
 #ifdef LIBXML_HTTP_ENABLED
     if ((ret != NULL) && (ret->buf != NULL) &&
         (ret->buf->readcallback == xmlIOHTTPRead) &&
@@ -3868,6 +4065,9 @@ xmlCheckHTTPInput(xmlParserCtxtPtr ctxt, xmlParserInputPtr ret) {
 }
 
 static int xmlNoNetExists(const char *URL) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2066);
+#endif
     const char *path;
 
     if (URL == NULL)
@@ -3908,6 +4108,9 @@ static int xmlNoNetExists(const char *URL) {
 static xmlChar *
 xmlResolveResourceFromCatalog(const char *URL, const char *ID,
                               xmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2067);
+#endif
     xmlChar *resource = NULL;
     xmlCatalogAllow pref;
 
@@ -3983,6 +4186,9 @@ static xmlParserInputPtr
 xmlDefaultExternalEntityLoader(const char *URL, const char *ID,
                                xmlParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2068);
+#endif
     xmlParserInputPtr ret = NULL;
     xmlChar *resource = NULL;
 
@@ -4057,6 +4263,9 @@ xmlGetExternalEntityLoader(void) {
 xmlParserInputPtr
 xmlLoadExternalEntity(const char *URL, const char *ID,
                       xmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2069);
+#endif
     if ((URL != NULL) && (xmlNoNetExists(URL) == 0)) {
 	char *canonicFilename;
 	xmlParserInputPtr ret;
@@ -4094,6 +4303,9 @@ xmlLoadExternalEntity(const char *URL, const char *ID,
 xmlParserInputPtr
 xmlNoNetExternalEntityLoader(const char *URL, const char *ID,
                              xmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2070);
+#endif
     xmlParserInputPtr input = NULL;
     xmlChar *resource = NULL;
 

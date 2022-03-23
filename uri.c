@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /**
  * uri.c: set of generic URI related routines
  *
@@ -36,6 +41,9 @@
 static void
 xmlURIErrMemory(const char *extra)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1187);
+#endif
     if (extra)
         __xmlRaiseError(NULL, NULL, NULL,
                         NULL, NULL, XML_FROM_URI,
@@ -207,6 +215,9 @@ static void xmlCleanURI(xmlURIPtr uri);
  */
 static int
 xmlParse3986Scheme(xmlURIPtr uri, const char **str) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1188);
+#endif
     const char *cur;
 
     if (str == NULL)
@@ -244,6 +255,9 @@ xmlParse3986Scheme(xmlURIPtr uri, const char **str) {
 static int
 xmlParse3986Fragment(xmlURIPtr uri, const char **str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1189);
+#endif
     const char *cur;
 
     if (str == NULL)
@@ -281,6 +295,9 @@ xmlParse3986Fragment(xmlURIPtr uri, const char **str)
 static int
 xmlParse3986Query(xmlURIPtr uri, const char **str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1190);
+#endif
     const char *cur;
 
     if (str == NULL)
@@ -325,6 +342,9 @@ xmlParse3986Query(xmlURIPtr uri, const char **str)
 static int
 xmlParse3986Port(xmlURIPtr uri, const char **str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1191);
+#endif
     const char *cur = *str;
     int port = 0;
 
@@ -364,6 +384,9 @@ xmlParse3986Port(xmlURIPtr uri, const char **str)
 static int
 xmlParse3986Userinfo(xmlURIPtr uri, const char **str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1192);
+#endif
     const char *cur;
 
     cur = *str;
@@ -400,6 +423,9 @@ xmlParse3986Userinfo(xmlURIPtr uri, const char **str)
  */
 static int
 xmlParse3986DecOctet(const char **str) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1193);
+#endif
     const char *cur = *str;
 
     if (!(ISA_DIGIT(cur)))
@@ -439,6 +465,9 @@ xmlParse3986DecOctet(const char **str) {
 static int
 xmlParse3986Host(xmlURIPtr uri, const char **str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1194);
+#endif
     const char *cur = *str;
     const char *host;
 
@@ -515,6 +544,9 @@ found:
 static int
 xmlParse3986Authority(xmlURIPtr uri, const char **str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1195);
+#endif
     const char *cur;
     int ret;
 
@@ -557,6 +589,9 @@ xmlParse3986Authority(xmlURIPtr uri, const char **str)
 static int
 xmlParse3986Segment(const char **str, char forbid, int empty)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1196);
+#endif
     const char *cur;
 
     cur = *str;
@@ -586,6 +621,9 @@ xmlParse3986Segment(const char **str, char forbid, int empty)
 static int
 xmlParse3986PathAbEmpty(xmlURIPtr uri, const char **str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1197);
+#endif
     const char *cur;
     int ret;
 
@@ -626,6 +664,9 @@ xmlParse3986PathAbEmpty(xmlURIPtr uri, const char **str)
 static int
 xmlParse3986PathAbsolute(xmlURIPtr uri, const char **str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1198);
+#endif
     const char *cur;
     int ret;
 
@@ -672,6 +713,9 @@ xmlParse3986PathAbsolute(xmlURIPtr uri, const char **str)
 static int
 xmlParse3986PathRootless(xmlURIPtr uri, const char **str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1199);
+#endif
     const char *cur;
     int ret;
 
@@ -714,6 +758,9 @@ xmlParse3986PathRootless(xmlURIPtr uri, const char **str)
 static int
 xmlParse3986PathNoScheme(xmlURIPtr uri, const char **str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1200);
+#endif
     const char *cur;
     int ret;
 
@@ -759,6 +806,9 @@ xmlParse3986PathNoScheme(xmlURIPtr uri, const char **str)
 static int
 xmlParse3986HierPart(xmlURIPtr uri, const char **str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1201);
+#endif
     const char *cur;
     int ret;
 
@@ -809,6 +859,9 @@ xmlParse3986HierPart(xmlURIPtr uri, const char **str)
  */
 static int
 xmlParse3986RelativeRef(xmlURIPtr uri, const char *str) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1202);
+#endif
     int ret;
 
     if ((*str == '/') && (*(str + 1) == '/')) {
@@ -863,6 +916,9 @@ xmlParse3986RelativeRef(xmlURIPtr uri, const char *str) {
  */
 static int
 xmlParse3986URI(xmlURIPtr uri, const char *str) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1203);
+#endif
     int ret;
 
     ret = xmlParse3986Scheme(uri, &str);
@@ -904,6 +960,9 @@ xmlParse3986URI(xmlURIPtr uri, const char *str) {
  */
 static int
 xmlParse3986URIReference(xmlURIPtr uri, const char *str) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1204);
+#endif
     int ret;
 
     if (str == NULL)
@@ -938,6 +997,9 @@ xmlParse3986URIReference(xmlURIPtr uri, const char *str) {
  */
 xmlURIPtr
 xmlParseURI(const char *str) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1205);
+#endif
     xmlURIPtr uri;
     int ret;
 
@@ -984,6 +1046,9 @@ xmlParseURIReference(xmlURIPtr uri, const char *str) {
  */
 xmlURIPtr
 xmlParseURIRaw(const char *str, int raw) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1206);
+#endif
     xmlURIPtr uri;
     int ret;
 
@@ -1018,6 +1083,9 @@ xmlParseURIRaw(const char *str, int raw) {
  */
 xmlURIPtr
 xmlCreateURI(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1207);
+#endif
     xmlURIPtr ret;
 
     ret = (xmlURIPtr) xmlMalloc(sizeof(xmlURI));
@@ -1037,6 +1105,9 @@ xmlCreateURI(void) {
  */
 static xmlChar *
 xmlSaveUriRealloc(xmlChar *ret, int *max) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1208);
+#endif
     xmlChar *temp;
     int tmp;
 
@@ -1064,6 +1135,9 @@ xmlSaveUriRealloc(xmlChar *ret, int *max) {
  */
 xmlChar *
 xmlSaveUri(xmlURIPtr uri) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1209);
+#endif
     xmlChar *ret = NULL;
     xmlChar *temp;
     const char *p;
@@ -1355,6 +1429,9 @@ xmlPrintURI(FILE *stream, xmlURIPtr uri) {
  */
 static void
 xmlCleanURI(xmlURIPtr uri) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1210);
+#endif
     if (uri == NULL) return;
 
     if (uri->scheme != NULL) xmlFree(uri->scheme);
@@ -1385,6 +1462,9 @@ xmlCleanURI(xmlURIPtr uri) {
  */
 void
 xmlFreeURI(xmlURIPtr uri) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1211);
+#endif
     if (uri == NULL) return;
 
     if (uri->scheme != NULL) xmlFree(uri->scheme);
@@ -1418,6 +1498,9 @@ xmlFreeURI(xmlURIPtr uri) {
  */
 int
 xmlNormalizeURIPath(char *path) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1212);
+#endif
     char *cur, *out;
 
     if (path == NULL)
@@ -1618,6 +1701,9 @@ static int is_hex(char c) {
  */
 char *
 xmlURIUnescapeString(const char *str, int len, char *target) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1213);
+#endif
     char *ret, *out;
     const char *in;
 
@@ -1676,6 +1762,9 @@ xmlURIUnescapeString(const char *str, int len, char *target) {
  */
 xmlChar *
 xmlURIEscapeStr(const xmlChar *str, const xmlChar *list) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1214);
+#endif
     xmlChar *ret, ch;
     xmlChar *temp;
     const xmlChar *in;
@@ -1750,6 +1839,9 @@ xmlURIEscapeStr(const xmlChar *str, const xmlChar *list) {
 xmlChar *
 xmlURIEscape(const xmlChar * str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1215);
+#endif
     xmlChar *ret, *segment = NULL;
     xmlURIPtr uri;
     int ret2;
@@ -1889,6 +1981,9 @@ xmlURIEscape(const xmlChar * str)
  */
 xmlChar *
 xmlBuildURI(const xmlChar *URI, const xmlChar *base) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1216);
+#endif
     xmlChar *val = NULL;
     int ret, len, indx, cur, out;
     xmlURIPtr ref = NULL;
@@ -2171,6 +2266,9 @@ done:
 xmlChar *
 xmlBuildRelativeURI (const xmlChar * URI, const xmlChar * base)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1217);
+#endif
     xmlChar *val = NULL;
     int ret;
     int ix;
@@ -2378,6 +2476,9 @@ done:
 xmlChar *
 xmlCanonicPath(const xmlChar *path)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1218);
+#endif
 /*
  * For Windows implementations, additional work needs to be done to
  * replace backslashes in pathnames with "forward slashes"
@@ -2519,6 +2620,9 @@ path_processing:
 xmlChar *
 xmlPathToURI(const xmlChar *path)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1219);
+#endif
     xmlURIPtr uri;
     xmlURI temp;
     xmlChar *ret, *cal;

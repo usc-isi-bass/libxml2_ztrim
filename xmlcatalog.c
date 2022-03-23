@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * xmlcatalog.c : a small utility program to handle XML catalogs
  *
@@ -62,6 +67,9 @@ static char *filename = NULL;
  */
 static char *
 xmlShellReadline(const char *prompt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(172);
+#endif
 #ifdef HAVE_LIBREADLINE
     char *line_read;
 
@@ -94,6 +102,9 @@ xmlShellReadline(const char *prompt) {
 }
 
 static void usershell(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(173);
+#endif
     char *cmdline = NULL, *cur;
     int nbargs;
     char command[100];
@@ -309,6 +320,9 @@ static void usershell(void) {
  *									*
  ************************************************************************/
 static void usage(const char *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(174);
+#endif
     /* split into 2 printf's to avoid overly long string (gcc warning) */
     printf("\
 Usage : %s [options] catalogfile entities...\n\

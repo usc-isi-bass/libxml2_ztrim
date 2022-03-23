@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * runxmlconf.c: C program to run XML W3C conformance testsuites
  *
@@ -48,6 +53,9 @@ const char *skipped_tests[] = {
  ************************************************************************/
 
 static int checkTestFile(const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1056);
+#endif
     struct stat buf;
 
     if (stat(filename, &buf) == -1)
@@ -109,6 +117,9 @@ static int nbError = 0;
 static int nbFatal = 0;
 
 static void test_log(const char *msg, ...) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1057);
+#endif
     va_list args;
     if (logfile != NULL) {
         fprintf(logfile, "\n------------\n");
@@ -127,6 +138,9 @@ static void test_log(const char *msg, ...) {
 
 static void
 testErrorHandler(void *userData ATTRIBUTE_UNUSED, xmlErrorPtr error) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1058);
+#endif
     int res;
 
     if (testErrorsSize >= 32768)
@@ -153,6 +167,9 @@ static xmlXPathContextPtr ctxtXPath;
 
 static void
 initializeLibxml2(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1059);
+#endif
     xmlGetWarningsDefaultValue = 0;
     xmlPedanticParserDefault(0);
 
@@ -181,6 +198,9 @@ initializeLibxml2(void) {
 
 static int
 xmlconfTestInvalid(const char *id, const char *filename, int options) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1060);
+#endif
     xmlDocPtr doc;
     xmlParserCtxtPtr ctxt;
     int ret = 1;
@@ -211,6 +231,9 @@ xmlconfTestInvalid(const char *id, const char *filename, int options) {
 
 static int
 xmlconfTestValid(const char *id, const char *filename, int options) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1061);
+#endif
     xmlDocPtr doc;
     xmlParserCtxtPtr ctxt;
     int ret = 1;
@@ -243,6 +266,9 @@ xmlconfTestValid(const char *id, const char *filename, int options) {
 
 static int
 xmlconfTestNotNSWF(const char *id, const char *filename, int options) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1062);
+#endif
     xmlDocPtr doc;
     int ret = 1;
 
@@ -271,6 +297,9 @@ xmlconfTestNotNSWF(const char *id, const char *filename, int options) {
 
 static int
 xmlconfTestNotWF(const char *id, const char *filename, int options) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1063);
+#endif
     xmlDocPtr doc;
     int ret = 1;
 
@@ -287,6 +316,9 @@ xmlconfTestNotWF(const char *id, const char *filename, int options) {
 
 static int
 xmlconfTestItem(xmlDocPtr doc, xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1064);
+#endif
     int ret = -1;
     xmlChar *type = NULL;
     xmlChar *filename = NULL;
@@ -439,6 +471,9 @@ error:
 
 static int
 xmlconfTestCases(xmlDocPtr doc, xmlNodePtr cur, int level) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1065);
+#endif
     xmlChar *profile;
     int ret = 0;
     int tests = 0;
@@ -478,6 +513,9 @@ xmlconfTestCases(xmlDocPtr doc, xmlNodePtr cur, int level) {
 
 static int
 xmlconfTestSuite(xmlDocPtr doc, xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1066);
+#endif
     xmlChar *profile;
     int ret = 0;
 
@@ -512,6 +550,9 @@ xmlconfInfo(void) {
 
 static int
 xmlconfTest(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1067);
+#endif
     const char *confxml = "xmlconf/xmlconf.xml";
     xmlDocPtr doc;
     xmlNodePtr cur;

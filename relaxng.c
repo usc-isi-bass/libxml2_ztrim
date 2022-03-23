@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * relaxng.c : implementation of the Relax-NG handling and validity checking
  *
@@ -91,6 +96,9 @@ typedef struct _xmlRelaxNGInclude xmlRelaxNGInclude;
 typedef xmlRelaxNGInclude *xmlRelaxNGIncludePtr;
 
 typedef enum {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(17);
+#endif
     XML_RELAXNG_COMBINE_UNDEFINED = 0,  /* undefined */
     XML_RELAXNG_COMBINE_CHOICE, /* choice */
     XML_RELAXNG_COMBINE_INTERLEAVE      /* interleave */
@@ -437,6 +445,9 @@ struct _xmlRelaxNGDocument {
 static void
 xmlRngPErrMemory(xmlRelaxNGParserCtxtPtr ctxt, const char *extra)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(18);
+#endif
     xmlStructuredErrorFunc schannel = NULL;
     xmlGenericErrorFunc channel = NULL;
     void *data = NULL;
@@ -472,6 +483,9 @@ xmlRngPErrMemory(xmlRelaxNGParserCtxtPtr ctxt, const char *extra)
 static void
 xmlRngVErrMemory(xmlRelaxNGValidCtxtPtr ctxt, const char *extra)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(19);
+#endif
     xmlStructuredErrorFunc schannel = NULL;
     xmlGenericErrorFunc channel = NULL;
     void *data = NULL;
@@ -512,6 +526,9 @@ static void LIBXML_ATTR_FORMAT(4,0)
 xmlRngPErr(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node, int error,
            const char *msg, const xmlChar * str1, const xmlChar * str2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(20);
+#endif
     xmlStructuredErrorFunc schannel = NULL;
     xmlGenericErrorFunc channel = NULL;
     void *data = NULL;
@@ -546,6 +563,9 @@ static void LIBXML_ATTR_FORMAT(4,0)
 xmlRngVErr(xmlRelaxNGValidCtxtPtr ctxt, xmlNodePtr node, int error,
            const char *msg, const xmlChar * str1, const xmlChar * str2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(21);
+#endif
     xmlStructuredErrorFunc schannel = NULL;
     xmlGenericErrorFunc channel = NULL;
     void *data = NULL;
@@ -646,6 +666,9 @@ typedef int (*xmlRelaxNGTypeCompare) (void *data, const xmlChar * type,
 typedef struct _xmlRelaxNGTypeLibrary xmlRelaxNGTypeLibrary;
 typedef xmlRelaxNGTypeLibrary *xmlRelaxNGTypeLibraryPtr;
 struct _xmlRelaxNGTypeLibrary {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(22);
+#endif
     const xmlChar *namespace;   /* the datatypeLibrary value */
     void *data;                 /* data needed for the library */
     xmlRelaxNGTypeHave have;    /* the export function */
@@ -680,6 +703,9 @@ static void xmlRelaxNGFreeValidState(xmlRelaxNGValidCtxtPtr ctxt,
 static void
 xmlRelaxNGFreeDocument(xmlRelaxNGDocumentPtr docu)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(23);
+#endif
     if (docu == NULL)
         return;
 
@@ -701,6 +727,9 @@ xmlRelaxNGFreeDocument(xmlRelaxNGDocumentPtr docu)
 static void
 xmlRelaxNGFreeDocumentList(xmlRelaxNGDocumentPtr docu)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(24);
+#endif
     xmlRelaxNGDocumentPtr next;
 
     while (docu != NULL) {
@@ -719,6 +748,9 @@ xmlRelaxNGFreeDocumentList(xmlRelaxNGDocumentPtr docu)
 static void
 xmlRelaxNGFreeInclude(xmlRelaxNGIncludePtr incl)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(25);
+#endif
     if (incl == NULL)
         return;
 
@@ -740,6 +772,9 @@ xmlRelaxNGFreeInclude(xmlRelaxNGIncludePtr incl)
 static void
 xmlRelaxNGFreeIncludeList(xmlRelaxNGIncludePtr incl)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(26);
+#endif
     xmlRelaxNGIncludePtr next;
 
     while (incl != NULL) {
@@ -760,6 +795,9 @@ xmlRelaxNGFreeIncludeList(xmlRelaxNGIncludePtr incl)
 static xmlRelaxNGPtr
 xmlRelaxNGNewRelaxNG(xmlRelaxNGParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(27);
+#endif
     xmlRelaxNGPtr ret;
 
     ret = (xmlRelaxNGPtr) xmlMalloc(sizeof(xmlRelaxNG));
@@ -781,6 +819,9 @@ xmlRelaxNGNewRelaxNG(xmlRelaxNGParserCtxtPtr ctxt)
 static void
 xmlRelaxNGFreeInnerSchema(xmlRelaxNGPtr schema)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(28);
+#endif
     if (schema == NULL)
         return;
 
@@ -806,6 +847,9 @@ xmlRelaxNGFreeInnerSchema(xmlRelaxNGPtr schema)
 void
 xmlRelaxNGFree(xmlRelaxNGPtr schema)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(29);
+#endif
     if (schema == NULL)
         return;
 
@@ -839,6 +883,9 @@ xmlRelaxNGFree(xmlRelaxNGPtr schema)
 static xmlRelaxNGGrammarPtr
 xmlRelaxNGNewGrammar(xmlRelaxNGParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(30);
+#endif
     xmlRelaxNGGrammarPtr ret;
 
     ret = (xmlRelaxNGGrammarPtr) xmlMalloc(sizeof(xmlRelaxNGGrammar));
@@ -860,6 +907,9 @@ xmlRelaxNGNewGrammar(xmlRelaxNGParserCtxtPtr ctxt)
 static void
 xmlRelaxNGFreeGrammar(xmlRelaxNGGrammarPtr grammar)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(31);
+#endif
     if (grammar == NULL)
         return;
 
@@ -891,6 +941,9 @@ xmlRelaxNGFreeGrammar(xmlRelaxNGGrammarPtr grammar)
 static xmlRelaxNGDefinePtr
 xmlRelaxNGNewDefine(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(32);
+#endif
     xmlRelaxNGDefinePtr ret;
 
     if (ctxt->defMax == 0) {
@@ -937,6 +990,9 @@ xmlRelaxNGNewDefine(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 static void
 xmlRelaxNGFreePartition(xmlRelaxNGPartitionPtr partitions)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(33);
+#endif
     xmlRelaxNGInterleaveGroupPtr group;
     int j;
 
@@ -970,6 +1026,9 @@ xmlRelaxNGFreePartition(xmlRelaxNGPartitionPtr partitions)
 static void
 xmlRelaxNGFreeDefine(xmlRelaxNGDefinePtr define)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(34);
+#endif
     if (define == NULL)
         return;
 
@@ -1007,6 +1066,9 @@ xmlRelaxNGFreeDefine(xmlRelaxNGDefinePtr define)
 static xmlRelaxNGStatesPtr
 xmlRelaxNGNewStates(xmlRelaxNGValidCtxtPtr ctxt, int size)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(35);
+#endif
     xmlRelaxNGStatesPtr ret;
 
     if ((ctxt != NULL) &&
@@ -1056,6 +1118,9 @@ xmlRelaxNGAddStatesUniq(xmlRelaxNGValidCtxtPtr ctxt,
                         xmlRelaxNGStatesPtr states,
                         xmlRelaxNGValidStatePtr state)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(36);
+#endif
     if (state == NULL) {
         return (-1);
     }
@@ -1094,6 +1159,9 @@ xmlRelaxNGAddStates(xmlRelaxNGValidCtxtPtr ctxt,
                     xmlRelaxNGStatesPtr states,
                     xmlRelaxNGValidStatePtr state)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(37);
+#endif
     int i;
 
     if (state == NULL || states == NULL) {
@@ -1136,6 +1204,9 @@ static void
 xmlRelaxNGFreeStates(xmlRelaxNGValidCtxtPtr ctxt,
                      xmlRelaxNGStatesPtr states)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(38);
+#endif
     if (states == NULL)
         return;
     if ((ctxt != NULL) && (ctxt->freeStates == NULL)) {
@@ -1183,6 +1254,9 @@ xmlRelaxNGFreeStates(xmlRelaxNGValidCtxtPtr ctxt,
 static xmlRelaxNGValidStatePtr
 xmlRelaxNGNewValidState(xmlRelaxNGValidCtxtPtr ctxt, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(39);
+#endif
     xmlRelaxNGValidStatePtr ret;
     xmlAttrPtr attr;
     xmlAttrPtr attrs[MAX_ATTR];
@@ -1279,6 +1353,9 @@ static xmlRelaxNGValidStatePtr
 xmlRelaxNGCopyValidState(xmlRelaxNGValidCtxtPtr ctxt,
                          xmlRelaxNGValidStatePtr state)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(40);
+#endif
     xmlRelaxNGValidStatePtr ret;
     unsigned int maxAttrs;
     xmlAttrPtr *attrs;
@@ -1347,6 +1424,9 @@ xmlRelaxNGEqualValidState(xmlRelaxNGValidCtxtPtr ctxt ATTRIBUTE_UNUSED,
                           xmlRelaxNGValidStatePtr state1,
                           xmlRelaxNGValidStatePtr state2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(41);
+#endif
     int i;
 
     if ((state1 == NULL) || (state2 == NULL))
@@ -1383,6 +1463,9 @@ static void
 xmlRelaxNGFreeValidState(xmlRelaxNGValidCtxtPtr ctxt,
                          xmlRelaxNGValidStatePtr state)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(42);
+#endif
     if (state == NULL)
         return;
 
@@ -1417,6 +1500,9 @@ xmlRelaxNGFreeValidState(xmlRelaxNGValidCtxtPtr ctxt,
 int
 xmlRelaxParserSetFlag(xmlRelaxNGParserCtxtPtr ctxt, int flags)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(43);
+#endif
     if (ctxt == NULL) return(-1);
     if (flags & XML_RELAXNGP_FREE_DOC) {
         ctxt->crng |= XML_RELAXNGP_FREE_DOC;
@@ -1451,6 +1537,9 @@ static int
 xmlRelaxNGIncludePush(xmlRelaxNGParserCtxtPtr ctxt,
                       xmlRelaxNGIncludePtr value)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(44);
+#endif
     if (ctxt->incTab == NULL) {
         ctxt->incMax = 4;
         ctxt->incNr = 0;
@@ -1489,6 +1578,9 @@ xmlRelaxNGIncludePush(xmlRelaxNGParserCtxtPtr ctxt,
 static xmlRelaxNGIncludePtr
 xmlRelaxNGIncludePop(xmlRelaxNGParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(45);
+#endif
     xmlRelaxNGIncludePtr ret;
 
     if (ctxt->incNr <= 0)
@@ -1519,6 +1611,9 @@ xmlRelaxNGRemoveRedefine(xmlRelaxNGParserCtxtPtr ctxt,
                          const xmlChar * URL ATTRIBUTE_UNUSED,
                          xmlNodePtr target, const xmlChar * name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(46);
+#endif
     int found = 0;
     xmlNodePtr tmp, tmp2;
     xmlChar *name2;
@@ -1599,6 +1694,9 @@ static xmlRelaxNGIncludePtr
 xmlRelaxNGLoadInclude(xmlRelaxNGParserCtxtPtr ctxt, const xmlChar * URL,
                       xmlNodePtr node, const xmlChar * ns)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(47);
+#endif
     xmlRelaxNGIncludePtr ret = NULL;
     xmlDocPtr doc;
     int i;
@@ -1777,6 +1875,9 @@ xmlRelaxNGValidErrorPush(xmlRelaxNGValidCtxtPtr ctxt,
                          xmlRelaxNGValidErr err, const xmlChar * arg1,
                          const xmlChar * arg2, int dup)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(48);
+#endif
     xmlRelaxNGValidErrorPtr cur;
 
 #ifdef DEBUG_ERROR
@@ -1843,6 +1944,9 @@ xmlRelaxNGValidErrorPush(xmlRelaxNGValidCtxtPtr ctxt,
 static void
 xmlRelaxNGValidErrorPop(xmlRelaxNGValidCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(49);
+#endif
     xmlRelaxNGValidErrorPtr cur;
 
     if (ctxt->errNr <= 0) {
@@ -1879,6 +1983,9 @@ static int
 xmlRelaxNGDocumentPush(xmlRelaxNGParserCtxtPtr ctxt,
                        xmlRelaxNGDocumentPtr value)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(50);
+#endif
     if (ctxt->docTab == NULL) {
         ctxt->docMax = 4;
         ctxt->docNr = 0;
@@ -1917,6 +2024,9 @@ xmlRelaxNGDocumentPush(xmlRelaxNGParserCtxtPtr ctxt,
 static xmlRelaxNGDocumentPtr
 xmlRelaxNGDocumentPop(xmlRelaxNGParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(51);
+#endif
     xmlRelaxNGDocumentPtr ret;
 
     if (ctxt->docNr <= 0)
@@ -1947,6 +2057,9 @@ static xmlRelaxNGDocumentPtr
 xmlRelaxNGLoadExternalRef(xmlRelaxNGParserCtxtPtr ctxt,
                           const xmlChar * URL, const xmlChar * ns)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(52);
+#endif
     xmlRelaxNGDocumentPtr ret = NULL;
     xmlDocPtr doc;
     xmlNodePtr root;
@@ -2037,6 +2150,9 @@ xmlRelaxNGLoadExternalRef(xmlRelaxNGParserCtxtPtr ctxt,
 static const char *
 xmlRelaxNGDefName(xmlRelaxNGDefinePtr def)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(53);
+#endif
     if (def == NULL)
         return ("none");
     switch (def->type) {
@@ -2102,6 +2218,9 @@ static xmlChar *
 xmlRelaxNGGetErrorString(xmlRelaxNGValidErr err, const xmlChar * arg1,
                          const xmlChar * arg2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(54);
+#endif
     char msg[1000];
     xmlChar *result;
 
@@ -2252,6 +2371,9 @@ xmlRelaxNGShowValidError(xmlRelaxNGValidCtxtPtr ctxt,
                          xmlNodePtr child, const xmlChar * arg1,
                          const xmlChar * arg2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(55);
+#endif
     xmlChar *msg;
 
     if (ctxt->flags & FLAGS_NOERROR)
@@ -2281,6 +2403,9 @@ xmlRelaxNGShowValidError(xmlRelaxNGValidCtxtPtr ctxt,
 static void
 xmlRelaxNGPopErrors(xmlRelaxNGValidCtxtPtr ctxt, int level)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(56);
+#endif
     int i;
     xmlRelaxNGValidErrorPtr err;
 
@@ -2314,6 +2439,9 @@ xmlRelaxNGPopErrors(xmlRelaxNGValidCtxtPtr ctxt, int level)
 static void
 xmlRelaxNGDumpValidError(xmlRelaxNGValidCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(57);
+#endif
     int i, j, k;
     xmlRelaxNGValidErrorPtr err, dup;
 
@@ -2366,6 +2494,9 @@ xmlRelaxNGAddValidError(xmlRelaxNGValidCtxtPtr ctxt,
                         xmlRelaxNGValidErr err, const xmlChar * arg1,
                         const xmlChar * arg2, int dup)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(58);
+#endif
     if (ctxt == NULL)
         return;
     if (ctxt->flags & FLAGS_NOERROR)
@@ -2428,6 +2559,9 @@ static xmlChar *xmlRelaxNGNormalize(xmlRelaxNGValidCtxtPtr ctxt,
 static int
 xmlRelaxNGSchemaTypeHave(void *data ATTRIBUTE_UNUSED, const xmlChar * type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(59);
+#endif
     xmlSchemaTypePtr typ;
 
     if (type == NULL)
@@ -2458,6 +2592,9 @@ xmlRelaxNGSchemaTypeCheck(void *data ATTRIBUTE_UNUSED,
                           const xmlChar * value,
                           void **result, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(60);
+#endif
     xmlSchemaTypePtr typ;
     int ret;
 
@@ -2498,6 +2635,9 @@ xmlRelaxNGSchemaFacetCheck(void *data ATTRIBUTE_UNUSED,
                            const xmlChar * val, const xmlChar * strval,
                            void *value)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(61);
+#endif
     xmlSchemaFacetPtr facet;
     xmlSchemaTypePtr typ;
     int ret;
@@ -2590,6 +2730,9 @@ xmlRelaxNGSchemaTypeCompare(void *data ATTRIBUTE_UNUSED,
                             void *comp1,
                             const xmlChar * value2, xmlNodePtr ctxt2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(62);
+#endif
     int ret;
     xmlSchemaTypePtr typ;
     xmlSchemaValPtr res1 = NULL, res2 = NULL;
@@ -2641,6 +2784,9 @@ static int
 xmlRelaxNGDefaultTypeHave(void *data ATTRIBUTE_UNUSED,
                           const xmlChar * type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(63);
+#endif
     if (type == NULL)
         return (-1);
     if (xmlStrEqual(type, BAD_CAST "string"))
@@ -2669,6 +2815,9 @@ xmlRelaxNGDefaultTypeCheck(void *data ATTRIBUTE_UNUSED,
                            void **result ATTRIBUTE_UNUSED,
                            xmlNodePtr node ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(64);
+#endif
     if (value == NULL)
         return (-1);
     if (xmlStrEqual(type, BAD_CAST "string"))
@@ -2701,6 +2850,9 @@ xmlRelaxNGDefaultTypeCompare(void *data ATTRIBUTE_UNUSED,
                              const xmlChar * value2,
                              xmlNodePtr ctxt2 ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(65);
+#endif
     int ret = -1;
 
     if (xmlStrEqual(type, BAD_CAST "string")) {
@@ -2746,6 +2898,9 @@ static void
 xmlRelaxNGFreeTypeLibrary(void *payload,
                           const xmlChar * namespace ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(66);
+#endif
     xmlRelaxNGTypeLibraryPtr lib = (xmlRelaxNGTypeLibraryPtr) payload;
     if (lib == NULL)
         return;
@@ -2774,6 +2929,9 @@ xmlRelaxNGRegisterTypeLibrary(const xmlChar * namespace, void *data,
                               xmlRelaxNGFacetCheck facet,
                               xmlRelaxNGTypeFree freef)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(67);
+#endif
     xmlRelaxNGTypeLibraryPtr lib;
     int ret;
 
@@ -2822,6 +2980,9 @@ xmlRelaxNGRegisterTypeLibrary(const xmlChar * namespace, void *data,
 int
 xmlRelaxNGInitTypes(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(68);
+#endif
     if (xmlRelaxNGTypeInitialized != 0)
         return (0);
     xmlRelaxNGRegisteredTypes = xmlHashCreate(10);
@@ -2888,6 +3049,9 @@ static int xmlRelaxNGTryCompile(xmlRelaxNGParserCtxtPtr ctxt,
 static int
 xmlRelaxNGIsCompilable(xmlRelaxNGDefinePtr def)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(69);
+#endif
     int ret = -1;
 
     if (def == NULL) {
@@ -3039,6 +3203,9 @@ xmlRelaxNGIsCompilable(xmlRelaxNGDefinePtr def)
 static int
 xmlRelaxNGCompile(xmlRelaxNGParserCtxtPtr ctxt, xmlRelaxNGDefinePtr def)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(70);
+#endif
     int ret = 0;
     xmlRelaxNGDefinePtr list;
 
@@ -3265,6 +3432,9 @@ xmlRelaxNGCompile(xmlRelaxNGParserCtxtPtr ctxt, xmlRelaxNGDefinePtr def)
 static int
 xmlRelaxNGTryCompile(xmlRelaxNGParserCtxtPtr ctxt, xmlRelaxNGDefinePtr def)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(71);
+#endif
     int ret = 0;
     xmlRelaxNGDefinePtr list;
 
@@ -3382,6 +3552,9 @@ static int xmlRelaxNGElementMatch(xmlRelaxNGValidCtxtPtr ctxt,
 static int
 xmlRelaxNGIsNullable(xmlRelaxNGDefinePtr define)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(72);
+#endif
     int ret;
 
     if (define == NULL)
@@ -3461,6 +3634,9 @@ xmlRelaxNGIsNullable(xmlRelaxNGDefinePtr define)
 static int
 xmlRelaxNGIsBlank(xmlChar * str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(73);
+#endif
     if (str == NULL)
         return (1);
     while (*str != 0) {
@@ -3484,6 +3660,9 @@ static xmlChar *
 xmlRelaxNGGetDataTypeLibrary(xmlRelaxNGParserCtxtPtr ctxt ATTRIBUTE_UNUSED,
                              xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(74);
+#endif
     xmlChar *ret, *escape;
 
     if (node == NULL)
@@ -3536,6 +3715,9 @@ xmlRelaxNGGetDataTypeLibrary(xmlRelaxNGParserCtxtPtr ctxt ATTRIBUTE_UNUSED,
 static xmlRelaxNGDefinePtr
 xmlRelaxNGParseValue(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(75);
+#endif
     xmlRelaxNGDefinePtr def = NULL;
     xmlRelaxNGTypeLibraryPtr lib = NULL;
     xmlChar *type;
@@ -3628,6 +3810,9 @@ xmlRelaxNGParseValue(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 static xmlRelaxNGDefinePtr
 xmlRelaxNGParseData(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(76);
+#endif
     xmlRelaxNGDefinePtr def = NULL, except;
     xmlRelaxNGDefinePtr param, lastparam = NULL;
     xmlRelaxNGTypeLibraryPtr lib;
@@ -3794,6 +3979,9 @@ static int
 xmlRelaxNGCompareNameClasses(xmlRelaxNGDefinePtr def1,
                              xmlRelaxNGDefinePtr def2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(77);
+#endif
     int ret = 1;
     xmlNode node;
     xmlNs ns;
@@ -3896,6 +4084,9 @@ xmlRelaxNGCompareElemDefLists(xmlRelaxNGParserCtxtPtr ctxt
                               ATTRIBUTE_UNUSED, xmlRelaxNGDefinePtr * def1,
                               xmlRelaxNGDefinePtr * def2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(78);
+#endif
     xmlRelaxNGDefinePtr *basedef2 = def2;
 
     if ((def1 == NULL) || (def2 == NULL))
@@ -3927,6 +4118,9 @@ static int
 xmlRelaxNGGenerateAttributes(xmlRelaxNGParserCtxtPtr ctxt,
                              xmlRelaxNGDefinePtr def)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(79);
+#endif
     xmlRelaxNGDefinePtr parent, cur, tmp;
 
     /*
@@ -4003,6 +4197,9 @@ static xmlRelaxNGDefinePtr *
 xmlRelaxNGGetElements(xmlRelaxNGParserCtxtPtr ctxt,
                       xmlRelaxNGDefinePtr def, int eora)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(80);
+#endif
     xmlRelaxNGDefinePtr *ret = NULL, parent, cur, tmp;
     int len = 0;
     int max = 0;
@@ -4105,6 +4302,9 @@ static void
 xmlRelaxNGCheckChoiceDeterminism(xmlRelaxNGParserCtxtPtr ctxt,
                                  xmlRelaxNGDefinePtr def)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(81);
+#endif
     xmlRelaxNGDefinePtr **list;
     xmlRelaxNGDefinePtr cur;
     int nbchild = 0, i, j, ret;
@@ -4241,6 +4441,9 @@ static void
 xmlRelaxNGCheckGroupAttrs(xmlRelaxNGParserCtxtPtr ctxt,
                           xmlRelaxNGDefinePtr def)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(82);
+#endif
     xmlRelaxNGDefinePtr **list;
     xmlRelaxNGDefinePtr cur;
     int nbchild = 0, i, j, ret;
@@ -4333,6 +4536,9 @@ static void
 xmlRelaxNGComputeInterleaves(void *payload, void *data,
                              const xmlChar * name ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(83);
+#endif
     xmlRelaxNGDefinePtr def = (xmlRelaxNGDefinePtr) payload;
     xmlRelaxNGParserCtxtPtr ctxt = (xmlRelaxNGParserCtxtPtr) data;
     xmlRelaxNGDefinePtr cur, *tmp;
@@ -4502,6 +4708,9 @@ xmlRelaxNGComputeInterleaves(void *payload, void *data,
 static xmlRelaxNGDefinePtr
 xmlRelaxNGParseInterleave(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(84);
+#endif
     xmlRelaxNGDefinePtr def = NULL;
     xmlRelaxNGDefinePtr last = NULL, cur;
     xmlNodePtr child;
@@ -4564,6 +4773,9 @@ xmlRelaxNGParseInterleave(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 static int
 xmlRelaxNGParseInclude(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(85);
+#endif
     xmlRelaxNGIncludePtr incl;
     xmlNodePtr root;
     int ret = 0, tmp;
@@ -4614,6 +4826,9 @@ xmlRelaxNGParseInclude(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 static int
 xmlRelaxNGParseDefine(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(86);
+#endif
     xmlChar *name;
     int ret = 0, tmp;
     xmlRelaxNGDefinePtr def;
@@ -4684,6 +4899,9 @@ xmlRelaxNGParseDefine(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
  */
 static void
 xmlRelaxNGParseImportRef(void *payload, void *data, const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(87);
+#endif
     xmlRelaxNGParserCtxtPtr ctxt = (xmlRelaxNGParserCtxtPtr) data;
     xmlRelaxNGDefinePtr def = (xmlRelaxNGDefinePtr) payload;
     int tmp;
@@ -4725,6 +4943,9 @@ xmlRelaxNGParseImportRef(void *payload, void *data, const xmlChar *name) {
 static int
 xmlRelaxNGParseImportRefs(xmlRelaxNGParserCtxtPtr ctxt,
                           xmlRelaxNGGrammarPtr grammar) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(88);
+#endif
     if ((ctxt == NULL) || (grammar == NULL) || (ctxt->grammar == NULL))
         return(-1);
     if (grammar->refs == NULL)
@@ -4752,6 +4973,9 @@ xmlRelaxNGParseImportRefs(xmlRelaxNGParserCtxtPtr ctxt,
 static xmlRelaxNGDefinePtr
 xmlRelaxNGProcessExternalRef(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(89);
+#endif
     xmlRelaxNGDocumentPtr docu;
     xmlNodePtr root, tmp;
     xmlChar *ns;
@@ -4839,6 +5063,9 @@ xmlRelaxNGProcessExternalRef(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 static xmlRelaxNGDefinePtr
 xmlRelaxNGParsePattern(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(90);
+#endif
     xmlRelaxNGDefinePtr def = NULL;
 
     if (node == NULL) {
@@ -5138,6 +5365,9 @@ xmlRelaxNGParsePattern(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 static xmlRelaxNGDefinePtr
 xmlRelaxNGParseAttribute(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(91);
+#endif
     xmlRelaxNGDefinePtr ret, cur;
     xmlNodePtr child;
     int old_flags;
@@ -5223,6 +5453,9 @@ static xmlRelaxNGDefinePtr
 xmlRelaxNGParseExceptNameClass(xmlRelaxNGParserCtxtPtr ctxt,
                                xmlNodePtr node, int attr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(92);
+#endif
     xmlRelaxNGDefinePtr ret, cur, last = NULL;
     xmlNodePtr child;
 
@@ -5284,6 +5517,9 @@ static xmlRelaxNGDefinePtr
 xmlRelaxNGParseNameClass(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node,
                          xmlRelaxNGDefinePtr def)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(93);
+#endif
     xmlRelaxNGDefinePtr ret, tmp;
     xmlChar *val;
 
@@ -5428,6 +5664,9 @@ xmlRelaxNGParseNameClass(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node,
 static xmlRelaxNGDefinePtr
 xmlRelaxNGParseElement(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(94);
+#endif
     xmlRelaxNGDefinePtr ret, cur, last;
     xmlNodePtr child;
     const xmlChar *olddefine;
@@ -5542,6 +5781,9 @@ static xmlRelaxNGDefinePtr
 xmlRelaxNGParsePatterns(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr nodes,
                         int group)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(95);
+#endif
     xmlRelaxNGDefinePtr def = NULL, last = NULL, cur, parent;
 
     parent = ctxt->def;
@@ -5593,6 +5835,9 @@ xmlRelaxNGParsePatterns(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr nodes,
 static int
 xmlRelaxNGParseStart(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr nodes)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(96);
+#endif
     int ret = 0;
     xmlRelaxNGDefinePtr def = NULL, last;
 
@@ -5652,6 +5897,9 @@ static int
 xmlRelaxNGParseGrammarContent(xmlRelaxNGParserCtxtPtr ctxt,
                               xmlNodePtr nodes)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(97);
+#endif
     int ret = 0, tmp;
 
     if (nodes == NULL) {
@@ -5700,6 +5948,9 @@ xmlRelaxNGParseGrammarContent(xmlRelaxNGParserCtxtPtr ctxt,
 static void
 xmlRelaxNGCheckReference(void *payload, void *data, const xmlChar * name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(98);
+#endif
     xmlRelaxNGDefinePtr ref = (xmlRelaxNGDefinePtr) payload;
     xmlRelaxNGParserCtxtPtr ctxt = (xmlRelaxNGParserCtxtPtr) data;
     xmlRelaxNGGrammarPtr grammar;
@@ -5756,6 +6007,9 @@ xmlRelaxNGCheckReference(void *payload, void *data, const xmlChar * name)
 static void
 xmlRelaxNGCheckCombine(void *payload, void *data, const xmlChar * name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(99);
+#endif
     xmlRelaxNGDefinePtr define = (xmlRelaxNGDefinePtr) payload;
     xmlRelaxNGParserCtxtPtr ctxt = (xmlRelaxNGParserCtxtPtr) data;
     xmlChar *combine;
@@ -5877,6 +6131,9 @@ static void
 xmlRelaxNGCombineStart(xmlRelaxNGParserCtxtPtr ctxt,
                        xmlRelaxNGGrammarPtr grammar)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(100);
+#endif
     xmlRelaxNGDefinePtr starts;
     xmlChar *combine;
     int choiceOrInterleave = -1;
@@ -5984,6 +6241,9 @@ static int
 xmlRelaxNGCheckCycles(xmlRelaxNGParserCtxtPtr ctxt,
                       xmlRelaxNGDefinePtr cur, int depth)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(101);
+#endif
     int ret = 0;
 
     while ((ret == 0) && (cur != NULL)) {
@@ -6025,6 +6285,9 @@ xmlRelaxNGTryUnlink(xmlRelaxNGParserCtxtPtr ctxt ATTRIBUTE_UNUSED,
                     xmlRelaxNGDefinePtr cur,
                     xmlRelaxNGDefinePtr parent, xmlRelaxNGDefinePtr prev)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(102);
+#endif
     if (prev != NULL) {
         prev->next = cur->next;
     } else {
@@ -6054,6 +6317,9 @@ static void
 xmlRelaxNGSimplify(xmlRelaxNGParserCtxtPtr ctxt,
                    xmlRelaxNGDefinePtr cur, xmlRelaxNGDefinePtr parent)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(103);
+#endif
     xmlRelaxNGDefinePtr prev = NULL;
 
     while (cur != NULL) {
@@ -6222,6 +6488,9 @@ static xmlRelaxNGContentType
 xmlRelaxNGGroupContentType(xmlRelaxNGContentType ct1,
                            xmlRelaxNGContentType ct2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(104);
+#endif
     if ((ct1 == XML_RELAXNG_CONTENT_ERROR) ||
         (ct2 == XML_RELAXNG_CONTENT_ERROR))
         return (XML_RELAXNG_CONTENT_ERROR);
@@ -6248,6 +6517,9 @@ static xmlRelaxNGContentType
 xmlRelaxNGMaxContentType(xmlRelaxNGContentType ct1,
                          xmlRelaxNGContentType ct2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(105);
+#endif
     if ((ct1 == XML_RELAXNG_CONTENT_ERROR) ||
         (ct2 == XML_RELAXNG_CONTENT_ERROR))
         return (XML_RELAXNG_CONTENT_ERROR);
@@ -6276,6 +6548,9 @@ xmlRelaxNGCheckRules(xmlRelaxNGParserCtxtPtr ctxt,
                      xmlRelaxNGDefinePtr cur, int flags,
                      xmlRelaxNGType ptype)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(106);
+#endif
     int nflags;
     xmlRelaxNGContentType ret, tmp, val = XML_RELAXNG_CONTENT_EMPTY;
 
@@ -6601,6 +6876,9 @@ xmlRelaxNGCheckRules(xmlRelaxNGParserCtxtPtr ctxt,
 static xmlRelaxNGGrammarPtr
 xmlRelaxNGParseGrammar(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr nodes)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(107);
+#endif
     xmlRelaxNGGrammarPtr ret, tmp, old;
 
 #ifdef DEBUG_GRAMMAR
@@ -6674,6 +6952,9 @@ xmlRelaxNGParseGrammar(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr nodes)
 static xmlRelaxNGPtr
 xmlRelaxNGParseDocument(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(108);
+#endif
     xmlRelaxNGPtr schema = NULL;
     const xmlChar *olddefine;
     xmlRelaxNGGrammarPtr old;
@@ -6762,6 +7043,9 @@ xmlRelaxNGParseDocument(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 xmlRelaxNGParserCtxtPtr
 xmlRelaxNGNewParserCtxt(const char *URL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(109);
+#endif
     xmlRelaxNGParserCtxtPtr ret;
 
     if (URL == NULL)
@@ -6793,6 +7077,9 @@ xmlRelaxNGNewParserCtxt(const char *URL)
 xmlRelaxNGParserCtxtPtr
 xmlRelaxNGNewMemParserCtxt(const char *buffer, int size)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(110);
+#endif
     xmlRelaxNGParserCtxtPtr ret;
 
     if ((buffer == NULL) || (size <= 0))
@@ -6825,6 +7112,9 @@ xmlRelaxNGNewMemParserCtxt(const char *buffer, int size)
 xmlRelaxNGParserCtxtPtr
 xmlRelaxNGNewDocParserCtxt(xmlDocPtr doc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(111);
+#endif
     xmlRelaxNGParserCtxtPtr ret;
     xmlDocPtr copy;
 
@@ -6856,6 +7146,9 @@ xmlRelaxNGNewDocParserCtxt(xmlDocPtr doc)
 void
 xmlRelaxNGFreeParserCtxt(xmlRelaxNGParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(112);
+#endif
     if (ctxt == NULL)
         return;
     if (ctxt->URL != NULL)
@@ -6894,6 +7187,9 @@ xmlRelaxNGFreeParserCtxt(xmlRelaxNGParserCtxtPtr ctxt)
 static void
 xmlRelaxNGNormExtSpace(xmlChar * value)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(113);
+#endif
     xmlChar *start = value;
     xmlChar *cur = value;
 
@@ -6946,6 +7242,9 @@ xmlRelaxNGNormExtSpace(xmlChar * value)
 static void
 xmlRelaxNGCleanupAttributes(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(114);
+#endif
     xmlAttrPtr cur, next;
 
     cur = node->properties;
@@ -7034,6 +7333,9 @@ xmlRelaxNGCleanupAttributes(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr node)
 static void
 xmlRelaxNGCleanupTree(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr root)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(115);
+#endif
     xmlNodePtr cur, delete;
 
     delete = NULL;
@@ -7477,6 +7779,9 @@ xmlRelaxNGCleanupTree(xmlRelaxNGParserCtxtPtr ctxt, xmlNodePtr root)
 static xmlDocPtr
 xmlRelaxNGCleanupDoc(xmlRelaxNGParserCtxtPtr ctxt, xmlDocPtr doc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(116);
+#endif
     xmlNodePtr root;
 
     /*
@@ -7505,6 +7810,9 @@ xmlRelaxNGCleanupDoc(xmlRelaxNGParserCtxtPtr ctxt, xmlDocPtr doc)
 xmlRelaxNGPtr
 xmlRelaxNGParse(xmlRelaxNGParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(117);
+#endif
     xmlRelaxNGPtr ret = NULL;
     xmlDocPtr doc;
     xmlNodePtr root;
@@ -7644,6 +7952,9 @@ xmlRelaxNGSetParserErrors(xmlRelaxNGParserCtxtPtr ctxt,
                           xmlRelaxNGValidityErrorFunc err,
                           xmlRelaxNGValidityWarningFunc warn, void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(118);
+#endif
     if (ctxt == NULL)
         return;
     ctxt->error = err;
@@ -7668,6 +7979,9 @@ xmlRelaxNGGetParserErrors(xmlRelaxNGParserCtxtPtr ctxt,
                           xmlRelaxNGValidityErrorFunc * err,
                           xmlRelaxNGValidityWarningFunc * warn, void **ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(119);
+#endif
     if (ctxt == NULL)
         return (-1);
     if (err != NULL)
@@ -7692,6 +8006,9 @@ xmlRelaxNGSetParserStructuredErrors(xmlRelaxNGParserCtxtPtr ctxt,
 				    xmlStructuredErrorFunc serror,
 				    void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(120);
+#endif
     if (ctxt == NULL)
         return;
     ctxt->serror = serror;
@@ -7720,6 +8037,9 @@ static void xmlRelaxNGDumpDefine(FILE * output,
 static void
 xmlRelaxNGDumpDefines(FILE * output, xmlRelaxNGDefinePtr defines)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(121);
+#endif
     while (defines != NULL) {
         xmlRelaxNGDumpDefine(output, defines);
         defines = defines->next;
@@ -7736,6 +8056,9 @@ xmlRelaxNGDumpDefines(FILE * output, xmlRelaxNGDefinePtr defines)
 static void
 xmlRelaxNGDumpDefine(FILE * output, xmlRelaxNGDefinePtr define)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(122);
+#endif
     if (define == NULL)
         return;
     switch (define->type) {
@@ -7853,6 +8176,9 @@ xmlRelaxNGDumpDefine(FILE * output, xmlRelaxNGDefinePtr define)
 static void
 xmlRelaxNGDumpGrammar(FILE * output, xmlRelaxNGGrammarPtr grammar, int top)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(123);
+#endif
     if (grammar == NULL)
         return;
 
@@ -7893,6 +8219,9 @@ xmlRelaxNGDumpGrammar(FILE * output, xmlRelaxNGGrammarPtr grammar, int top)
 void
 xmlRelaxNGDump(FILE * output, xmlRelaxNGPtr schema)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(124);
+#endif
     if (output == NULL)
         return;
     if (schema == NULL) {
@@ -7924,6 +8253,9 @@ xmlRelaxNGDump(FILE * output, xmlRelaxNGPtr schema)
 void
 xmlRelaxNGDumpTree(FILE * output, xmlRelaxNGPtr schema)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(125);
+#endif
     if (output == NULL)
         return;
     if (schema == NULL) {
@@ -7960,6 +8292,9 @@ xmlRelaxNGValidateCompiledCallback(xmlRegExecCtxtPtr exec ATTRIBUTE_UNUSED,
                                    const xmlChar * token,
                                    void *transdata, void *inputdata)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(126);
+#endif
     xmlRelaxNGValidCtxtPtr ctxt = (xmlRelaxNGValidCtxtPtr) inputdata;
     xmlRelaxNGDefinePtr define = (xmlRelaxNGDefinePtr) transdata;
     int ret;
@@ -8010,6 +8345,9 @@ static int
 xmlRelaxNGValidateCompiledContent(xmlRelaxNGValidCtxtPtr ctxt,
                                   xmlRegexpPtr regexp, xmlNodePtr content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(127);
+#endif
     xmlRegExecCtxtPtr exec;
     xmlNodePtr cur;
     int ret = 0;
@@ -8106,6 +8444,9 @@ static void xmlRelaxNGLogBestError(xmlRelaxNGValidCtxtPtr ctxt);
 static int
 xmlRelaxNGElemPush(xmlRelaxNGValidCtxtPtr ctxt, xmlRegExecCtxtPtr exec)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(128);
+#endif
     if (ctxt->elemTab == NULL) {
         ctxt->elemMax = 10;
         ctxt->elemTab = (xmlRegExecCtxtPtr *) xmlMalloc(ctxt->elemMax *
@@ -8143,6 +8484,9 @@ xmlRelaxNGElemPush(xmlRelaxNGValidCtxtPtr ctxt, xmlRegExecCtxtPtr exec)
 static xmlRegExecCtxtPtr
 xmlRelaxNGElemPop(xmlRelaxNGValidCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(129);
+#endif
     xmlRegExecCtxtPtr ret;
 
     if (ctxt->elemNr <= 0)
@@ -8173,6 +8517,9 @@ xmlRelaxNGValidateProgressiveCallback(xmlRegExecCtxtPtr exec
                                       const xmlChar * token,
                                       void *transdata, void *inputdata)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(130);
+#endif
     xmlRelaxNGValidCtxtPtr ctxt = (xmlRelaxNGValidCtxtPtr) inputdata;
     xmlRelaxNGDefinePtr define = (xmlRelaxNGDefinePtr) transdata;
     xmlRelaxNGValidStatePtr state, oldstate;
@@ -8318,6 +8665,9 @@ xmlRelaxNGValidatePushElement(xmlRelaxNGValidCtxtPtr ctxt,
                               xmlDocPtr doc ATTRIBUTE_UNUSED,
                               xmlNodePtr elem)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(131);
+#endif
     int ret = 1;
 
     if ((ctxt == NULL) || (elem == NULL))
@@ -8396,6 +8746,9 @@ int
 xmlRelaxNGValidatePushCData(xmlRelaxNGValidCtxtPtr ctxt,
                             const xmlChar * data, int len ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(132);
+#endif
     int ret = 1;
 
     if ((ctxt == NULL) || (ctxt->elem == NULL) || (data == NULL))
@@ -8440,6 +8793,9 @@ xmlRelaxNGValidatePopElement(xmlRelaxNGValidCtxtPtr ctxt,
                              xmlDocPtr doc ATTRIBUTE_UNUSED,
                              xmlNodePtr elem)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(133);
+#endif
     int ret;
     xmlRegExecCtxtPtr exec;
 
@@ -8489,6 +8845,9 @@ xmlRelaxNGValidateFullElement(xmlRelaxNGValidCtxtPtr ctxt,
                               xmlDocPtr doc ATTRIBUTE_UNUSED,
                               xmlNodePtr elem)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(134);
+#endif
     int ret;
     xmlRelaxNGValidStatePtr state;
 
@@ -8540,6 +8899,9 @@ static xmlNodePtr
 xmlRelaxNGSkipIgnored(xmlRelaxNGValidCtxtPtr ctxt ATTRIBUTE_UNUSED,
                       xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(135);
+#endif
     /*
      * TODO complete and handle entities
      */
@@ -8570,6 +8932,9 @@ xmlRelaxNGSkipIgnored(xmlRelaxNGValidCtxtPtr ctxt ATTRIBUTE_UNUSED,
 static xmlChar *
 xmlRelaxNGNormalize(xmlRelaxNGValidCtxtPtr ctxt, const xmlChar * str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(136);
+#endif
     xmlChar *ret, *p;
     const xmlChar *tmp;
     int len;
@@ -8619,6 +8984,9 @@ xmlRelaxNGValidateDatatype(xmlRelaxNGValidCtxtPtr ctxt,
                            const xmlChar * value,
                            xmlRelaxNGDefinePtr define, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(137);
+#endif
     int ret, tmp;
     xmlRelaxNGTypeLibraryPtr lib;
     void *result = NULL;
@@ -8688,6 +9056,9 @@ xmlRelaxNGValidateDatatype(xmlRelaxNGValidCtxtPtr ctxt,
 static int
 xmlRelaxNGNextValue(xmlRelaxNGValidCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(138);
+#endif
     xmlChar *cur;
 
     cur = ctxt->state->value;
@@ -8720,6 +9091,9 @@ static int
 xmlRelaxNGValidateValueList(xmlRelaxNGValidCtxtPtr ctxt,
                             xmlRelaxNGDefinePtr defines)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(139);
+#endif
     int ret = 0;
 
     while (defines != NULL) {
@@ -8744,6 +9118,9 @@ static int
 xmlRelaxNGValidateValue(xmlRelaxNGValidCtxtPtr ctxt,
                         xmlRelaxNGDefinePtr define)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(140);
+#endif
     int ret = 0, oldflags;
     xmlChar *value;
 
@@ -9033,6 +9410,9 @@ static int
 xmlRelaxNGValidateValueContent(xmlRelaxNGValidCtxtPtr ctxt,
                                xmlRelaxNGDefinePtr defines)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(141);
+#endif
     int ret = 0;
 
     while (defines != NULL) {
@@ -9058,6 +9438,9 @@ static int
 xmlRelaxNGAttributeMatch(xmlRelaxNGValidCtxtPtr ctxt,
                          xmlRelaxNGDefinePtr define, xmlAttrPtr prop)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(142);
+#endif
     int ret;
 
     if (define->name != NULL) {
@@ -9120,6 +9503,9 @@ static int
 xmlRelaxNGValidateAttribute(xmlRelaxNGValidCtxtPtr ctxt,
                             xmlRelaxNGDefinePtr define)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(143);
+#endif
     int ret = 0, i;
     xmlChar *value, *oldvalue;
     xmlAttrPtr prop = NULL, tmp;
@@ -9230,6 +9616,9 @@ static int
 xmlRelaxNGValidateAttributeList(xmlRelaxNGValidCtxtPtr ctxt,
                                 xmlRelaxNGDefinePtr defines)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(144);
+#endif
     int ret = 0, res;
     int needmore = 0;
     xmlRelaxNGDefinePtr cur;
@@ -9277,6 +9666,9 @@ xmlRelaxNGValidateAttributeList(xmlRelaxNGValidCtxtPtr ctxt,
 static int
 xmlRelaxNGNodeMatchesList(xmlNodePtr node, xmlRelaxNGDefinePtr * list)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(145);
+#endif
     xmlRelaxNGDefinePtr cur;
     int i = 0, tmp;
 
@@ -9316,6 +9708,9 @@ static int
 xmlRelaxNGValidateInterleave(xmlRelaxNGValidCtxtPtr ctxt,
                              xmlRelaxNGDefinePtr define)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(146);
+#endif
     int ret = 0, i, nbgroups;
     int errNr = ctxt->errNr;
     int oldflags;
@@ -9621,6 +10016,9 @@ static int
 xmlRelaxNGValidateDefinitionList(xmlRelaxNGValidCtxtPtr ctxt,
                                  xmlRelaxNGDefinePtr defines)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(147);
+#endif
     int ret = 0, res;
 
 
@@ -9660,6 +10058,9 @@ static int
 xmlRelaxNGElementMatch(xmlRelaxNGValidCtxtPtr ctxt,
                        xmlRelaxNGDefinePtr define, xmlNodePtr elem)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(148);
+#endif
     int ret = 0, oldflags = 0;
 
     if (define->name != NULL) {
@@ -9773,6 +10174,9 @@ xmlRelaxNGElementMatch(xmlRelaxNGValidCtxtPtr ctxt,
 static int
 xmlRelaxNGBestState(xmlRelaxNGValidCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(149);
+#endif
     xmlRelaxNGValidStatePtr state;
     int i, tmp;
     int best = -1;
@@ -9812,6 +10216,9 @@ xmlRelaxNGBestState(xmlRelaxNGValidCtxtPtr ctxt)
 static void
 xmlRelaxNGLogBestError(xmlRelaxNGValidCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(150);
+#endif
     int best;
 
     if ((ctxt == NULL) || (ctxt->states == NULL) ||
@@ -9840,6 +10247,9 @@ xmlRelaxNGLogBestError(xmlRelaxNGValidCtxtPtr ctxt)
 static int
 xmlRelaxNGValidateElementEnd(xmlRelaxNGValidCtxtPtr ctxt, int dolog)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(151);
+#endif
     int i;
     xmlRelaxNGValidStatePtr state;
 
@@ -9879,6 +10289,9 @@ static int
 xmlRelaxNGValidateState(xmlRelaxNGValidCtxtPtr ctxt,
                         xmlRelaxNGDefinePtr define)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(152);
+#endif
     xmlNodePtr node;
     int ret = 0, i, tmp, oldflags, errNr;
     xmlRelaxNGValidStatePtr oldstate = NULL, state;
@@ -10646,6 +11059,9 @@ static int
 xmlRelaxNGValidateDefinition(xmlRelaxNGValidCtxtPtr ctxt,
                              xmlRelaxNGDefinePtr define)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(153);
+#endif
     xmlRelaxNGStatesPtr states, res;
     int i, j, k, ret, oldflags;
 
@@ -10774,6 +11190,9 @@ xmlRelaxNGValidateDefinition(xmlRelaxNGValidCtxtPtr ctxt,
 static int
 xmlRelaxNGValidateDocument(xmlRelaxNGValidCtxtPtr ctxt, xmlDocPtr doc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(154);
+#endif
     int ret;
     xmlRelaxNGPtr schema;
     xmlRelaxNGGrammarPtr grammar;
@@ -10871,6 +11290,9 @@ xmlRelaxNGValidateDocument(xmlRelaxNGValidCtxtPtr ctxt, xmlDocPtr doc)
  */
 static void
 xmlRelaxNGCleanPSVI(xmlNodePtr node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(155);
+#endif
     xmlNodePtr cur;
 
     if ((node == NULL) ||
@@ -10927,6 +11349,9 @@ xmlRelaxNGCleanPSVI(xmlNodePtr node) {
 xmlRelaxNGValidCtxtPtr
 xmlRelaxNGNewValidCtxt(xmlRelaxNGPtr schema)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(156);
+#endif
     xmlRelaxNGValidCtxtPtr ret;
 
     ret = (xmlRelaxNGValidCtxtPtr) xmlMalloc(sizeof(xmlRelaxNGValidCtxt));
@@ -10960,6 +11385,9 @@ xmlRelaxNGNewValidCtxt(xmlRelaxNGPtr schema)
 void
 xmlRelaxNGFreeValidCtxt(xmlRelaxNGValidCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(157);
+#endif
     int k;
 
     if (ctxt == NULL)
@@ -11007,6 +11435,9 @@ xmlRelaxNGSetValidErrors(xmlRelaxNGValidCtxtPtr ctxt,
                          xmlRelaxNGValidityErrorFunc err,
                          xmlRelaxNGValidityWarningFunc warn, void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(158);
+#endif
     if (ctxt == NULL)
         return;
     ctxt->error = err;
@@ -11027,6 +11458,9 @@ void
 xmlRelaxNGSetValidStructuredErrors(xmlRelaxNGValidCtxtPtr ctxt,
                                    xmlStructuredErrorFunc serror, void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(159);
+#endif
     if (ctxt == NULL)
         return;
     ctxt->serror = serror;
@@ -11051,6 +11485,9 @@ xmlRelaxNGGetValidErrors(xmlRelaxNGValidCtxtPtr ctxt,
                          xmlRelaxNGValidityErrorFunc * err,
                          xmlRelaxNGValidityWarningFunc * warn, void **ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(160);
+#endif
     if (ctxt == NULL)
         return (-1);
     if (err != NULL)
@@ -11075,6 +11512,9 @@ xmlRelaxNGGetValidErrors(xmlRelaxNGValidCtxtPtr ctxt,
 int
 xmlRelaxNGValidateDoc(xmlRelaxNGValidCtxtPtr ctxt, xmlDocPtr doc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(161);
+#endif
     int ret;
 
     if ((ctxt == NULL) || (doc == NULL))

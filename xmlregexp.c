@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * regexp.c: generic and extensible Regular Expression engine
  *
@@ -385,6 +390,9 @@ void xmlAutomataSetFlags(xmlAutomataPtr am, int flags);
 static void
 xmlRegexpErrMemory(xmlRegParserCtxtPtr ctxt, const char *extra)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(952);
+#endif
     const char *regexp = NULL;
     if (ctxt != NULL) {
         regexp = (const char *) ctxt->string;
@@ -405,6 +413,9 @@ xmlRegexpErrMemory(xmlRegParserCtxtPtr ctxt, const char *extra)
 static void
 xmlRegexpErrCompile(xmlRegParserCtxtPtr ctxt, const char *extra)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(953);
+#endif
     const char *regexp = NULL;
     int idx = 0;
 
@@ -439,6 +450,9 @@ static int xmlFAComputesDeterminism(xmlRegParserCtxtPtr ctxt);
  */
 static void*
 xmlRegCalloc2(size_t dim1, size_t dim2, size_t elemSize) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(954);
+#endif
     size_t totalSize;
     void *ret;
 
@@ -462,6 +476,9 @@ xmlRegCalloc2(size_t dim1, size_t dim2, size_t elemSize) {
  */
 static xmlRegexpPtr
 xmlRegEpxFromParse(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(955);
+#endif
     xmlRegexpPtr ret;
 
     ret = (xmlRegexpPtr) xmlMalloc(sizeof(xmlRegexp));
@@ -715,6 +732,9 @@ not_determ:
  */
 static xmlRegParserCtxtPtr
 xmlRegNewParserCtxt(const xmlChar *string) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(956);
+#endif
     xmlRegParserCtxtPtr ret;
 
     ret = (xmlRegParserCtxtPtr) xmlMalloc(sizeof(xmlRegParserCtxt));
@@ -746,6 +766,9 @@ xmlRegNewParserCtxt(const xmlChar *string) {
 static xmlRegRangePtr
 xmlRegNewRange(xmlRegParserCtxtPtr ctxt,
 	       int neg, xmlRegAtomType type, int start, int end) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(957);
+#endif
     xmlRegRangePtr ret;
 
     ret = (xmlRegRangePtr) xmlMalloc(sizeof(xmlRegRange));
@@ -786,6 +809,9 @@ xmlRegFreeRange(xmlRegRangePtr range) {
  */
 static xmlRegRangePtr
 xmlRegCopyRange(xmlRegParserCtxtPtr ctxt, xmlRegRangePtr range) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(958);
+#endif
     xmlRegRangePtr ret;
 
     if (range == NULL)
@@ -817,6 +843,9 @@ xmlRegCopyRange(xmlRegParserCtxtPtr ctxt, xmlRegRangePtr range) {
  */
 static xmlRegAtomPtr
 xmlRegNewAtom(xmlRegParserCtxtPtr ctxt, xmlRegAtomType type) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(959);
+#endif
     xmlRegAtomPtr ret;
 
     ret = (xmlRegAtomPtr) xmlMalloc(sizeof(xmlRegAtom));
@@ -840,6 +869,9 @@ xmlRegNewAtom(xmlRegParserCtxtPtr ctxt, xmlRegAtomType type) {
  */
 static void
 xmlRegFreeAtom(xmlRegAtomPtr atom) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(960);
+#endif
     int i;
 
     if (atom == NULL)
@@ -869,6 +901,9 @@ xmlRegFreeAtom(xmlRegAtomPtr atom) {
  */
 static xmlRegAtomPtr
 xmlRegCopyAtom(xmlRegParserCtxtPtr ctxt, xmlRegAtomPtr atom) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(961);
+#endif
     xmlRegAtomPtr ret;
 
     ret = (xmlRegAtomPtr) xmlMalloc(sizeof(xmlRegAtom));
@@ -906,6 +941,9 @@ error:
 
 static xmlRegStatePtr
 xmlRegNewState(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(962);
+#endif
     xmlRegStatePtr ret;
 
     ret = (xmlRegStatePtr) xmlMalloc(sizeof(xmlRegState));
@@ -927,6 +965,9 @@ xmlRegNewState(xmlRegParserCtxtPtr ctxt) {
  */
 static void
 xmlRegFreeState(xmlRegStatePtr state) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(963);
+#endif
     if (state == NULL)
 	return;
 
@@ -945,6 +986,9 @@ xmlRegFreeState(xmlRegStatePtr state) {
  */
 static void
 xmlRegFreeParserCtxt(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(964);
+#endif
     int i;
     if (ctxt == NULL)
 	return;
@@ -974,6 +1018,9 @@ xmlRegFreeParserCtxt(xmlRegParserCtxtPtr ctxt) {
 
 static void
 xmlRegPrintAtomType(FILE *output, xmlRegAtomType type) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(965);
+#endif
     switch (type) {
         case XML_REGEXP_EPSILON:
 	    fprintf(output, "epsilon "); break;
@@ -1086,6 +1133,9 @@ xmlRegPrintAtomType(FILE *output, xmlRegAtomType type) {
 
 static void
 xmlRegPrintQuantType(FILE *output, xmlRegQuantType type) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(966);
+#endif
     switch (type) {
         case XML_REGEXP_QUANT_EPSILON:
 	    fprintf(output, "epsilon "); break;
@@ -1116,6 +1166,9 @@ xmlRegPrintRange(FILE *output, xmlRegRangePtr range) {
 
 static void
 xmlRegPrintAtom(FILE *output, xmlRegAtomPtr atom) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(967);
+#endif
     fprintf(output, " atom: ");
     if (atom == NULL) {
 	fprintf(output, "NULL\n");
@@ -1145,6 +1198,9 @@ xmlRegPrintAtom(FILE *output, xmlRegAtomPtr atom) {
 
 static void
 xmlRegPrintTrans(FILE *output, xmlRegTransPtr trans) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(968);
+#endif
     fprintf(output, "  trans: ");
     if (trans == NULL) {
 	fprintf(output, "NULL\n");
@@ -1179,6 +1235,9 @@ xmlRegPrintTrans(FILE *output, xmlRegTransPtr trans) {
 
 static void
 xmlRegPrintState(FILE *output, xmlRegStatePtr state) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(969);
+#endif
     int i;
 
     fprintf(output, " state: ");
@@ -1200,6 +1259,9 @@ xmlRegPrintState(FILE *output, xmlRegStatePtr state) {
 #ifdef DEBUG_REGEXP_GRAPH
 static void
 xmlRegPrintCtxt(FILE *output, xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(970);
+#endif
     int i;
 
     fprintf(output, " ctxt: ");
@@ -1249,6 +1311,9 @@ static void
 xmlRegAtomAddRange(xmlRegParserCtxtPtr ctxt, xmlRegAtomPtr atom,
 	           int neg, xmlRegAtomType type, int start, int end,
 		   xmlChar *blockName) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(971);
+#endif
     xmlRegRangePtr range;
 
     if (atom == NULL) {
@@ -1290,6 +1355,9 @@ xmlRegAtomAddRange(xmlRegParserCtxtPtr ctxt, xmlRegAtomPtr atom,
 
 static int
 xmlRegGetCounter(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(972);
+#endif
     if (ctxt->maxCounters == 0) {
 	ctxt->maxCounters = 4;
 	ctxt->counters = (xmlRegCounter *) xmlMalloc(ctxt->maxCounters *
@@ -1318,6 +1386,9 @@ xmlRegGetCounter(xmlRegParserCtxtPtr ctxt) {
 
 static int
 xmlRegAtomPush(xmlRegParserCtxtPtr ctxt, xmlRegAtomPtr atom) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(973);
+#endif
     if (atom == NULL) {
 	ERROR("atom push: atom is NULL");
 	return(-1);
@@ -1351,6 +1422,9 @@ xmlRegAtomPush(xmlRegParserCtxtPtr ctxt, xmlRegAtomPtr atom) {
 static void
 xmlRegStateAddTransTo(xmlRegParserCtxtPtr ctxt, xmlRegStatePtr target,
                       int from) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(974);
+#endif
     if (target->maxTransTo == 0) {
 	target->maxTransTo = 8;
 	target->transTo = (int *) xmlMalloc(target->maxTransTo *
@@ -1380,6 +1454,9 @@ static void
 xmlRegStateAddTrans(xmlRegParserCtxtPtr ctxt, xmlRegStatePtr state,
 	            xmlRegAtomPtr atom, xmlRegStatePtr target,
 		    int counter, int count) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(975);
+#endif
 
     int nrtrans;
 
@@ -1457,6 +1534,9 @@ xmlRegStateAddTrans(xmlRegParserCtxtPtr ctxt, xmlRegStatePtr state,
 
 static int
 xmlRegStatePush(xmlRegParserCtxtPtr ctxt, xmlRegStatePtr state) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(976);
+#endif
     if (state == NULL) return(-1);
     if (ctxt->maxStates == 0) {
 	ctxt->maxStates = 4;
@@ -1496,6 +1576,9 @@ static void
 xmlFAGenerateAllTransition(xmlRegParserCtxtPtr ctxt,
 			   xmlRegStatePtr from, xmlRegStatePtr to,
 			   int lax) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(977);
+#endif
     if (to == NULL) {
 	to = xmlRegNewState(ctxt);
 	xmlRegStatePush(ctxt, to);
@@ -1575,6 +1658,9 @@ xmlFAGenerateCountedTransition(xmlRegParserCtxtPtr ctxt,
 static int
 xmlFAGenerateTransitions(xmlRegParserCtxtPtr ctxt, xmlRegStatePtr from,
 	                 xmlRegStatePtr to, xmlRegAtomPtr atom) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(978);
+#endif
     xmlRegStatePtr end;
     int nullable = 0;
 
@@ -1807,6 +1893,9 @@ xmlFAGenerateTransitions(xmlRegParserCtxtPtr ctxt, xmlRegStatePtr from,
 static void
 xmlFAReduceEpsilonTransitions(xmlRegParserCtxtPtr ctxt, int fromnr,
 	                      int tonr, int counter) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(979);
+#endif
     int transnr;
     xmlRegStatePtr from;
     xmlRegStatePtr to;
@@ -1901,6 +1990,9 @@ xmlFAReduceEpsilonTransitions(xmlRegParserCtxtPtr ctxt, int fromnr,
  */
 static void
 xmlFAEliminateSimpleEpsilonTransitions(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(980);
+#endif
     int statenr, i, j, newto;
     xmlRegStatePtr state, tmp;
 
@@ -1966,6 +2058,9 @@ xmlFAEliminateSimpleEpsilonTransitions(xmlRegParserCtxtPtr ctxt) {
  */
 static void
 xmlFAEliminateEpsilonTransitions(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(981);
+#endif
     int statenr, transnr;
     xmlRegStatePtr state;
     int has_epsilon;
@@ -2118,6 +2213,9 @@ xmlFAEliminateEpsilonTransitions(xmlRegParserCtxtPtr ctxt) {
 
 static int
 xmlFACompareRanges(xmlRegRangePtr range1, xmlRegRangePtr range2) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(982);
+#endif
     int ret = 0;
 
     if ((range1->type == XML_REGEXP_RANGES) ||
@@ -2291,6 +2389,9 @@ xmlFACompareRanges(xmlRegRangePtr range1, xmlRegRangePtr range2) {
  */
 static int
 xmlFACompareAtomTypes(xmlRegAtomType type1, xmlRegAtomType type2) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(983);
+#endif
     if ((type1 == XML_REGEXP_EPSILON) ||
         (type1 == XML_REGEXP_CHARVAL) ||
 	(type1 == XML_REGEXP_RANGES) ||
@@ -2493,6 +2594,9 @@ xmlFACompareAtomTypes(xmlRegAtomType type1, xmlRegAtomType type2) {
  */
 static int
 xmlFAEqualAtoms(xmlRegAtomPtr atom1, xmlRegAtomPtr atom2, int deep) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(984);
+#endif
     int ret = 0;
 
     if (atom1 == atom2)
@@ -2538,6 +2642,9 @@ xmlFAEqualAtoms(xmlRegAtomPtr atom1, xmlRegAtomPtr atom2, int deep) {
  */
 static int
 xmlFACompareAtoms(xmlRegAtomPtr atom1, xmlRegAtomPtr atom2, int deep) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(985);
+#endif
     int ret = 1;
 
     if (atom1 == atom2)
@@ -2635,6 +2742,9 @@ not_determinist:
 static int
 xmlFARecurseDeterminism(xmlRegParserCtxtPtr ctxt, xmlRegStatePtr state,
 	                 int to, xmlRegAtomPtr atom) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(986);
+#endif
     int ret = 1;
     int res;
     int transnr, nbTrans;
@@ -2690,6 +2800,9 @@ xmlFARecurseDeterminism(xmlRegParserCtxtPtr ctxt, xmlRegStatePtr state,
  */
 static void
 xmlFAFinishRecurseDeterminism(xmlRegParserCtxtPtr ctxt, xmlRegStatePtr state) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(987);
+#endif
     int transnr, nbTrans;
 
     if (state == NULL)
@@ -2716,6 +2829,9 @@ xmlFAFinishRecurseDeterminism(xmlRegParserCtxtPtr ctxt, xmlRegStatePtr state) {
  */
 static int
 xmlFAComputesDeterminism(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(988);
+#endif
     int statenr, transnr;
     xmlRegStatePtr state;
     xmlRegTransPtr t1, t2, last;
@@ -2866,6 +2982,9 @@ xmlFAComputesDeterminism(xmlRegParserCtxtPtr ctxt) {
 static int
 xmlRegCheckCharacterRange(xmlRegAtomType type, int codepoint, int neg,
 	                  int start, int end, const xmlChar *blockName) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(989);
+#endif
     int ret = 0;
 
     switch (type) {
@@ -3040,6 +3159,9 @@ xmlRegCheckCharacterRange(xmlRegAtomType type, int codepoint, int neg,
 
 static int
 xmlRegCheckCharacter(xmlRegAtomPtr atom, int codepoint) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(990);
+#endif
     int i, ret = 0;
     xmlRegRangePtr range;
 
@@ -3150,6 +3272,9 @@ xmlRegCheckCharacter(xmlRegAtomPtr atom, int codepoint) {
 #ifdef DEBUG_REGEXP_EXEC
 static void
 xmlFARegDebugExec(xmlRegExecCtxtPtr exec) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(991);
+#endif
     printf("state: %d:%d:idx %d", exec->state->no, exec->transno, exec->index);
     if (exec->inputStack != NULL) {
 	int i;
@@ -3166,6 +3291,9 @@ xmlFARegDebugExec(xmlRegExecCtxtPtr exec) {
 
 static void
 xmlFARegExecSave(xmlRegExecCtxtPtr exec) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(992);
+#endif
 #ifdef DEBUG_REGEXP_EXEC
     printf("saving ");
     exec->transno++;
@@ -3227,6 +3355,9 @@ xmlFARegExecSave(xmlRegExecCtxtPtr exec) {
 
 static void
 xmlFARegExecRollBack(xmlRegExecCtxtPtr exec) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(993);
+#endif
     if (exec->nbRollbacks <= 0) {
 	exec->status = -1;
 #ifdef DEBUG_REGEXP_EXEC
@@ -3264,6 +3395,9 @@ xmlFARegExecRollBack(xmlRegExecCtxtPtr exec) {
 
 static int
 xmlFARegExec(xmlRegexpPtr comp, const xmlChar *content) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(994);
+#endif
     xmlRegExecCtxt execval;
     xmlRegExecCtxtPtr exec = &execval;
     int ret, codepoint = 0, len, deter;
@@ -3581,6 +3715,9 @@ static void testerr(xmlRegExecCtxtPtr exec);
  */
 xmlRegExecCtxtPtr
 xmlRegNewExecCtxt(xmlRegexpPtr comp, xmlRegExecCallbacks callback, void *data) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(995);
+#endif
     xmlRegExecCtxtPtr exec;
 
     if (comp == NULL)
@@ -3642,6 +3779,9 @@ xmlRegNewExecCtxt(xmlRegexpPtr comp, xmlRegExecCallbacks callback, void *data) {
  */
 void
 xmlRegFreeExecCtxt(xmlRegExecCtxtPtr exec) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(996);
+#endif
     if (exec == NULL)
 	return;
 
@@ -3674,6 +3814,9 @@ xmlRegFreeExecCtxt(xmlRegExecCtxtPtr exec) {
 static void
 xmlFARegExecSaveInputString(xmlRegExecCtxtPtr exec, const xmlChar *value,
 	                    void *data) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(997);
+#endif
 #ifdef DEBUG_PUSH
     printf("saving value: %d:%s\n", exec->inputStackNr, value);
 #endif
@@ -3721,6 +3864,9 @@ xmlFARegExecSaveInputString(xmlRegExecCtxtPtr exec, const xmlChar *value,
 
 static int
 xmlRegStrEqualWildcard(const xmlChar *expStr, const xmlChar *valStr) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(998);
+#endif
     if (expStr == valStr) return(1);
     if (expStr == NULL) return(0);
     if (valStr == NULL) return(0);
@@ -3773,6 +3919,9 @@ xmlRegCompactPushString(xmlRegExecCtxtPtr exec,
 	                xmlRegexpPtr comp,
 	                const xmlChar *value,
 	                void *data) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(999);
+#endif
     int state = exec->index;
     int i, target;
 
@@ -3854,6 +4003,9 @@ error:
 static int
 xmlRegExecPushStringInternal(xmlRegExecCtxtPtr exec, const xmlChar *value,
 	                     void *data, int compound) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1000);
+#endif
     xmlRegTransPtr trans;
     xmlRegAtomPtr atom;
     int ret;
@@ -4232,6 +4384,9 @@ xmlRegExecPushString(xmlRegExecCtxtPtr exec, const xmlChar *value,
 int
 xmlRegExecPushString2(xmlRegExecCtxtPtr exec, const xmlChar *value,
                       const xmlChar *value2, void *data) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1001);
+#endif
     xmlChar buf[150];
     int lenn, lenp, ret;
     xmlChar *str;
@@ -4291,6 +4446,9 @@ static int
 xmlRegExecGetValues(xmlRegExecCtxtPtr exec, int err,
                     int *nbval, int *nbneg,
 		    xmlChar **values, int *terminal) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1002);
+#endif
     int maxval;
     int nb = 0;
 
@@ -4478,6 +4636,9 @@ xmlRegExecNextValues(xmlRegExecCtxtPtr exec, int *nbval, int *nbneg,
 int
 xmlRegExecErrInfo(xmlRegExecCtxtPtr exec, const xmlChar **string,
                   int *nbval, int *nbneg, xmlChar **values, int *terminal) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1003);
+#endif
     if (exec == NULL)
         return(-1);
     if (string != NULL) {
@@ -4503,6 +4664,9 @@ static void testerr(xmlRegExecCtxtPtr exec) {
 #if 0
 static int
 xmlRegExecPushChar(xmlRegExecCtxtPtr exec, int UCS) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1004);
+#endif
     xmlRegTransPtr trans;
     xmlRegAtomPtr atom;
     int ret;
@@ -4672,6 +4836,9 @@ progress:
  */
 static int
 xmlFAIsChar(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1005);
+#endif
     int cur;
     int len;
 
@@ -4702,6 +4869,9 @@ xmlFAIsChar(xmlRegParserCtxtPtr ctxt) {
  */
 static void
 xmlFAParseCharProp(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1006);
+#endif
     int cur;
     xmlRegAtomType type = (xmlRegAtomType) 0;
     xmlChar *blockName = NULL;
@@ -4919,6 +5089,9 @@ xmlFAParseCharProp(xmlRegParserCtxtPtr ctxt) {
  */
 static void
 xmlFAParseCharClassEsc(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1007);
+#endif
     int cur;
 
     if (CUR == '.') {
@@ -5064,6 +5237,9 @@ xmlFAParseCharClassEsc(xmlRegParserCtxtPtr ctxt) {
  */
 static void
 xmlFAParseCharRange(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1008);
+#endif
     int cur, len;
     int start = -1;
     int end = -1;
@@ -5165,6 +5341,9 @@ xmlFAParseCharRange(xmlRegParserCtxtPtr ctxt) {
  */
 static void
 xmlFAParsePosCharGroup(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1009);
+#endif
     do {
 	if (CUR == '\\') {
 	    xmlFAParseCharClassEsc(ctxt);
@@ -5186,6 +5365,9 @@ xmlFAParsePosCharGroup(xmlRegParserCtxtPtr ctxt) {
  */
 static void
 xmlFAParseCharGroup(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1010);
+#endif
     int neg = ctxt->neg;
 
     if (CUR == '^') {
@@ -5222,6 +5404,9 @@ xmlFAParseCharGroup(xmlRegParserCtxtPtr ctxt) {
  */
 static void
 xmlFAParseCharClass(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1011);
+#endif
     if (CUR == '[') {
 	NEXT;
 	ctxt->atom = xmlRegNewAtom(ctxt, XML_REGEXP_RANGES);
@@ -5248,6 +5433,9 @@ xmlFAParseCharClass(xmlRegParserCtxtPtr ctxt) {
  */
 static int
 xmlFAParseQuantExact(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1012);
+#endif
     int ret = 0;
     int ok = 0;
     int overflow = 0;
@@ -5285,6 +5473,9 @@ xmlFAParseQuantExact(xmlRegParserCtxtPtr ctxt) {
  */
 static int
 xmlFAParseQuantifier(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1013);
+#endif
     int cur;
 
     cur = CUR;
@@ -5348,6 +5539,9 @@ xmlFAParseQuantifier(xmlRegParserCtxtPtr ctxt) {
  */
 static int
 xmlFAParseAtom(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1014);
+#endif
     int codepoint, len;
 
     codepoint = xmlFAIsChar(ctxt);
@@ -5415,6 +5609,9 @@ xmlFAParseAtom(xmlRegParserCtxtPtr ctxt) {
  */
 static int
 xmlFAParsePiece(xmlRegParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1015);
+#endif
     int ret;
 
     ctxt->atom = NULL;
@@ -5440,6 +5637,9 @@ xmlFAParsePiece(xmlRegParserCtxtPtr ctxt) {
  */
 static int
 xmlFAParseBranch(xmlRegParserCtxtPtr ctxt, xmlRegStatePtr to) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1016);
+#endif
     xmlRegStatePtr previous;
     int ret;
 
@@ -5478,6 +5678,9 @@ xmlFAParseBranch(xmlRegParserCtxtPtr ctxt, xmlRegStatePtr to) {
  */
 static void
 xmlFAParseRegExp(xmlRegParserCtxtPtr ctxt, int top) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1017);
+#endif
     xmlRegStatePtr start, end;
 
     /* if not top start should have been generated by an epsilon trans */
@@ -5522,6 +5725,9 @@ xmlFAParseRegExp(xmlRegParserCtxtPtr ctxt, int top) {
  */
 void
 xmlRegexpPrint(FILE *output, xmlRegexpPtr regexp) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1018);
+#endif
     int i;
 
     if (output == NULL)
@@ -5562,6 +5768,9 @@ xmlRegexpPrint(FILE *output, xmlRegexpPtr regexp) {
  */
 xmlRegexpPtr
 xmlRegexpCompile(const xmlChar *regexp) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1019);
+#endif
     xmlRegexpPtr ret;
     xmlRegParserCtxtPtr ctxt;
 
@@ -5626,6 +5835,9 @@ xmlRegexpExec(xmlRegexpPtr comp, const xmlChar *content) {
  */
 int
 xmlRegexpIsDeterminist(xmlRegexpPtr comp) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1020);
+#endif
     xmlAutomataPtr am;
     int ret;
 
@@ -5666,6 +5878,9 @@ xmlRegexpIsDeterminist(xmlRegexpPtr comp) {
  */
 void
 xmlRegFreeRegexp(xmlRegexpPtr regexp) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1021);
+#endif
     int i;
     if (regexp == NULL)
 	return;
@@ -5713,6 +5928,9 @@ xmlRegFreeRegexp(xmlRegexpPtr regexp) {
  */
 xmlAutomataPtr
 xmlNewAutomata(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1022);
+#endif
     xmlAutomataPtr ctxt;
 
     ctxt = xmlRegNewParserCtxt(NULL);
@@ -5814,6 +6032,9 @@ xmlAutomataStatePtr
 xmlAutomataNewTransition(xmlAutomataPtr am, xmlAutomataStatePtr from,
 			 xmlAutomataStatePtr to, const xmlChar *token,
 			 void *data) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1023);
+#endif
     xmlRegAtomPtr atom;
 
     if ((am == NULL) || (from == NULL) || (token == NULL))
@@ -5852,6 +6073,9 @@ xmlAutomataStatePtr
 xmlAutomataNewTransition2(xmlAutomataPtr am, xmlAutomataStatePtr from,
 			  xmlAutomataStatePtr to, const xmlChar *token,
 			  const xmlChar *token2, void *data) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1024);
+#endif
     xmlRegAtomPtr atom;
 
     if ((am == NULL) || (from == NULL) || (token == NULL))
@@ -5912,6 +6136,9 @@ xmlAutomataStatePtr
 xmlAutomataNewNegTrans(xmlAutomataPtr am, xmlAutomataStatePtr from,
 		       xmlAutomataStatePtr to, const xmlChar *token,
 		       const xmlChar *token2, void *data) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1025);
+#endif
     xmlRegAtomPtr atom;
     xmlChar err_msg[200];
 
@@ -5980,6 +6207,9 @@ xmlAutomataNewCountTrans2(xmlAutomataPtr am, xmlAutomataStatePtr from,
 			 xmlAutomataStatePtr to, const xmlChar *token,
 			 const xmlChar *token2,
 			 int min, int max, void *data) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1026);
+#endif
     xmlRegAtomPtr atom;
     int counter;
 
@@ -6066,6 +6296,9 @@ xmlAutomataStatePtr
 xmlAutomataNewCountTrans(xmlAutomataPtr am, xmlAutomataStatePtr from,
 			 xmlAutomataStatePtr to, const xmlChar *token,
 			 int min, int max, void *data) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1027);
+#endif
     xmlRegAtomPtr atom;
     int counter;
 
@@ -6135,6 +6368,9 @@ xmlAutomataNewOnceTrans2(xmlAutomataPtr am, xmlAutomataStatePtr from,
 			 xmlAutomataStatePtr to, const xmlChar *token,
 			 const xmlChar *token2,
 			 int min, int max, void *data) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1028);
+#endif
     xmlRegAtomPtr atom;
     int counter;
 
@@ -6214,6 +6450,9 @@ xmlAutomataStatePtr
 xmlAutomataNewOnceTrans(xmlAutomataPtr am, xmlAutomataStatePtr from,
 			 xmlAutomataStatePtr to, const xmlChar *token,
 			 int min, int max, void *data) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1029);
+#endif
     xmlRegAtomPtr atom;
     int counter;
 
@@ -6328,6 +6567,9 @@ xmlAutomataNewAllTrans(xmlAutomataPtr am, xmlAutomataStatePtr from,
  */
 int
 xmlAutomataNewCounter(xmlAutomataPtr am, int min, int max) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1030);
+#endif
     int ret;
 
     if (am == NULL)
@@ -6400,6 +6642,9 @@ xmlAutomataNewCounterTrans(xmlAutomataPtr am, xmlAutomataStatePtr from,
  */
 xmlRegexpPtr
 xmlAutomataCompile(xmlAutomataPtr am) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1031);
+#endif
     xmlRegexpPtr ret;
 
     if ((am == NULL) || (am->error != 0)) return(NULL);
@@ -6466,6 +6711,9 @@ struct _xmlExpCtxt {
  */
 xmlExpCtxtPtr
 xmlExpNewCtxt(int maxNodes, xmlDictPtr dict) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1032);
+#endif
     xmlExpCtxtPtr ret;
     int size = 256;
 
@@ -6591,6 +6839,9 @@ xmlExpNodePtr emptyExp = &emptyExpNode;
  */
 static unsigned short
 xmlExpHashNameComputeKey(const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1033);
+#endif
     unsigned short value = 0L;
     char ch;
 
@@ -6610,6 +6861,9 @@ xmlExpHashNameComputeKey(const xmlChar *name) {
 static unsigned short
 xmlExpHashComputeKey(xmlExpNodeType type, xmlExpNodePtr left,
                      xmlExpNodePtr right) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1034);
+#endif
     unsigned long value;
     unsigned short ret;
 
@@ -6640,6 +6894,9 @@ xmlExpHashComputeKey(xmlExpNodeType type, xmlExpNodePtr left,
 
 static xmlExpNodePtr
 xmlExpNewNode(xmlExpCtxtPtr ctxt, xmlExpNodeType type) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1035);
+#endif
     xmlExpNodePtr ret;
 
     if (ctxt->nb_nodes >= MAX_NODES)
@@ -6669,6 +6926,9 @@ static xmlExpNodePtr
 xmlExpHashGetEntry(xmlExpCtxtPtr ctxt, xmlExpNodeType type,
                    xmlExpNodePtr left, xmlExpNodePtr right,
 		   const xmlChar *name, int min, int max) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1036);
+#endif
     unsigned short kbase, key;
     xmlExpNodePtr entry;
     xmlExpNodePtr insert;
@@ -6901,6 +7161,9 @@ xmlExpHashGetEntry(xmlExpCtxtPtr ctxt, xmlExpNodeType type,
  */
 void
 xmlExpFree(xmlExpCtxtPtr ctxt, xmlExpNodePtr exp) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1037);
+#endif
     if ((exp == NULL) || (exp == forbiddenExp) || (exp == emptyExp))
         return;
     exp->ref--;
@@ -6982,6 +7245,9 @@ xmlExpNewAtom(xmlExpCtxtPtr ctxt, const xmlChar *name, int len) {
  */
 xmlExpNodePtr
 xmlExpNewOr(xmlExpCtxtPtr ctxt, xmlExpNodePtr left, xmlExpNodePtr right) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1038);
+#endif
     if (ctxt == NULL)
         return(NULL);
     if ((left == NULL) || (right == NULL)) {
@@ -7007,6 +7273,9 @@ xmlExpNewOr(xmlExpCtxtPtr ctxt, xmlExpNodePtr left, xmlExpNodePtr right) {
  */
 xmlExpNodePtr
 xmlExpNewSeq(xmlExpCtxtPtr ctxt, xmlExpNodePtr left, xmlExpNodePtr right) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1039);
+#endif
     if (ctxt == NULL)
         return(NULL);
     if ((left == NULL) || (right == NULL)) {
@@ -7033,6 +7302,9 @@ xmlExpNewSeq(xmlExpCtxtPtr ctxt, xmlExpNodePtr left, xmlExpNodePtr right) {
  */
 xmlExpNodePtr
 xmlExpNewRange(xmlExpCtxtPtr ctxt, xmlExpNodePtr subset, int min, int max) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1040);
+#endif
     if (ctxt == NULL)
         return(NULL);
     if ((subset == NULL) || (min < 0) || (max < -1) ||
@@ -7053,6 +7325,9 @@ xmlExpNewRange(xmlExpCtxtPtr ctxt, xmlExpNodePtr subset, int min, int max) {
 static int
 xmlExpGetLanguageInt(xmlExpCtxtPtr ctxt, xmlExpNodePtr exp,
                      const xmlChar**list, int len, int nb) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1041);
+#endif
     int tmp, tmp2;
 tail:
     switch (exp->type) {
@@ -7106,6 +7381,9 @@ xmlExpGetLanguage(xmlExpCtxtPtr ctxt, xmlExpNodePtr exp,
 static int
 xmlExpGetStartInt(xmlExpCtxtPtr ctxt, xmlExpNodePtr exp,
                   const xmlChar**list, int len, int nb) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1042);
+#endif
     int tmp, tmp2;
 tail:
     switch (exp->type) {
@@ -7189,6 +7467,9 @@ xmlExpIsNillable(xmlExpNodePtr exp) {
 static xmlExpNodePtr
 xmlExpStringDeriveInt(xmlExpCtxtPtr ctxt, xmlExpNodePtr exp, const xmlChar *str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1043);
+#endif
     xmlExpNodePtr ret;
 
     switch (exp->type) {
@@ -7311,6 +7592,9 @@ xmlExpStringDeriveInt(xmlExpCtxtPtr ctxt, xmlExpNodePtr exp, const xmlChar *str)
 xmlExpNodePtr
 xmlExpStringDerive(xmlExpCtxtPtr ctxt, xmlExpNodePtr exp,
                    const xmlChar *str, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1044);
+#endif
     const xmlChar *input;
 
     if ((exp == NULL) || (ctxt == NULL) || (str == NULL)) {
@@ -7329,6 +7613,9 @@ xmlExpStringDerive(xmlExpCtxtPtr ctxt, xmlExpNodePtr exp,
 
 static int
 xmlExpCheckCard(xmlExpNodePtr exp, xmlExpNodePtr sub) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1045);
+#endif
     int ret = 1;
 
     if (sub->c_max == -1) {
@@ -7355,7 +7642,11 @@ static xmlExpNodePtr xmlExpExpDeriveInt(xmlExpCtxtPtr ctxt, xmlExpNodePtr exp,
  * @remain: the remain from the derivation of the multiple
  *
  * Check if exp is a multiple of sub, i.e. if there is a finite number n
- * so that sub{n} subsume exp
+ * so that sub{
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1046);
+#endif
+n} subsume exp
  *
  * Returns the multiple value if successful, 0 if it is not a multiple
  *         and -1 in case of internal error.
@@ -7424,6 +7715,9 @@ xmlExpDivide(xmlExpCtxtPtr ctxt, xmlExpNodePtr exp, xmlExpNodePtr sub,
  */
 static xmlExpNodePtr
 xmlExpExpDeriveInt(xmlExpCtxtPtr ctxt, xmlExpNodePtr exp, xmlExpNodePtr sub) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1047);
+#endif
     xmlExpNodePtr ret, tmp, tmp2, tmp3;
     const xmlChar **tab;
     int len, i;
@@ -7878,6 +8172,9 @@ xmlExpExpDeriveInt(xmlExpCtxtPtr ctxt, xmlExpNodePtr exp, xmlExpNodePtr sub) {
  */
 xmlExpNodePtr
 xmlExpExpDerive(xmlExpCtxtPtr ctxt, xmlExpNodePtr exp, xmlExpNodePtr sub) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1048);
+#endif
     if ((exp == NULL) || (ctxt == NULL) || (sub == NULL))
         return(NULL);
 
@@ -7912,6 +8209,9 @@ xmlExpExpDerive(xmlExpCtxtPtr ctxt, xmlExpNodePtr exp, xmlExpNodePtr sub) {
  */
 int
 xmlExpSubsume(xmlExpCtxtPtr ctxt, xmlExpNodePtr exp, xmlExpNodePtr sub) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1049);
+#endif
     xmlExpNodePtr tmp;
 
     if ((exp == NULL) || (ctxt == NULL) || (sub == NULL))
@@ -7973,6 +8273,9 @@ static xmlExpNodePtr xmlExpParseExpr(xmlExpCtxtPtr ctxt);
 
 static int
 xmlExpParseNumber(xmlExpCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1050);
+#endif
     int ret = 0;
 
     SKIP_BLANKS
@@ -7991,6 +8294,9 @@ xmlExpParseNumber(xmlExpCtxtPtr ctxt) {
 
 static xmlExpNodePtr
 xmlExpParseOr(xmlExpCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1051);
+#endif
     const char *base;
     xmlExpNodePtr ret;
     const xmlChar *val;
@@ -8068,6 +8374,9 @@ parse_quantifier:
 
 static xmlExpNodePtr
 xmlExpParseSeq(xmlExpCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1052);
+#endif
     xmlExpNodePtr ret, right;
 
     ret = xmlExpParseOr(ctxt);
@@ -8088,6 +8397,9 @@ xmlExpParseSeq(xmlExpCtxtPtr ctxt) {
 
 static xmlExpNodePtr
 xmlExpParseExpr(xmlExpCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1053);
+#endif
     xmlExpNodePtr ret, right;
 
     ret = xmlExpParseSeq(ctxt);
@@ -8125,6 +8437,9 @@ xmlExpParseExpr(xmlExpCtxtPtr ctxt) {
  */
 xmlExpNodePtr
 xmlExpParse(xmlExpCtxtPtr ctxt, const char *expr) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1054);
+#endif
     xmlExpNodePtr ret;
 
     ctxt->expr = expr;
@@ -8141,6 +8456,9 @@ xmlExpParse(xmlExpCtxtPtr ctxt, const char *expr) {
 
 static void
 xmlExpDumpInt(xmlBufferPtr buf, xmlExpNodePtr expr, int glob) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1055);
+#endif
     xmlExpNodePtr c;
 
     if (expr == NULL) return;

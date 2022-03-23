@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*************************************************************************
  *
  * $Id$
@@ -820,6 +825,9 @@ TrioIsQualifier
 TRIO_ARGS1((character),
 	   TRIO_CONST char character)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(305);
+#endif
   /* QUALIFIER_POSITION is not included */
   switch (character)
     {
@@ -884,6 +892,9 @@ TRIO_ARGS1((character),
 TRIO_PRIVATE void
 TrioSetLocale(TRIO_NOARGS)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(306);
+#endif
   internalLocaleValues = (struct lconv *)localeconv();
   if (internalLocaleValues)
     {
@@ -927,6 +938,9 @@ TrioCalcThousandSeparatorLength
 TRIO_ARGS1((digits),
 	   int digits)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(307);
+#endif
 #if TRIO_EXTENSION
   int count = 0;
   int step = NO_GROUPING;
@@ -967,6 +981,9 @@ TrioFollowedBySeparator
 TRIO_ARGS1((position),
 	   int position)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(308);
+#endif
 #if TRIO_EXTENSION
   int step = 0;
   char *groupingPointer = internalGrouping;
@@ -1006,6 +1023,9 @@ TRIO_ARGS2((format, indexPointer),
 	   TRIO_CONST char *format,
 	   int *indexPointer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(309);
+#endif
 #if TRIO_UNIX98
   char *tmpformat;
   int number = 0;
@@ -1039,6 +1059,9 @@ TRIO_ARGS2((name, prev),
 	   TRIO_CONST char *name,
 	   trio_userdef_t **prev)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(310);
+#endif
   trio_userdef_t *def;
 
   if (internalEnterCriticalRegion)
@@ -1073,6 +1096,9 @@ TRIO_ARGS2((number, exponent),
 	   int number,
 	   int exponent)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(311);
+#endif
   trio_long_double_t result;
 
   if (number == 10)
@@ -1132,6 +1158,9 @@ TRIO_ARGS2((number, base),
 	   double number,
 	   int base)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(312);
+#endif
   double result;
 
   if (number <= 0.0)
@@ -1161,6 +1190,9 @@ TrioLogarithmBase
 TRIO_ARGS1((base),
 	   int base)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(313);
+#endif
   switch (base)
     {
     case BASE_BINARY : return 1.0;
@@ -1186,6 +1218,9 @@ TRIO_ARGS5((type, format, parameters, arglist, argarray),
 	   TRIO_VA_LIST_PTR arglist,
 	   trio_pointer_t *argarray)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(314);
+#endif
   /* Count the number of times a parameter is referenced */
   unsigned short usedEntries[MAX_PARAMETERS];
   /* Parameter counters */
@@ -2188,6 +2223,9 @@ TRIO_ARGS6((self, number, flags, width, precision, base),
 	   int precision,
 	   int base)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(315);
+#endif
   BOOLEAN_T isNegative;
   BOOLEAN_T isNumberZero;
   BOOLEAN_T isPrecisionZero;
@@ -2384,6 +2422,9 @@ TRIO_ARGS3((self, ch, flags),
 	   int ch,
 	   trio_flags_t flags)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(316);
+#endif
   if (flags & FLAGS_ALTERNATIVE)
     {
       if (! isprint(ch))
@@ -2442,6 +2483,9 @@ TRIO_ARGS5((self, string, flags, width, precision),
 	   int width,
 	   int precision)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(317);
+#endif
   int length;
   int ch;
 
@@ -2507,6 +2551,9 @@ TRIO_ARGS4((self, wch, flags, width),
 	   trio_flags_t flags,
 	   int width)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(318);
+#endif
   int size;
   int i;
   int ch;
@@ -2548,6 +2595,9 @@ TRIO_ARGS5((self, wstring, flags, width, precision),
 	   int width,
 	   int precision)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(319);
+#endif
   int length;
   int size;
 
@@ -2626,6 +2676,9 @@ TRIO_ARGS6((self, number, flags, width, precision, base),
 	   int precision,
 	   int base)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(320);
+#endif
   trio_long_double_t integerNumber;
   trio_long_double_t fractionNumber;
   trio_long_double_t workNumber;
@@ -3089,6 +3142,9 @@ TRIO_ARGS3((data, format, parameters),
 	   TRIO_CONST char *format,
 	   trio_parameter_t *parameters)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(321);
+#endif
 #if defined(TRIO_COMPILER_SUPPORTS_MULTIBYTE)
   int charlen;
 #endif
@@ -3403,6 +3459,9 @@ TRIO_ARGS4((reference, format, arglist, argarray),
 	   TRIO_VA_LIST_PTR arglist,
 	   trio_pointer_t *argarray)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(322);
+#endif
   int status;
   trio_parameter_t parameters[MAX_PARAMETERS];
 
@@ -3431,6 +3490,9 @@ TRIO_ARGS6((destination, destinationSize, OutStream, format, arglist, argarray),
 	   TRIO_VA_LIST_PTR arglist,
 	   trio_pointer_t *argarray)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(323);
+#endif
   int status;
   trio_class_t data;
   trio_parameter_t parameters[MAX_PARAMETERS];
@@ -3472,6 +3534,9 @@ TRIO_ARGS2((self, output),
 	   trio_class_t *self,
 	   int output)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(324);
+#endif
   FILE *file;
 
   assert(VALID(self));
@@ -3498,6 +3563,9 @@ TRIO_ARGS2((self, output),
 	   trio_class_t *self,
 	   int output)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(325);
+#endif
   int fd;
   char ch;
 
@@ -3525,6 +3593,9 @@ TRIO_ARGS2((self, output),
 	   trio_class_t *self,
 	   int output)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(326);
+#endif
   int status;
   trio_custom_t *data;
 
@@ -3559,6 +3630,9 @@ TRIO_ARGS2((self, output),
 	   trio_class_t *self,
 	   int output)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(327);
+#endif
   char **buffer;
 
   assert(VALID(self));
@@ -3580,6 +3654,9 @@ TRIO_ARGS2((self, output),
 	   trio_class_t *self,
 	   int output)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(328);
+#endif
   char **buffer;
 
   assert(VALID(self));
@@ -3605,6 +3682,9 @@ TRIO_ARGS2((self, output),
 	   trio_class_t *self,
 	   int output)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(329);
+#endif
   assert(VALID(self));
   assert(VALID(self->location));
 
@@ -3648,6 +3728,9 @@ TRIO_VARGS2((format, va_alist),
 	    TRIO_CONST char *format,
 	    TRIO_VA_DECL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(330);
+#endif
   int status;
   va_list args;
 
@@ -3714,6 +3797,9 @@ TRIO_VARGS3((file, format, va_alist),
 	    TRIO_CONST char *format,
 	    TRIO_VA_DECL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(331);
+#endif
   int status;
   va_list args;
 
@@ -3741,6 +3827,9 @@ TRIO_ARGS3((file, format, args),
 	   TRIO_CONST char *format,
 	   va_list args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(332);
+#endif
   assert(VALID(file));
   assert(VALID(format));
 
@@ -3762,6 +3851,9 @@ TRIO_ARGS3((file, format, args),
 	   TRIO_CONST char *format,
 	   trio_pointer_t * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(333);
+#endif
   assert(VALID(file));
   assert(VALID(format));
 
@@ -3787,6 +3879,9 @@ TRIO_VARGS3((fd, format, va_alist),
 	    TRIO_CONST char *format,
 	    TRIO_VA_DECL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(334);
+#endif
   int status;
   va_list args;
 
@@ -3849,6 +3944,9 @@ TRIO_VARGS4((stream, closure, format, va_alist),
 	    TRIO_CONST char *format,
 	    TRIO_VA_DECL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(335);
+#endif
   int status;
   va_list args;
   trio_custom_t data;
@@ -3872,6 +3970,9 @@ TRIO_ARGS4((stream, closure, format, args),
 	   TRIO_CONST char *format,
 	   va_list args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(336);
+#endif
   trio_custom_t data;
 
   assert(VALID(stream));
@@ -3890,6 +3991,9 @@ TRIO_ARGS4((stream, closure, format, args),
 	   TRIO_CONST char *format,
 	   void **args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(337);
+#endif
   trio_custom_t data;
 
   assert(VALID(stream));
@@ -3919,6 +4023,9 @@ TRIO_VARGS3((buffer, format, va_alist),
 	    TRIO_CONST char *format,
 	    TRIO_VA_DECL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(338);
+#endif
   int status;
   va_list args;
 
@@ -3947,6 +4054,9 @@ TRIO_ARGS3((buffer, format, args),
 	   TRIO_CONST char *format,
 	   va_list args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(339);
+#endif
   int status;
 
   assert(VALID(buffer));
@@ -3972,6 +4082,9 @@ TRIO_ARGS3((buffer, format, args),
 	   TRIO_CONST char *format,
 	   trio_pointer_t *args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(340);
+#endif
   int status;
 
   assert(VALID(buffer));
@@ -4003,6 +4116,9 @@ TRIO_VARGS4((buffer, max, format, va_alist),
 	    TRIO_CONST char *format,
 	    TRIO_VA_DECL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(341);
+#endif
   int status;
   va_list args;
 
@@ -4035,6 +4151,9 @@ TRIO_ARGS4((buffer, max, format, args),
 	   TRIO_CONST char *format,
 	   va_list args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(342);
+#endif
   int status;
 
   assert(VALID(buffer));
@@ -4064,6 +4183,9 @@ TRIO_ARGS4((buffer, max, format, args),
 	   TRIO_CONST char *format,
 	   trio_pointer_t *args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(343);
+#endif
   int status;
 
   assert(VALID(buffer));
@@ -4089,6 +4211,9 @@ TRIO_VARGS4((buffer, max, format, va_alist),
 	    TRIO_CONST char *format,
 	    TRIO_VA_DECL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(344);
+#endif
   int status;
   va_list args;
   size_t buf_len;
@@ -4116,6 +4241,9 @@ TRIO_ARGS4((buffer, max, format, args),
 	   TRIO_CONST char *format,
 	   va_list args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(345);
+#endif
   int status;
   size_t buf_len;
 
@@ -4141,6 +4269,9 @@ TRIO_VARGS2((format, va_alist),
 	    TRIO_CONST char *format,
 	    TRIO_VA_DECL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(346);
+#endif
   va_list args;
   trio_string_t *info;
   char *result = NULL;
@@ -4169,6 +4300,9 @@ TRIO_ARGS2((format, args),
 	   TRIO_CONST char *format,
 	   va_list args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(347);
+#endif
   trio_string_t *info;
   char *result = NULL;
 
@@ -4193,6 +4327,9 @@ TRIO_VARGS3((result, format, va_alist),
 	    TRIO_CONST char *format,
 	    TRIO_VA_DECL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(348);
+#endif
   va_list args;
   int status;
   trio_string_t *info;
@@ -4229,6 +4366,9 @@ TRIO_ARGS3((result, format, args),
 	   TRIO_CONST char *format,
 	   va_list args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(349);
+#endif
   int status;
   trio_string_t *info;
 
@@ -4290,6 +4430,9 @@ TRIO_ARGS2((callback, name),
 	   trio_callback_t callback,
 	   TRIO_CONST char *name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(350);
+#endif
   trio_userdef_t *def;
   trio_userdef_t *prev = NULL;
 
@@ -4359,6 +4502,9 @@ trio_unregister
 TRIO_ARGS1((handle),
 	   trio_pointer_t handle)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(351);
+#endif
   trio_userdef_t *self = (trio_userdef_t *)handle;
   trio_userdef_t *def;
   trio_userdef_t *prev = NULL;
@@ -4864,6 +5010,9 @@ TRIO_ARGS2((ref, number),
 	   trio_pointer_t ref,
 	   int number)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(352);
+#endif
   trio_reference_t *self = (trio_reference_t *)ref;
 
   TrioWriteNumber(self->data,
@@ -4883,6 +5032,9 @@ TRIO_ARGS2((ref, number),
 	   trio_pointer_t ref,
 	   unsigned int number)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(353);
+#endif
   trio_reference_t *self = (trio_reference_t *)ref;
 
   TrioWriteNumber(self->data,
@@ -4902,6 +5054,9 @@ TRIO_ARGS2((ref, number),
 	   trio_pointer_t ref,
 	   double number)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(354);
+#endif
   trio_reference_t *self = (trio_reference_t *)ref;
 
   TrioWriteDouble(self->data,
@@ -4921,6 +5076,9 @@ TRIO_ARGS2((ref, string),
 	   trio_pointer_t ref,
 	   char *string)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(355);
+#endif
   trio_reference_t *self = (trio_reference_t *)ref;
 
   TrioWriteString(self->data,
@@ -4940,6 +5098,9 @@ TRIO_VARGS3((ref, format, va_alist),
 	    TRIO_CONST char *format,
 	    TRIO_VA_DECL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(356);
+#endif
   int status;
   va_list arglist;
 
@@ -4992,6 +5153,9 @@ TRIO_ARGS2((ref, pointer),
 	   trio_pointer_t ref,
 	   trio_pointer_t pointer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(357);
+#endif
   trio_reference_t *self = (trio_reference_t *)ref;
   trio_flags_t flags;
   trio_uintmax_t number;
@@ -5046,6 +5210,9 @@ trio_locale_set_decimal_point
 TRIO_ARGS1((decimalPoint),
 	   char *decimalPoint)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(358);
+#endif
 #if defined(USE_LOCALE)
   if (NULL == internalLocaleValues)
     {
@@ -5076,6 +5243,9 @@ trio_locale_set_thousand_separator
 TRIO_ARGS1((thousandSeparator),
 	   char *thousandSeparator)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(359);
+#endif
 #if defined(USE_LOCALE)
   if (NULL == internalLocaleValues)
     {
@@ -5105,6 +5275,9 @@ trio_locale_set_grouping
 TRIO_ARGS1((grouping),
 	   char *grouping)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(360);
+#endif
 #if defined(USE_LOCALE)
   if (NULL == internalLocaleValues)
     {
@@ -5131,6 +5304,9 @@ TrioSkipWhitespaces
 TRIO_ARGS1((self),
 	   trio_class_t *self)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(361);
+#endif
   int ch;
 
   ch = self->current;
@@ -5148,6 +5324,9 @@ TRIO_ARGS1((self),
 TRIO_PRIVATE void
 TrioGetCollation(TRIO_NOARGS)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(362);
+#endif
   int i;
   int j;
   int k;
@@ -5186,6 +5365,9 @@ TRIO_ARGS4((format, indexPointer, flagsPointer, characterclass),
 	   trio_flags_t *flagsPointer,
 	   int *characterclass)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(363);
+#endif
   int index = *indexPointer;
   int i;
   char ch;
@@ -5446,6 +5628,9 @@ TRIO_ARGS5((self, target, flags, width, base),
 	   int width,
 	   int base)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(364);
+#endif
   trio_uintmax_t number = 0;
   int digit;
   int count;
@@ -5575,6 +5760,9 @@ TRIO_ARGS4((self, target, flags, width),
 	   trio_flags_t flags,
 	   int width)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(365);
+#endif
   int i;
   char ch;
   trio_uintmax_t number;
@@ -5641,6 +5829,9 @@ TRIO_ARGS4((self, target, flags, width),
 	   trio_flags_t flags,
 	   int width)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(366);
+#endif
   int i;
 
   assert(VALID(self));
@@ -5677,6 +5868,9 @@ TRIO_ARGS4((self, target, flags, width),
 	   trio_flags_t flags,
 	   int width)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(367);
+#endif
   int i;
   int j;
   int size;
@@ -5738,6 +5932,9 @@ TRIO_ARGS4((self, target, flags, width),
 	   trio_flags_t flags,
 	   int width)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(368);
+#endif
   int i;
   int size;
 
@@ -5785,6 +5982,9 @@ TRIO_ARGS5((self, target, characterclass, flags, width),
 	   trio_flags_t flags,
 	   int width)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(369);
+#endif
   int ch;
   int i;
 
@@ -5823,6 +6023,9 @@ TRIO_ARGS4((self, target, flags, width),
 	   trio_flags_t flags,
 	   int width)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(370);
+#endif
   int ch;
   char doubleString[512];
   int index = 0;
@@ -6008,6 +6211,9 @@ TRIO_ARGS3((self, target, flags),
 	   trio_pointer_t *target,
 	   trio_flags_t flags)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(371);
+#endif
   trio_uintmax_t number;
   char buffer[sizeof(internalNullString)];
 
@@ -6054,6 +6260,9 @@ TRIO_ARGS3((data, format, parameters),
 	   TRIO_CONST char *format,
 	   trio_parameter_t *parameters)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(372);
+#endif
 #if defined(TRIO_COMPILER_SUPPORTS_MULTIBYTE)
   int charlen;
   int cnt;
@@ -6393,6 +6602,9 @@ TRIO_ARGS6((source, sourceSize, InStream, format, arglist, argarray),
 	   TRIO_VA_LIST_PTR arglist,
 	   trio_pointer_t *argarray)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(373);
+#endif
   int status;
   trio_parameter_t parameters[MAX_PARAMETERS];
   trio_class_t data;
@@ -6434,6 +6646,9 @@ TRIO_ARGS2((self, intPointer),
 	   trio_class_t *self,
 	   int *intPointer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(374);
+#endif
   FILE *file;
 
   assert(VALID(self));
@@ -6470,6 +6685,9 @@ TRIO_ARGS2((self, intPointer),
 	   trio_class_t *self,
 	   int *intPointer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(375);
+#endif
   int fd;
   int size;
   unsigned char input;
@@ -6510,6 +6728,9 @@ TRIO_ARGS2((self, intPointer),
 	   trio_class_t *self,
 	   int *intPointer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(376);
+#endif
   trio_custom_t *data;
 
   assert(VALID(self));
@@ -6546,6 +6767,9 @@ TRIO_ARGS2((self, intPointer),
 	   trio_class_t *self,
 	   int *intPointer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(377);
+#endif
   unsigned char **buffer;
 
   assert(VALID(self));
@@ -6600,6 +6824,9 @@ TRIO_VARGS2((format, va_alist),
 	    TRIO_CONST char *format,
 	    TRIO_VA_DECL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(378);
+#endif
   int status;
   va_list args;
 
@@ -6619,6 +6846,9 @@ TRIO_ARGS2((format, args),
 	   TRIO_CONST char *format,
 	   va_list args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(379);
+#endif
   assert(VALID(format));
 
   return TrioScan((trio_pointer_t)stdin, 0,
@@ -6632,6 +6862,9 @@ TRIO_ARGS2((format, args),
 	   TRIO_CONST char *format,
 	   trio_pointer_t *args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(380);
+#endif
   assert(VALID(format));
 
   return TrioScan((trio_pointer_t)stdin, 0,
@@ -6649,6 +6882,9 @@ TRIO_VARGS3((file, format, va_alist),
 	    TRIO_CONST char *format,
 	    TRIO_VA_DECL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(381);
+#endif
   int status;
   va_list args;
 
@@ -6670,6 +6906,9 @@ TRIO_ARGS3((file, format, args),
 	   TRIO_CONST char *format,
 	   va_list args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(382);
+#endif
   assert(VALID(file));
   assert(VALID(format));
 
@@ -6685,6 +6924,9 @@ TRIO_ARGS3((file, format, args),
 	   TRIO_CONST char *format,
 	   trio_pointer_t *args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(383);
+#endif
   assert(VALID(file));
   assert(VALID(format));
 
@@ -6703,6 +6945,9 @@ TRIO_VARGS3((fd, format, va_alist),
 	    TRIO_CONST char *format,
 	    TRIO_VA_DECL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(384);
+#endif
   int status;
   va_list args;
 
@@ -6723,6 +6968,9 @@ TRIO_ARGS3((fd, format, args),
 	   TRIO_CONST char *format,
 	   va_list args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(385);
+#endif
   assert(VALID(format));
 
   return TrioScan((trio_pointer_t)&fd, 0,
@@ -6737,6 +6985,9 @@ TRIO_ARGS3((fd, format, args),
 	   TRIO_CONST char *format,
 	   trio_pointer_t *args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(386);
+#endif
   assert(VALID(format));
 
   return TrioScan((trio_pointer_t)&fd, 0,
@@ -6755,6 +7006,9 @@ TRIO_VARGS4((stream, closure, format, va_alist),
 	    TRIO_CONST char *format,
 	    TRIO_VA_DECL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(387);
+#endif
   int status;
   va_list args;
   trio_custom_t data;
@@ -6778,6 +7032,9 @@ TRIO_ARGS4((stream, closure, format, args),
 	   TRIO_CONST char *format,
 	   va_list args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(388);
+#endif
   trio_custom_t data;
 
   assert(VALID(stream));
@@ -6796,6 +7053,9 @@ TRIO_ARGS4((stream, closure, format, args),
 	   TRIO_CONST char *format,
 	   trio_pointer_t *args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(389);
+#endif
   trio_custom_t data;
 
   assert(VALID(stream));
@@ -6816,6 +7076,9 @@ TRIO_VARGS3((buffer, format, va_alist),
 	    TRIO_CONST char *format,
 	    TRIO_VA_DECL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(390);
+#endif
   int status;
   va_list args;
 
@@ -6837,6 +7100,9 @@ TRIO_ARGS3((buffer, format, args),
 	   TRIO_CONST char *format,
 	   va_list args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(391);
+#endif
   assert(VALID(buffer));
   assert(VALID(format));
 
@@ -6852,6 +7118,9 @@ TRIO_ARGS3((buffer, format, args),
 	   TRIO_CONST char *format,
 	   trio_pointer_t *args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(392);
+#endif
   assert(VALID(buffer));
   assert(VALID(format));
 
@@ -6870,6 +7139,9 @@ trio_strerror
 TRIO_ARGS1((errorcode),
 	   int errorcode)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(393);
+#endif
   /* Textual versions of the error codes */
   switch (TRIO_ERROR_CODE(errorcode))
     {

@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * SAX.c : Old SAX v1 handlers to build a tree.
  *         Deprecated except for compatibility
@@ -41,6 +46,9 @@
 void
 initxmlDefaultSAXHandler(xmlSAXHandlerV1 *hdlr, int warning)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1691);
+#endif
 
     if(hdlr->initialized == 1)
 	return;
@@ -90,6 +98,9 @@ initxmlDefaultSAXHandler(xmlSAXHandlerV1 *hdlr, int warning)
 void
 inithtmlDefaultSAXHandler(xmlSAXHandlerV1 *hdlr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1692);
+#endif
     if(hdlr->initialized == 1)
 	return;
 
@@ -137,6 +148,9 @@ inithtmlDefaultSAXHandler(xmlSAXHandlerV1 *hdlr)
 void
 initdocbDefaultSAXHandler(xmlSAXHandlerV1 *hdlr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1693);
+#endif
     if(hdlr->initialized == 1)
 	return;
 

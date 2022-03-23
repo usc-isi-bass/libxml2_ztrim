@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * nanohttp.c: minimalist HTTP GET implementation to fetch external subsets.
  *             focuses on size, streamability, reentrancy and portability
@@ -174,6 +179,9 @@ xmlHTTPErrMemory(const char *extra)
  * A portability function
  */
 static int socket_errno(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(718);
+#endif
 #ifdef _WINSOCKAPI_
     int err = WSAGetLastError();
     switch(err) {
@@ -198,6 +206,9 @@ static int socket_errno(void) {
 #ifdef SUPPORT_IP6
 static
 int have_ipv6(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(719);
+#endif
     SOCKET s;
 
     s = socket (AF_INET6, SOCK_STREAM, 0);
@@ -218,6 +229,9 @@ int have_ipv6(void) {
 
 void
 xmlNanoHTTPInit(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(720);
+#endif
     const char *env;
 #ifdef _WINSOCKAPI_
     WSADATA wsaData;
@@ -259,6 +273,9 @@ done:
 
 void
 xmlNanoHTTPCleanup(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(721);
+#endif
     if (proxy != NULL) {
 	xmlFree(proxy);
 	proxy = NULL;
@@ -282,6 +299,9 @@ xmlNanoHTTPCleanup(void) {
 
 static void
 xmlNanoHTTPScanURL(xmlNanoHTTPCtxtPtr ctxt, const char *URL) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(722);
+#endif
     xmlURIPtr uri;
     int len;
 
@@ -349,6 +369,9 @@ xmlNanoHTTPScanURL(xmlNanoHTTPCtxtPtr ctxt, const char *URL) {
 
 void
 xmlNanoHTTPScanProxy(const char *URL) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(723);
+#endif
     xmlURIPtr uri;
 
     if (proxy != NULL) {
@@ -394,6 +417,9 @@ xmlNanoHTTPScanProxy(const char *URL) {
 
 static xmlNanoHTTPCtxtPtr
 xmlNanoHTTPNewCtxt(const char *URL) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(724);
+#endif
     xmlNanoHTTPCtxtPtr ret;
 
     ret = (xmlNanoHTTPCtxtPtr) xmlMalloc(sizeof(xmlNanoHTTPCtxt));
@@ -422,6 +448,9 @@ xmlNanoHTTPNewCtxt(const char *URL) {
 
 static void
 xmlNanoHTTPFreeCtxt(xmlNanoHTTPCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(725);
+#endif
     if (ctxt == NULL) return;
     if (ctxt->hostname != NULL) xmlFree(ctxt->hostname);
     if (ctxt->protocol != NULL) xmlFree(ctxt->protocol);
@@ -458,6 +487,9 @@ xmlNanoHTTPFreeCtxt(xmlNanoHTTPCtxtPtr ctxt) {
 static int
 xmlNanoHTTPSend(xmlNanoHTTPCtxtPtr ctxt, const char *xmt_ptr, int outlen)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(726);
+#endif
     int total_sent = 0;
 #ifdef HAVE_POLL_H
     struct pollfd p;
@@ -532,6 +564,9 @@ xmlNanoHTTPSend(xmlNanoHTTPCtxtPtr ctxt, const char *xmt_ptr, int outlen)
 static int
 xmlNanoHTTPRecv(xmlNanoHTTPCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(727);
+#endif
 #ifdef HAVE_POLL_H
     struct pollfd p;
 #else
@@ -658,6 +693,9 @@ xmlNanoHTTPRecv(xmlNanoHTTPCtxtPtr ctxt)
 
 static char *
 xmlNanoHTTPReadLine(xmlNanoHTTPCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(728);
+#endif
     char buf[4096];
     char *bp = buf;
     int	rc;
@@ -704,6 +742,9 @@ xmlNanoHTTPReadLine(xmlNanoHTTPCtxtPtr ctxt) {
 
 static void
 xmlNanoHTTPScanAnswer(xmlNanoHTTPCtxtPtr ctxt, const char *line) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(729);
+#endif
     const char *cur = line;
 
     if (line == NULL) return;
@@ -857,6 +898,9 @@ xmlNanoHTTPScanAnswer(xmlNanoHTTPCtxtPtr ctxt, const char *line) {
 static SOCKET
 xmlNanoHTTPConnectAttempt(struct sockaddr *addr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(730);
+#endif
 #ifndef HAVE_POLL_H
     fd_set wfd;
 #ifdef _WINSOCKAPI_
@@ -1045,6 +1089,9 @@ xmlNanoHTTPConnectAttempt(struct sockaddr *addr)
 static SOCKET
 xmlNanoHTTPConnectHost(const char *host, int port)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(731);
+#endif
     struct sockaddr *addr = NULL;
     struct sockaddr_in sockin;
 
@@ -1272,6 +1319,9 @@ xmlNanoHTTPOpenRedir(const char *URL, char **contentType, char **redir) {
  */
 int
 xmlNanoHTTPRead(void *ctx, void *dest, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(732);
+#endif
     xmlNanoHTTPCtxtPtr ctxt = (xmlNanoHTTPCtxtPtr) ctx;
 #ifdef LIBXML_ZLIB_ENABLED
     int bytes_read = 0;
@@ -1356,6 +1406,9 @@ void*
 xmlNanoHTTPMethodRedir(const char *URL, const char *method, const char *input,
                   char **contentType, char **redir,
 		  const char *headers, int ilen ) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(733);
+#endif
     xmlNanoHTTPCtxtPtr ctxt;
     char *bp, *p;
     int blen;
@@ -1630,6 +1683,9 @@ xmlNanoHTTPMethod(const char *URL, const char *method, const char *input,
  */
 int
 xmlNanoHTTPFetch(const char *URL, const char *filename, char **contentType) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(734);
+#endif
     void *ctxt = NULL;
     char *buf = NULL;
     int fd;
@@ -1679,6 +1735,9 @@ xmlNanoHTTPFetch(const char *URL, const char *filename, char **contentType) {
  */
 int
 xmlNanoHTTPSave(void *ctxt, const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(735);
+#endif
     char *buf = NULL;
     int fd;
     int len;
@@ -1820,6 +1879,9 @@ xmlNanoHTTPMimeType( void * ctx ) {
  */
 static int
 xmlNanoHTTPFetchContent( void * ctx, char ** ptr, int * len ) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(736);
+#endif
     xmlNanoHTTPCtxtPtr	ctxt = (xmlNanoHTTPCtxtPtr)ctx;
 
     int			rc = 0;

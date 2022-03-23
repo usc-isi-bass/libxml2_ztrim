@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * xmllint.c : a small tester program for XML input.
  *
@@ -216,6 +221,9 @@ static int load_trace = 0;
 
 static
 void parsePath(const xmlChar *path) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(529);
+#endif
     const xmlChar *cur;
 
     if (path == NULL)
@@ -245,6 +253,9 @@ static xmlExternalEntityLoader defaultEntityLoader = NULL;
 static xmlParserInputPtr
 xmllintExternalEntityLoader(const char *URL, const char *ID,
 			     xmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(530);
+#endif
     xmlParserInputPtr ret;
     warningSAXFunc warning = NULL;
     errorSAXFunc err = NULL;
@@ -343,6 +354,9 @@ myFreeFunc(void *mem)
 static void *
 myMallocFunc(size_t size)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(531);
+#endif
     void *ret;
 
     ret = xmlMemMalloc(size);
@@ -358,6 +372,9 @@ myMallocFunc(size_t size)
 static void *
 myReallocFunc(void *mem, size_t size)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(532);
+#endif
     void *ret;
 
     ret = xmlMemRealloc(mem, size);
@@ -373,6 +390,9 @@ myReallocFunc(void *mem, size_t size)
 static char *
 myStrdupFunc(const char *str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(533);
+#endif
     char *ret;
 
     ret = xmlMemoryStrdup(str);
@@ -400,6 +420,9 @@ myStrdupFunc(const char *str)
 static int
 my_gettimeofday(struct timeval *tvp, void *tzp)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(534);
+#endif
 	struct timeb timebuffer;
 
 	ftime(&timebuffer);
@@ -437,6 +460,9 @@ startTimer(void)
 static void XMLCDECL LIBXML_ATTR_FORMAT(1,2)
 endTimer(const char *fmt, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(535);
+#endif
     long msec;
     va_list ap;
 
@@ -473,6 +499,9 @@ startTimer(void)
 static void XMLCDECL LIBXML_ATTR_FORMAT(1,2)
 endTimer(const char *fmt, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(536);
+#endif
     long msec;
     va_list ap;
 
@@ -502,6 +531,9 @@ startTimer(void)
 static void XMLCDECL LIBXML_ATTR_FORMAT(1,2)
 endTimer(char *format, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(537);
+#endif
     /*
      * We cannot do anything because we don't have a timing function
      */
@@ -527,6 +559,9 @@ static char buffer[50000];
 
 static void
 xmlHTMLEncodeSend(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(538);
+#endif
     char *result;
 
     /*
@@ -552,6 +587,9 @@ xmlHTMLEncodeSend(void) {
 
 static void
 xmlHTMLPrintFileInfo(xmlParserInputPtr input) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(539);
+#endif
     int len;
     xmlGenericError(xmlGenericErrorContext, "<p>");
 
@@ -576,6 +614,9 @@ xmlHTMLPrintFileInfo(xmlParserInputPtr input) {
 
 static void
 xmlHTMLPrintFileContext(xmlParserInputPtr input) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(540);
+#endif
     const xmlChar *cur, *base;
     int len;
     int n;
@@ -628,6 +669,9 @@ xmlHTMLPrintFileContext(xmlParserInputPtr input) {
 static void XMLCDECL LIBXML_ATTR_FORMAT(2,3)
 xmlHTMLError(void *ctx, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(541);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlParserInputPtr input;
     va_list args;
@@ -665,6 +709,9 @@ xmlHTMLError(void *ctx, const char *msg, ...)
 static void XMLCDECL LIBXML_ATTR_FORMAT(2,3)
 xmlHTMLWarning(void *ctx, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(542);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlParserInputPtr input;
     va_list args;
@@ -703,6 +750,9 @@ xmlHTMLWarning(void *ctx, const char *msg, ...)
 static void XMLCDECL LIBXML_ATTR_FORMAT(2,3)
 xmlHTMLValidityError(void *ctx, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(543);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlParserInputPtr input;
     va_list args;
@@ -740,6 +790,9 @@ xmlHTMLValidityError(void *ctx, const char *msg, ...)
 static void XMLCDECL LIBXML_ATTR_FORMAT(2,3)
 xmlHTMLValidityWarning(void *ctx, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(544);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlParserInputPtr input;
     va_list args;
@@ -782,6 +835,9 @@ xmlHTMLValidityWarning(void *ctx, const char *msg, ...)
  */
 static char *
 xmlShellReadline(char *prompt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(545);
+#endif
 #ifdef HAVE_LIBREADLINE
     char *line_read;
 
@@ -943,6 +999,9 @@ static void
 internalSubsetDebug(void *ctx ATTRIBUTE_UNUSED, const xmlChar *name,
 	       const xmlChar *ExternalID, const xmlChar *SystemID)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(546);
+#endif
     callbacks++;
     if (noout)
 	return;
@@ -967,6 +1026,9 @@ static void
 externalSubsetDebug(void *ctx ATTRIBUTE_UNUSED, const xmlChar *name,
 	       const xmlChar *ExternalID, const xmlChar *SystemID)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(547);
+#endif
     callbacks++;
     if (noout)
 	return;
@@ -998,6 +1060,9 @@ externalSubsetDebug(void *ctx ATTRIBUTE_UNUSED, const xmlChar *name,
 static xmlParserInputPtr
 resolveEntityDebug(void *ctx ATTRIBUTE_UNUSED, const xmlChar *publicId, const xmlChar *systemId)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(548);
+#endif
     callbacks++;
     if (noout)
 	return(NULL);
@@ -1070,6 +1135,9 @@ static void
 entityDeclDebug(void *ctx ATTRIBUTE_UNUSED, const xmlChar *name, int type,
           const xmlChar *publicId, const xmlChar *systemId, xmlChar *content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(549);
+#endif
 const xmlChar *nullstr = BAD_CAST "(null)";
     /* not all libraries handle printing null pointers nicely */
     if (publicId == NULL)
@@ -1098,6 +1166,9 @@ attributeDeclDebug(void *ctx ATTRIBUTE_UNUSED, const xmlChar * elem,
                    const xmlChar * name, int type, int def,
                    const xmlChar * defaultValue, xmlEnumerationPtr tree)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(550);
+#endif
     callbacks++;
     if (noout)
         return;
@@ -1165,6 +1236,9 @@ unparsedEntityDeclDebug(void *ctx ATTRIBUTE_UNUSED, const xmlChar *name,
 		   const xmlChar *publicId, const xmlChar *systemId,
 		   const xmlChar *notationName)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(551);
+#endif
 const xmlChar *nullstr = BAD_CAST "(null)";
 
     if (publicId == NULL)
@@ -1238,6 +1312,9 @@ endDocumentDebug(void *ctx ATTRIBUTE_UNUSED)
 static void
 startElementDebug(void *ctx ATTRIBUTE_UNUSED, const xmlChar *name, const xmlChar **atts)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(552);
+#endif
     int i;
 
     callbacks++;
@@ -1282,6 +1359,9 @@ endElementDebug(void *ctx ATTRIBUTE_UNUSED, const xmlChar *name)
 static void
 charactersDebug(void *ctx ATTRIBUTE_UNUSED, const xmlChar *ch, int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(553);
+#endif
     char out[40];
     int i;
 
@@ -1324,6 +1404,9 @@ referenceDebug(void *ctx ATTRIBUTE_UNUSED, const xmlChar *name)
 static void
 ignorableWhitespaceDebug(void *ctx ATTRIBUTE_UNUSED, const xmlChar *ch, int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(554);
+#endif
     char out[40];
     int i;
 
@@ -1349,6 +1432,9 @@ static void
 processingInstructionDebug(void *ctx ATTRIBUTE_UNUSED, const xmlChar *target,
                       const xmlChar *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(555);
+#endif
     callbacks++;
     if (noout)
 	return;
@@ -1406,6 +1492,9 @@ commentDebug(void *ctx ATTRIBUTE_UNUSED, const xmlChar *value)
 static void XMLCDECL LIBXML_ATTR_FORMAT(2,3)
 warningDebug(void *ctx ATTRIBUTE_UNUSED, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(556);
+#endif
     va_list args;
 
     callbacks++;
@@ -1429,6 +1518,9 @@ warningDebug(void *ctx ATTRIBUTE_UNUSED, const char *msg, ...)
 static void XMLCDECL LIBXML_ATTR_FORMAT(2,3)
 errorDebug(void *ctx ATTRIBUTE_UNUSED, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(557);
+#endif
     va_list args;
 
     callbacks++;
@@ -1452,6 +1544,9 @@ errorDebug(void *ctx ATTRIBUTE_UNUSED, const char *msg, ...)
 static void XMLCDECL LIBXML_ATTR_FORMAT(2,3)
 fatalErrorDebug(void *ctx ATTRIBUTE_UNUSED, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(558);
+#endif
     va_list args;
 
     callbacks++;
@@ -1521,6 +1616,9 @@ startElementNsDebug(void *ctx ATTRIBUTE_UNUSED,
 		    int nb_defaulted,
 		    const xmlChar **attributes)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(559);
+#endif
     int i;
 
     callbacks++;
@@ -1573,6 +1671,9 @@ endElementNsDebug(void *ctx ATTRIBUTE_UNUSED,
                   const xmlChar *prefix,
                   const xmlChar *URI)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(560);
+#endif
     callbacks++;
     if (noout)
 	return;
@@ -1626,6 +1727,9 @@ static xmlSAXHandlerPtr debugSAX2Handler = &debugSAX2HandlerStruct;
 
 static void
 testSAX(const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(561);
+#endif
     xmlSAXHandlerPtr handler;
     const char *user_data = "user_data"; /* mostly for debugging */
     xmlParserInputBufferPtr buf = NULL;
@@ -1724,6 +1828,9 @@ error:
  ************************************************************************/
 #ifdef LIBXML_READER_ENABLED
 static void processNode(xmlTextReaderPtr reader) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(562);
+#endif
     const xmlChar *name, *value;
     int type, empty;
 
@@ -1815,6 +1922,9 @@ static void processNode(xmlTextReaderPtr reader) {
 }
 
 static void streamFile(char *filename) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(563);
+#endif
     xmlTextReaderPtr reader;
     int ret;
 #ifdef HAVE_MMAP
@@ -1985,6 +2095,9 @@ static void streamFile(char *filename) {
 }
 
 static void walkDoc(xmlDocPtr doc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(564);
+#endif
     xmlTextReaderPtr reader;
     int ret;
 
@@ -2074,6 +2187,9 @@ static void walkDoc(xmlDocPtr doc) {
  ************************************************************************/
 
 static void doXPathDump(xmlXPathObjectPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(565);
+#endif
     switch(cur->type) {
         case XPATH_NODESET: {
             int i;
@@ -2138,6 +2254,9 @@ static void doXPathDump(xmlXPathObjectPtr cur) {
 }
 
 static void doXPathQuery(xmlDocPtr doc, const char *query) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(566);
+#endif
     xmlXPathContextPtr ctxt;
     xmlXPathObjectPtr res;
 
@@ -2167,6 +2286,9 @@ static void doXPathQuery(xmlDocPtr doc, const char *query) {
  *									*
  ************************************************************************/
 static void parseAndPrintFile(char *filename, xmlParserCtxtPtr rectxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(567);
+#endif
     xmlDocPtr doc = NULL;
 #ifdef LIBXML_TREE_ENABLED
     xmlDocPtr tmp;
@@ -2947,6 +3069,9 @@ static void parseAndPrintFile(char *filename, xmlParserCtxtPtr rectxt) {
  ************************************************************************/
 
 static void showVersion(const char *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(568);
+#endif
     fprintf(stderr, "%s: using libxml version %s\n", name, xmlParserVersion);
     fprintf(stderr, "   compiled with: ");
     if (xmlHasFeature(XML_WITH_THREAD)) fprintf(stderr, "Threads ");
@@ -2986,6 +3111,9 @@ static void showVersion(const char *name) {
 }
 
 static void usage(FILE *f, const char *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(569);
+#endif
     fprintf(f, "Usage : %s [options] XMLfiles ...\n", name);
 #ifdef LIBXML_OUTPUT_ENABLED
     fprintf(f, "\tParse the XML files and output the result of the parsing\n");
@@ -3108,6 +3236,9 @@ static void usage(FILE *f, const char *name) {
 
 static void registerNode(xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(570);
+#endif
     node->_private = malloc(sizeof(long));
     if (node->_private == NULL) {
         fprintf(stderr, "Out of memory in xmllint:registerNode()\n");

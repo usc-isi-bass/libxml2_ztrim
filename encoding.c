@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * encoding.c : implements the encoding conversion functions needed for XML
  *
@@ -105,6 +110,9 @@ xmlEncodingErr(xmlParserErrors error, const char *msg, const char *val)
 static uconv_t*
 openIcuConverter(const char* name, int toUnicode)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(828);
+#endif
   UErrorCode status = U_ZERO_ERROR;
   uconv_t *conv = (uconv_t *) xmlMalloc(sizeof(uconv_t));
   if (conv == NULL)
@@ -175,6 +183,9 @@ closeIcuConverter(uconv_t *conv)
 static int
 asciiToUTF8(unsigned char* out, int *outlen,
               const unsigned char* in, int *inlen) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(829);
+#endif
     unsigned char* outstart = out;
     const unsigned char* base = in;
     const unsigned char* processed = in;
@@ -222,6 +233,9 @@ asciiToUTF8(unsigned char* out, int *outlen,
 static int
 UTF8Toascii(unsigned char* out, int *outlen,
               const unsigned char* in, int *inlen) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(830);
+#endif
     const unsigned char* processed = in;
     const unsigned char* outend;
     const unsigned char* outstart = out;
@@ -306,6 +320,9 @@ UTF8Toascii(unsigned char* out, int *outlen,
 int
 isolat1ToUTF8(unsigned char* out, int *outlen,
               const unsigned char* in, int *inlen) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(831);
+#endif
     unsigned char* outstart = out;
     const unsigned char* base = in;
     unsigned char* outend;
@@ -355,6 +372,9 @@ static int
 UTF8ToUTF8(unsigned char* out, int *outlen,
            const unsigned char* inb, int *inlenb)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(832);
+#endif
     int len;
 
     if ((out == NULL) || (outlen == NULL) || (inlenb == NULL))
@@ -406,6 +426,9 @@ UTF8ToUTF8(unsigned char* out, int *outlen,
 int
 UTF8Toisolat1(unsigned char* out, int *outlen,
               const unsigned char* in, int *inlen) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(833);
+#endif
     const unsigned char* processed = in;
     const unsigned char* outend;
     const unsigned char* outstart = out;
@@ -499,6 +522,9 @@ static int
 UTF16LEToUTF8(unsigned char* out, int *outlen,
             const unsigned char* inb, int *inlenb)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(834);
+#endif
     unsigned char* outstart = out;
     const unsigned char* processed = inb;
     unsigned char* outend;
@@ -589,6 +615,9 @@ static int
 UTF8ToUTF16LE(unsigned char* outb, int *outlen,
             const unsigned char* in, int *inlen)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(835);
+#endif
     unsigned short* out = (unsigned short*) outb;
     const unsigned char* processed = in;
     const unsigned char *const instart = in;
@@ -698,6 +727,9 @@ static int
 UTF8ToUTF16(unsigned char* outb, int *outlen,
             const unsigned char* in, int *inlen)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(836);
+#endif
     if (in == NULL) {
 	/*
 	 * initialization, add the Byte Order Mark for UTF-16LE
@@ -742,6 +774,9 @@ static int
 UTF16BEToUTF8(unsigned char* out, int *outlen,
             const unsigned char* inb, int *inlenb)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(837);
+#endif
     unsigned char* outstart = out;
     const unsigned char* processed = inb;
     unsigned char* outend = out + *outlen;
@@ -831,6 +866,9 @@ static int
 UTF8ToUTF16BE(unsigned char* outb, int *outlen,
             const unsigned char* in, int *inlen)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(838);
+#endif
     unsigned short* out = (unsigned short*) outb;
     const unsigned char* processed = in;
     const unsigned char *const instart = in;
@@ -941,6 +979,9 @@ UTF8ToUTF16BE(unsigned char* outb, int *outlen,
 xmlCharEncoding
 xmlDetectCharEncoding(const unsigned char* in, int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(839);
+#endif
     if (in == NULL)
         return(XML_CHAR_ENCODING_NONE);
     if (len >= 4) {
@@ -1000,6 +1041,9 @@ xmlDetectCharEncoding(const unsigned char* in, int len)
  */
 void
 xmlCleanupEncodingAliases(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(840);
+#endif
     int i;
 
     if (xmlCharEncodingAliases == NULL)
@@ -1027,6 +1071,9 @@ xmlCleanupEncodingAliases(void) {
  */
 const char *
 xmlGetEncodingAlias(const char *alias) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(841);
+#endif
     int i;
     char upper[100];
 
@@ -1065,6 +1112,9 @@ xmlGetEncodingAlias(const char *alias) {
  */
 int
 xmlAddEncodingAlias(const char *name, const char *alias) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(842);
+#endif
     int i;
     char upper[100];
 
@@ -1122,6 +1172,9 @@ xmlAddEncodingAlias(const char *name, const char *alias) {
  */
 int
 xmlDelEncodingAlias(const char *alias) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(843);
+#endif
     int i;
 
     if (alias == NULL)
@@ -1159,6 +1212,9 @@ xmlDelEncodingAlias(const char *alias) {
 xmlCharEncoding
 xmlParseCharEncoding(const char* name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(844);
+#endif
     const char *alias;
     char upper[500];
     int i;
@@ -1242,6 +1298,9 @@ xmlParseCharEncoding(const char* name)
 
 const char*
 xmlGetCharEncodingName(xmlCharEncoding enc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(845);
+#endif
     switch (enc) {
         case XML_CHAR_ENCODING_ERROR:
 	    return(NULL);
@@ -1328,6 +1387,9 @@ xmlCharEncodingHandlerPtr
 xmlNewCharEncodingHandler(const char *name,
                           xmlCharEncodingInputFunc input,
                           xmlCharEncodingOutputFunc output) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(846);
+#endif
     xmlCharEncodingHandlerPtr handler;
     const char *alias;
     char upper[500];
@@ -1405,6 +1467,9 @@ xmlNewCharEncodingHandler(const char *name,
  */
 void
 xmlInitCharEncodingHandlers(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(847);
+#endif
     unsigned short int tst = 0x1234;
     unsigned char *ptr = (unsigned char *) &tst;
 
@@ -1463,6 +1528,9 @@ xmlInitCharEncodingHandlers(void) {
  */
 void
 xmlCleanupCharEncodingHandlers(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(848);
+#endif
     xmlCleanupEncodingAliases();
 
     if (handlers == NULL) return;
@@ -1489,6 +1557,9 @@ xmlCleanupCharEncodingHandlers(void) {
  */
 void
 xmlRegisterCharEncodingHandler(xmlCharEncodingHandlerPtr handler) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(849);
+#endif
     if (handlers == NULL) xmlInitCharEncodingHandlers();
     if ((handler == NULL) || (handlers == NULL)) {
         xmlEncodingErr(XML_I18N_NO_HANDLER,
@@ -1524,6 +1595,9 @@ free_handler:
  */
 xmlCharEncodingHandlerPtr
 xmlGetCharEncodingHandler(xmlCharEncoding enc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(850);
+#endif
     xmlCharEncodingHandlerPtr handler;
 
     if (handlers == NULL) xmlInitCharEncodingHandlers();
@@ -1658,6 +1732,9 @@ xmlGetCharEncodingHandler(xmlCharEncoding enc) {
  */
 xmlCharEncodingHandlerPtr
 xmlFindCharEncodingHandler(const char *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(851);
+#endif
     const char *nalias;
     const char *norig;
     xmlCharEncoding alias;
@@ -1819,6 +1896,9 @@ xmlFindCharEncodingHandler(const char *name) {
 static int
 xmlIconvWrapper(iconv_t cd, unsigned char *out, int *outlen,
                 const unsigned char *in, int *inlen) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(852);
+#endif
     size_t icv_inlen, icv_outlen;
     const char *icv_in = (const char *) in;
     char *icv_out = (char *) out;
@@ -1887,6 +1967,9 @@ xmlIconvWrapper(iconv_t cd, unsigned char *out, int *outlen,
 static int
 xmlUconvWrapper(uconv_t *cd, int toUnicode, unsigned char *out, int *outlen,
                 const unsigned char *in, int *inlen, int flush) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(853);
+#endif
     const char *ucv_in = (const char *) in;
     char *ucv_out = (char *) out;
     UErrorCode err = U_ZERO_ERROR;
@@ -1953,6 +2036,9 @@ xmlUconvWrapper(uconv_t *cd, int toUnicode, unsigned char *out, int *outlen,
 static int
 xmlEncInputChunk(xmlCharEncodingHandler *handler, unsigned char *out,
                  int *outlen, const unsigned char *in, int *inlen, int flush) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(854);
+#endif
     int ret;
     (void)flush;
 
@@ -2003,6 +2089,9 @@ xmlEncInputChunk(xmlCharEncodingHandler *handler, unsigned char *out,
 static int
 xmlEncOutputChunk(xmlCharEncodingHandler *handler, unsigned char *out,
                   int *outlen, const unsigned char *in, int *inlen) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(855);
+#endif
     int ret;
 
     if (handler->output != NULL) {
@@ -2048,6 +2137,9 @@ xmlEncOutputChunk(xmlCharEncodingHandler *handler, unsigned char *out,
 int
 xmlCharEncFirstLineInt(xmlCharEncodingHandler *handler, xmlBufferPtr out,
                        xmlBufferPtr in, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(856);
+#endif
     int ret;
     int written;
     int toconv;
@@ -2155,6 +2247,9 @@ xmlCharEncFirstLine(xmlCharEncodingHandler *handler, xmlBufferPtr out,
 int
 xmlCharEncFirstLineInput(xmlParserInputBufferPtr input, int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(857);
+#endif
     int ret;
     size_t written;
     size_t toconv;
@@ -2262,6 +2357,9 @@ xmlCharEncFirstLineInput(xmlParserInputBufferPtr input, int len)
 int
 xmlCharEncInput(xmlParserInputBufferPtr input, int flush)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(858);
+#endif
     int ret;
     size_t written;
     size_t toconv;
@@ -2362,6 +2460,9 @@ int
 xmlCharEncInFunc(xmlCharEncodingHandler * handler, xmlBufferPtr out,
                  xmlBufferPtr in)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(859);
+#endif
     int ret;
     int written;
     int toconv;
@@ -2452,6 +2553,9 @@ xmlCharEncInFunc(xmlCharEncodingHandler * handler, xmlBufferPtr out,
 int
 xmlCharEncOutput(xmlOutputBufferPtr output, int init)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(860);
+#endif
     int ret;
     size_t written;
     int writtentot = 0;
@@ -2625,6 +2729,9 @@ retry:
 int
 xmlCharEncOutFunc(xmlCharEncodingHandler *handler, xmlBufferPtr out,
                   xmlBufferPtr in) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(861);
+#endif
     int ret;
     int written;
     int writtentot = 0;
@@ -2775,6 +2882,9 @@ retry:
  */
 int
 xmlCharEncCloseFunc(xmlCharEncodingHandler *handler) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(862);
+#endif
     int ret = 0;
     int tofree = 0;
     int i, handler_in_list = 0;
@@ -2858,6 +2968,9 @@ xmlCharEncCloseFunc(xmlCharEncodingHandler *handler) {
  */
 long
 xmlByteConsumed(xmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(863);
+#endif
     xmlParserInputPtr in;
 
     if (ctxt == NULL) return(-1);
@@ -2923,6 +3036,9 @@ static int
 UTF8ToISO8859x(unsigned char* out, int *outlen,
               const unsigned char* in, int *inlen,
               unsigned char const *xlattable) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(864);
+#endif
     const unsigned char* outstart = out;
     const unsigned char* inend;
     const unsigned char* instart = in;
@@ -3039,6 +3155,9 @@ static int
 ISO8859xToUTF8(unsigned char* out, int *outlen,
               const unsigned char* in, int *inlen,
               unsigned short const *unicodetable) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(865);
+#endif
     unsigned char* outstart = out;
     unsigned char* outend;
     const unsigned char* instart = in;
@@ -3952,6 +4071,9 @@ static int UTF8ToISO8859_16 (unsigned char* out, int *outlen,
 
 static void
 xmlRegisterCharEncodingHandlersISO8859x (void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(866);
+#endif
     xmlNewCharEncodingHandler ("ISO-8859-2", ISO8859_2ToUTF8, UTF8ToISO8859_2);
     xmlNewCharEncodingHandler ("ISO-8859-3", ISO8859_3ToUTF8, UTF8ToISO8859_3);
     xmlNewCharEncodingHandler ("ISO-8859-4", ISO8859_4ToUTF8, UTF8ToISO8859_4);
