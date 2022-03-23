@@ -1370,7 +1370,7 @@ xmlSprintfElementContent(char *buf ATTRIBUTE_UNUSED,
 void
 xmlSnprintfElementContent(char *buf, int size, xmlElementContentPtr content, int englob) {
 #ifndef ZTRIM_DONT_INSTR
-ztrim_fInstrument(2110);
+ztrim_fInstrument(0);
 #endif
     int len;
 
