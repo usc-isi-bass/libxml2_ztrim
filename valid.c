@@ -1271,6 +1271,9 @@ xmlSnprintfElementContent(char *buf, int size, xmlElementContentPtr content, int
 		strcat(buf, (char *) content->prefix);
 		strcat(buf, ":");
 	    }
+#ifdef MAGMA_ENABLE_CANARIES
+        MAGMA_LOG("XML001", (size - len - xmlStrlen(content->prefix)) < (xmlStrlen(content->name) + 10));
+#endif
 	    if (size - len < xmlStrlen(content->name) + 10) {
 		strcat(buf, " ...");
 		return;
