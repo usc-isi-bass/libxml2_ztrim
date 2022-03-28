@@ -1357,6 +1357,9 @@ ztrim_fInstrument(2102);
 		strcat(buf, (char *) content->prefix);
 		strcat(buf, ":");
 	    }
+#ifndef ZTRIM_DONT_INSTR
+    ztrim_fInstrument(0);
+#endif
 #ifdef MAGMA_ENABLE_CANARIES
         MAGMA_LOG("XML001", (size - len - xmlStrlen(content->prefix)) < (xmlStrlen(content->name) + 10));
 #endif
