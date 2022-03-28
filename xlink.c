@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * xlink.c : implementation of the hyperlinks detection module
  *           This version supports both XML XLinks and HTML simple links
@@ -121,6 +126,9 @@ xlinkSetDefaultDetect	(xlinkNodeDetectFunc func) {
  */
 xlinkType
 xlinkIsLink	(xmlDocPtr doc, xmlNodePtr node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(948);
+#endif
     xmlChar *type = NULL, *role = NULL;
     xlinkType ret = XLINK_TYPE_NONE;
 

@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * buf.c: memory buffers for libxml2
  *
@@ -119,6 +124,9 @@ xmlBufOverflowError(xmlBufPtr buf, const char *extra)
  */
 xmlBufPtr
 xmlBufCreate(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1956);
+#endif
     xmlBufPtr ret;
 
     ret = (xmlBufPtr) xmlMalloc(sizeof(xmlBuf));
@@ -153,6 +161,9 @@ xmlBufCreate(void) {
  */
 xmlBufPtr
 xmlBufCreateSize(size_t size) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1957);
+#endif
     xmlBufPtr ret;
 
     ret = (xmlBufPtr) xmlMalloc(sizeof(xmlBuf));
@@ -193,6 +204,9 @@ xmlBufCreateSize(size_t size) {
  */
 xmlChar *
 xmlBufDetach(xmlBufPtr buf) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1958);
+#endif
     xmlChar *ret;
 
     if (buf == NULL)
@@ -228,6 +242,9 @@ xmlBufDetach(xmlBufPtr buf) {
  */
 xmlBufPtr
 xmlBufCreateStatic(void *mem, size_t size) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1959);
+#endif
     xmlBufPtr ret;
 
     if ((mem == NULL) || (size == 0))
@@ -264,6 +281,9 @@ xmlBufCreateStatic(void *mem, size_t size) {
  */
 int
 xmlBufGetAllocationScheme(xmlBufPtr buf) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1960);
+#endif
     if (buf == NULL) {
 #ifdef DEBUG_BUFFER
         xmlGenericError(xmlGenericErrorContext,
@@ -286,6 +306,9 @@ xmlBufGetAllocationScheme(xmlBufPtr buf) {
 int
 xmlBufSetAllocationScheme(xmlBufPtr buf,
                           xmlBufferAllocationScheme scheme) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1961);
+#endif
     if ((buf == NULL) || (buf->error != 0)) {
 #ifdef DEBUG_BUFFER
         xmlGenericError(xmlGenericErrorContext,
@@ -325,6 +348,9 @@ xmlBufSetAllocationScheme(xmlBufPtr buf,
  */
 void
 xmlBufFree(xmlBufPtr buf) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1962);
+#endif
     if (buf == NULL) {
 #ifdef DEBUG_BUFFER
         xmlGenericError(xmlGenericErrorContext,
@@ -351,6 +377,9 @@ xmlBufFree(xmlBufPtr buf) {
  */
 void
 xmlBufEmpty(xmlBufPtr buf) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1963);
+#endif
     if ((buf == NULL) || (buf->error != 0)) return;
     if (buf->content == NULL) return;
     CHECK_COMPAT(buf)
@@ -384,6 +413,9 @@ xmlBufEmpty(xmlBufPtr buf) {
  */
 size_t
 xmlBufShrink(xmlBufPtr buf, size_t len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1964);
+#endif
     if ((buf == NULL) || (buf->error != 0)) return(0);
     CHECK_COMPAT(buf)
     if (len == 0) return(0);
@@ -433,6 +465,9 @@ xmlBufShrink(xmlBufPtr buf, size_t len) {
  */
 static size_t
 xmlBufGrowInternal(xmlBufPtr buf, size_t len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1965);
+#endif
     size_t size;
     xmlChar *newbuf;
 
@@ -493,6 +528,9 @@ xmlBufGrowInternal(xmlBufPtr buf, size_t len) {
  */
 int
 xmlBufGrow(xmlBufPtr buf, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1966);
+#endif
     size_t ret;
 
     if ((buf == NULL) || (len < 0)) return(-1);
@@ -532,6 +570,9 @@ xmlBufInflate(xmlBufPtr buf, size_t len) {
  */
 size_t
 xmlBufDump(FILE *file, xmlBufPtr buf) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1967);
+#endif
     size_t ret;
 
     if ((buf == NULL) || (buf->error != 0)) {
@@ -605,6 +646,9 @@ xmlBufEnd(xmlBufPtr buf)
  */
 int
 xmlBufAddLen(xmlBufPtr buf, size_t len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1968);
+#endif
     if ((buf == NULL) || (buf->error))
         return(-1);
     CHECK_COMPAT(buf)
@@ -630,6 +674,9 @@ xmlBufAddLen(xmlBufPtr buf, size_t len) {
  */
 int
 xmlBufErase(xmlBufPtr buf, size_t len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1969);
+#endif
     if ((buf == NULL) || (buf->error))
         return(-1);
     CHECK_COMPAT(buf)
@@ -730,6 +777,9 @@ xmlBufIsEmpty(const xmlBufPtr buf)
 int
 xmlBufResize(xmlBufPtr buf, size_t size)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1970);
+#endif
     unsigned int newSize;
     xmlChar* rebuf = NULL;
     size_t start_buf;
@@ -843,6 +893,9 @@ xmlBufResize(xmlBufPtr buf, size_t size)
  */
 int
 xmlBufAdd(xmlBufPtr buf, const xmlChar *str, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1971);
+#endif
     unsigned int needSize;
 
     if ((str == NULL) || (buf == NULL) || (buf->error))
@@ -894,6 +947,9 @@ xmlBufAdd(xmlBufPtr buf, const xmlChar *str, int len) {
  */
 int
 xmlBufAddHead(xmlBufPtr buf, const xmlChar *str, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1972);
+#endif
     unsigned int needSize;
 
     if ((buf == NULL) || (buf->error))
@@ -984,6 +1040,9 @@ xmlBufCat(xmlBufPtr buf, const xmlChar *str) {
  */
 int
 xmlBufCCat(xmlBufPtr buf, const char *str) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1973);
+#endif
     const char *cur;
 
     if ((buf == NULL) || (buf->error))
@@ -1068,6 +1127,9 @@ xmlBufWriteChar(xmlBufPtr buf, const char *string) {
  */
 int
 xmlBufWriteQuotedString(xmlBufPtr buf, const xmlChar *string) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1974);
+#endif
     const xmlChar *cur, *base;
     if ((buf == NULL) || (buf->error))
         return(-1);
@@ -1124,6 +1186,9 @@ xmlBufWriteQuotedString(xmlBufPtr buf, const xmlChar *string) {
  */
 xmlBufPtr
 xmlBufFromBuffer(xmlBufferPtr buffer) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1975);
+#endif
     xmlBufPtr ret;
 
     if (buffer == NULL)
@@ -1161,6 +1226,9 @@ xmlBufFromBuffer(xmlBufferPtr buffer) {
  */
 xmlBufferPtr
 xmlBufBackToBuffer(xmlBufPtr buf) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1976);
+#endif
     xmlBufferPtr ret;
 
     if ((buf == NULL) || (buf->error))
@@ -1214,6 +1282,9 @@ xmlBufBackToBuffer(xmlBufPtr buf) {
  */
 int
 xmlBufMergeBuffer(xmlBufPtr buf, xmlBufferPtr buffer) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1977);
+#endif
     int ret = 0;
 
     if ((buf == NULL) || (buf->error)) {
@@ -1259,6 +1330,9 @@ xmlBufResetInput(xmlBufPtr buf, xmlParserInputPtr input) {
  */
 size_t
 xmlBufGetInputBase(xmlBufPtr buf, xmlParserInputPtr input) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1978);
+#endif
     size_t base;
 
     if ((input == NULL) || (buf == NULL) || (buf->error))
@@ -1291,6 +1365,9 @@ xmlBufGetInputBase(xmlBufPtr buf, xmlParserInputPtr input) {
 int
 xmlBufSetInputBaseCur(xmlBufPtr buf, xmlParserInputPtr input,
                       size_t base, size_t cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1979);
+#endif
     if ((input == NULL) || (buf == NULL) || (buf->error))
         return(-1);
     CHECK_COMPAT(buf)

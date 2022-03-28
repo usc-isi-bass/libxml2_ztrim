@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * legacy.c: set of deprecated routines, not to be used anymore but
  *           kept purely for ABI compatibility
@@ -52,6 +57,9 @@ htmlDecodeEntities(htmlParserCtxtPtr ctxt ATTRIBUTE_UNUSED,
                    xmlChar end2 ATTRIBUTE_UNUSED,
                    xmlChar end3 ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -144,6 +152,9 @@ static const char *xmlFeaturesList[] = {
 int
 xmlGetFeaturesList(int *len, const char **result)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2);
+#endif
     int ret, i;
 
     ret = sizeof(xmlFeaturesList) / sizeof(xmlFeaturesList[0]);
@@ -171,6 +182,9 @@ xmlGetFeaturesList(int *len, const char **result)
 int
 xmlGetFeature(xmlParserCtxtPtr ctxt, const char *name, void *result)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(3);
+#endif
     if ((ctxt == NULL) || (name == NULL) || (result == NULL))
         return (-1);
 
@@ -280,6 +294,9 @@ xmlGetFeature(xmlParserCtxtPtr ctxt, const char *name, void *result)
 int
 xmlSetFeature(xmlParserCtxtPtr ctxt, const char *name, void *value)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(4);
+#endif
     if ((ctxt == NULL) || (name == NULL) || (value == NULL))
         return (-1);
 
@@ -413,6 +430,9 @@ xmlDecodeEntities(xmlParserCtxtPtr ctxt ATTRIBUTE_UNUSED,
                   xmlChar end2 ATTRIBUTE_UNUSED,
                   xmlChar end3 ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(5);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -443,6 +463,9 @@ xmlDecodeEntities(xmlParserCtxtPtr ctxt ATTRIBUTE_UNUSED,
 xmlChar *
 xmlNamespaceParseNCName(xmlParserCtxtPtr ctxt ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(6);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -477,6 +500,9 @@ xmlChar *
 xmlNamespaceParseQName(xmlParserCtxtPtr ctxt ATTRIBUTE_UNUSED,
                        xmlChar ** prefix ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(7);
+#endif
 
     static int deprecated = 0;
 
@@ -507,6 +533,9 @@ xmlNamespaceParseQName(xmlParserCtxtPtr ctxt ATTRIBUTE_UNUSED,
 xmlChar *
 xmlNamespaceParseNSDef(xmlParserCtxtPtr ctxt ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(8);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -530,6 +559,9 @@ xmlNamespaceParseNSDef(xmlParserCtxtPtr ctxt ATTRIBUTE_UNUSED)
 xmlChar *
 xmlParseQuotedString(xmlParserCtxtPtr ctxt ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(9);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -558,6 +590,9 @@ xmlParseQuotedString(xmlParserCtxtPtr ctxt ATTRIBUTE_UNUSED)
 void
 xmlParseNamespace(xmlParserCtxtPtr ctxt ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(10);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -590,6 +625,9 @@ xmlParseNamespace(xmlParserCtxtPtr ctxt ATTRIBUTE_UNUSED)
 xmlChar *
 xmlScanName(xmlParserCtxtPtr ctxt ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(11);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -630,6 +668,9 @@ xmlScanName(xmlParserCtxtPtr ctxt ATTRIBUTE_UNUSED)
 void
 xmlParserHandleReference(xmlParserCtxtPtr ctxt ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(12);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -656,6 +697,9 @@ void
 xmlHandleEntity(xmlParserCtxtPtr ctxt ATTRIBUTE_UNUSED,
                 xmlEntityPtr entity ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(13);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -680,6 +724,9 @@ xmlNewGlobalNs(xmlDocPtr doc ATTRIBUTE_UNUSED,
                const xmlChar * href ATTRIBUTE_UNUSED,
                const xmlChar * prefix ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(14);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -700,6 +747,9 @@ xmlNewGlobalNs(xmlDocPtr doc ATTRIBUTE_UNUSED,
 void
 xmlUpgradeOldNs(xmlDocPtr doc ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(15);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -726,6 +776,9 @@ const xmlChar *
 xmlEncodeEntities(xmlDocPtr doc ATTRIBUTE_UNUSED,
                   const xmlChar * input ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(16);
+#endif
     static int warning = 1;
 
     if (warning) {

@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * tree.c : implementation of access function for an XML tree.
  *
@@ -84,6 +89,9 @@ xmlTreeErrMemory(const char *extra)
 static void
 xmlTreeErr(int code, xmlNodePtr node, const char *extra)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(252);
+#endif
     const char *msg = NULL;
 
     switch(code) {
@@ -161,6 +169,9 @@ static int xmlCheckDTD = 1;
  */
 static xmlEntityPtr
 xmlGetEntityFromDtd(const xmlDtd *dtd, const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(253);
+#endif
     xmlEntitiesTablePtr table;
 
     if((dtd != NULL) && (dtd->entities != NULL)) {
@@ -182,6 +193,9 @@ xmlGetEntityFromDtd(const xmlDtd *dtd, const xmlChar *name) {
  */
 static xmlEntityPtr
 xmlGetParameterEntityFromDtd(const xmlDtd *dtd, const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(254);
+#endif
     xmlEntitiesTablePtr table;
 
     if ((dtd != NULL) && (dtd->pentities != NULL)) {
@@ -216,6 +230,9 @@ xmlGetParameterEntityFromDtd(const xmlDtd *dtd, const xmlChar *name) {
 xmlChar *
 xmlBuildQName(const xmlChar *ncname, const xmlChar *prefix,
 	      xmlChar *memory, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(255);
+#endif
     int lenn, lenp;
     xmlChar *ret;
 
@@ -260,6 +277,9 @@ xmlBuildQName(const xmlChar *ncname, const xmlChar *prefix,
 
 xmlChar *
 xmlSplitQName2(const xmlChar *name, xmlChar **prefix) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(256);
+#endif
     int len = 0;
     xmlChar *ret = NULL;
 
@@ -320,6 +340,9 @@ xmlSplitQName2(const xmlChar *name, xmlChar **prefix) {
 
 const xmlChar *
 xmlSplitQName3(const xmlChar *name, int *len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(257);
+#endif
     int l = 0;
 
     if (name == NULL) return(NULL);
@@ -365,6 +388,9 @@ xmlSplitQName3(const xmlChar *name, int *len) {
  */
 int
 xmlValidateNCName(const xmlChar *value, int space) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(258);
+#endif
     const xmlChar *cur = value;
     int c,l;
 
@@ -439,6 +465,9 @@ try_complex:
  */
 int
 xmlValidateQName(const xmlChar *value, int space) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(259);
+#endif
     const xmlChar *cur = value;
     int c,l;
 
@@ -537,6 +566,9 @@ try_complex:
  */
 int
 xmlValidateName(const xmlChar *value, int space) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(260);
+#endif
     const xmlChar *cur = value;
     int c,l;
 
@@ -606,6 +638,9 @@ try_complex:
  */
 int
 xmlValidateNMToken(const xmlChar *value, int space) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(261);
+#endif
     const xmlChar *cur = value;
     int c,l;
 
@@ -726,6 +761,9 @@ xmlGetBufferAllocationScheme(void) {
  */
 xmlNsPtr
 xmlNewNs(xmlNodePtr node, const xmlChar *href, const xmlChar *prefix) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(262);
+#endif
     xmlNsPtr cur;
 
     if ((node != NULL) && (node->type != XML_ELEMENT_NODE))
@@ -799,6 +837,9 @@ xmlNewNs(xmlNodePtr node, const xmlChar *href, const xmlChar *prefix) {
  */
 void
 xmlSetNs(xmlNodePtr node, xmlNsPtr ns) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(263);
+#endif
     if (node == NULL) {
 #ifdef DEBUG_TREE
         xmlGenericError(xmlGenericErrorContext,
@@ -819,6 +860,9 @@ xmlSetNs(xmlNodePtr node, xmlNsPtr ns) {
  */
 void
 xmlFreeNs(xmlNsPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(264);
+#endif
     if (cur == NULL) {
 #ifdef DEBUG_TREE
         xmlGenericError(xmlGenericErrorContext,
@@ -839,6 +883,9 @@ xmlFreeNs(xmlNsPtr cur) {
  */
 void
 xmlFreeNsList(xmlNsPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(265);
+#endif
     xmlNsPtr next;
     if (cur == NULL) {
 #ifdef DEBUG_TREE
@@ -869,6 +916,9 @@ xmlFreeNsList(xmlNsPtr cur) {
 xmlDtdPtr
 xmlNewDtd(xmlDocPtr doc, const xmlChar *name,
                     const xmlChar *ExternalID, const xmlChar *SystemID) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(266);
+#endif
     xmlDtdPtr cur;
 
     if ((doc != NULL) && (doc->extSubset != NULL)) {

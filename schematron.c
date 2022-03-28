@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * schematron.c : implementation of the Schematron schema validity checking
  *
@@ -249,6 +254,9 @@ static void
 xmlSchematronPErr(xmlSchematronParserCtxtPtr ctxt, xmlNodePtr node, int error,
               const char *msg, const xmlChar * str1, const xmlChar * str2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1369);
+#endif
     xmlGenericErrorFunc channel = NULL;
     xmlStructuredErrorFunc schannel = NULL;
     void *data = NULL;
@@ -276,6 +284,9 @@ static void
 xmlSchematronVErrMemory(xmlSchematronValidCtxtPtr ctxt,
                         const char *extra, xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1370);
+#endif
     if (ctxt != NULL) {
         ctxt->nberrors++;
         ctxt->err = XML_SCHEMAV_INTERNAL;
@@ -309,6 +320,9 @@ xmlSchematronAddTest(xmlSchematronParserCtxtPtr ctxt,
                      xmlSchematronRulePtr rule,
                      xmlNodePtr node, xmlChar *test, xmlChar *report)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1371);
+#endif
     xmlSchematronTestPtr ret;
     xmlXPathCompExprPtr comp;
 
@@ -360,6 +374,9 @@ xmlSchematronAddTest(xmlSchematronParserCtxtPtr ctxt,
  */
 static void
 xmlSchematronFreeTests(xmlSchematronTestPtr tests) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1372);
+#endif
     xmlSchematronTestPtr next;
 
     while (tests != NULL) {
@@ -392,6 +409,9 @@ xmlSchematronAddRule(xmlSchematronParserCtxtPtr ctxt, xmlSchematronPtr schema,
                      xmlSchematronPatternPtr pat, xmlNodePtr node,
 		     xmlChar *context, xmlChar *report)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1373);
+#endif
     xmlSchematronRulePtr ret;
     xmlPatternPtr pattern;
 
@@ -452,6 +472,9 @@ xmlSchematronAddRule(xmlSchematronParserCtxtPtr ctxt, xmlSchematronPtr schema,
  */
 static void
 xmlSchematronFreeRules(xmlSchematronRulePtr rules) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1374);
+#endif
     xmlSchematronRulePtr next;
 
     while (rules != NULL) {
@@ -484,6 +507,9 @@ static xmlSchematronPatternPtr
 xmlSchematronAddPattern(xmlSchematronParserCtxtPtr ctxt,
                      xmlSchematronPtr schema, xmlNodePtr node, xmlChar *name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1375);
+#endif
     xmlSchematronPatternPtr ret;
 
     if ((ctxt == NULL) || (schema == NULL) || (node == NULL) || (name == NULL))
@@ -517,6 +543,9 @@ xmlSchematronAddPattern(xmlSchematronParserCtxtPtr ctxt,
  */
 static void
 xmlSchematronFreePatterns(xmlSchematronPatternPtr patterns) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1376);
+#endif
     xmlSchematronPatternPtr next;
 
     while (patterns != NULL) {
@@ -539,6 +568,9 @@ xmlSchematronFreePatterns(xmlSchematronPatternPtr patterns) {
 static xmlSchematronPtr
 xmlSchematronNewSchematron(xmlSchematronParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1377);
+#endif
     xmlSchematronPtr ret;
 
     ret = (xmlSchematronPtr) xmlMalloc(sizeof(xmlSchematron));
@@ -562,6 +594,9 @@ xmlSchematronNewSchematron(xmlSchematronParserCtxtPtr ctxt)
 void
 xmlSchematronFree(xmlSchematronPtr schema)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1378);
+#endif
     if (schema == NULL)
         return;
 
@@ -589,6 +624,9 @@ xmlSchematronFree(xmlSchematronPtr schema)
 xmlSchematronParserCtxtPtr
 xmlSchematronNewParserCtxt(const char *URL)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1379);
+#endif
     xmlSchematronParserCtxtPtr ret;
 
     if (URL == NULL)
@@ -631,6 +669,9 @@ xmlSchematronNewParserCtxt(const char *URL)
 xmlSchematronParserCtxtPtr
 xmlSchematronNewMemParserCtxt(const char *buffer, int size)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1380);
+#endif
     xmlSchematronParserCtxtPtr ret;
 
     if ((buffer == NULL) || (size <= 0))
@@ -670,6 +711,9 @@ xmlSchematronNewMemParserCtxt(const char *buffer, int size)
 xmlSchematronParserCtxtPtr
 xmlSchematronNewDocParserCtxt(xmlDocPtr doc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1381);
+#endif
     xmlSchematronParserCtxtPtr ret;
 
     if (doc == NULL)
@@ -708,6 +752,9 @@ xmlSchematronNewDocParserCtxt(xmlDocPtr doc)
 void
 xmlSchematronFreeParserCtxt(xmlSchematronParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1382);
+#endif
     if (ctxt == NULL)
         return;
     if (ctxt->doc != NULL && !ctxt->preserve)
@@ -734,6 +781,9 @@ static void
 xmlSchematronPushInclude(xmlSchematronParserCtxtPtr ctxt,
                         xmlDocPtr doc, xmlNodePtr cur)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1383);
+#endif
     if (ctxt->includes == NULL) {
         ctxt->maxIncludes = 10;
         ctxt->includes = (xmlNodePtr *)
@@ -775,6 +825,9 @@ xmlSchematronPushInclude(xmlSchematronParserCtxtPtr ctxt,
 static xmlNodePtr
 xmlSchematronPopInclude(xmlSchematronParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1384);
+#endif
     xmlDocPtr doc;
     xmlNodePtr ret;
 
@@ -804,6 +857,9 @@ static void
 xmlSchematronAddNamespace(xmlSchematronParserCtxtPtr ctxt,
                           const xmlChar *prefix, const xmlChar *ns)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1385);
+#endif
     if (ctxt->namespaces == NULL) {
         ctxt->maxNamespaces = 10;
         ctxt->namespaces = (const xmlChar **)
@@ -850,6 +906,9 @@ xmlSchematronParseRule(xmlSchematronParserCtxtPtr ctxt,
                        xmlSchematronPatternPtr pattern,
 		       xmlNodePtr rule)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1386);
+#endif
     xmlNodePtr cur;
     int nbChecks = 0;
     xmlChar *test;
@@ -958,6 +1017,9 @@ xmlSchematronParseRule(xmlSchematronParserCtxtPtr ctxt,
 static void
 xmlSchematronParsePattern(xmlSchematronParserCtxtPtr ctxt, xmlNodePtr pat)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1387);
+#endif
     xmlNodePtr cur;
     xmlSchematronPatternPtr pattern;
     int nbRules = 0;
@@ -1009,6 +1071,9 @@ xmlSchematronParsePattern(xmlSchematronParserCtxtPtr ctxt, xmlNodePtr pat)
 static xmlNodePtr
 xmlSchematronLoadInclude(xmlSchematronParserCtxtPtr ctxt, xmlNodePtr cur)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1388);
+#endif
     xmlNodePtr ret = NULL;
     xmlDocPtr doc = NULL;
     xmlChar *href = NULL;
@@ -1076,6 +1141,9 @@ done:
 xmlSchematronPtr
 xmlSchematronParse(xmlSchematronParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1389);
+#endif
     xmlSchematronPtr ret = NULL;
     xmlDocPtr doc;
     xmlNodePtr root, cur;
@@ -1242,6 +1310,9 @@ exit:
 static xmlNodePtr
 xmlSchematronGetNode(xmlSchematronValidCtxtPtr ctxt,
                      xmlNodePtr cur, const xmlChar *xpath) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1390);
+#endif
     xmlNodePtr node = NULL;
     xmlXPathObjectPtr ret;
 
@@ -1292,6 +1363,9 @@ xmlSchematronReportOutput(xmlSchematronValidCtxtPtr ctxt ATTRIBUTE_UNUSED,
 static xmlChar *
 xmlSchematronFormatReport(xmlSchematronValidCtxtPtr ctxt,
 			  xmlNodePtr test, xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1391);
+#endif
     xmlChar *ret = NULL;
     xmlNodePtr child, node;
 
@@ -1369,6 +1443,9 @@ xmlSchematronFormatReport(xmlSchematronValidCtxtPtr ctxt,
 static void
 xmlSchematronReportSuccess(xmlSchematronValidCtxtPtr ctxt,
 		   xmlSchematronTestPtr test, xmlNodePtr cur, xmlSchematronPatternPtr pattern, int success) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1392);
+#endif
     if ((ctxt == NULL) || (cur == NULL) || (test == NULL))
         return;
     /* if quiet and not SVRL report only failures */
@@ -1449,6 +1526,9 @@ xmlSchematronReportSuccess(xmlSchematronValidCtxtPtr ctxt,
 static void
 xmlSchematronReportPattern(xmlSchematronValidCtxtPtr ctxt,
 			   xmlSchematronPatternPtr pattern) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1393);
+#endif
     if ((ctxt == NULL) || (pattern == NULL))
         return;
     if ((ctxt->flags & XML_SCHEMATRON_OUT_QUIET) || (ctxt->flags & XML_SCHEMATRON_OUT_ERROR)) /* Error gives pattern name as part of error */
@@ -1484,6 +1564,9 @@ void
 xmlSchematronSetValidStructuredErrors(xmlSchematronValidCtxtPtr ctxt,
                                       xmlStructuredErrorFunc serror, void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1394);
+#endif
     if (ctxt == NULL)
         return;
     ctxt->serror = serror;
@@ -1504,6 +1587,9 @@ xmlSchematronSetValidStructuredErrors(xmlSchematronValidCtxtPtr ctxt,
 xmlSchematronValidCtxtPtr
 xmlSchematronNewValidCtxt(xmlSchematronPtr schema, int options)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1395);
+#endif
     int i;
     xmlSchematronValidCtxtPtr ret;
 
@@ -1543,6 +1629,9 @@ xmlSchematronNewValidCtxt(xmlSchematronPtr schema, int options)
 void
 xmlSchematronFreeValidCtxt(xmlSchematronValidCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1396);
+#endif
     if (ctxt == NULL)
         return;
     if (ctxt->xctxt != NULL)
@@ -1554,6 +1643,9 @@ xmlSchematronFreeValidCtxt(xmlSchematronValidCtxtPtr ctxt)
 
 static xmlNodePtr
 xmlSchematronNextNode(xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1397);
+#endif
     if (cur->children != NULL) {
 	/*
 	 * Do not descend on entities declarations
@@ -1602,6 +1694,9 @@ static int
 xmlSchematronRunTest(xmlSchematronValidCtxtPtr ctxt,
      xmlSchematronTestPtr test, xmlDocPtr instance, xmlNodePtr cur, xmlSchematronPatternPtr pattern)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1398);
+#endif
     xmlXPathObjectPtr ret;
     int failed;
 
@@ -1665,6 +1760,9 @@ xmlSchematronRunTest(xmlSchematronValidCtxtPtr ctxt,
 int
 xmlSchematronValidateDoc(xmlSchematronValidCtxtPtr ctxt, xmlDocPtr instance)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1399);
+#endif
     xmlNodePtr cur, root;
     xmlSchematronPatternPtr pattern;
     xmlSchematronRulePtr rule;

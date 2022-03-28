@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * parserInternals.c : Internal routines (and obsolete ones) needed for the
  *                     XML and HTML parsers.
@@ -71,6 +76,9 @@
  */
 void
 xmlCheckVersion(int version) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(502);
+#endif
     int myversion = (int) LIBXML_VERSION;
 
     xmlInitParser();
@@ -108,6 +116,9 @@ xmlCheckVersion(int version) {
 void
 xmlErrMemory(xmlParserCtxtPtr ctxt, const char *extra)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(503);
+#endif
     if ((ctxt != NULL) && (ctxt->disableSAX != 0) &&
         (ctxt->instate == XML_PARSER_EOF))
 	return;
@@ -141,6 +152,9 @@ void
 __xmlErrEncoding(xmlParserCtxtPtr ctxt, xmlParserErrors xmlerr,
                  const char *msg, const xmlChar * str1, const xmlChar * str2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(504);
+#endif
     if ((ctxt != NULL) && (ctxt->disableSAX != 0) &&
         (ctxt->instate == XML_PARSER_EOF))
 	return;
@@ -168,6 +182,9 @@ __xmlErrEncoding(xmlParserCtxtPtr ctxt, xmlParserErrors xmlerr,
 static void
 xmlErrInternal(xmlParserCtxtPtr ctxt, const char *msg, const xmlChar * str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(505);
+#endif
     if ((ctxt != NULL) && (ctxt->disableSAX != 0) &&
         (ctxt->instate == XML_PARSER_EOF))
 	return;
@@ -197,6 +214,9 @@ static void
 xmlErrEncodingInt(xmlParserCtxtPtr ctxt, xmlParserErrors error,
                   const char *msg, int val)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(506);
+#endif
     if ((ctxt != NULL) && (ctxt->disableSAX != 0) &&
         (ctxt->instate == XML_PARSER_EOF))
 	return;
@@ -245,6 +265,9 @@ xmlIsLetter(int c) {
 
 static
 void check_buffer(xmlParserInputPtr in) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(507);
+#endif
     if (in->base != xmlBufContent(in->buf->buffer)) {
         xmlGenericError(xmlGenericErrorContext,
 		"xmlParserInput: base mismatch problem\n");
@@ -294,6 +317,9 @@ xmlParserInputRead(xmlParserInputPtr in ATTRIBUTE_UNUSED, int len ATTRIBUTE_UNUS
  */
 int
 xmlParserInputGrow(xmlParserInputPtr in, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(508);
+#endif
     size_t ret;
     size_t indx;
     const xmlChar *content;
@@ -352,6 +378,9 @@ xmlParserInputGrow(xmlParserInputPtr in, int len) {
  */
 void
 xmlParserInputShrink(xmlParserInputPtr in) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(509);
+#endif
     size_t used;
     size_t ret;
     size_t indx;
@@ -418,6 +447,9 @@ xmlParserInputShrink(xmlParserInputPtr in) {
 void
 xmlNextChar(xmlParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(510);
+#endif
     if ((ctxt == NULL) || (ctxt->instate == XML_PARSER_EOF) ||
         (ctxt->input == NULL))
         return;
@@ -589,6 +621,9 @@ encoding_error:
 
 int
 xmlCurrentChar(xmlParserCtxtPtr ctxt, int *len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(511);
+#endif
     if ((ctxt == NULL) || (len == NULL) || (ctxt->input == NULL)) return(0);
     if (ctxt->instate == XML_PARSER_EOF)
 	return(0);
@@ -750,6 +785,9 @@ encoding_error:
 int
 xmlStringCurrentChar(xmlParserCtxtPtr ctxt, const xmlChar * cur, int *len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(512);
+#endif
     if ((len == NULL) || (cur == NULL)) return(0);
     if ((ctxt == NULL) || (ctxt->charset == XML_CHAR_ENCODING_UTF8)) {
         /*
@@ -858,6 +896,9 @@ encoding_error:
  */
 int
 xmlCopyCharMultiByte(xmlChar *out, int val) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(513);
+#endif
     if (out == NULL) return(0);
     /*
      * We are supposed to handle UTF8, check it's valid
@@ -935,6 +976,9 @@ xmlSwitchInputEncodingInt(xmlParserCtxtPtr ctxt, xmlParserInputPtr input,
 int
 xmlSwitchEncoding(xmlParserCtxtPtr ctxt, xmlCharEncoding enc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(514);
+#endif
     xmlCharEncodingHandlerPtr handler;
     int len = -1;
 
@@ -1116,6 +1160,9 @@ static int
 xmlSwitchInputEncodingInt(xmlParserCtxtPtr ctxt, xmlParserInputPtr input,
                           xmlCharEncodingHandlerPtr handler, int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(515);
+#endif
     int nbchars;
 
     if (handler == NULL)
@@ -1265,6 +1312,9 @@ xmlSwitchInputEncoding(xmlParserCtxtPtr ctxt, xmlParserInputPtr input,
 static int
 xmlSwitchToEncodingInt(xmlParserCtxtPtr ctxt,
                        xmlCharEncodingHandlerPtr handler, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(516);
+#endif
     int ret = 0;
 
     if (handler != NULL) {
@@ -1314,6 +1364,9 @@ xmlSwitchToEncoding(xmlParserCtxtPtr ctxt, xmlCharEncodingHandlerPtr handler)
  */
 void
 xmlFreeInputStream(xmlParserInputPtr input) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(517);
+#endif
     if (input == NULL) return;
 
     if (input->filename != NULL) xmlFree((char *) input->filename);
@@ -1337,6 +1390,9 @@ xmlFreeInputStream(xmlParserInputPtr input) {
  */
 xmlParserInputPtr
 xmlNewInputStream(xmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(518);
+#endif
     xmlParserInputPtr input;
 
     input = (xmlParserInputPtr) xmlMalloc(sizeof(xmlParserInput));
@@ -1374,6 +1430,9 @@ xmlNewInputStream(xmlParserCtxtPtr ctxt) {
 xmlParserInputPtr
 xmlNewIOInputStream(xmlParserCtxtPtr ctxt, xmlParserInputBufferPtr input,
 	            xmlCharEncoding enc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(519);
+#endif
     xmlParserInputPtr inputStream;
 
     if (input == NULL) return(NULL);
@@ -1405,6 +1464,9 @@ xmlNewIOInputStream(xmlParserCtxtPtr ctxt, xmlParserInputBufferPtr input,
  */
 xmlParserInputPtr
 xmlNewEntityInputStream(xmlParserCtxtPtr ctxt, xmlEntityPtr entity) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(520);
+#endif
     xmlParserInputPtr input;
 
     if (entity == NULL) {
@@ -1466,6 +1528,9 @@ xmlNewEntityInputStream(xmlParserCtxtPtr ctxt, xmlEntityPtr entity) {
  */
 xmlParserInputPtr
 xmlNewStringInputStream(xmlParserCtxtPtr ctxt, const xmlChar *buffer) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(521);
+#endif
     xmlParserInputPtr input;
 
     if (buffer == NULL) {
@@ -1499,6 +1564,9 @@ xmlNewStringInputStream(xmlParserCtxtPtr ctxt, const xmlChar *buffer) {
  */
 xmlParserInputPtr
 xmlNewInputFromFile(xmlParserCtxtPtr ctxt, const char *filename) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(522);
+#endif
     xmlParserInputBufferPtr buf;
     xmlParserInputPtr inputStream;
     char *directory = NULL;
@@ -1563,6 +1631,9 @@ xmlNewInputFromFile(xmlParserCtxtPtr ctxt, const char *filename) {
 int
 xmlInitParserCtxt(xmlParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(523);
+#endif
     xmlParserInputPtr input;
 
     if(ctxt==NULL) {
@@ -1749,6 +1820,9 @@ xmlInitParserCtxt(xmlParserCtxtPtr ctxt)
 void
 xmlFreeParserCtxt(xmlParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(524);
+#endif
     xmlParserInputPtr input;
 
     if (ctxt == NULL) return;
@@ -1835,6 +1909,9 @@ xmlFreeParserCtxt(xmlParserCtxtPtr ctxt)
 xmlParserCtxtPtr
 xmlNewParserCtxt(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(525);
+#endif
     xmlParserCtxtPtr ctxt;
 
     ctxt = (xmlParserCtxtPtr) xmlMalloc(sizeof(xmlParserCtxt));
@@ -1885,6 +1962,9 @@ xmlClearParserCtxt(xmlParserCtxtPtr ctxt)
 const xmlParserNodeInfo *
 xmlParserFindNodeInfo(const xmlParserCtxtPtr ctx, const xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(526);
+#endif
     unsigned long pos;
 
     if ((ctx == NULL) || (node == NULL))
@@ -1947,6 +2027,9 @@ unsigned long
 xmlParserFindNodeInfoIndex(const xmlParserNodeInfoSeqPtr seq,
                            const xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(527);
+#endif
     unsigned long upper, lower, middle;
     int found = 0;
 
@@ -1986,6 +2069,9 @@ void
 xmlParserAddNodeInfo(xmlParserCtxtPtr ctxt,
                      const xmlParserNodeInfoPtr info)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(528);
+#endif
     unsigned long pos;
 
     if ((ctxt == NULL) || (info == NULL)) return;

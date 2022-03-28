@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * DOCBparser.c : an attempt to parse SGML Docbook documents
  *
@@ -40,6 +45,9 @@ docbEncodeEntities(unsigned char *out ATTRIBUTE_UNUSED,
                    int *inlen ATTRIBUTE_UNUSED,
                    int quoteChar ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(161);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -64,6 +72,9 @@ docbEncodeEntities(unsigned char *out ATTRIBUTE_UNUSED,
 int
 docbParseDocument(docbParserCtxtPtr ctxt ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(162);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -85,6 +96,9 @@ docbParseDocument(docbParserCtxtPtr ctxt ATTRIBUTE_UNUSED)
 void
 docbFreeParserCtxt(docbParserCtxtPtr ctxt ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(163);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -112,6 +126,9 @@ docbParseChunk(docbParserCtxtPtr ctxt ATTRIBUTE_UNUSED,
 	       int size ATTRIBUTE_UNUSED,
                int terminate ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(164);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -147,6 +164,9 @@ docbCreatePushParserCtxt(docbSAXHandlerPtr sax ATTRIBUTE_UNUSED,
 			 const char *filename ATTRIBUTE_UNUSED,
                          xmlCharEncoding enc ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(165);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -178,6 +198,9 @@ docbSAXParseDoc(xmlChar * cur ATTRIBUTE_UNUSED,
 		docbSAXHandlerPtr sax ATTRIBUTE_UNUSED,
                 void *userData ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(166);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -204,6 +227,9 @@ docbDocPtr
 docbParseDoc(xmlChar * cur ATTRIBUTE_UNUSED,
              const char *encoding ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(167);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -231,6 +257,9 @@ docbParserCtxtPtr
 docbCreateFileParserCtxt(const char *filename ATTRIBUTE_UNUSED,
                          const char *encoding ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(168);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -263,6 +292,9 @@ docbSAXParseFile(const char *filename ATTRIBUTE_UNUSED,
                  docbSAXHandlerPtr sax ATTRIBUTE_UNUSED,
 		 void *userData ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(169);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {
@@ -290,6 +322,9 @@ docbDocPtr
 docbParseFile(const char *filename ATTRIBUTE_UNUSED,
               const char *encoding ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(170);
+#endif
     static int deprecated = 0;
 
     if (!deprecated) {

@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /**
  * rngparser.c: parser for the Relax-NG compact syntax.
  *
@@ -169,6 +174,9 @@ static const xmlChar *xmlCRelaxNGDefault = BAD_CAST "Default string";
 
 static void
 xmlCRNGErr(xmlCRelaxNGParserCtxtPtr ctxt, int err_no, const char *err_msg) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(673);
+#endif
     const xmlChar *cur;
     xmlChar buffer[150];
     int i, l;
@@ -213,6 +221,9 @@ xmlCRNGErr(xmlCRelaxNGParserCtxtPtr ctxt, int err_no, const char *err_msg) {
 
 static int
 xmlCRNGIsKeyword(xmlCRelaxNGParserCtxtPtr ctxt, const xmlChar *str) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(674);
+#endif
     if ((str == ctxt->key_attribute) ||
         (str == ctxt->key_default) ||
         (str == ctxt->key_datatypes) ||
@@ -248,6 +259,9 @@ xmlCRNGIsKeyword(xmlCRelaxNGParserCtxtPtr ctxt, const xmlChar *str) {
 
 static int
 xmlCRNGNextToken(xmlCRelaxNGParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(675);
+#endif
     const xmlChar *cur;
     tokenPtr token;
 
@@ -377,6 +391,9 @@ eof:
  */
 static tokenPtr
 xmlParseCRNGGetToken(xmlCRelaxNGParserCtxtPtr ctxt, int no) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(676);
+#endif
     tokenPtr ret;
     int res;
 
@@ -402,6 +419,9 @@ xmlParseCRNGGetToken(xmlCRelaxNGParserCtxtPtr ctxt, int no) {
  */
 static int
 xmlParseCRNGDropTokens(xmlCRelaxNGParserCtxtPtr ctxt, int nr) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(677);
+#endif
     if ((nr <= 0) || (nr >= MAX_TOKEN)) return(-1);
     while ((ctxt->nbTokens >0) && (nr > 0)) {
         ctxt->firstToken++;
@@ -417,6 +437,9 @@ xmlParseCRNGDropTokens(xmlCRelaxNGParserCtxtPtr ctxt, int nr) {
 
 static void
 xmlParseCRNGTokenize(xmlCRelaxNGParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(678);
+#endif
     tokenPtr token;
 
     token = xmlParseCRNGGetToken(ctxt, 1);
@@ -455,6 +478,9 @@ xmlParseCRNG_attribute(xmlCRelaxNGParserCtxtPtr ctxt,
                        xmlNsPtr ns,
 		       const xmlChar *value)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(679);
+#endif
     xmlAttrPtr attr;
 
     attr = xmlNewNsPropEatName(NULL, ns, (xmlChar *) name, value);
@@ -481,6 +507,9 @@ xmlParseCRNG_bindPrefix(xmlCRelaxNGParserCtxtPtr ctxt,
                         const xmlChar *prefix,
 			const xmlChar *namespace)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(680);
+#endif
     int ret;
 
     if ((prefix != NULL) && (xmlStrEqual(prefix, BAD_CAST "xml"))  &&
@@ -531,6 +560,9 @@ xmlParseCRNG_bindDatatypePrefix(xmlCRelaxNGParserCtxtPtr ctxt ATTRIBUTE_UNUSED,
                                 const xmlChar *prefix,
 			        const xmlChar *namespace)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(681);
+#endif
     int ret;
 
     if ((prefix != NULL) && (xmlStrEqual(prefix, BAD_CAST "xsd"))  &&
@@ -567,6 +599,9 @@ static const xmlChar *
 xmlParseCRNG_lookupPrefix(xmlCRelaxNGParserCtxtPtr ctxt ATTRIBUTE_UNUSED,
                         const xmlChar *prefix)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(682);
+#endif
     const xmlChar *ret;
 
     if (prefix == NULL)
@@ -607,6 +642,9 @@ static xmlAttrPtr
 xmlParseCRNG_datatypeAttributes(xmlCRelaxNGParserCtxtPtr ctxt ATTRIBUTE_UNUSED,
                         const xmlChar *library, const xmlChar *type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(683);
+#endif
     xmlAttrPtr lib, typ;
 
     lib = xmlNewNsProp(NULL, NULL, BAD_CAST "datatypeLibrary", library);
@@ -667,6 +705,9 @@ xmlParseCRNG_params(xmlCRelaxNGParserCtxtPtr ctxt ATTRIBUTE_UNUSED)
 static int
 xmlParseCRNG_exceptNameClass(xmlCRelaxNGParserCtxtPtr ctxt ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(684);
+#endif
     tokenPtr token;
     xmlNodePtr insert = ctxt->insert, cur;
 
@@ -696,6 +737,9 @@ xmlParseCRNG_exceptNameClass(xmlCRelaxNGParserCtxtPtr ctxt ATTRIBUTE_UNUSED)
 static int
 xmlParseCRNG_innerNameClass(xmlCRelaxNGParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(685);
+#endif
     tokenPtr token;
     xmlNodePtr cur;
 
@@ -766,6 +810,9 @@ xmlParseCRNG_innerNameClass(xmlCRelaxNGParserCtxtPtr ctxt)
 static int
 xmlParseCRNG_nameClass(xmlCRelaxNGParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(686);
+#endif
     tokenPtr token;
     xmlNodePtr insert = ctxt->insert, last, choice;
 
@@ -802,6 +849,9 @@ xmlParseCRNG_nameClass(xmlCRelaxNGParserCtxtPtr ctxt)
 static int
 xmlParseCRNG_patternBlock(xmlCRelaxNGParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(687);
+#endif
     tokenPtr token;
 
     token = xmlParseCRNGGetToken(ctxt, 1);
@@ -831,6 +881,9 @@ xmlParseCRNG_patternBlock(xmlCRelaxNGParserCtxtPtr ctxt)
 static int
 xmlParseCRNG_datatype(xmlCRelaxNGParserCtxtPtr ctxt ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(688);
+#endif
     tokenPtr token;
     xmlAttrPtr attrs = NULL;
 

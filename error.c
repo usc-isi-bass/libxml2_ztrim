@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * error.c: module displaying/handling XML parser errors
  *
@@ -21,6 +26,9 @@ void XMLCDECL xmlGenericErrorDefaultFunc	(void *ctx ATTRIBUTE_UNUSED,
 				 ...);
 
 #define XML_GET_VAR_STR(msg, str) {				\
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1980);
+#endif
     int       size, prev_size = -1;				\
     int       chars;						\
     char      *larger;						\
@@ -69,6 +77,9 @@ void XMLCDECL xmlGenericErrorDefaultFunc	(void *ctx ATTRIBUTE_UNUSED,
  */
 void XMLCDECL
 xmlGenericErrorDefaultFunc(void *ctx ATTRIBUTE_UNUSED, const char *msg, ...) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1981);
+#endif
     va_list args;
 
     if (xmlGenericErrorContext == NULL)
@@ -151,6 +162,9 @@ xmlSetStructuredErrorFunc(void *ctx, xmlStructuredErrorFunc handler) {
 
 void
 xmlParserPrintFileInfo(xmlParserInputPtr input) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1982);
+#endif
     if (input != NULL) {
 	if (input->filename)
 	    xmlGenericError(xmlGenericErrorContext,
@@ -172,6 +186,9 @@ xmlParserPrintFileInfo(xmlParserInputPtr input) {
 static void
 xmlParserPrintFileContextInternal(xmlParserInputPtr input ,
 		xmlGenericErrorFunc channel, void *data ) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1983);
+#endif
     const xmlChar *cur, *base;
     unsigned int n, col;	/* GCC warns if signed, because compared with sizeof() */
     xmlChar  content[81]; /* space for 80 chars + line terminator */
@@ -243,6 +260,9 @@ static void
 xmlReportError(xmlErrorPtr err, xmlParserCtxtPtr ctxt, const char *str,
                xmlGenericErrorFunc channel, void *data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1984);
+#endif
     char *file = NULL;
     int line = 0;
     int code = -1;
@@ -457,6 +477,9 @@ __xmlRaiseError(xmlStructuredErrorFunc schannel,
               const char *str2, const char *str3, int int1, int col,
 	      const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1985);
+#endif
     xmlParserCtxtPtr ctxt = NULL;
     xmlNodePtr node = (xmlNodePtr) nod;
     char *str = NULL;
@@ -649,6 +672,9 @@ void
 __xmlSimpleError(int domain, int code, xmlNodePtr node,
                  const char *msg, const char *extra)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1986);
+#endif
 
     if (code == XML_ERR_NO_MEMORY) {
 	if (extra)
@@ -678,6 +704,9 @@ __xmlSimpleError(int domain, int code, xmlNodePtr node,
 void XMLCDECL
 xmlParserError(void *ctx, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1987);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlParserInputPtr input = NULL;
     xmlParserInputPtr cur = NULL;
@@ -721,6 +750,9 @@ xmlParserError(void *ctx, const char *msg, ...)
 void XMLCDECL
 xmlParserWarning(void *ctx, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1988);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlParserInputPtr input = NULL;
     xmlParserInputPtr cur = NULL;
@@ -770,6 +802,9 @@ xmlParserWarning(void *ctx, const char *msg, ...)
 void XMLCDECL
 xmlParserValidityError(void *ctx, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1989);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlParserInputPtr input = NULL;
     char * str;
@@ -814,6 +849,9 @@ xmlParserValidityError(void *ctx, const char *msg, ...)
 void XMLCDECL
 xmlParserValidityWarning(void *ctx, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1990);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
     xmlParserInputPtr input = NULL;
     char * str;
@@ -870,6 +908,9 @@ xmlGetLastError(void)
 void
 xmlResetError(xmlErrorPtr err)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1991);
+#endif
     if (err == NULL)
         return;
     if (err->code == XML_ERR_OK)
@@ -913,6 +954,9 @@ xmlResetLastError(void)
 xmlErrorPtr
 xmlCtxtGetLastError(void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1992);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
 
     if (ctxt == NULL)
@@ -932,6 +976,9 @@ xmlCtxtGetLastError(void *ctx)
 void
 xmlCtxtResetLastError(void *ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1993);
+#endif
     xmlParserCtxtPtr ctxt = (xmlParserCtxtPtr) ctx;
 
     if (ctxt == NULL)
@@ -953,6 +1000,9 @@ xmlCtxtResetLastError(void *ctx)
  */
 int
 xmlCopyError(xmlErrorPtr from, xmlErrorPtr to) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1994);
+#endif
     char *message, *file, *str1, *str2, *str3;
 
     if ((from == NULL) || (to == NULL))

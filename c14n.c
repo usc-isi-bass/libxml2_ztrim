@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * "Canonical XML" implementation
  * http://www.w3.org/TR/xml-c14n
@@ -98,6 +103,9 @@ static int			xmlC14NIsNodeInNodeset		(xmlNodeSetPtr nodes,
 static int xmlC14NProcessNode(xmlC14NCtxPtr ctx, xmlNodePtr cur);
 static int xmlC14NProcessNodeList(xmlC14NCtxPtr ctx, xmlNodePtr cur);
 typedef enum {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1401);
+#endif
     XMLC14N_NORMALIZE_ATTR = 0,
     XMLC14N_NORMALIZE_COMMENT = 1,
     XMLC14N_NORMALIZE_PI = 2,
@@ -139,6 +147,9 @@ static xmlChar *xmlC11NNormalizeString(const xmlChar * input,
 static void
 xmlC14NErrMemory(const char *extra)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1402);
+#endif
     __xmlRaiseError(NULL, NULL, NULL, NULL, NULL, XML_FROM_C14N,
 		    XML_ERR_NO_MEMORY, XML_ERR_ERROR, NULL, 0, extra,
 		    NULL, NULL, 0, 0,
@@ -236,6 +247,9 @@ static void
 xmlC14NErr(xmlC14NCtxPtr ctxt, xmlNodePtr node, int error,
            const char * msg)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1403);
+#endif
     if (ctxt != NULL)
         ctxt->error = error;
     __xmlRaiseError(NULL, NULL, NULL,
@@ -253,6 +267,9 @@ xmlC14NErr(xmlC14NCtxPtr ctxt, xmlNodePtr node, int error,
 
 static int
 xmlC14NIsNodeInNodeset(xmlNodeSetPtr nodes, xmlNodePtr node, xmlNodePtr parent) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1404);
+#endif
     if((nodes != NULL) && (node != NULL)) {
 	if(node->type != XML_NAMESPACE_DECL) {
 	    return(xmlXPathNodeSetContains(nodes, node));
@@ -280,6 +297,9 @@ xmlC14NIsNodeInNodeset(xmlNodeSetPtr nodes, xmlNodePtr node, xmlNodePtr parent) 
 
 static xmlC14NVisibleNsStackPtr
 xmlC14NVisibleNsStackCreate(void) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1405);
+#endif
     xmlC14NVisibleNsStackPtr ret;
 
     ret = (xmlC14NVisibleNsStackPtr) xmlMalloc(sizeof(xmlC14NVisibleNsStack));
@@ -293,6 +313,9 @@ xmlC14NVisibleNsStackCreate(void) {
 
 static void
 xmlC14NVisibleNsStackDestroy(xmlC14NVisibleNsStackPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1406);
+#endif
     if(cur == NULL) {
         xmlC14NErrParam("destroying namespaces stack");
         return;
@@ -312,6 +335,9 @@ xmlC14NVisibleNsStackDestroy(xmlC14NVisibleNsStackPtr cur) {
 
 static void
 xmlC14NVisibleNsStackAdd(xmlC14NVisibleNsStackPtr cur, xmlNsPtr ns, xmlNodePtr node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1407);
+#endif
     if((cur == NULL) ||
        ((cur->nsTab == NULL) && (cur->nodeTab != NULL)) ||
        ((cur->nsTab != NULL) && (cur->nodeTab == NULL))) {
@@ -358,6 +384,9 @@ xmlC14NVisibleNsStackAdd(xmlC14NVisibleNsStackPtr cur, xmlNsPtr ns, xmlNodePtr n
 
 static void
 xmlC14NVisibleNsStackSave(xmlC14NVisibleNsStackPtr cur, xmlC14NVisibleNsStackPtr state) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1408);
+#endif
     if((cur == NULL) || (state == NULL)) {
         xmlC14NErrParam("saving namespaces stack");
 	return;
@@ -412,6 +441,9 @@ xmlC14NStrEqual(const xmlChar *str1, const xmlChar *str2) {
 static int
 xmlC14NVisibleNsStackFind(xmlC14NVisibleNsStackPtr cur, xmlNsPtr ns)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1409);
+#endif
     int i;
     const xmlChar *prefix;
     const xmlChar *href;
@@ -445,6 +477,9 @@ xmlC14NVisibleNsStackFind(xmlC14NVisibleNsStackPtr cur, xmlNsPtr ns)
 
 static int
 xmlExcC14NVisibleNsStackFind(xmlC14NVisibleNsStackPtr cur, xmlNsPtr ns, xmlC14NCtxPtr ctx) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1410);
+#endif
     int i;
     const xmlChar *prefix;
     const xmlChar *href;
@@ -515,6 +550,9 @@ xmlC14NIsXmlNs(xmlNsPtr ns)
 static int
 xmlC14NNsCompare(xmlNsPtr ns1, xmlNsPtr ns2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1411);
+#endif
     if (ns1 == ns2)
         return (0);
     if (ns1 == NULL)
@@ -538,6 +576,9 @@ xmlC14NNsCompare(xmlNsPtr ns1, xmlNsPtr ns2)
 static int
 xmlC14NPrintNamespaces(const xmlNsPtr ns, xmlC14NCtxPtr ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1412);
+#endif
 
     if ((ns == NULL) || (ctx == NULL)) {
         xmlC14NErrParam("writing namespaces");
@@ -601,6 +642,9 @@ xmlC14NPrintNamespaces(const xmlNsPtr ns, xmlC14NCtxPtr ctx)
 static int
 xmlC14NProcessNamespacesAxis(xmlC14NCtxPtr ctx, xmlNodePtr cur, int visible)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1413);
+#endif
     xmlNodePtr n;
     xmlNsPtr ns, tmp;
     xmlListPtr list;
@@ -706,6 +750,9 @@ xmlC14NProcessNamespacesAxis(xmlC14NCtxPtr ctx, xmlNodePtr cur, int visible)
 static int
 xmlExcC14NProcessNamespacesAxis(xmlC14NCtxPtr ctx, xmlNodePtr cur, int visible)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1414);
+#endif
     xmlNsPtr ns;
     xmlListPtr list;
     xmlAttrPtr attr;
@@ -881,6 +928,9 @@ xmlC14NIsXmlAttr(xmlAttrPtr attr)
 static int
 xmlC14NAttrsCompare(xmlAttrPtr attr1, xmlAttrPtr attr2)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1415);
+#endif
     int ret = 0;
 
     /*
@@ -933,6 +983,9 @@ xmlC14NAttrsCompare(xmlAttrPtr attr1, xmlAttrPtr attr2)
 static int
 xmlC14NPrintAttrs(const xmlAttrPtr attr, xmlC14NCtxPtr ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1416);
+#endif
     xmlChar *value;
     xmlChar *buffer;
 
@@ -977,6 +1030,9 @@ xmlC14NPrintAttrs(const xmlAttrPtr attr, xmlC14NCtxPtr ctx)
 static xmlAttrPtr
 xmlC14NFindHiddenParentAttr(xmlC14NCtxPtr ctx, xmlNodePtr cur, const xmlChar * name, const xmlChar * ns)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1417);
+#endif
     xmlAttrPtr res;
     while((cur != NULL) && (!xmlC14NIsVisible(ctx, cur, cur->parent))) {
         res = xmlHasNsProp(cur, name, ns);
@@ -1000,6 +1056,9 @@ xmlC14NFindHiddenParentAttr(xmlC14NCtxPtr ctx, xmlNodePtr cur, const xmlChar * n
 static xmlAttrPtr
 xmlC14NFixupBaseAttr(xmlC14NCtxPtr ctx, xmlAttrPtr xml_base_attr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1418);
+#endif
     xmlChar * res = NULL;
     xmlNodePtr cur;
     xmlAttrPtr attr;
@@ -1125,6 +1184,9 @@ xmlC14NFixupBaseAttr(xmlC14NCtxPtr ctx, xmlAttrPtr xml_base_attr)
 static int
 xmlC14NProcessAttrsAxis(xmlC14NCtxPtr ctx, xmlNodePtr cur, int parent_visible)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1419);
+#endif
     xmlAttrPtr attr;
     xmlListPtr list;
     xmlAttrPtr attrs_to_delete = NULL;
@@ -1353,6 +1415,9 @@ xmlC14NProcessAttrsAxis(xmlC14NCtxPtr ctx, xmlNodePtr cur, int parent_visible)
 static int
 xmlC14NCheckForRelativeNamespaces(xmlC14NCtxPtr ctx, xmlNodePtr cur)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1420);
+#endif
     xmlNsPtr ns;
 
     if ((ctx == NULL) || (cur == NULL) || (cur->type != XML_ELEMENT_NODE)) {
@@ -1415,6 +1480,9 @@ xmlC14NCheckForRelativeNamespaces(xmlC14NCtxPtr ctx, xmlNodePtr cur)
 static int
 xmlC14NProcessElementNode(xmlC14NCtxPtr ctx, xmlNodePtr cur, int visible)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1421);
+#endif
     int ret;
     xmlC14NVisibleNsStack state;
     int parent_is_doc = 0;
@@ -1523,6 +1591,9 @@ xmlC14NProcessElementNode(xmlC14NCtxPtr ctx, xmlNodePtr cur, int visible)
 static int
 xmlC14NProcessNode(xmlC14NCtxPtr ctx, xmlNodePtr cur)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1422);
+#endif
     int ret = 0;
     int visible;
 
@@ -1714,6 +1785,9 @@ xmlC14NProcessNode(xmlC14NCtxPtr ctx, xmlNodePtr cur)
 static int
 xmlC14NProcessNodeList(xmlC14NCtxPtr ctx, xmlNodePtr cur)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1423);
+#endif
     int ret;
 
     if (ctx == NULL) {
@@ -1738,6 +1812,9 @@ xmlC14NProcessNodeList(xmlC14NCtxPtr ctx, xmlNodePtr cur)
 static void
 xmlC14NFreeCtx(xmlC14NCtxPtr ctx)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1424);
+#endif
     if (ctx == NULL) {
         xmlC14NErrParam("freeing context");
         return;
@@ -1776,6 +1853,9 @@ xmlC14NNewCtx(xmlDocPtr doc,
               xmlC14NMode mode, xmlChar ** inclusive_ns_prefixes,
               int with_comments, xmlOutputBufferPtr buf)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1425);
+#endif
     xmlC14NCtxPtr ctx = NULL;
 
     if ((doc == NULL) || (buf == NULL)) {
@@ -1868,6 +1948,9 @@ int
 xmlC14NExecute(xmlDocPtr doc, xmlC14NIsVisibleCallback is_visible_callback,
 	 void* user_data, int mode, xmlChar **inclusive_ns_prefixes,
 	 int with_comments, xmlOutputBufferPtr buf) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1426);
+#endif
 
     xmlC14NCtxPtr ctx;
     xmlC14NMode c14n_mode = XML_C14N_1_0;
@@ -1970,6 +2053,9 @@ int
 xmlC14NDocSaveTo(xmlDocPtr doc, xmlNodeSetPtr nodes,
                  int mode, xmlChar ** inclusive_ns_prefixes,
                  int with_comments, xmlOutputBufferPtr buf) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1427);
+#endif
     return(xmlC14NExecute(doc,
 			(xmlC14NIsVisibleCallback)xmlC14NIsNodeInNodeset,
 			nodes,
@@ -2006,6 +2092,9 @@ xmlC14NDocDumpMemory(xmlDocPtr doc, xmlNodeSetPtr nodes,
                      int mode, xmlChar ** inclusive_ns_prefixes,
                      int with_comments, xmlChar ** doc_txt_ptr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1428);
+#endif
     int ret;
     xmlOutputBufferPtr buf;
 
@@ -2077,6 +2166,9 @@ xmlC14NDocSave(xmlDocPtr doc, xmlNodeSetPtr nodes,
                int mode, xmlChar ** inclusive_ns_prefixes,
                int with_comments, const char *filename, int compression)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1429);
+#endif
     xmlOutputBufferPtr buf;
     int ret;
 
@@ -2147,6 +2239,9 @@ static xmlChar *
 xmlC11NNormalizeString(const xmlChar * input,
                        xmlC14NNormalizationMode mode)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1430);
+#endif
     const xmlChar *cur = input;
     xmlChar *buffer = NULL;
     xmlChar *out = NULL;

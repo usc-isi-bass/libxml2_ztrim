@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*************************************************************************
  *
  * $Id$
@@ -178,6 +183,9 @@ trio_make_double
 TRIO_ARGS1((values),
 	   TRIO_CONST unsigned char *values)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2067);
+#endif
   TRIO_VOLATILE double result;
   int i;
 
@@ -196,6 +204,9 @@ TRIO_ARGS2((number, has_mantissa),
 	   double number,
 	   int *has_mantissa)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2068);
+#endif
   unsigned int i;
   unsigned char current;
   int is_special_quantity = TRIO_TRUE;
@@ -219,6 +230,9 @@ trio_is_negative
 TRIO_ARGS1((number),
 	   double number)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2069);
+#endif
   unsigned int i;
   int is_negative = TRIO_FALSE;
 
@@ -240,6 +254,9 @@ TRIO_ARGS1((number),
 TRIO_PUBLIC double
 trio_nzero(TRIO_NOARGS)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2070);
+#endif
 #if defined(USE_IEEE_754)
   return trio_make_double(ieee_754_negzero_array);
 #else
@@ -257,6 +274,9 @@ trio_nzero(TRIO_NOARGS)
 TRIO_PUBLIC double
 trio_pinf(TRIO_NOARGS)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2071);
+#endif
   /* Cache the result */
   static double result = 0.0;
 
@@ -301,6 +321,9 @@ trio_pinf(TRIO_NOARGS)
 TRIO_PUBLIC double
 trio_ninf(TRIO_NOARGS)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2072);
+#endif
   static double result = 0.0;
 
   if (result == 0.0) {
@@ -322,6 +345,9 @@ trio_ninf(TRIO_NOARGS)
 TRIO_PUBLIC double
 trio_nan(TRIO_NOARGS)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2073);
+#endif
   /* Cache the result */
   static double result = 0.0;
 
@@ -372,6 +398,9 @@ trio_isnan
 TRIO_ARGS1((number),
 	   double number)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2074);
+#endif
 #if (defined(TRIO_COMPILER_SUPPORTS_C99) && defined(isnan)) \
  || defined(TRIO_COMPILER_SUPPORTS_UNIX95)
   /*
@@ -443,6 +472,9 @@ trio_isinf
 TRIO_ARGS1((number),
 	   double number)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2075);
+#endif
 #if defined(TRIO_COMPILER_DECC) && !defined(__linux__)
   /*
    * DECC has an isinf() macro, but it works differently than that
@@ -521,6 +553,9 @@ trio_isfinite
 TRIO_ARGS1((number),
 	   double number)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2076);
+#endif
 #if defined(TRIO_COMPILER_SUPPORTS_C99) && defined(isfinite)
   /*
    * C99 defines isfinite() as a macro.
@@ -562,6 +597,9 @@ TRIO_ARGS2((number, is_negative),
 	   double number,
 	   int *is_negative)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2077);
+#endif
 #if defined(fpclassify) && defined(signbit)
   /*
    * C99 defines fpclassify() and signbit() as a macros
@@ -777,6 +815,9 @@ getClassification
 TRIO_ARGS1((type),
 	   int type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2078);
+#endif
   switch (type) {
   case TRIO_FP_INFINITE:
     return "FP_INFINITE";
@@ -799,6 +840,9 @@ TRIO_ARGS2((prefix, number),
 	   TRIO_CONST char *prefix,
 	   double number)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2079);
+#endif
   printf("%-6s: %s %-15s %g\n",
 	 prefix,
 	 trio_signbit(number) ? "-" : "+",

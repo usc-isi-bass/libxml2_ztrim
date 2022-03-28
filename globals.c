@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * globals.c: definition and handling of the set of global variables
  *            of the library
@@ -363,6 +368,9 @@ static int xmlSaveNoEmptyTagsThrDef = 0;
  * Default SAX version1 handler for XML, builds the DOM tree
  */
 xmlSAXHandlerV1 xmlDefaultSAXHandler = {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1857);
+#endif
     xmlSAX2InternalSubset,
     xmlSAX2IsStandalone,
     xmlSAX2HasInternalSubset,
@@ -493,6 +501,9 @@ xmlSAXHandlerV1 docbDefaultSAXHandler = {
 void
 xmlInitializeGlobalState(xmlGlobalStatePtr gs)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1858);
+#endif
 #ifdef DEBUG_GLOBALS
     fprintf(stderr, "Initializing globals at %lu for thread %d\n",
 	    (unsigned long) gs, xmlGetThreadId());
@@ -609,6 +620,9 @@ xmlRegisterNodeDefault(xmlRegisterNodeFunc func)
 xmlRegisterNodeFunc
 xmlThrDefRegisterNodeDefault(xmlRegisterNodeFunc func)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1859);
+#endif
     xmlRegisterNodeFunc old;
 
     xmlMutexLock(xmlThrDefMutex);
@@ -642,6 +656,9 @@ xmlDeregisterNodeDefault(xmlDeregisterNodeFunc func)
 xmlDeregisterNodeFunc
 xmlThrDefDeregisterNodeDefault(xmlDeregisterNodeFunc func)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1860);
+#endif
     xmlDeregisterNodeFunc old;
 
     xmlMutexLock(xmlThrDefMutex);
@@ -657,6 +674,9 @@ xmlThrDefDeregisterNodeDefault(xmlDeregisterNodeFunc func)
 xmlParserInputBufferCreateFilenameFunc
 xmlThrDefParserInputBufferCreateFilenameDefault(xmlParserInputBufferCreateFilenameFunc func)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1861);
+#endif
     xmlParserInputBufferCreateFilenameFunc old;
 
     xmlMutexLock(xmlThrDefMutex);
@@ -674,6 +694,9 @@ xmlThrDefParserInputBufferCreateFilenameDefault(xmlParserInputBufferCreateFilena
 xmlOutputBufferCreateFilenameFunc
 xmlThrDefOutputBufferCreateFilenameDefault(xmlOutputBufferCreateFilenameFunc func)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(1862);
+#endif
     xmlOutputBufferCreateFilenameFunc old;
 
     xmlMutexLock(xmlThrDefMutex);

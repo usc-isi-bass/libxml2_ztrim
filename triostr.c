@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*************************************************************************
  *
  * $Id$
@@ -218,6 +223,9 @@ TRIO_ARGS3((target, max, source),
 	   size_t max,
 	   TRIO_CONST char *source)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(738);
+#endif
   size_t length;
 
   assert(target);
@@ -276,6 +284,9 @@ TRIO_ARGS2((target, source),
 	   char *target,
 	   TRIO_CONST char *source)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(739);
+#endif
   assert(target);
   assert(source);
 
@@ -306,6 +317,9 @@ TRIO_ARGS3((target, max, source),
 	   size_t max,
 	   TRIO_CONST char *source)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(740);
+#endif
   assert(target);
   assert(source);
   assert(max > 0); /* Includes != 0 */
@@ -325,6 +339,9 @@ TRIO_ARGS2((source, size),
 	   TRIO_CONST char *source,
 	   size_t size)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(741);
+#endif
   char *target;
 
   assert(source);
@@ -372,6 +389,9 @@ trio_duplicate_max TRIO_ARGS2((source, max),
 			      TRIO_CONST char *source,
 			      size_t max)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(742);
+#endif
   size_t length;
 
   assert(source);
@@ -402,6 +422,9 @@ TRIO_ARGS2((first, second),
 	   TRIO_CONST char *first,
 	   TRIO_CONST char *second)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(743);
+#endif
   assert(first);
   assert(second);
 
@@ -441,6 +464,9 @@ TRIO_ARGS2((first, second),
 	   TRIO_CONST char *first,
 	   TRIO_CONST char *second)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(744);
+#endif
   assert(first);
   assert(second);
 
@@ -470,6 +496,9 @@ TRIO_ARGS3((first, max, second),
 	   size_t max,
 	   TRIO_CONST char *second)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(745);
+#endif
   assert(first);
   assert(second);
 
@@ -497,6 +526,9 @@ TRIO_ARGS2((first, second),
 	   TRIO_CONST char *first,
 	   TRIO_CONST char *second)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(746);
+#endif
   assert(first);
   assert(second);
 
@@ -525,6 +557,9 @@ TRIO_ARGS3((first, max, second),
 	   size_t max,
 	   TRIO_CONST char *second)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(747);
+#endif
   assert(first);
   assert(second);
 
@@ -563,6 +598,9 @@ trio_error
 TRIO_ARGS1((error_number),
 	   int error_number)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(748);
+#endif
 #if defined(USE_STRERROR)
 
   return strerror(error_number);
@@ -605,6 +643,9 @@ TRIO_ARGS4((target, max, format, datetime),
 	   TRIO_CONST char *format,
 	   TRIO_CONST struct tm *datetime)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(749);
+#endif
   assert(target);
   assert(format);
   assert(datetime);
@@ -632,6 +673,9 @@ TRIO_ARGS2((string, type),
 	   TRIO_CONST char *string,
 	   int type)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(750);
+#endif
   unsigned long value = 0L;
   char ch;
 
@@ -736,6 +780,9 @@ TRIO_ARGS2((string, pattern),
 	   TRIO_CONST char *string,
 	   TRIO_CONST char *pattern)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(751);
+#endif
   assert(string);
   assert(pattern);
 
@@ -789,6 +836,9 @@ TRIO_ARGS2((string, pattern),
 	   TRIO_CONST char *string,
 	   TRIO_CONST char *pattern)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(752);
+#endif
   assert(string);
   assert(pattern);
 
@@ -838,6 +888,9 @@ TRIO_ARGS3((target, source, Function),
 	   TRIO_CONST char *source,
 	   int (*Function) TRIO_PROTO((int)))
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(753);
+#endif
   size_t count = 0;
 
   assert(target);
@@ -894,6 +947,9 @@ TRIO_ARGS3((string, max, substring),
 	   size_t max,
 	   TRIO_CONST char *substring)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(754);
+#endif
   size_t count;
   size_t size;
   char *result = NULL;
@@ -969,6 +1025,9 @@ TRIO_ARGS2((source, endp),
 	   TRIO_CONST char *source,
 	   char **endp)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(755);
+#endif
 #if defined(USE_STRTOLD)
   return strtold(source, endp);
 #else
@@ -1104,6 +1163,9 @@ TRIO_ARGS2((source, endp),
 	   TRIO_CONST char *source,
 	   char **endp)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(756);
+#endif
 #if defined(USE_STRTOD)
   return strtod(source, endp);
 #else
@@ -1127,6 +1189,9 @@ TRIO_ARGS2((source, endp),
 	   TRIO_CONST char *source,
 	   char **endp)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(757);
+#endif
 #if defined(USE_STRTOF)
   return strtof(source, endp);
 #else
@@ -1150,6 +1215,9 @@ TRIO_ARGS3((string, endp, base),
 	   char **endp,
 	   int base)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(758);
+#endif
   assert(string);
   assert((base >= 2) && (base <= 36));
 
@@ -1169,6 +1237,9 @@ trio_to_lower
 TRIO_ARGS1((source),
 	   int source)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(759);
+#endif
 #if defined(USE_TOLOWER)
 
   return tolower(source);
@@ -1199,6 +1270,9 @@ TRIO_ARGS3((string, endp, base),
 	   char **endp,
 	   int base)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(760);
+#endif
   assert(string);
   assert((base >= 2) && (base <= 36));
 
@@ -1218,6 +1292,9 @@ trio_to_upper
 TRIO_ARGS1((source),
 	   int source)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(761);
+#endif
 #if defined(USE_TOUPPER)
 
   return toupper(source);
@@ -1271,6 +1348,9 @@ TRIO_ARGS1((target),
 TRIO_STRING_PRIVATE trio_string_t *
 TrioStringAlloc(TRIO_NOARGS)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(762);
+#endif
   trio_string_t *self;
 
   self = (trio_string_t *)TRIO_MALLOC(sizeof(trio_string_t));
@@ -1296,6 +1376,9 @@ TRIO_ARGS2((self, delta),
 	   trio_string_t *self,
 	   size_t delta)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(763);
+#endif
   BOOLEAN_T status = FALSE;
   char *new_content;
   size_t new_size;
@@ -1349,6 +1432,9 @@ trio_string_create
 TRIO_ARGS1((initial_size),
 	   int initial_size)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(764);
+#endif
   trio_string_t *self;
 
   self = TrioStringAlloc();
@@ -1381,6 +1467,9 @@ trio_string_destroy
 TRIO_ARGS1((self),
 	   trio_string_t *self)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(765);
+#endif
   assert(self);
 
   if (self)
@@ -1412,6 +1501,9 @@ TRIO_ARGS2((self, offset),
 	   trio_string_t *self,
 	   int offset)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(766);
+#endif
   char *result = NULL;
 
   assert(self);
@@ -1458,6 +1550,9 @@ trio_string_extract
 TRIO_ARGS1((self),
 	   trio_string_t *self)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(767);
+#endif
   char *result;
 
   assert(self);
@@ -1538,6 +1633,9 @@ TRIO_ARGS2((self, other),
 	   trio_string_t *self,
 	   trio_string_t *other)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(768);
+#endif
   size_t length;
 
   assert(self);
@@ -1566,6 +1664,9 @@ TRIO_ARGS2((self, other),
 	   trio_string_t *self,
 	   TRIO_CONST char *other)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(769);
+#endif
   size_t length;
 
   assert(self);
@@ -1593,6 +1694,9 @@ TRIO_ARGS2((self, character),
 	   trio_string_t *self,
 	   char character)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(770);
+#endif
   assert(self);
 
   if ((int)self->length >= trio_string_size(self))
@@ -1659,6 +1763,9 @@ TRIO_ARGS2((self, other),
 	   trio_string_t *self,
 	   trio_string_t *other)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(771);
+#endif
   assert(self);
   assert(other);
 
@@ -1678,6 +1785,9 @@ TRIO_ARGS2((self, other),
 	   trio_string_t *self,
 	   TRIO_CONST char *other)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(772);
+#endif
   assert(self);
   assert(other);
 
@@ -1696,6 +1806,9 @@ trio_string_duplicate
 TRIO_ARGS1((other),
 	   trio_string_t *other)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(773);
+#endif
   trio_string_t *self;
 
   assert(other);
@@ -1727,6 +1840,9 @@ trio_xstring_duplicate
 TRIO_ARGS1((other),
 	   TRIO_CONST char *other)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(774);
+#endif
   trio_string_t *self;
 
   assert(other);
@@ -1796,6 +1912,9 @@ TRIO_ARGS3((self, max, other),
 	   size_t max,
 	   trio_string_t *other)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(775);
+#endif
   assert(self);
   assert(other);
 
@@ -1815,6 +1934,9 @@ TRIO_ARGS3((self, max, other),
 	   size_t max,
 	   TRIO_CONST char *other)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(776);
+#endif
   assert(self);
   assert(other);
 
@@ -1870,6 +1992,9 @@ TRIO_ARGS3((self, max, other),
 	   size_t max,
 	   trio_string_t *other)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(777);
+#endif
   assert(self);
   assert(other);
 
@@ -1889,6 +2014,9 @@ TRIO_ARGS3((self, max, other),
 	   size_t max,
 	   TRIO_CONST char *other)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(778);
+#endif
   assert(self);
   assert(other);
 
@@ -1909,6 +2037,9 @@ TRIO_ARGS4((self, max, format, datetime),
 	   TRIO_CONST char *format,
 	   TRIO_CONST struct tm *datetime)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(779);
+#endif
   assert(self);
 
   return trio_format_date_max(self->content, max, format, datetime);
@@ -1959,6 +2090,9 @@ trio_string_length
 TRIO_ARGS1((self),
 	   trio_string_t *self)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(780);
+#endif
   assert(self);
 
   if (self->length == 0)

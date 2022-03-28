@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * libxml.c: this modules implements the main part of the glue of the
  *           libxml2 library and the Python interpreter. It provides the
@@ -108,6 +113,9 @@ PyObject *
 libxml_xmlMemoryUsed(PyObject * self ATTRIBUTE_UNUSED, 
         PyObject * args ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2179);
+#endif
     long ret;
     PyObject *py_retval;
 
@@ -120,6 +128,9 @@ libxml_xmlMemoryUsed(PyObject * self ATTRIBUTE_UNUSED,
 PyObject *
 libxml_xmlDebugMemory(PyObject * self ATTRIBUTE_UNUSED, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2180);
+#endif
     int activate;
     PyObject *py_retval;
     long ret;
@@ -185,6 +196,9 @@ libxml_xmlDebugMemory(PyObject * self ATTRIBUTE_UNUSED, PyObject * args)
 PyObject *
 libxml_xmlPythonCleanupParser(PyObject *self ATTRIBUTE_UNUSED,
                               PyObject *args ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2181);
+#endif
 
     int ix;
     long freed = -1;
@@ -249,6 +263,9 @@ libxml_xmlDumpMemory(ATTRIBUTE_UNUSED PyObject * self,
  */
 static int
 xmlPythonFileCloseRaw (void * context) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2182);
+#endif
     PyObject *file, *ret;
 
 #ifdef DEBUG_FILES
@@ -276,6 +293,9 @@ xmlPythonFileCloseRaw (void * context) {
  */
 static int
 xmlPythonFileReadRaw (void * context, char * buffer, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2183);
+#endif
     PyObject *file;
     PyObject *ret;
     int lenread = -1;
@@ -341,6 +361,9 @@ xmlPythonFileReadRaw (void * context, char * buffer, int len) {
  */
 static int
 xmlPythonFileRead (void * context, char * buffer, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2184);
+#endif
     PyObject *file;
     PyObject *ret;
     int lenread = -1;
@@ -406,6 +429,9 @@ xmlPythonFileRead (void * context, char * buffer, int len) {
  */
 static int
 xmlPythonFileWrite (void * context, const char * buffer, int len) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2185);
+#endif
     PyObject *file;
     PyObject *string;
     PyObject *ret = NULL;
@@ -450,6 +476,9 @@ xmlPythonFileWrite (void * context, const char * buffer, int len) {
  */
 static int
 xmlPythonFileClose (void * context) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2186);
+#endif
     PyObject *file, *ret = NULL;
 
 #ifdef DEBUG_FILES
@@ -482,6 +511,9 @@ xmlPythonFileClose (void * context) {
 static xmlOutputBufferPtr
 xmlOutputBufferCreatePythonFile(PyObject *file, 
 	                        xmlCharEncodingHandlerPtr encoder) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2187);
+#endif
     xmlOutputBufferPtr ret;
 
     if (file == NULL) return(NULL);
@@ -499,6 +531,9 @@ xmlOutputBufferCreatePythonFile(PyObject *file,
 
 PyObject *
 libxml_xmlCreateOutputBuffer(ATTRIBUTE_UNUSED PyObject *self, PyObject *args) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2188);
+#endif
     PyObject *py_retval;
     PyObject *file;
     xmlChar  *encoding;
@@ -530,6 +565,9 @@ libxml_xmlCreateOutputBuffer(ATTRIBUTE_UNUSED PyObject *self, PyObject *args) {
 static PyObject *
 libxml_outputBufferGetPythonFile(ATTRIBUTE_UNUSED PyObject *self,
                                     PyObject *args) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2189);
+#endif
     PyObject *buffer;
     PyObject *file;
     xmlOutputBufferPtr obj;
@@ -562,6 +600,9 @@ libxml_outputBufferGetPythonFile(ATTRIBUTE_UNUSED PyObject *self,
 
 static PyObject *
 libxml_xmlOutputBufferClose(PyObject *self ATTRIBUTE_UNUSED, PyObject *args) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2190);
+#endif
     PyObject *py_retval;
     int c_retval;
     xmlOutputBufferPtr out;
@@ -583,6 +624,9 @@ libxml_xmlOutputBufferClose(PyObject *self ATTRIBUTE_UNUSED, PyObject *args) {
 
 static PyObject *
 libxml_xmlOutputBufferFlush(PyObject *self ATTRIBUTE_UNUSED, PyObject *args) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2191);
+#endif
     PyObject *py_retval;
     int c_retval;
     xmlOutputBufferPtr out;
@@ -599,6 +643,9 @@ libxml_xmlOutputBufferFlush(PyObject *self ATTRIBUTE_UNUSED, PyObject *args) {
 
 static PyObject *
 libxml_xmlSaveFileTo(PyObject *self ATTRIBUTE_UNUSED, PyObject *args) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2192);
+#endif
     PyObject *py_retval;
     int c_retval;
     xmlOutputBufferPtr buf;
@@ -622,6 +669,9 @@ libxml_xmlSaveFileTo(PyObject *self ATTRIBUTE_UNUSED, PyObject *args) {
 
 static PyObject *
 libxml_xmlSaveFormatFileTo(PyObject *self ATTRIBUTE_UNUSED, PyObject *args) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2193);
+#endif
     PyObject *py_retval;
     int c_retval;
     xmlOutputBufferPtr buf;
@@ -659,6 +709,9 @@ libxml_xmlSaveFormatFileTo(PyObject *self ATTRIBUTE_UNUSED, PyObject *args) {
 static xmlParserInputBufferPtr
 xmlParserInputBufferCreatePythonFile(PyObject *file, 
 	                        xmlCharEncoding encoding) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2194);
+#endif
     xmlParserInputBufferPtr ret;
 
     if (file == NULL) return(NULL);
@@ -676,6 +729,9 @@ xmlParserInputBufferCreatePythonFile(PyObject *file,
 
 PyObject *
 libxml_xmlCreateInputBuffer(ATTRIBUTE_UNUSED PyObject *self, PyObject *args) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2195);
+#endif
     PyObject *py_retval;
     PyObject *file;
     xmlChar  *encoding;
@@ -708,6 +764,9 @@ static PyObject *pythonExternalEntityLoaderObjext;
 static xmlParserInputPtr
 pythonExternalEntityLoader(const char *URL, const char *ID,
 			   xmlParserCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2196);
+#endif
     xmlParserInputPtr result = NULL;
     if (pythonExternalEntityLoaderObjext != NULL) {
 	PyObject *ret;
@@ -762,6 +821,9 @@ pythonExternalEntityLoader(const char *URL, const char *ID,
 
 PyObject *
 libxml_xmlSetEntityLoader(ATTRIBUTE_UNUSED PyObject *self, PyObject *args) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2197);
+#endif
     PyObject *py_retval;
     PyObject *loader;
 
@@ -808,6 +870,9 @@ pythonInputMatchCallback(ATTRIBUTE_UNUSED const char *URI)
 static void *
 pythonInputOpenCallback(const char *URI)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2198);
+#endif
     PyObject *ret;
 
     ret = PyObject_CallFunction(pythonInputOpenCallbackObject,
@@ -822,6 +887,9 @@ pythonInputOpenCallback(const char *URI)
 PyObject *
 libxml_xmlRegisterInputCallback(ATTRIBUTE_UNUSED PyObject *self,
                                 PyObject *args) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2199);
+#endif
     PyObject *cb;
 
     if (!PyArg_ParseTuple(args,
@@ -854,6 +922,9 @@ libxml_xmlRegisterInputCallback(ATTRIBUTE_UNUSED PyObject *self,
 PyObject *
 libxml_xmlUnregisterInputCallback(ATTRIBUTE_UNUSED PyObject *self,
                                 ATTRIBUTE_UNUSED PyObject *args) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2200);
+#endif
     int ret;
 
     ret = xmlPopInputCallbacks();
@@ -888,6 +959,9 @@ static void
 pythonStartElement(void *user_data, const xmlChar * name,
                    const xmlChar ** attrs)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2201);
+#endif
     int i;
     PyObject *handler;
     PyObject *dict;
@@ -947,6 +1021,9 @@ pythonStartElement(void *user_data, const xmlChar * name,
 static void
 pythonStartDocument(void *user_data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2202);
+#endif
     PyObject *handler;
     PyObject *result;
 
@@ -966,6 +1043,9 @@ pythonStartDocument(void *user_data)
 static void
 pythonEndDocument(void *user_data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2203);
+#endif
     PyObject *handler;
     PyObject *result;
 
@@ -989,6 +1069,9 @@ pythonEndDocument(void *user_data)
 static void
 pythonEndElement(void *user_data, const xmlChar * name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2204);
+#endif
     PyObject *handler;
     PyObject *result;
 
@@ -1014,6 +1097,9 @@ pythonEndElement(void *user_data, const xmlChar * name)
 static void
 pythonReference(void *user_data, const xmlChar * name)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2205);
+#endif
     PyObject *handler;
     PyObject *result;
 
@@ -1033,6 +1119,9 @@ pythonReference(void *user_data, const xmlChar * name)
 static void
 pythonCharacters(void *user_data, const xmlChar * ch, int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2206);
+#endif
     PyObject *handler;
     PyObject *result = NULL;
     int type = 0;
@@ -1061,6 +1150,9 @@ pythonCharacters(void *user_data, const xmlChar * ch, int len)
 static void
 pythonIgnorableWhitespace(void *user_data, const xmlChar * ch, int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2207);
+#endif
     PyObject *handler;
     PyObject *result = NULL;
     int type = 0;
@@ -1091,6 +1183,9 @@ static void
 pythonProcessingInstruction(void *user_data,
                             const xmlChar * target, const xmlChar * data)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2208);
+#endif
     PyObject *handler;
     PyObject *result;
 
@@ -1109,6 +1204,9 @@ pythonProcessingInstruction(void *user_data,
 static void
 pythonComment(void *user_data, const xmlChar * value)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2209);
+#endif
     PyObject *handler;
     PyObject *result;
 
@@ -1129,6 +1227,9 @@ pythonComment(void *user_data, const xmlChar * value)
 static void
 pythonWarning(void *user_data, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2210);
+#endif
     PyObject *handler;
     PyObject *result;
     va_list args;
@@ -1155,6 +1256,9 @@ pythonWarning(void *user_data, const char *msg, ...)
 static void
 pythonError(void *user_data, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2211);
+#endif
     PyObject *handler;
     PyObject *result;
     va_list args;
@@ -1181,6 +1285,9 @@ pythonError(void *user_data, const char *msg, ...)
 static void
 pythonFatalError(void *user_data, const char *msg, ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2212);
+#endif
     PyObject *handler;
     PyObject *result;
     va_list args;
@@ -1207,6 +1314,9 @@ pythonFatalError(void *user_data, const char *msg, ...)
 static void
 pythonCdataBlock(void *user_data, const xmlChar * ch, int len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2213);
+#endif
     PyObject *handler;
     PyObject *result = NULL;
     int type = 0;
@@ -1239,6 +1349,9 @@ pythonExternalSubset(void *user_data,
                      const xmlChar * name,
                      const xmlChar * externalID, const xmlChar * systemID)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2214);
+#endif
     PyObject *handler;
     PyObject *result;
 
@@ -1263,6 +1376,9 @@ pythonEntityDecl(void *user_data,
                  const xmlChar * publicId,
                  const xmlChar * systemId, xmlChar * content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2215);
+#endif
     PyObject *handler;
     PyObject *result;
 
@@ -1285,6 +1401,9 @@ pythonNotationDecl(void *user_data,
                    const xmlChar * name,
                    const xmlChar * publicId, const xmlChar * systemId)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2216);
+#endif
     PyObject *handler;
     PyObject *result;
 
@@ -1307,6 +1426,9 @@ pythonAttributeDecl(void *user_data,
                     int def,
                     const xmlChar * defaultValue, xmlEnumerationPtr tree)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2217);
+#endif
     PyObject *handler;
     PyObject *nameList;
     PyObject *newName;
@@ -1343,6 +1465,9 @@ pythonElementDecl(void *user_data,
                   const xmlChar * name,
                   int type, ATTRIBUTE_UNUSED xmlElementContentPtr content)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2218);
+#endif
     PyObject *handler;
     PyObject *obj;
     PyObject *result;
@@ -1369,6 +1494,9 @@ pythonUnparsedEntityDecl(void *user_data,
                          const xmlChar * systemId,
                          const xmlChar * notationName)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2219);
+#endif
     PyObject *handler;
     PyObject *result;
 
@@ -1388,6 +1516,9 @@ static void
 pythonInternalSubset(void *user_data, const xmlChar * name,
                      const xmlChar * ExternalID, const xmlChar * SystemID)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2220);
+#endif
     PyObject *handler;
     PyObject *result;
 
@@ -1451,6 +1582,9 @@ PyObject *
 libxml_xmlCreatePushParser(ATTRIBUTE_UNUSED PyObject * self,
                            PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2221);
+#endif
     const char *chunk;
     int size;
     const char *URI;
@@ -1482,6 +1616,9 @@ PyObject *
 libxml_htmlCreatePushParser(ATTRIBUTE_UNUSED PyObject * self,
                             PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2222);
+#endif
 #ifdef LIBXML_HTML_ENABLED
     const char *chunk;
     int size;
@@ -1518,6 +1655,9 @@ libxml_htmlCreatePushParser(ATTRIBUTE_UNUSED PyObject * self,
 PyObject *
 libxml_xmlSAXParseFile(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2223);
+#endif
 #ifdef LIBXML_SAX1_ENABLED
     int recover;
     const char *URI;
@@ -1548,6 +1688,9 @@ libxml_xmlSAXParseFile(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 PyObject *
 libxml_htmlSAXParseFile(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2224);
+#endif
 #ifdef LIBXML_HTML_ENABLED
     const char *URI;
     const char *encoding;
@@ -1597,6 +1740,9 @@ static PyObject *libxml_xmlPythonErrorFuncCtxt = NULL;
 static char *
 libxml_buildMessage(const char *msg, va_list ap)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2225);
+#endif
     int chars;
     char *str;
 
@@ -1615,6 +1761,9 @@ static void
 libxml_xmlErrorFuncHandler(ATTRIBUTE_UNUSED void *ctx, const char *msg,
                            ...)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2226);
+#endif
     va_list ap;
     PyObject *list;
     PyObject *message;
@@ -1661,6 +1810,9 @@ static PyObject *
 libxml_xmlRegisterErrorHandler(ATTRIBUTE_UNUSED PyObject * self,
                                PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2227);
+#endif
     PyObject *py_retval;
     PyObject *pyobj_f;
     PyObject *pyobj_ctx;
@@ -1710,6 +1862,9 @@ typedef xmlParserCtxtPyCtxt *xmlParserCtxtPyCtxtPtr;
 static void
 libxml_xmlParserCtxtGenericErrorFuncHandler(void *ctx, int severity, char *str) 
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2228);
+#endif
     PyObject *list;
     PyObject *result;
     xmlParserCtxtPtr ctxt;
@@ -1782,6 +1937,9 @@ libxml_xmlParserCtxtValidityWarningFuncHandler(void *ctx, const char *msg, ...)
 static PyObject *
 libxml_xmlParserCtxtSetErrorHandler(ATTRIBUTE_UNUSED PyObject *self, PyObject *args) 
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2229);
+#endif
     PyObject *py_retval;
     xmlParserCtxtPtr ctxt;
     xmlParserCtxtPyCtxtPtr pyCtxt;
@@ -1833,6 +1991,9 @@ libxml_xmlParserCtxtSetErrorHandler(ATTRIBUTE_UNUSED PyObject *self, PyObject *a
 static PyObject *
 libxml_xmlParserCtxtGetErrorHandler(ATTRIBUTE_UNUSED PyObject *self, PyObject *args) 
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2230);
+#endif
     PyObject *py_retval;
     xmlParserCtxtPtr ctxt;
     xmlParserCtxtPyCtxtPtr pyCtxt;
@@ -1863,6 +2024,9 @@ libxml_xmlParserCtxtGetErrorHandler(ATTRIBUTE_UNUSED PyObject *self, PyObject *a
 
 static PyObject *
 libxml_xmlFreeParserCtxt(ATTRIBUTE_UNUSED PyObject *self, PyObject *args) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2231);
+#endif
     xmlParserCtxtPtr ctxt;
     PyObject *pyobj_ctxt;
     xmlParserCtxtPyCtxtPtr pyCtxt;
@@ -1900,6 +2064,9 @@ typedef xmlValidCtxtPyCtxt *xmlValidCtxtPyCtxtPtr;
 static void
 libxml_xmlValidCtxtGenericErrorFuncHandler(void *ctx, ATTRIBUTE_UNUSED int severity, char *str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2232);
+#endif
     PyObject *list;
     PyObject *result;
     xmlValidCtxtPyCtxtPtr pyCtxt;
@@ -1927,6 +2094,9 @@ libxml_xmlValidCtxtGenericErrorFuncHandler(void *ctx, ATTRIBUTE_UNUSED int sever
 static void
 libxml_xmlValidCtxtGenericWarningFuncHandler(void *ctx, ATTRIBUTE_UNUSED int severity, char *str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2233);
+#endif
     PyObject *list;
     PyObject *result;
     xmlValidCtxtPyCtxtPtr pyCtxt;
@@ -1974,6 +2144,9 @@ libxml_xmlValidCtxtWarningFuncHandler(void *ctx, const char *msg, ...)
 static PyObject *
 libxml_xmlSetValidErrors(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2234);
+#endif
     PyObject *py_retval;
     PyObject *pyobj_error;
     PyObject *pyobj_warn;
@@ -2023,6 +2196,9 @@ libxml_xmlSetValidErrors(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 
 static PyObject *
 libxml_xmlFreeValidCtxt(PyObject *self ATTRIBUTE_UNUSED, PyObject *args) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2235);
+#endif
     xmlValidCtxtPtr cur;
     xmlValidCtxtPyCtxtPtr pyCtxt;
     PyObject *pyobj_cur;
@@ -2065,6 +2241,9 @@ libxml_xmlTextReaderErrorCallback(void *arg,
 				  int severity,
 				  xmlTextReaderLocatorPtr locator)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2236);
+#endif
     xmlTextReaderPyCtxt *pyCtxt = (xmlTextReaderPyCtxt *)arg;
     PyObject *list;
     PyObject *result;
@@ -2088,6 +2267,9 @@ libxml_xmlTextReaderErrorCallback(void *arg,
 static PyObject *
 libxml_xmlTextReaderSetErrorHandler(ATTRIBUTE_UNUSED PyObject *self, PyObject *args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2237);
+#endif
     xmlTextReaderPtr reader;
     xmlTextReaderPyCtxtPtr pyCtxt;
     xmlTextReaderErrorFunc f;
@@ -2145,6 +2327,9 @@ libxml_xmlTextReaderSetErrorHandler(ATTRIBUTE_UNUSED PyObject *self, PyObject *a
 static PyObject *
 libxml_xmlTextReaderGetErrorHandler(ATTRIBUTE_UNUSED PyObject *self, PyObject *args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2238);
+#endif
     xmlTextReaderPtr reader;
     xmlTextReaderPyCtxtPtr pyCtxt;
     xmlTextReaderErrorFunc f;
@@ -2178,6 +2363,9 @@ libxml_xmlTextReaderGetErrorHandler(ATTRIBUTE_UNUSED PyObject *self, PyObject *a
 
 static PyObject *
 libxml_xmlFreeTextReader(ATTRIBUTE_UNUSED PyObject *self, PyObject *args) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2239);
+#endif
     xmlTextReaderPtr reader;
     PyObject *pyobj_reader;
     xmlTextReaderPyCtxtPtr pyCtxt;
@@ -2226,6 +2414,9 @@ libxml_xmlFreeTextReader(ATTRIBUTE_UNUSED PyObject *self, PyObject *args) {
 static void
 libxml_xmlXPathFuncCallback(xmlXPathParserContextPtr ctxt, int nargs)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2240);
+#endif
     PyObject *list, *cur, *result;
     xmlXPathObjectPtr obj;
     xmlXPathContextPtr rctxt;
@@ -2281,6 +2472,9 @@ static xmlXPathFunction
 libxml_xmlXPathFuncLookupFunc(void *ctxt, const xmlChar * name,
                               const xmlChar * ns_uri)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2241);
+#endif
     int i;
 
 #ifdef DEBUG_XPATH
@@ -2306,6 +2500,9 @@ libxml_xmlXPathFuncLookupFunc(void *ctxt, const xmlChar * name,
 static void
 libxml_xpathCallbacksInitialize(void)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2242);
+#endif
     int i;
 
     if (libxml_xpathCallbacksInitialized != 0)
@@ -2330,6 +2527,9 @@ PyObject *
 libxml_xmlRegisterXPathFunction(ATTRIBUTE_UNUSED PyObject * self,
                                 PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2243);
+#endif
     PyObject *py_retval;
     int c_retval = 0;
     xmlChar *name;
@@ -2391,6 +2591,9 @@ PyObject *
 libxml_xmlXPathRegisterVariable(ATTRIBUTE_UNUSED PyObject * self,
                                 PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2244);
+#endif
     PyObject *py_retval;
     int c_retval = 0;
     xmlChar *name;
@@ -2421,6 +2624,9 @@ libxml_xmlXPathRegisterVariable(ATTRIBUTE_UNUSED PyObject * self,
 static PyObject *
 libxml_name(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2245);
+#endif
     PyObject *resultobj, *obj;
     xmlNodePtr cur;
     const xmlChar *res;
@@ -2468,6 +2674,9 @@ libxml_name(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 static PyObject *
 libxml_doc(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2246);
+#endif
     PyObject *resultobj, *obj;
     xmlNodePtr cur;
     xmlDocPtr res;
@@ -2508,6 +2717,9 @@ libxml_doc(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 static PyObject *
 libxml_properties(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2247);
+#endif
     PyObject *resultobj, *obj;
     xmlNodePtr cur;
     xmlAttrPtr res;
@@ -2526,6 +2738,9 @@ libxml_properties(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 static PyObject *
 libxml_next(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2248);
+#endif
     PyObject *resultobj, *obj;
     xmlNodePtr cur;
     xmlNodePtr res;
@@ -2570,6 +2785,9 @@ libxml_next(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 static PyObject *
 libxml_prev(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2249);
+#endif
     PyObject *resultobj, *obj;
     xmlNodePtr cur;
     xmlNodePtr res;
@@ -2610,6 +2828,9 @@ libxml_prev(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 static PyObject *
 libxml_children(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2250);
+#endif
     PyObject *resultobj, *obj;
     xmlNodePtr cur;
     xmlNodePtr res;
@@ -2653,6 +2874,9 @@ libxml_children(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 static PyObject *
 libxml_last(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2251);
+#endif
     PyObject *resultobj, *obj;
     xmlNodePtr cur;
     xmlNodePtr res;
@@ -2696,6 +2920,9 @@ libxml_last(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 static PyObject *
 libxml_parent(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2252);
+#endif
     PyObject *resultobj, *obj;
     xmlNodePtr cur;
     xmlNodePtr res;
@@ -2739,6 +2966,9 @@ libxml_parent(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 static PyObject *
 libxml_type(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2253);
+#endif
     PyObject *resultobj, *obj;
     xmlNodePtr cur;
     const xmlChar *res = NULL;
@@ -2838,6 +3068,9 @@ libxml_type(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 PyObject *
 libxml_xmlNodeGetNsDefs(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2254);
+#endif
     PyObject *py_retval;
     xmlNsPtr c_retval;
     xmlNodePtr node;
@@ -2860,6 +3093,9 @@ libxml_xmlNodeGetNsDefs(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 PyObject *
 libxml_xmlNodeRemoveNsDef(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2255);
+#endif
     PyObject *py_retval;
     xmlNsPtr ns, prev;
     xmlNodePtr node;
@@ -2909,6 +3145,9 @@ libxml_xmlNodeRemoveNsDef(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 PyObject *
 libxml_xmlNodeGetNs(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2256);
+#endif
     PyObject *py_retval;
     xmlNsPtr c_retval;
     xmlNodePtr node;
@@ -2939,6 +3178,9 @@ libxml_xmlNodeGetNs(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 static PyObject *
 libxml_serializeNode(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2257);
+#endif
     PyObject *py_retval = NULL;
     xmlChar *c_retval;
     PyObject *pyobj_node;
@@ -3013,6 +3255,9 @@ libxml_serializeNode(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 static PyObject *
 libxml_saveNodeTo(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2258);
+#endif
     PyObject *py_file = NULL;
     FILE *output;
     PyObject *pyobj_node;
@@ -3090,6 +3335,9 @@ libxml_saveNodeTo(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 PyObject *
 libxml_xmlNewNode(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2259);
+#endif
     PyObject *py_retval;
     xmlChar *name;
     xmlNodePtr node;
@@ -3118,6 +3366,9 @@ libxml_xmlNewNode(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 static PyObject *
 libxml_addLocalCatalog(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2260);
+#endif
     xmlChar *URL;
     xmlParserCtxtPtr ctxt;
     PyObject *pyobj_ctxt;
@@ -3158,6 +3409,9 @@ typedef xmlRelaxNGValidCtxtPyCtxt *xmlRelaxNGValidCtxtPyCtxtPtr;
 static void
 libxml_xmlRelaxNGValidityGenericErrorFuncHandler(void *ctx, char *str) 
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2261);
+#endif
     PyObject *list;
     PyObject *result;
     xmlRelaxNGValidCtxtPyCtxtPtr pyCtxt;
@@ -3185,6 +3439,9 @@ libxml_xmlRelaxNGValidityGenericErrorFuncHandler(void *ctx, char *str)
 static void
 libxml_xmlRelaxNGValidityGenericWarningFuncHandler(void *ctx, char *str) 
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2262);
+#endif
     PyObject *list;
     PyObject *result;
     xmlRelaxNGValidCtxtPyCtxtPtr pyCtxt;
@@ -3232,6 +3489,9 @@ libxml_xmlRelaxNGValidityWarningFunc(void *ctx, const char *msg, ...)
 static PyObject *
 libxml_xmlRelaxNGSetValidErrors(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2263);
+#endif
     PyObject *py_retval;
     PyObject *pyobj_error;
     PyObject *pyobj_warn;
@@ -3287,6 +3547,9 @@ libxml_xmlRelaxNGSetValidErrors(ATTRIBUTE_UNUSED PyObject * self, PyObject * arg
 
 static PyObject *
 libxml_xmlRelaxNGFreeValidCtxt(ATTRIBUTE_UNUSED PyObject *self, PyObject *args) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2264);
+#endif
     xmlRelaxNGValidCtxtPtr ctxt;
     xmlRelaxNGValidCtxtPyCtxtPtr pyCtxt;
     PyObject *pyobj_ctxt;
@@ -3322,6 +3585,9 @@ typedef xmlSchemaValidCtxtPyCtxt *xmlSchemaValidCtxtPyCtxtPtr;
 static void
 libxml_xmlSchemaValidityGenericErrorFuncHandler(void *ctx, char *str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2265);
+#endif
 	PyObject *list;
 	PyObject *result;
 	xmlSchemaValidCtxtPyCtxtPtr pyCtxt;
@@ -3349,6 +3615,9 @@ libxml_xmlSchemaValidityGenericErrorFuncHandler(void *ctx, char *str)
 static void
 libxml_xmlSchemaValidityGenericWarningFuncHandler(void *ctx, char *str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2266);
+#endif
 	PyObject *list;
 	PyObject *result;
 	xmlSchemaValidCtxtPyCtxtPtr pyCtxt;
@@ -3396,6 +3665,9 @@ libxml_xmlSchemaValidityWarningFunc(void *ctx, const char *msg, ...)
 PyObject *
 libxml_xmlSchemaSetValidErrors(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2267);
+#endif
 	PyObject *py_retval;
 	PyObject *pyobj_error;
 	PyObject *pyobj_warn;
@@ -3452,6 +3724,9 @@ libxml_xmlSchemaSetValidErrors(ATTRIBUTE_UNUSED PyObject * self, PyObject * args
 static PyObject *
 libxml_xmlSchemaFreeValidCtxt(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2268);
+#endif
 	xmlSchemaValidCtxtPtr ctxt;
 	xmlSchemaValidCtxtPyCtxtPtr pyCtxt;
 	PyObject *pyobj_ctxt;
@@ -3490,6 +3765,9 @@ libxml_xmlSchemaFreeValidCtxt(ATTRIBUTE_UNUSED PyObject * self, PyObject * args)
 static int
 PyxmlNodeSet_Convert(PyObject *py_nodeset, xmlNodeSetPtr *result)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2269);
+#endif
     xmlNodeSetPtr nodeSet;
     int is_tuple = 0;
 
@@ -3546,6 +3824,9 @@ PyxmlNodeSet_Convert(PyObject *py_nodeset, xmlNodeSetPtr *result)
 static int
 PystringSet_Convert(PyObject *py_strings, xmlChar *** result)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2270);
+#endif
     /* NOTE: the array should be freed, but the strings are shared
        with the python strings and so must not be freed. */
 
@@ -3607,6 +3888,9 @@ static PyObject *
 libxml_C14NDocDumpMemory(ATTRIBUTE_UNUSED PyObject * self,
                          PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2271);
+#endif
     PyObject *py_retval = NULL;
 
     PyObject *pyobj_doc;
@@ -3684,6 +3968,9 @@ static PyObject *
 libxml_C14NDocSaveTo(ATTRIBUTE_UNUSED PyObject * self,
                      PyObject * args)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2272);
+#endif
     PyObject *pyobj_doc;
     PyObject *py_file;
     PyObject *pyobj_nodes;
@@ -3770,6 +4057,9 @@ libxml_C14NDocSaveTo(ATTRIBUTE_UNUSED PyObject * self,
 
 static PyObject *
 libxml_getObjDesc(PyObject *self ATTRIBUTE_UNUSED, PyObject *args) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2273);
+#endif
 
     PyObject *obj;
     char *str;
@@ -3782,6 +4072,9 @@ libxml_getObjDesc(PyObject *self ATTRIBUTE_UNUSED, PyObject *args) {
 
 static PyObject *
 libxml_compareNodesEqual(PyObject *self ATTRIBUTE_UNUSED, PyObject *args) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2274);
+#endif
     
     PyObject *py_node1, *py_node2;
     xmlNodePtr node1, node2;
@@ -3801,6 +4094,9 @@ libxml_compareNodesEqual(PyObject *self ATTRIBUTE_UNUSED, PyObject *args) {
 
 static PyObject *
 libxml_nodeHash(PyObject *self ATTRIBUTE_UNUSED, PyObject *args) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2275);
+#endif
 
     PyObject *py_node1;
     xmlNodePtr node1;
@@ -3906,6 +4202,9 @@ PyObject *PyInit_libxml2mod(void)
 void initlibxml2mod(void)
 #endif
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2276);
+#endif
     PyObject *module;
 
 #if PY_MAJOR_VERSION >= 3

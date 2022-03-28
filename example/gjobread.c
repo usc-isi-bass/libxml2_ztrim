@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * gjobread.c : a small test program for gnome jobs XML format
  *
@@ -44,6 +49,9 @@ typedef struct person {
  */
 static personPtr
 parsePerson(xmlDocPtr doc, xmlNsPtr ns, xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2174);
+#endif
     personPtr ret = NULL;
 
 DEBUG("parsePerson\n");
@@ -78,6 +86,9 @@ DEBUG("parsePerson\n");
  */
 static void
 printPerson(personPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2175);
+#endif
     if (cur == NULL) return;
     printf("------ Person\n");
     if (cur->name) printf("	name: %s\n", cur->name);
@@ -107,6 +118,9 @@ typedef struct job {
  */
 static jobPtr
 parseJob(xmlDocPtr doc, xmlNsPtr ns, xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2176);
+#endif
     jobPtr ret = NULL;
 
 DEBUG("parseJob\n");
@@ -153,6 +167,9 @@ DEBUG("parseJob\n");
  */
 static void
 printJob(jobPtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2177);
+#endif
     int i;
 
     if (cur == NULL) return;
@@ -178,6 +195,9 @@ typedef struct gjob {
 
 static gJobPtr
 parseGjobFile(char *filename) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2178);
+#endif
     xmlDocPtr doc;
     gJobPtr ret;
     jobPtr curjob;

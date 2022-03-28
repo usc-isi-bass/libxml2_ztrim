@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * xmlunicode.c: this module implements the Unicode character APIs
  *
@@ -944,6 +949,9 @@ static xmlUnicodeNameTable xmlUnicodeCatTbl = {xmlUnicodeCats, 36};
  */
 static xmlIntFunc
 *xmlUnicodeLookup(xmlUnicodeNameTable *tptr, const char *tname) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2064);
+#endif
     int low, high, mid, cmp;
     xmlUnicodeRange *sptr;
 
@@ -2936,6 +2944,9 @@ xmlUCSIsCatP(int code) {
  */
 int
 xmlUCSIsCatPc(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2065);
+#endif
     return((code == 0x5f) ||
            ((code >= 0x203f) && (code <= 0x2040)) ||
            (code == 0x2054) ||
@@ -3145,6 +3156,9 @@ xmlUCSIsCatZp(int code) {
  */
 int
 xmlUCSIsCatZs(int code) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2066);
+#endif
     return((code == 0x20) ||
            (code == 0xa0) ||
            (code == 0x1680) ||

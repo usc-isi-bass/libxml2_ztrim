@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /**
  * xzlib.c: front end for the transparent suport of lzma compression
  *          at the I/O layer, based on an example file from lzma project
@@ -86,6 +91,9 @@ typedef struct {
 static void
 xz_error(xz_statep state, int err, const char *msg)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(416);
+#endif
     /* free previously allocated message and clear */
     if (state->msg != NULL) {
         if (state->err != LZMA_MEM_ERROR)
@@ -120,6 +128,9 @@ xz_error(xz_statep state, int err, const char *msg)
 static void
 xz_reset(xz_statep state)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(417);
+#endif
     state->have = 0;            /* no output data available */
     state->eof = 0;             /* not at end of file */
     state->how = LOOK;          /* look for gzip header */
@@ -136,6 +147,9 @@ xz_reset(xz_statep state)
 static xzFile
 xz_open(const char *path, int fd, const char *mode ATTRIBUTE_UNUSED)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(418);
+#endif
     xz_statep state;
 
     /* allocate xzFile structure to return */
@@ -184,6 +198,9 @@ xz_open(const char *path, int fd, const char *mode ATTRIBUTE_UNUSED)
 
 static int
 xz_compressed(xzFile f) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(419);
+#endif
     xz_statep state;
 
     if (f == NULL)
@@ -216,6 +233,9 @@ __libxml2_xzcompressed(xzFile f) {
 xzFile
 __libxml2_xzdopen(int fd, const char *mode)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(420);
+#endif
     char *path;                 /* identifier for error messages */
     xzFile xz;
 
@@ -231,6 +251,9 @@ static int
 xz_load(xz_statep state, unsigned char *buf, unsigned int len,
         unsigned int *have)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(421);
+#endif
     int ret;
 
     *have = 0;
@@ -252,6 +275,9 @@ xz_load(xz_statep state, unsigned char *buf, unsigned int len,
 static int
 xz_avail(xz_statep state)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(422);
+#endif
     lzma_stream *strm = &(state->strm);
 
     if (state->err != LZMA_OK)
@@ -274,6 +300,9 @@ xz_avail(xz_statep state)
 static int
 xz_avail_zstrm(xz_statep state)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(423);
+#endif
     int ret;
     state->strm.avail_in = state->zstrm.avail_in;
     state->strm.next_in = state->zstrm.next_in;
@@ -295,6 +324,9 @@ is_format_xz(xz_statep state)
 static int
 is_format_lzma(xz_statep state)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(424);
+#endif
     lzma_stream *strm = &(state->strm);
 
     lzma_filter filter;
@@ -363,6 +395,9 @@ is_format_lzma(xz_statep state)
 static int
 gz_next4(xz_statep state, unsigned long *ret)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(425);
+#endif
     int ch;
     unsigned long val;
     z_streamp strm = &(state->zstrm);
@@ -382,6 +417,9 @@ gz_next4(xz_statep state, unsigned long *ret)
 static int
 xz_head(xz_statep state)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(426);
+#endif
     lzma_stream *strm = &(state->strm);
     lzma_stream init = LZMA_STREAM_INIT;
     int flags;
@@ -527,6 +565,9 @@ xz_head(xz_statep state)
 static int
 xz_decomp(xz_statep state)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(427);
+#endif
     int ret;
     unsigned had;
     unsigned long crc, len;
@@ -627,6 +668,9 @@ xz_decomp(xz_statep state)
 static int
 xz_make(xz_statep state)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(428);
+#endif
     lzma_stream *strm = &(state->strm);
 
     if (state->how == LOOK) {   /* look for lzma / gzip header */
@@ -652,6 +696,9 @@ xz_make(xz_statep state)
 static int
 xz_skip(xz_statep state, uint64_t len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(429);
+#endif
     unsigned n;
 
     /* skip over len bytes or reach end-of-file, whichever comes first */
@@ -682,6 +729,9 @@ xz_skip(xz_statep state, uint64_t len)
 int
 __libxml2_xzread(xzFile file, void *buf, unsigned len)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(430);
+#endif
     unsigned got, n;
     xz_statep state;
     lzma_stream *strm;
@@ -771,6 +821,9 @@ __libxml2_xzread(xzFile file, void *buf, unsigned len)
 int
 __libxml2_xzclose(xzFile file)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(431);
+#endif
     int ret;
     xz_statep state;
 

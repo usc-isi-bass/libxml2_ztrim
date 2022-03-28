@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * types.c: converter functions between the internal representation
  *          and the Python objects
@@ -26,6 +31,9 @@
 
 FILE *
 libxml_PyFileGet(PyObject *f) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2277);
+#endif
     int fd, flags;
     FILE *res;
     const char *mode;
@@ -89,6 +97,9 @@ void libxml_PyFileRelease(FILE *f) {
 PyObject *
 libxml_intWrap(int val)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2278);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -101,6 +112,9 @@ libxml_intWrap(int val)
 PyObject *
 libxml_longWrap(long val)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2279);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -113,6 +127,9 @@ libxml_longWrap(long val)
 PyObject *
 libxml_doubleWrap(double val)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2280);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -125,6 +142,9 @@ libxml_doubleWrap(double val)
 PyObject *
 libxml_charPtrWrap(char *str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2281);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -142,6 +162,9 @@ libxml_charPtrWrap(char *str)
 PyObject *
 libxml_charPtrConstWrap(const char *str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2282);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -158,6 +181,9 @@ libxml_charPtrConstWrap(const char *str)
 PyObject *
 libxml_xmlCharPtrWrap(xmlChar * str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2283);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -175,6 +201,9 @@ libxml_xmlCharPtrWrap(xmlChar * str)
 PyObject *
 libxml_xmlCharPtrConstWrap(const xmlChar * str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2284);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -191,6 +220,9 @@ libxml_xmlCharPtrConstWrap(const xmlChar * str)
 PyObject *
 libxml_constcharPtrWrap(const char *str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2285);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -207,6 +239,9 @@ libxml_constcharPtrWrap(const char *str)
 PyObject *
 libxml_constxmlCharPtrWrap(const xmlChar * str)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2286);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -223,6 +258,9 @@ libxml_constxmlCharPtrWrap(const xmlChar * str)
 PyObject *
 libxml_xmlDocPtrWrap(xmlDocPtr doc)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2287);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -240,6 +278,9 @@ libxml_xmlDocPtrWrap(xmlDocPtr doc)
 PyObject *
 libxml_xmlNodePtrWrap(xmlNodePtr node)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2288);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -256,6 +297,9 @@ libxml_xmlNodePtrWrap(xmlNodePtr node)
 PyObject *
 libxml_xmlURIPtrWrap(xmlURIPtr uri)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2289);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -272,6 +316,9 @@ libxml_xmlURIPtrWrap(xmlURIPtr uri)
 PyObject *
 libxml_xmlNsPtrWrap(xmlNsPtr ns)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2290);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -288,6 +335,9 @@ libxml_xmlNsPtrWrap(xmlNsPtr ns)
 PyObject *
 libxml_xmlAttrPtrWrap(xmlAttrPtr attr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2291);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -304,6 +354,9 @@ libxml_xmlAttrPtrWrap(xmlAttrPtr attr)
 PyObject *
 libxml_xmlAttributePtrWrap(xmlAttributePtr attr)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2292);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -320,6 +373,9 @@ libxml_xmlAttributePtrWrap(xmlAttributePtr attr)
 PyObject *
 libxml_xmlElementPtrWrap(xmlElementPtr elem)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2293);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -336,6 +392,9 @@ libxml_xmlElementPtrWrap(xmlElementPtr elem)
 PyObject *
 libxml_xmlXPathContextPtrWrap(xmlXPathContextPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2294);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -352,6 +411,9 @@ libxml_xmlXPathContextPtrWrap(xmlXPathContextPtr ctxt)
 PyObject *
 libxml_xmlXPathParserContextPtrWrap(xmlXPathParserContextPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2295);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -368,6 +430,9 @@ libxml_xmlXPathParserContextPtrWrap(xmlXPathParserContextPtr ctxt)
 PyObject *
 libxml_xmlParserCtxtPtrWrap(xmlParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2296);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -399,6 +464,9 @@ static void
 libxml_xmlXPathDestructNsNode(PyObject *cap)
 #endif
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2297);
+#endif
 #ifdef DEBUG
     fprintf(stderr, "libxml_xmlXPathDestructNsNode called %p\n", cap);
 #endif
@@ -412,6 +480,9 @@ libxml_xmlXPathDestructNsNode(PyObject *cap)
 PyObject *
 libxml_xmlXPathObjectPtrWrap(xmlXPathObjectPtr obj)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2298);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -596,6 +667,9 @@ libxml_xmlXPathObjectPtrWrap(xmlXPathObjectPtr obj)
 xmlXPathObjectPtr
 libxml_xmlXPathObjectPtrConvert(PyObject *obj)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2299);
+#endif
     xmlXPathObjectPtr ret = NULL;
 
 #ifdef DEBUG
@@ -699,6 +773,9 @@ libxml_xmlXPathObjectPtrConvert(PyObject *obj)
 PyObject *
 libxml_xmlValidCtxtPtrWrap(xmlValidCtxtPtr valid)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2300);
+#endif
 	PyObject *ret;
 
 #ifdef DEBUG
@@ -719,6 +796,9 @@ libxml_xmlValidCtxtPtrWrap(xmlValidCtxtPtr valid)
 PyObject *
 libxml_xmlCatalogPtrWrap(xmlCatalogPtr catal)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2301);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -737,6 +817,9 @@ libxml_xmlCatalogPtrWrap(xmlCatalogPtr catal)
 PyObject *
 libxml_xmlOutputBufferPtrWrap(xmlOutputBufferPtr buffer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2302);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -755,6 +838,9 @@ libxml_xmlOutputBufferPtrWrap(xmlOutputBufferPtr buffer)
 PyObject *
 libxml_xmlParserInputBufferPtrWrap(xmlParserInputBufferPtr buffer)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2303);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -774,6 +860,9 @@ libxml_xmlParserInputBufferPtrWrap(xmlParserInputBufferPtr buffer)
 PyObject *
 libxml_xmlRegexpPtrWrap(xmlRegexpPtr regexp)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2304);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -794,6 +883,9 @@ libxml_xmlRegexpPtrWrap(xmlRegexpPtr regexp)
 PyObject *
 libxml_xmlTextReaderPtrWrap(xmlTextReaderPtr reader)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2305);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -812,6 +904,9 @@ libxml_xmlTextReaderPtrWrap(xmlTextReaderPtr reader)
 PyObject *
 libxml_xmlTextReaderLocatorPtrWrap(xmlTextReaderLocatorPtr locator)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2306);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -832,6 +927,9 @@ libxml_xmlTextReaderLocatorPtrWrap(xmlTextReaderLocatorPtr locator)
 PyObject *
 libxml_xmlRelaxNGPtrWrap(xmlRelaxNGPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2307);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -850,6 +948,9 @@ libxml_xmlRelaxNGPtrWrap(xmlRelaxNGPtr ctxt)
 PyObject *
 libxml_xmlRelaxNGParserCtxtPtrWrap(xmlRelaxNGParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2308);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -867,6 +968,9 @@ libxml_xmlRelaxNGParserCtxtPtrWrap(xmlRelaxNGParserCtxtPtr ctxt)
 PyObject *
 libxml_xmlRelaxNGValidCtxtPtrWrap(xmlRelaxNGValidCtxtPtr valid)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2309);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG
@@ -885,6 +989,9 @@ libxml_xmlRelaxNGValidCtxtPtrWrap(xmlRelaxNGValidCtxtPtr valid)
 PyObject *
 libxml_xmlSchemaPtrWrap(xmlSchemaPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2310);
+#endif
 	PyObject *ret;
 
 #ifdef DEBUG
@@ -903,6 +1010,9 @@ libxml_xmlSchemaPtrWrap(xmlSchemaPtr ctxt)
 PyObject *
 libxml_xmlSchemaParserCtxtPtrWrap(xmlSchemaParserCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2311);
+#endif
 	PyObject *ret;
 
 #ifdef DEBUG
@@ -922,6 +1032,9 @@ libxml_xmlSchemaParserCtxtPtrWrap(xmlSchemaParserCtxtPtr ctxt)
 PyObject *
 libxml_xmlSchemaValidCtxtPtrWrap(xmlSchemaValidCtxtPtr valid)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2312);
+#endif
 	PyObject *ret;
 	
 #ifdef DEBUG
@@ -943,6 +1056,9 @@ libxml_xmlSchemaValidCtxtPtrWrap(xmlSchemaValidCtxtPtr valid)
 PyObject *
 libxml_xmlErrorPtrWrap(xmlErrorPtr error)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(2313);
+#endif
     PyObject *ret;
 
 #ifdef DEBUG

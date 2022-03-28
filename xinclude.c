@@ -1,3 +1,8 @@
+#ifndef ZTRIM_H
+#define ZTRIM_H
+#include <libztrim.h>
+#endif
+
 /*
  * xinclude.c : Code to implement XInclude processing
  *
@@ -108,6 +113,9 @@ static void
 xmlXIncludeErrMemory(xmlXIncludeCtxtPtr ctxt, xmlNodePtr node,
                      const char *extra)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(689);
+#endif
     if (ctxt != NULL)
 	ctxt->nbErrors++;
     __xmlRaiseError(NULL, NULL, NULL, ctxt, node, XML_FROM_XINCLUDE,
@@ -129,6 +137,9 @@ static void
 xmlXIncludeErr(xmlXIncludeCtxtPtr ctxt, xmlNodePtr node, int error,
                const char *msg, const xmlChar *extra)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(690);
+#endif
     if (ctxt != NULL)
 	ctxt->nbErrors++;
     __xmlRaiseError(NULL, NULL, NULL, ctxt, node, XML_FROM_XINCLUDE,
@@ -171,6 +182,9 @@ xmlXIncludeWarn(xmlXIncludeCtxtPtr ctxt, xmlNodePtr node, int error,
 static xmlChar *
 xmlXIncludeGetProp(xmlXIncludeCtxtPtr ctxt, xmlNodePtr cur,
                    const xmlChar *name) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(691);
+#endif
     xmlChar *ret;
 
     ret = xmlGetNsProp(cur, XINCLUDE_NS, name);
@@ -192,6 +206,9 @@ xmlXIncludeGetProp(xmlXIncludeCtxtPtr ctxt, xmlNodePtr cur,
  */
 static void
 xmlXIncludeFreeRef(xmlXIncludeRefPtr ref) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(692);
+#endif
     if (ref == NULL)
 	return;
 #ifdef DEBUG_XINCLUDE
@@ -224,6 +241,9 @@ xmlXIncludeFreeRef(xmlXIncludeRefPtr ref) {
 static xmlXIncludeRefPtr
 xmlXIncludeNewRef(xmlXIncludeCtxtPtr ctxt, const xmlChar *URI,
 	          xmlNodePtr ref) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(693);
+#endif
     xmlXIncludeRefPtr ret;
 
 #ifdef DEBUG_XINCLUDE
@@ -279,6 +299,9 @@ xmlXIncludeNewRef(xmlXIncludeCtxtPtr ctxt, const xmlChar *URI,
  */
 xmlXIncludeCtxtPtr
 xmlXIncludeNewContext(xmlDocPtr doc) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(694);
+#endif
     xmlXIncludeCtxtPtr ret;
 
 #ifdef DEBUG_XINCLUDE
@@ -315,6 +338,9 @@ static int
 xmlXIncludeURLPush(xmlXIncludeCtxtPtr ctxt,
 	           const xmlChar *value)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(695);
+#endif
     if (ctxt->urlNr > XINCLUDE_MAX_DEPTH) {
 	xmlXIncludeErr(ctxt, NULL, XML_XINCLUDE_RECURSION,
 	               "detected a recursion in %s\n", value);
@@ -354,6 +380,9 @@ xmlXIncludeURLPush(xmlXIncludeCtxtPtr ctxt,
 static void
 xmlXIncludeURLPop(xmlXIncludeCtxtPtr ctxt)
 {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(696);
+#endif
     xmlChar * ret;
 
     if (ctxt->urlNr <= 0)
@@ -377,6 +406,9 @@ xmlXIncludeURLPop(xmlXIncludeCtxtPtr ctxt)
  */
 void
 xmlXIncludeFreeContext(xmlXIncludeCtxtPtr ctxt) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(697);
+#endif
     int i;
 
 #ifdef DEBUG_XINCLUDE
@@ -419,6 +451,9 @@ xmlXIncludeFreeContext(xmlXIncludeCtxtPtr ctxt) {
  */
 static xmlDocPtr
 xmlXIncludeParseFile(xmlXIncludeCtxtPtr ctxt, const char *URL) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(698);
+#endif
     xmlDocPtr ret;
     xmlParserCtxtPtr pctxt;
     xmlParserInputPtr inputStream;
@@ -487,6 +522,9 @@ xmlXIncludeParseFile(xmlXIncludeCtxtPtr ctxt, const char *URL) {
  */
 static int
 xmlXIncludeAddNode(xmlXIncludeCtxtPtr ctxt, xmlNodePtr cur) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(699);
+#endif
     xmlXIncludeRefPtr ref;
     xmlURIPtr uri;
     xmlChar *URL;
@@ -663,6 +701,9 @@ xmlXIncludeAddNode(xmlXIncludeCtxtPtr ctxt, xmlNodePtr cur) {
 static void
 xmlXIncludeRecurseDoc(xmlXIncludeCtxtPtr ctxt, xmlDocPtr doc,
 	              const xmlURL url ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(700);
+#endif
     xmlXIncludeCtxtPtr newctxt;
     int i;
 
@@ -756,6 +797,9 @@ xmlXIncludeRecurseDoc(xmlXIncludeCtxtPtr ctxt, xmlDocPtr doc,
  */
 static void
 xmlXIncludeAddTxt(xmlXIncludeCtxtPtr ctxt, xmlNodePtr txt, const xmlURL url) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(701);
+#endif
 #ifdef DEBUG_XINCLUDE
     xmlGenericError(xmlGenericErrorContext, "Adding text %s\n", url);
 #endif
@@ -817,6 +861,9 @@ xmlXIncludeCopyNodeList(xmlXIncludeCtxtPtr ctxt, xmlDocPtr target,
 static xmlNodePtr
 xmlXIncludeCopyNode(xmlXIncludeCtxtPtr ctxt, xmlDocPtr target,
 	            xmlDocPtr source, xmlNodePtr elem) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(702);
+#endif
     xmlNodePtr result = NULL;
 
     if ((ctxt == NULL) || (target == NULL) || (source == NULL) ||
@@ -844,6 +891,9 @@ xmlXIncludeCopyNode(xmlXIncludeCtxtPtr ctxt, xmlDocPtr target,
 static xmlNodePtr
 xmlXIncludeCopyNodeList(xmlXIncludeCtxtPtr ctxt, xmlDocPtr target,
 	                xmlDocPtr source, xmlNodePtr elem) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(703);
+#endif
     xmlNodePtr cur, res, result = NULL, last = NULL;
 
     if ((ctxt == NULL) || (target == NULL) || (source == NULL) ||
@@ -875,6 +925,9 @@ xmlXIncludeCopyNodeList(xmlXIncludeCtxtPtr ctxt, xmlDocPtr target,
  */
 static xmlNodePtr
 xmlXIncludeGetNthChild(xmlNodePtr cur, int no) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(704);
+#endif
     int i;
     if ((cur == NULL) || (cur->type == XML_NAMESPACE_DECL))
         return(NULL);
@@ -909,6 +962,9 @@ xmlNodePtr xmlXPtrAdvanceNode(xmlNodePtr cur, int *level); /* in xpointer.c */
 static xmlNodePtr
 xmlXIncludeCopyRange(xmlXIncludeCtxtPtr ctxt, xmlDocPtr target,
 	                xmlDocPtr source, xmlXPathObjectPtr range) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(705);
+#endif
     /* pointers to generated nodes */
     xmlNodePtr list = NULL, last = NULL, listParent = NULL;
     xmlNodePtr tmp, tmp2;
@@ -1123,6 +1179,9 @@ xmlXIncludeCopyRange(xmlXIncludeCtxtPtr ctxt, xmlDocPtr target,
 static xmlNodePtr
 xmlXIncludeCopyXPointer(xmlXIncludeCtxtPtr ctxt, xmlDocPtr target,
 	                xmlDocPtr source, xmlXPathObjectPtr obj) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(706);
+#endif
     xmlNodePtr list = NULL, last = NULL;
     int i;
 
@@ -1263,6 +1322,9 @@ struct _xmlXIncludeMergeData {
 static void
 xmlXIncludeMergeEntity(xmlEntityPtr ent, xmlXIncludeMergeDataPtr data,
 	               xmlChar *name ATTRIBUTE_UNUSED) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(707);
+#endif
     xmlEntityPtr ret, prev;
     xmlDocPtr doc;
     xmlXIncludeCtxtPtr ctxt;
@@ -1340,6 +1402,9 @@ error:
 static int
 xmlXIncludeMergeEntities(xmlXIncludeCtxtPtr ctxt, xmlDocPtr doc,
 	                 xmlDocPtr from) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(708);
+#endif
     xmlNodePtr cur;
     xmlDtdPtr target, source;
 
@@ -1400,6 +1465,9 @@ xmlXIncludeMergeEntities(xmlXIncludeCtxtPtr ctxt, xmlDocPtr doc,
  */
 static int
 xmlXIncludeLoadDoc(xmlXIncludeCtxtPtr ctxt, const xmlChar *url, int nr) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(709);
+#endif
     xmlDocPtr doc;
     xmlURIPtr uri;
     xmlChar *URL;
@@ -1793,6 +1861,9 @@ loaded:
  */
 static int
 xmlXIncludeLoadTxt(xmlXIncludeCtxtPtr ctxt, const xmlChar *url, int nr) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(710);
+#endif
     xmlParserInputBufferPtr buf;
     xmlNodePtr node;
     xmlURIPtr uri;
@@ -1959,6 +2030,9 @@ loaded:
  */
 static int
 xmlXIncludeLoadFallback(xmlXIncludeCtxtPtr ctxt, xmlNodePtr fallback, int nr) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(711);
+#endif
     xmlXIncludeCtxtPtr newctxt;
     int ret = 0;
 
@@ -2025,6 +2099,9 @@ xmlXIncludePreProcessNode(xmlXIncludeCtxtPtr ctxt, xmlNodePtr node) {
  */
 static int
 xmlXIncludeLoadNode(xmlXIncludeCtxtPtr ctxt, int nr) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(712);
+#endif
     xmlNodePtr cur;
     xmlChar *href;
     xmlChar *parse;
@@ -2182,6 +2259,9 @@ xmlXIncludeLoadNode(xmlXIncludeCtxtPtr ctxt, int nr) {
  */
 static int
 xmlXIncludeIncludeNode(xmlXIncludeCtxtPtr ctxt, int nr) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(713);
+#endif
     xmlNodePtr cur, end, list, tmp;
 
     if (ctxt == NULL)
@@ -2282,6 +2362,9 @@ xmlXIncludeIncludeNode(xmlXIncludeCtxtPtr ctxt, int nr) {
  */
 static int
 xmlXIncludeTestNode(xmlXIncludeCtxtPtr ctxt, xmlNodePtr node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(714);
+#endif
     if (node == NULL)
 	return(0);
     if (node->type != XML_ELEMENT_NODE)
@@ -2360,6 +2443,9 @@ xmlXIncludeTestNode(xmlXIncludeCtxtPtr ctxt, xmlNodePtr node) {
  */
 static int
 xmlXIncludeDoProcess(xmlXIncludeCtxtPtr ctxt, xmlDocPtr doc, xmlNodePtr tree) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(715);
+#endif
     xmlNodePtr cur;
     int ret = 0;
     int i, start;
@@ -2475,6 +2561,9 @@ xmlXIncludeSetFlags(xmlXIncludeCtxtPtr ctxt, int flags) {
 
 int
 xmlXIncludeProcessTreeFlagsData(xmlNodePtr tree, int flags, void *data) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(716);
+#endif
     xmlXIncludeCtxtPtr ctxt;
     int ret = 0;
 
@@ -2510,6 +2599,9 @@ xmlXIncludeProcessTreeFlagsData(xmlNodePtr tree, int flags, void *data) {
  */
 int
 xmlXIncludeProcessFlagsData(xmlDocPtr doc, int flags, void *data) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(717);
+#endif
     xmlNodePtr tree;
 
     if (doc == NULL)
@@ -2561,6 +2653,9 @@ xmlXIncludeProcess(xmlDocPtr doc) {
  */
 int
 xmlXIncludeProcessTreeFlags(xmlNodePtr tree, int flags) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(718);
+#endif
     xmlXIncludeCtxtPtr ctxt;
     int ret = 0;
 
@@ -2607,6 +2702,9 @@ xmlXIncludeProcessTree(xmlNodePtr tree) {
  */
 int
 xmlXIncludeProcessNode(xmlXIncludeCtxtPtr ctxt, xmlNodePtr node) {
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(719);
+#endif
     int ret = 0;
 
     if ((node == NULL) || (node->type == XML_NAMESPACE_DECL) ||
