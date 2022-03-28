@@ -95,9 +95,6 @@ typedef struct _xmlRelaxNGInclude xmlRelaxNGInclude;
 typedef xmlRelaxNGInclude *xmlRelaxNGIncludePtr;
 
 typedef enum {
-#ifndef ZTRIM_DONT_INSTR
-ztrim_fInstrument(17);
-#endif
     XML_RELAXNG_COMBINE_UNDEFINED = 0,  /* undefined */
     XML_RELAXNG_COMBINE_CHOICE, /* choice */
     XML_RELAXNG_COMBINE_INTERLEAVE      /* interleave */
@@ -665,9 +662,6 @@ typedef int (*xmlRelaxNGTypeCompare) (void *data, const xmlChar * type,
 typedef struct _xmlRelaxNGTypeLibrary xmlRelaxNGTypeLibrary;
 typedef xmlRelaxNGTypeLibrary *xmlRelaxNGTypeLibraryPtr;
 struct _xmlRelaxNGTypeLibrary {
-#ifndef ZTRIM_DONT_INSTR
-ztrim_fInstrument(22);
-#endif
     const xmlChar *namespace;   /* the datatypeLibrary value */
     void *data;                 /* data needed for the library */
     xmlRelaxNGTypeHave have;    /* the export function */

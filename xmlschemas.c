@@ -323,10 +323,7 @@ static const xmlChar *xmlNamespaceNs = (const xmlChar *)
     (xmlStrEqual(node->name, (const xmlChar *) type)) && \
     (xmlStrEqual(node->ns->href, xmlSchemaNs)))
 
-#define FREE_AND_NULL(str) if ((str) != NULL) {
-#ifndef ZTRIM_DONT_INSTR
-ztrim_fInstrument(453);
-#endif
+#define FREE_AND_NULL(str) if ((str) != NULL) { \
  xmlFree((xmlChar *) (str)); str = NULL; }
 
 /*
