@@ -1243,6 +1243,9 @@ ztrim_fInstrument(2101);
 	    xmlBufferWriteCHAR(buf, content->name);
 	    break;
 	case XML_ELEMENT_CONTENT_SEQ:
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(0);
+#endif
 #ifdef MAGMA_ENABLE_CANARIES
         MAGMA_LOG("XML101", !content->c1);
 #endif
@@ -1263,6 +1266,9 @@ ztrim_fInstrument(2101);
 		xmlDumpElementContent(buf, content->c2, 0);
 	    break;
 	case XML_ELEMENT_CONTENT_OR:
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(0);
+#endif
 #ifdef MAGMA_ENABLE_CANARIES
         MAGMA_LOG("XML101", !content->c1);
 #endif
