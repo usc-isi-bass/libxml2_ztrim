@@ -107,9 +107,6 @@ extern int pthread_cond_signal ()
  * xmlMutex are a simple mutual exception locks
  */
 struct _xmlMutex {
-#ifndef ZTRIM_DONT_INSTR
-ztrim_fInstrument(432);
-#endif
 #ifdef HAVE_PTHREAD_H
     pthread_mutex_t lock;
 #elif defined HAVE_WIN32_THREADS
