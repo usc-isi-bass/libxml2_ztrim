@@ -1408,6 +1408,9 @@ ztrim_fInstrument(2102);
 		xmlSnprintfElementContent(buf, size, content->c2, 0);
 	    break;
     }
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(0);
+#endif
 #ifdef MAGMA_ENABLE_CANARIES
     MAGMA_LOG("XML006", size - strlen(buf) <= 2);
 #endif
