@@ -1282,6 +1282,9 @@ xmlSnprintfElementContent(char *buf, int size, xmlElementContentPtr content, int
 		strcat(buf, (char *) content->name);
 	    break;
 	case XML_ELEMENT_CONTENT_SEQ:
+#ifdef MAGMA_ENABLE_CANARIES
+        MAGMA_LOG("XML101", content->c1 == NULL);
+#endif
 	    if ((content->c1->type == XML_ELEMENT_CONTENT_OR) ||
 	        (content->c1->type == XML_ELEMENT_CONTENT_SEQ))
 		xmlSnprintfElementContent(buf, size, content->c1, 1);
@@ -1294,6 +1297,9 @@ xmlSnprintfElementContent(char *buf, int size, xmlElementContentPtr content, int
 		return;
 	    }
             strcat(buf, " , ");
+#ifdef MAGMA_ENABLE_CANARIES
+        MAGMA_LOG("XML101", content->c2 == NULL);
+#endif
 	    if (((content->c2->type == XML_ELEMENT_CONTENT_OR) ||
 		 (content->c2->ocur != XML_ELEMENT_CONTENT_ONCE)) &&
 		(content->c2->type != XML_ELEMENT_CONTENT_ELEMENT))
@@ -1302,6 +1308,9 @@ xmlSnprintfElementContent(char *buf, int size, xmlElementContentPtr content, int
 		xmlSnprintfElementContent(buf, size, content->c2, 0);
 	    break;
 	case XML_ELEMENT_CONTENT_OR:
+#ifdef MAGMA_ENABLE_CANARIES
+        MAGMA_LOG("XML101", content->c1 == NULL);
+#endif
 	    if ((content->c1->type == XML_ELEMENT_CONTENT_OR) ||
 	        (content->c1->type == XML_ELEMENT_CONTENT_SEQ))
 		xmlSnprintfElementContent(buf, size, content->c1, 1);
@@ -1314,6 +1323,9 @@ xmlSnprintfElementContent(char *buf, int size, xmlElementContentPtr content, int
 		return;
 	    }
             strcat(buf, " | ");
+#ifdef MAGMA_ENABLE_CANARIES
+        MAGMA_LOG("XML101", content->c2 == NULL);
+#endif
 	    if (((content->c2->type == XML_ELEMENT_CONTENT_SEQ) ||
 		 (content->c2->ocur != XML_ELEMENT_CONTENT_ONCE)) &&
 		(content->c2->type != XML_ELEMENT_CONTENT_ELEMENT))
@@ -1322,6 +1334,9 @@ xmlSnprintfElementContent(char *buf, int size, xmlElementContentPtr content, int
 		xmlSnprintfElementContent(buf, size, content->c2, 0);
 	    break;
     }
+#ifdef MAGMA_ENABLE_CANARIES
+    MAGMA_LOG("XML006", size - strlen(buf) <= 2);
+#endif
     if (englob)
         strcat(buf, ")");
     switch (content->ocur) {
