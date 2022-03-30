@@ -3613,6 +3613,9 @@ ztrim_fInstrument(1267);
 #ifdef MAGMA_XML012_CANARIES
     MAGMA_LOG("XML012", 0);
 #endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(0);
+#endif
 #ifdef MAGMA_ENABLE_CANARIES
     MAGMA_LOG("XML012", (end - len) != (BASE_PTR + startPosition));
 #endif
