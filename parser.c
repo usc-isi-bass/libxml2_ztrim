@@ -8297,6 +8297,9 @@ ztrim_fInstrument(1303);
 #ifdef MAGMA_ENABLE_CANARIES
     MAGMA_LOG("XML003", 0);
 #endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(0);
+#endif
 #ifdef MAGMA_ENABLE_CANARIES
     MAGMA_LOG("XML003", MAGMA_AND(entity->etype == XML_EXTERNAL_PARAMETER_ENTITY, \
         MAGMA_AND((ctxt->options & XML_PARSE_NOENT) == 0, \
