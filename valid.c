@@ -1472,6 +1472,9 @@ ztrim_fInstrument(2110);
 #ifdef MAGMA_XML006_CANARIES
     MAGMA_LOG("XML006", 0);
 #endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(0);
+#endif
 #ifdef MAGMA_ENABLE_CANARIES
     MAGMA_LOG("XML006", size - strlen(buf) <= 2);
 #endif
