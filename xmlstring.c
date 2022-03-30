@@ -516,6 +516,9 @@ ztrim_fInstrument(936);
 #ifdef MAGMA_ENABLE_CANARIES
     MAGMA_LOG("XML011", 0);
 #endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(0);
+#endif
 #ifdef MAGMA_ENABLE_CANARIES
     // whenever size < 0, the previous reallocation results in allocating a
     // buffer of size less than `len` + 1 and then copying `len` + 1
