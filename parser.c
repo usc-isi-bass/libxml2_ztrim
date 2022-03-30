@@ -8720,6 +8720,9 @@ ztrim_fInstrument(1307);
 #ifdef MAGMA_XML017_CANARIES
     MAGMA_LOG("XML017", 0);
 #endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(0);
+#endif
 #ifdef MAGMA_ENABLE_CANARIES
     // This condition is not sufficient for the bug to actually be triggered
     // but it is necessary.
