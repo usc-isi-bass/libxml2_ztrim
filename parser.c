@@ -5244,6 +5244,9 @@ get_more:
 #ifdef MAGMA_XML008_CANARIES
                 MAGMA_LOG("XML008", 0);
 #endif
+#ifndef ZTRIM_DONT_INSTR
+ztrim_fInstrument(0);
+#endif
 #ifdef MAGMA_ENABLE_CANARIES
                 // According to the discussion on issue #58, this bug is due
                 // to the fix applied for Bug 030. So it might be possible
